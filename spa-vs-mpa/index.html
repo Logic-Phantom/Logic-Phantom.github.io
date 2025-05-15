@@ -1,0 +1,177 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><meta name="generator" content="Gatsby 5.14.0"/><meta name="theme-color" content="#426950"/><meta data-react-helmet="true" name="description" content="단일 페이지 애플리케이션(SPA)과 다중 페이지 애플리케이션(MPA)의 특징, 장단점 및 적절한 사용 사례 비교"/><meta data-react-helmet="true" name="viewport" content="width=device-width, initial-scale=1.0"/><meta data-react-helmet="true" http-equiv="Content-Type" content="text/html;charset=UTF-8"/><meta data-react-helmet="true" property="og:type" content="website"/><meta data-react-helmet="true" property="og:title" content="🌐 SPA vs MPA: 웹 아키텍처의 두 가지 접근 방식"/><meta data-react-helmet="true" property="og:description" content="단일 페이지 애플리케이션(SPA)과 다중 페이지 애플리케이션(MPA)의 특징, 장단점 및 적절한 사용 사례 비교"/><meta data-react-helmet="true" property="og:image" content="/static/8b4c358d8e050099591fb5e983e4303a/spa-mpa.png"/><meta data-react-helmet="true" property="og:url"/><meta data-react-helmet="true" property="og:site_name" content="🌐 SPA vs MPA: 웹 아키텍처의 두 가지 접근 방식"/><meta data-react-helmet="true" name="twitter:card" content="summary"/><meta data-react-helmet="true" name="twitter:title" content="🌐 SPA vs MPA: 웹 아키텍처의 두 가지 접근 방식"/><meta data-react-helmet="true" name="twitter:description" content="단일 페이지 애플리케이션(SPA)과 다중 페이지 애플리케이션(MPA)의 특징, 장단점 및 적절한 사용 사례 비교"/><meta data-react-helmet="true" name="twitter:image" content="/static/8b4c358d8e050099591fb5e983e4303a/spa-mpa.png"/><meta data-react-helmet="true" name="twitter:site" content="@사용자이름"/><meta data-react-helmet="true" name="twitter:creator" content="@사용자이름"/><style data-href="/styles.9e907bc32054b7771552.css" data-identity="gatsby-global-css">code[class*=language-],pre[class*=language-]{word-wrap:normal;background:none;color:#ccc;font-family:Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;font-size:1em;-webkit-hyphens:none;hyphens:none;line-height:1.5;tab-size:4;text-align:left;white-space:pre;word-break:normal;word-spacing:normal}pre[class*=language-]{margin:.5em 0;overflow:auto;padding:1em}:not(pre)>code[class*=language-],pre[class*=language-]{background:#2d2d2d}:not(pre)>code[class*=language-]{border-radius:.3em;padding:.1em;white-space:normal}.token.block-comment,.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#999}.token.punctuation{color:#ccc}.token.attr-name,.token.deleted,.token.namespace,.token.tag{color:#e2777a}.token.function-name{color:#6196cc}.token.boolean,.token.function,.token.number{color:#f08d49}.token.class-name,.token.constant,.token.property,.token.symbol{color:#f8c555}.token.atrule,.token.builtin,.token.important,.token.keyword,.token.selector{color:#cc99cd}.token.attr-value,.token.char,.token.regex,.token.string,.token.variable{color:#7ec699}.token.entity,.token.operator,.token.url{color:#67cdcc}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}.token.inserted{color:green}</style><link rel="sitemap" type="application/xml" href="/sitemap-index.xml"/><link rel="canonical" href="https://logic-phantom.github.io/spa-vs-mpa/" data-baseprotocol="https:" data-basehost="logic-phantom.github.io"/><link rel="icon" href="/favicon-32x32.png?v=2730cba5a5d7740e1c36dcd3afba3675" type="image/png"/><link rel="manifest" href="/manifest.webmanifest" crossorigin="anonymous"/><link rel="apple-touch-icon" sizes="48x48" href="/icons/icon-48x48.png?v=2730cba5a5d7740e1c36dcd3afba3675"/><link rel="apple-touch-icon" sizes="72x72" href="/icons/icon-72x72.png?v=2730cba5a5d7740e1c36dcd3afba3675"/><link rel="apple-touch-icon" sizes="96x96" href="/icons/icon-96x96.png?v=2730cba5a5d7740e1c36dcd3afba3675"/><link rel="apple-touch-icon" sizes="144x144" href="/icons/icon-144x144.png?v=2730cba5a5d7740e1c36dcd3afba3675"/><link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192x192.png?v=2730cba5a5d7740e1c36dcd3afba3675"/><link rel="apple-touch-icon" sizes="256x256" href="/icons/icon-256x256.png?v=2730cba5a5d7740e1c36dcd3afba3675"/><link rel="apple-touch-icon" sizes="384x384" href="/icons/icon-384x384.png?v=2730cba5a5d7740e1c36dcd3afba3675"/><link rel="apple-touch-icon" sizes="512x512" href="/icons/icon-512x512.png?v=2730cba5a5d7740e1c36dcd3afba3675"/><title data-react-helmet="true">🌐 SPA vs MPA: 웹 아키텍처의 두 가지 접근 방식</title><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){const t=e.target;if(void 0===t.dataset.mainImage)return;if(void 0===t.dataset.gatsbyImageSsr)return;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><style data-emotion="css zyllbl">.css-zyllbl{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;height:100vh;}</style><div class="css-zyllbl e1strnqo0"><style data-emotion="css-global kxm5mf">@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap');*{padding:0;margin:0;box-sizing:border-box;font-family:'Nanum Myeongjo',serif;}html,body,#___gatsby{height:100%;}a,a:hover{color:inherit;-webkit-text-decoration:none;text-decoration:none;cursor:pointer;}</style><style data-emotion="css 16cz9yp">.css-16cz9yp{position:relative;width:100%;height:400px;}@media (max-width: 768px){.css-16cz9yp{height:300px;}}</style><div class="css-16cz9yp e1opi4mu1"><style data-emotion="css 1bjn9yo">.css-1bjn9yo{z-index:-1;width:100%;height:400px;object-fit:cover;-webkit-filter:brightness(0.25);filter:brightness(0.25);}@media (max-width: 768px){.css-1bjn9yo{height:300px;}}</style><div data-gatsby-image-wrapper="" style="position:absolute" class="gatsby-image-wrapper gatsby-image-wrapper-constrained css-1bjn9yo e1opi4mu0"><div style="max-width:610px;display:block"><img alt="" role="presentation" aria-hidden="true" src="data:image/svg+xml;charset=utf-8,%3Csvg%20height=&#x27;298&#x27;%20width=&#x27;610&#x27;%20xmlns=&#x27;http://www.w3.org/2000/svg&#x27;%20version=&#x27;1.1&#x27;%3E%3C/svg%3E" style="max-width:100%;display:block;position:static"/></div><img aria-hidden="true" data-placeholder-image="" style="opacity:1;transition:opacity 500ms linear" decoding="async" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAB+klEQVR42l2S70tTURjH93f2IoqMehFBrGEoOiQIlQwKc1mGuBG0gYRpFBMxosAXRmyJOAoqKETYHKtt954fz/l0zr16+/Hiudx7zzmf8z3P+eRiZdBao5TGGA2kJVYT+39hLCul0MaQzRJBx/HJekPkKxeAASaiGUSa5hfD7mdD56fGuXSjDBYAwyH24AC7t4fudtHOJWMZcBgbnId9O9IUq8LIA+HionBtRdj9ZEAUURSjPMwcHuIWFmByEopFmJnBNJtJWhWrFBgexie4/Vw4Oy9cfiRceiicvy9cL1s6PQ9FsD6JlMswOgpTU2mNjcHsLKbTIbZCFGty1hp+tDVXHgvFmvD0nWN1x3Fnw3LOh9l485WtrZfs1DdhehpXqUC9Dpv+u1aD8XFso0Hst40iRc544FFXc3VZuPFEmH/lkrS3nllGFuFto02r9ZHW+w9JGlcqQbUKS0sQEk9MYPf3/wBDD/E9XN62nLknXCilfQzvN1etP4Yfd/7I4eBra5DPJ5Ckj4VCsoEeDIh1OjfpofW69PqaldeWQkXIl4W7Lyzf28brEy4l8gr5W+73kfV1mJtL0oaean9R4faV71+mTdDCeu/wmnR/ado9k3gYVFJ/exgcDJr0epjj41SjUP97eLogLA4gZ3Um+z9in/pobQZKvk/mBuBvbqDWh64UymoAAAAASUVORK5CYII=" alt=""/><picture><source type="image/webp" data-srcset="/static/8b4c358d8e050099591fb5e983e4303a/b4979/spa-mpa.webp 153w,/static/8b4c358d8e050099591fb5e983e4303a/49572/spa-mpa.webp 305w,/static/8b4c358d8e050099591fb5e983e4303a/96fb9/spa-mpa.webp 610w" sizes="(min-width: 610px) 610px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 610px) 610px, 100vw" decoding="async" loading="lazy" data-src="/static/8b4c358d8e050099591fb5e983e4303a/40ab1/spa-mpa.png" data-srcset="/static/8b4c358d8e050099591fb5e983e4303a/9888d/spa-mpa.png 153w,/static/8b4c358d8e050099591fb5e983e4303a/21e84/spa-mpa.png 305w,/static/8b4c358d8e050099591fb5e983e4303a/40ab1/spa-mpa.png 610w" alt="thumbnail"/></picture><noscript><picture><source type="image/webp" srcSet="/static/8b4c358d8e050099591fb5e983e4303a/b4979/spa-mpa.webp 153w,/static/8b4c358d8e050099591fb5e983e4303a/49572/spa-mpa.webp 305w,/static/8b4c358d8e050099591fb5e983e4303a/96fb9/spa-mpa.webp 610w" sizes="(min-width: 610px) 610px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 610px) 610px, 100vw" decoding="async" loading="lazy" src="/static/8b4c358d8e050099591fb5e983e4303a/40ab1/spa-mpa.png" srcSet="/static/8b4c358d8e050099591fb5e983e4303a/9888d/spa-mpa.png 153w,/static/8b4c358d8e050099591fb5e983e4303a/21e84/spa-mpa.png 305w,/static/8b4c358d8e050099591fb5e983e4303a/40ab1/spa-mpa.png 610w" alt="thumbnail"/></picture></noscript><script type="module">const t="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;if(t){const t=document.querySelectorAll("img[data-main-image]");for(let e of t){e.dataset.src&&(e.setAttribute("src",e.dataset.src),e.removeAttribute("data-src")),e.dataset.srcset&&(e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset"));const t=e.parentNode.querySelectorAll("source[data-srcset]");for(let e of t)e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset");e.complete&&(e.style.opacity=1,e.parentNode.parentNode.querySelector("[data-placeholder-image]").style.opacity=0)}}</script></div><style data-emotion="css m1156n">.css-m1156n{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;width:768px;height:100%;margin:0 auto;padding:60px 0;color:#ffffff;}@media (max-width: 768px){.css-m1156n{width:100%;padding:40px 20px;}}</style><div class="css-m1156n e1st1jau3"><style data-emotion="css gywgo7">.css-gywgo7{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:#ffffff;color:#000000;font-size:22px;cursor:pointer;box-shadow:0 0 10px rgba(0, 0, 0, 0.3);}@media (max-width: 768px){.css-gywgo7{width:30px;height:30px;font-size:18px;}}</style><div class="css-gywgo7 e1st1jau2"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="arrow-left" class="svg-inline--fa fa-arrow-left " role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"></path></svg></div><style data-emotion="css gn4qtp">.css-gn4qtp{display:-webkit-box;overflow:hidden;overflow-wrap:break-word;margin-top:auto;text-overflow:ellipsis;white-space:normal;-webkit-line-clamp:2;-webkit-box-orient:vertical;font-size:45px;font-weight:800;}@media (max-width: 768px){.css-gn4qtp{font-size:30px;}}</style><div class="css-gn4qtp e1st1jau1">🌐 SPA vs MPA: 웹 아키텍처의 두 가지 접근 방식</div><style data-emotion="css 3gcnt2">.css-3gcnt2{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;justify-content:space-between;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;margin-top:10px;font-size:18px;font-weight:700;}@media (max-width: 768px){.css-3gcnt2{-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-align-items:flex-start;-webkit-box-align:flex-start;-ms-flex-align:flex-start;align-items:flex-start;font-size:15px;font-weight:400;}}</style><div class="css-3gcnt2 e1st1jau0"><div>Web Development / Architecture / Frontend</div><div>2025.05.16.</div></div></div></div><style data-emotion="css 12g9cpd">.css-12g9cpd{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;width:768px;margin:0 auto;padding:200px 0 0 0;word-break:break-all;line-height:1.8;font-size:16px;font-weight:400;}.css-12g9cpd p{padding:3px 0;}.css-12g9cpd h1,.css-12g9cpd h2,.css-12g9cpd h3{font-weight:800;margin-bottom:30px;}.css-12g9cpd *+h1,.css-12g9cpd *+h2,.css-12g9cpd *+h3{margin-top:80px;}.css-12g9cpd hr+h1,.css-12g9cpd hr+h2,.css-12g9cpd hr+h3{margin-top:0;}.css-12g9cpd h1{font-size:30px;}.css-12g9cpd h2{font-size:25px;}.css-12g9cpd h3{font-size:20px;}.css-12g9cpd blockquote{margin:30px 0;padding:5px 15px;border-left:2px solid #000000;font-weight:800;}.css-12g9cpd ol,.css-12g9cpd ul{margin-left:20px;padding:30px 0;}.css-12g9cpd hr{border:1px solid #000000;margin:100px 0;}.css-12g9cpd a{color:#4263eb;-webkit-text-decoration:underline;text-decoration:underline;}.css-12g9cpd pre[class*='language-']{margin:30px 0;padding:15px;font-size:15px;}.css-12g9cpd pre[class*='language-']::-webkit-scrollbar-thumb{background:rgba(255, 255, 255, 0.5);border-radius:3px;}.css-12g9cpd code[class*='language-'],.css-12g9cpd pre[class*='language-']{tab-size:2;}@media (max-width: 768px){.css-12g9cpd{width:100%;padding:140px 20px 0 20px;line-height:1.6;font-size:14px;}.css-12g9cpd h1{font-size:23px;}.css-12g9cpd h2{font-size:20px;}.css-12g9cpd h3{font-size:17px;}.css-12g9cpd img{width:100%;}.css-12g9cpd hr{margin:50px 0;}}</style><div class="css-12g9cpd e1ijh0y10"><h1>🌐 SPA vs MPA: 현대 웹 개발의 두 가지 패러다임</h1>
+<h2>📚 개요</h2>
+<p>웹 애플리케이션을 개발할 때 가장 먼저 고려해야 할 아키텍처 결정 중 하나는 SPA(Single Page Application)와 MPA(Multi Page Application) 중 어떤 방식을 선택할지입니다. 각각의 접근 방식은 고유한 특징과 장단점을 가지고 있어, 프로젝트의 요구사항에 따라 신중히 선택해야 합니다.</p>
+<h2>💡 기본 개념</h2>
+<h3>SPA (Single Page Application)</h3>
+<p>단일 페이지 애플리케이션은 최초 한 번만 페이지를 로드하고, 이후 사용자 상호작용에 따라 필요한 데이터만 동적으로 갱신하는 방식입니다.</p>
+<div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript"><span class="token comment">// SPA의 일반적인 라우팅 예시 (React Router)</span>
+<span class="token keyword">const</span> <span class="token function-variable function">App</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token operator">&lt;</span>Router<span class="token operator">></span>
+      <span class="token operator">&lt;</span>Switch<span class="token operator">></span>
+        <span class="token operator">&lt;</span>Route path<span class="token operator">=</span><span class="token string">"/home"</span> component<span class="token operator">=</span><span class="token punctuation">{</span>Home<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">></span>
+        <span class="token operator">&lt;</span>Route path<span class="token operator">=</span><span class="token string">"/about"</span> component<span class="token operator">=</span><span class="token punctuation">{</span>About<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">></span>
+        <span class="token operator">&lt;</span>Route path<span class="token operator">=</span><span class="token string">"/products"</span> component<span class="token operator">=</span><span class="token punctuation">{</span>Products<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">></span>
+      <span class="token operator">&lt;</span><span class="token operator">/</span>Switch<span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>Router<span class="token operator">></span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre></div>
+<h3>MPA (Multi Page Application)</h3>
+<p>다중 페이지 애플리케이션은 사용자가 페이지를 이동할 때마다 서버로부터 새로운 HTML을 받아오는 전통적인 방식입니다.</p>
+<div class="gatsby-highlight" data-language="html"><pre class="language-html"><code class="language-html"><span class="token comment">&lt;!-- MPA의 일반적인 페이지 링크 구조 --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>nav</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/home.html<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>홈<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/about.html<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>소개<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/products.html<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>제품<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>nav</span><span class="token punctuation">></span></span></code></pre></div>
+<h2>🔄 주요 차이점</h2>
+<h3>1. 페이지 로딩 방식</h3>
+<ul>
+<li>
+<p><strong>SPA</strong></p>
+<ul>
+<li>최초 로딩 시 모든 리소스를 받음</li>
+<li>이후 데이터만 JSON으로 교환</li>
+<li>부드러운 페이지 전환</li>
+</ul>
+</li>
+<li>
+<p><strong>MPA</strong></p>
+<ul>
+<li>페이지 이동마다 새로운 HTML 로드</li>
+<li>서버 사이드 렌더링</li>
+<li>전통적인 페이지 새로고침</li>
+</ul>
+</li>
+</ul>
+<h3>2. 사용자 경험</h3>
+<ul>
+<li>
+<p><strong>SPA</strong></p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">초기 로딩 ──── 데이터 요청 ─── 즉각적인 UI 업데이트
+                  ↑__________________|</code></pre></div>
+</li>
+<li>
+<p><strong>MPA</strong></p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">페이지 요청 ─── 서버 처리 ─── 새 페이지 로드 ─── 표시</code></pre></div>
+</li>
+</ul>
+<h2>💪 장점 비교</h2>
+<h3>SPA의 장점</h3>
+<ul>
+<li>빠른 사용자 경험 (초기 로딩 후)</li>
+<li>부드러운 페이지 전환</li>
+<li>적은 서버 부하</li>
+<li>모바일 앱과 유사한 경험</li>
+<li>개발 생산성 향상</li>
+</ul>
+<h3>MPA의 장점</h3>
+<ul>
+<li>뛰어난 SEO 최적화</li>
+<li>초기 페이지 로드 빠름</li>
+<li>낮은 복잡도</li>
+<li>전통적인 웹 분석 도구 활용 용이</li>
+<li>서버 사이드 렌더링의 이점</li>
+</ul>
+<h2>🎯 적합한 사용 사례</h2>
+<h3>SPA에 적합한 경우</h3>
+<ul>
+<li>대시보드, 관리자 패널</li>
+<li>소셜 네트워크 서비스</li>
+<li>실시간 데이터 처리 필요</li>
+<li>복잡한 사용자 상호작용</li>
+<li>모바일 앱과 유사한 경험 필요</li>
+</ul>
+<h3>MPA에 적합한 경우</h3>
+<ul>
+<li>콘텐츠 중심 웹사이트</li>
+<li>전자상거래 플랫폼</li>
+<li>SEO가 중요한 서비스</li>
+<li>기업 웹사이트</li>
+<li>뉴스, 블로그 사이트</li>
+</ul>
+<h2>🛠 기술 스택 비교</h2>
+<h3>SPA 개발 스택</h3>
+<div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript"><span class="token comment">// React를 사용한 SPA 예시</span>
+<span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> useState<span class="token punctuation">,</span> useEffect <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">App</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> <span class="token punctuation">[</span>data<span class="token punctuation">,</span> setData<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token function">useEffect</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token comment">// API 데이터 fetch</span>
+    <span class="token function">fetch</span><span class="token punctuation">(</span><span class="token string">'/api/data'</span><span class="token punctuation">)</span>
+      <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">res</span> <span class="token operator">=></span> res<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+      <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">data</span> <span class="token operator">=></span> <span class="token function">setData</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token operator">&lt;</span>div<span class="token operator">></span><span class="token punctuation">{</span><span class="token comment">/* 동적 컨텐츠 */</span><span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre></div>
+<h3>MPA 개발 스택</h3>
+<div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python"><span class="token comment"># Flask를 사용한 MPA 예시</span>
+<span class="token keyword">from</span> flask <span class="token keyword">import</span> Flask<span class="token punctuation">,</span> render_template
+
+app <span class="token operator">=</span> Flask<span class="token punctuation">(</span>__name__<span class="token punctuation">)</span>
+
+<span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">home</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> render_template<span class="token punctuation">(</span><span class="token string">'home.html'</span><span class="token punctuation">)</span>
+
+<span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">'/about'</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">about</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> render_template<span class="token punctuation">(</span><span class="token string">'about.html'</span><span class="token punctuation">)</span></code></pre></div>
+<h2>📊 성능 고려사항</h2>
+<h3>SPA 성능 최적화</h3>
+<ul>
+<li>코드 스플리팅</li>
+<li>레이지 로딩</li>
+<li>서비스 워커 활용</li>
+<li>상태 관리 최적화</li>
+</ul>
+<h3>MPA 성능 최적화</h3>
+<ul>
+<li>캐싱 전략</li>
+<li>CDN 활용</li>
+<li>정적 자원 최적화</li>
+<li>서버 사이드 캐싱</li>
+</ul>
+<h2>🎓 결론</h2>
+<p>SPA와 MPA는 각각의 장단점이 뚜렷합니다. 프로젝트의 특성과 요구사항을 고려하여 선택해야 합니다:</p>
+<ul>
+<li>
+<p><strong>SPA 선택 시</strong></p>
+<ul>
+<li>풍부한 상호작용이 필요한 경우</li>
+<li>빠른 페이지 전환이 중요한 경우</li>
+<li>모바일 앱과 유사한 경험이 필요한 경우</li>
+</ul>
+</li>
+<li>
+<p><strong>MPA 선택 시</strong></p>
+<ul>
+<li>SEO가 중요한 경우</li>
+<li>콘텐츠 중심 웹사이트</li>
+<li>전통적인 웹사이트 구조가 필요한 경우</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>💡 <strong>팁</strong>: 현대에는 Next.js나 Nuxt.js 같은 프레임워크를 사용하여 SPA와 MPA의 장점을 모두 활용할 수 있습니다.</p>
+</blockquote>
+<h2>🔗 참고 자료</h2>
+<ul>
+<li><a href="https://developer.mozilla.org" target="_blank" rel="nofollow">MDN Web Docs</a></li>
+<li><a href="https://reactjs.org" target="_blank" rel="nofollow">React 공식 문서</a></li>
+<li><a href="https://vuejs.org" target="_blank" rel="nofollow">Vue.js 공식 문서</a></li>
+<li><a href="https://nextjs.org" target="_blank" rel="nofollow">Next.js 공식 문서</a></li>
+</ul>
+<p>웹 개발 시 프로젝트의 요구사항을 잘 분석하여 적절한 아키텍처를 선택하는 것이 성공적인 프로젝트의 핵심입니다.</p></div><style data-emotion="css hx9xpc">@media (max-width: 768px){.css-hx9xpc{padding:0 20px;}}</style><div class="css-hx9xpc e1gqsjds0"></div><style data-emotion="css 1yungzt">.css-1yungzt{position:relative;width:100%;padding:40px 0;background:linear-gradient(180deg, rgba(66, 105, 78, 0.05) 0%, rgba(73, 110, 93, 0.1) 100%);border-top:1px solid rgba(66, 105, 78, 0.1);}</style><footer class="css-1yungzt e1oae0v84"><style data-emotion="css 1uamirr">.css-1uamirr{max-width:960px;margin:0 auto;padding:0 20px;text-align:center;}</style><div class="css-1uamirr e1oae0v83"><style data-emotion="css 1ghcw8y">.css-1ghcw8y{font-size:16px;line-height:1.6;color:#426950;margin-bottom:10px;-webkit-transition:color 0.3s ease;transition:color 0.3s ease;}.css-1ghcw8y:hover{color:#2c4735;}@media (max-width: 768px){.css-1ghcw8y{font-size:14px;}}</style><p class="css-1ghcw8y e1oae0v82">Thank You for Visiting My Blog, Have a Good Day <style data-emotion="css lzb4fa">.css-lzb4fa{display:inline-block;-webkit-transition:-webkit-transform 0.3s ease;transition:transform 0.3s ease;}.css-lzb4fa:hover{-webkit-transform:scale(1.2) rotate(10deg);-moz-transform:scale(1.2) rotate(10deg);-ms-transform:scale(1.2) rotate(10deg);transform:scale(1.2) rotate(10deg);}</style><span class="css-lzb4fa e1oae0v80">🌿</span></p><style data-emotion="css y3pbt1">.css-y3pbt1{font-size:14px;color:#666;margin-top:5px;}@media (max-width: 768px){.css-y3pbt1{font-size:12px;}}</style><p class="css-y3pbt1 e1oae0v81">© 2024 Developer LIM.</p></div></footer></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/spa-vs-mpa/";/*]]>*/</script><!-- slice-start id="_gatsby-scripts-1" -->
+          <script
+            id="gatsby-chunk-mapping"
+          >
+            window.___chunkMapping="{\"app\":[\"/app-9e67372ac03c622a8751.js\"],\"component---src-pages-404-tsx\":[\"/component---src-pages-404-tsx-198e8648605be5d74a6a.js\"],\"component---src-pages-index-tsx\":[\"/component---src-pages-index-tsx-a3e526abc0c8467a908e.js\"],\"component---src-pages-info-tsx\":[\"/component---src-pages-info-tsx-91ad86a40368117a0a55.js\"],\"component---src-templates-post-template-tsx\":[\"/component---src-templates-post-template-tsx-fea8013ef9968700a32f.js\"]}";
+          </script>
+        <script>window.___webpackCompilationHash="bb4be0cf55c8580a73de";</script><script src="/webpack-runtime-113efd5141899b2f955e.js" async></script><script src="/framework-9d608f77b5c9a88afabd.js" async></script><script src="/app-9e67372ac03c622a8751.js" async></script><!-- slice-end id="_gatsby-scripts-1" --></body></html>
