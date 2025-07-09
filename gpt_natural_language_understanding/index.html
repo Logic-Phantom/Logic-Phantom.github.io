@@ -1,0 +1,113 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><meta name="generator" content="Gatsby 5.14.0"/><meta name="theme-color" content="#426950"/><meta data-react-helmet="true" name="description" content="AI의 독해능력"/><meta data-react-helmet="true" name="viewport" content="width=device-width, initial-scale=1.0"/><meta data-react-helmet="true" http-equiv="Content-Type" content="text/html;charset=UTF-8"/><meta data-react-helmet="true" property="og:type" content="website"/><meta data-react-helmet="true" property="og:title" content="AI의 LLM 처리 하는방안..?"/><meta data-react-helmet="true" property="og:description" content="AI의 독해능력"/><meta data-react-helmet="true" property="og:image" content="/static/a6aafa201d3364cfe4040cdee435c13c/LLMAI.png"/><meta data-react-helmet="true" property="og:url"/><meta data-react-helmet="true" property="og:site_name" content="AI의 LLM 처리 하는방안..?"/><meta data-react-helmet="true" name="twitter:card" content="summary"/><meta data-react-helmet="true" name="twitter:title" content="AI의 LLM 처리 하는방안..?"/><meta data-react-helmet="true" name="twitter:description" content="AI의 독해능력"/><meta data-react-helmet="true" name="twitter:image" content="/static/a6aafa201d3364cfe4040cdee435c13c/LLMAI.png"/><meta data-react-helmet="true" name="twitter:site" content="@사용자이름"/><meta data-react-helmet="true" name="twitter:creator" content="@사용자이름"/><style data-href="/styles.9e907bc32054b7771552.css" data-identity="gatsby-global-css">code[class*=language-],pre[class*=language-]{word-wrap:normal;background:none;color:#ccc;font-family:Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;font-size:1em;-webkit-hyphens:none;hyphens:none;line-height:1.5;tab-size:4;text-align:left;white-space:pre;word-break:normal;word-spacing:normal}pre[class*=language-]{margin:.5em 0;overflow:auto;padding:1em}:not(pre)>code[class*=language-],pre[class*=language-]{background:#2d2d2d}:not(pre)>code[class*=language-]{border-radius:.3em;padding:.1em;white-space:normal}.token.block-comment,.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#999}.token.punctuation{color:#ccc}.token.attr-name,.token.deleted,.token.namespace,.token.tag{color:#e2777a}.token.function-name{color:#6196cc}.token.boolean,.token.function,.token.number{color:#f08d49}.token.class-name,.token.constant,.token.property,.token.symbol{color:#f8c555}.token.atrule,.token.builtin,.token.important,.token.keyword,.token.selector{color:#cc99cd}.token.attr-value,.token.char,.token.regex,.token.string,.token.variable{color:#7ec699}.token.entity,.token.operator,.token.url{color:#67cdcc}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}.token.inserted{color:green}</style><link rel="sitemap" type="application/xml" href="/sitemap-index.xml"/><link rel="canonical" href="https://logic-phantom.github.io/gpt_natural_language_understanding/" data-baseprotocol="https:" data-basehost="logic-phantom.github.io"/><link rel="icon" href="/favicon-32x32.png" type="image/png"/><link rel="manifest" href="/manifest.webmanifest" crossorigin="use-credentials"/><link rel="apple-touch-icon" sizes="192x192" href="/contents/forestLim.png"/><link rel="apple-touch-icon" sizes="512x512" href="/contents/forestLim.png"/><title data-react-helmet="true">AI의 LLM 처리 하는방안..?</title><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){const t=e.target;if(void 0===t.dataset.mainImage)return;if(void 0===t.dataset.gatsbyImageSsr)return;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><style data-emotion="css zyllbl">.css-zyllbl{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;height:100vh;}</style><div class="css-zyllbl e1strnqo0"><style data-emotion="css-global kxm5mf">@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap');*{padding:0;margin:0;box-sizing:border-box;font-family:'Nanum Myeongjo',serif;}html,body,#___gatsby{height:100%;}a,a:hover{color:inherit;-webkit-text-decoration:none;text-decoration:none;cursor:pointer;}</style><style data-emotion="css 16cz9yp">.css-16cz9yp{position:relative;width:100%;height:400px;}@media (max-width: 768px){.css-16cz9yp{height:300px;}}</style><div class="css-16cz9yp e1opi4mu1"><style data-emotion="css 1bjn9yo">.css-1bjn9yo{z-index:-1;width:100%;height:400px;object-fit:cover;-webkit-filter:brightness(0.25);filter:brightness(0.25);}@media (max-width: 768px){.css-1bjn9yo{height:300px;}}</style><div data-gatsby-image-wrapper="" style="position:absolute" class="gatsby-image-wrapper gatsby-image-wrapper-constrained css-1bjn9yo e1opi4mu0"><div style="max-width:1024px;display:block"><img alt="" role="presentation" aria-hidden="true" src="data:image/svg+xml;charset=utf-8,%3Csvg%20height=&#x27;1024&#x27;%20width=&#x27;1024&#x27;%20xmlns=&#x27;http://www.w3.org/2000/svg&#x27;%20version=&#x27;1.1&#x27;%3E%3C/svg%3E" style="max-width:100%;display:block;position:static"/></div><img aria-hidden="true" data-placeholder-image="" style="opacity:1;transition:opacity 500ms linear" decoding="async" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAIAAAAC64paAAAACXBIWXMAAAsTAAALEwEAmpwYAAAERUlEQVR42j1S2U/idxDnL+lbn/rWZB/60qRN9qFNmmzTdKtd27qtB0XQ1XUVRBfN4q2wolGIiogKigiCHHIIAnKI3Df8uPHiUNhdxSvb7Xi0ySS/+c13PjOfmc+gLnKRci5ydRI7OwodRvYidm0maCllfBCBOLxeFWKlfX8h6SpmfJeFaPku/x6FKmfDV4VoNmp36iWIU5tPOuMevcckzwTMkHqZRw7CVrdRFnVpveZNqAvJAHkAXxaQ07QXHsL2rYBV5TRIw3bNUcIR8+iPo/br03jYrk0GjLZtUTpojrn1QPAihzyAr09icY/hELEmfTsW9ZrTIJFwGQtTQ6cZd8JnBMLBPXU6YAI6+yFLYFdVzkYu8sg9cxTMhrj1uaQz4dVDXtCm1kk53S/RmZDFY1E4dBsugzQXd0JPxKG9KiWvi4li2gOLgCq3ndMBM7SF8nad2LIlcO0qVOvzZ9lQyKYxKfkOvcRlkL1px9ZVPmnHVEMw5jacpDywDhQQODsO+S1Kn0URdW1DCb9VCRPC/Cm/6f1hMB20VHz39eNHX/zy+Kufv31U8f03tm0x6ALrRJ1nw/D5cBSMOLT+XRWAIw5N0Kpym+Qhuybm0sXcO2pWf3STntEy99aoX37+GX9u/NP5AWzutvP9Dm6KcVDylqqCD7UCeyqoYtdtlPYDJv54VD6ZUE0nVdPUtucOrfDju9T58R0YmgMYNPRZVEmfEXywQtKd9BpBp9JBANliBcS0soP3j0/oltBTvp1LOKFs+K5zDgE94QcA2bizmPHenMaBCARhK+c5xCGbs/GG86ZFRDbl3ZF8Ot+H+C0Y5AKSB6HdY8Tm31WCNjDnUcQKROB4boqJfNxpXRsXTRC8AopfTBsYHJSI1k6SLpAJ9bGUsOskQg5TLljaFHJUGzzFOlcu4Gzw2JIV5vujMG+WljUyuVT87FjfwNBwfSf1eWvvm0FKMe29A+ulUgFXIxcqRCsbvAW5kCtfX1ZLBausydXFWXxbu2J+tJnYW9c11tBNaySNYgl9aOLInl6OgvFSAbOAw9QrxWzGGK66gk7tZ7wdMG7JONM0DAbbQBqrbups7KE1vwGb+BtPxnWNYF9TzBopCg4NzkXImdUpxRQyEV31U1cLhtrbZVBJ+PP0+iZ8A+ntny9ItUQKjkRt7BlDv+pp6BzGdo4E7ToARz8cBlRirla+LlpmyQRLq2wGOEBkU8glvyYsUDvVS9SJ0f761m4MvhfdSsIQh1p7RvMJJwqUuHmX2pbxWQwab2GGy2KssGeW2dPgLDLpQ8Smuf4W5SzZsDSMxvdhusdxPeM1HZRBCq2cj6DWqATRBGmht3mSUEcnoqf+M/qd0V79NYGvpbXVjDb/Tqp7Ssb+NtBSi6+pHH7xx+pIG2qJjJvGPWG3VS62//pg+Gf/+0v4Z2AcQhXYckfVSkcV8+XTKeyPdMwPM8TafwFDhGCTATEZUwAAAABJRU5ErkJggg==" alt=""/><picture><source type="image/webp" data-srcset="/static/a6aafa201d3364cfe4040cdee435c13c/99d55/LLMAI.webp 256w,/static/a6aafa201d3364cfe4040cdee435c13c/3591c/LLMAI.webp 512w,/static/a6aafa201d3364cfe4040cdee435c13c/e306d/LLMAI.webp 1024w" sizes="(min-width: 1024px) 1024px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 1024px) 1024px, 100vw" decoding="async" loading="lazy" data-src="/static/a6aafa201d3364cfe4040cdee435c13c/34104/LLMAI.png" data-srcset="/static/a6aafa201d3364cfe4040cdee435c13c/5ce94/LLMAI.png 256w,/static/a6aafa201d3364cfe4040cdee435c13c/8a20a/LLMAI.png 512w,/static/a6aafa201d3364cfe4040cdee435c13c/34104/LLMAI.png 1024w" alt="thumbnail"/></picture><noscript><picture><source type="image/webp" srcSet="/static/a6aafa201d3364cfe4040cdee435c13c/99d55/LLMAI.webp 256w,/static/a6aafa201d3364cfe4040cdee435c13c/3591c/LLMAI.webp 512w,/static/a6aafa201d3364cfe4040cdee435c13c/e306d/LLMAI.webp 1024w" sizes="(min-width: 1024px) 1024px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 1024px) 1024px, 100vw" decoding="async" loading="lazy" src="/static/a6aafa201d3364cfe4040cdee435c13c/34104/LLMAI.png" srcSet="/static/a6aafa201d3364cfe4040cdee435c13c/5ce94/LLMAI.png 256w,/static/a6aafa201d3364cfe4040cdee435c13c/8a20a/LLMAI.png 512w,/static/a6aafa201d3364cfe4040cdee435c13c/34104/LLMAI.png 1024w" alt="thumbnail"/></picture></noscript><script type="module">const t="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;if(t){const t=document.querySelectorAll("img[data-main-image]");for(let e of t){e.dataset.src&&(e.setAttribute("src",e.dataset.src),e.removeAttribute("data-src")),e.dataset.srcset&&(e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset"));const t=e.parentNode.querySelectorAll("source[data-srcset]");for(let e of t)e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset");e.complete&&(e.style.opacity=1,e.parentNode.parentNode.querySelector("[data-placeholder-image]").style.opacity=0)}}</script></div><style data-emotion="css m1156n">.css-m1156n{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;width:768px;height:100%;margin:0 auto;padding:60px 0;color:#ffffff;}@media (max-width: 768px){.css-m1156n{width:100%;padding:40px 20px;}}</style><div class="css-m1156n e1st1jau4"><style data-emotion="css gywgo7">.css-gywgo7{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:#ffffff;color:#000000;font-size:22px;cursor:pointer;box-shadow:0 0 10px rgba(0, 0, 0, 0.3);}@media (max-width: 768px){.css-gywgo7{width:30px;height:30px;font-size:18px;}}</style><div class="css-gywgo7 e1st1jau3"><style data-emotion="css 1ij64l8">.css-1ij64l8{display:inline-block;width:12px;height:12px;border-left:2px solid #000000;border-bottom:2px solid #000000;-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg);-ms-transform:rotate(45deg);transform:rotate(45deg);}</style><span class="css-1ij64l8 e1st1jau2"></span></div><style data-emotion="css gn4qtp">.css-gn4qtp{display:-webkit-box;overflow:hidden;overflow-wrap:break-word;margin-top:auto;text-overflow:ellipsis;white-space:normal;-webkit-line-clamp:2;-webkit-box-orient:vertical;font-size:45px;font-weight:800;}@media (max-width: 768px){.css-gn4qtp{font-size:30px;}}</style><div class="css-gn4qtp e1st1jau1">AI의 LLM 처리 하는방안..?</div><style data-emotion="css 3gcnt2">.css-3gcnt2{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;justify-content:space-between;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;margin-top:10px;font-size:18px;font-weight:700;}@media (max-width: 768px){.css-3gcnt2{-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-align-items:flex-start;-webkit-box-align:flex-start;-ms-flex-align:flex-start;align-items:flex-start;font-size:15px;font-weight:400;}}</style><div class="css-3gcnt2 e1st1jau0"><div>AI</div><div>2025.07.09.</div></div></div></div><style data-emotion="css 12g9cpd">.css-12g9cpd{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;width:768px;margin:0 auto;padding:200px 0 0 0;word-break:break-all;line-height:1.8;font-size:16px;font-weight:400;}.css-12g9cpd p{padding:3px 0;}.css-12g9cpd h1,.css-12g9cpd h2,.css-12g9cpd h3{font-weight:800;margin-bottom:30px;}.css-12g9cpd *+h1,.css-12g9cpd *+h2,.css-12g9cpd *+h3{margin-top:80px;}.css-12g9cpd hr+h1,.css-12g9cpd hr+h2,.css-12g9cpd hr+h3{margin-top:0;}.css-12g9cpd h1{font-size:30px;}.css-12g9cpd h2{font-size:25px;}.css-12g9cpd h3{font-size:20px;}.css-12g9cpd blockquote{margin:30px 0;padding:5px 15px;border-left:2px solid #000000;font-weight:800;}.css-12g9cpd ol,.css-12g9cpd ul{margin-left:20px;padding:30px 0;}.css-12g9cpd hr{border:1px solid #000000;margin:100px 0;}.css-12g9cpd a{color:#4263eb;-webkit-text-decoration:underline;text-decoration:underline;}.css-12g9cpd pre[class*='language-']{margin:30px 0;padding:15px;font-size:15px;}.css-12g9cpd pre[class*='language-']::-webkit-scrollbar-thumb{background:rgba(255, 255, 255, 0.5);border-radius:3px;}.css-12g9cpd code[class*='language-'],.css-12g9cpd pre[class*='language-']{tab-size:2;}@media (max-width: 768px){.css-12g9cpd{width:100%;padding:140px 20px 0 20px;line-height:1.6;font-size:14px;}.css-12g9cpd h1{font-size:23px;}.css-12g9cpd h2{font-size:20px;}.css-12g9cpd h3{font-size:17px;}.css-12g9cpd img{width:100%;}.css-12g9cpd hr{margin:50px 0;}}</style><div class="css-12g9cpd e1ijh0y10"><h1>GPT는 말을 어떻게 이해할까?</h1>
+<h3>— LLM이 자연어를 처리하는 방식을 쉽게 풀어보는 이야기</h3>
+<blockquote>
+<p>“GPT는 정말 말을 이해하는 걸까?”<br>
+“어떻게 AI가 문장을 읽고, 대답까지 하는 거지?”</p>
+</blockquote>
+<p>하루가 멀다 하고 등장하는 AI 서비스들.<br>
+그 중심엔 ‘GPT’, ‘Claude’, ‘Gemini’ 같은 **LLM (Large Language Model)**이 있습니다.<br>
+그런데 이 LLM들은 <strong>사람처럼 어떻게 자연어를 이해하고 대답</strong>할 수 있을까요?</p>
+<p>오늘은 이 AI가 <strong>말을 이해하는 구조</strong>를,<br>
+<strong>사람에 빗대어 아주 쉽게 풀어보는 이야기</strong>로 시작해봅니다.</p>
+<hr>
+<h2>1. AI는 ‘언어’를 이해할까?</h2>
+<p>먼저 정리하고 시작할게요.<br>
+GPT는 인간처럼 <strong>진짜로 언어를 이해하진 않습니다.</strong><br>
+하지만 언어의 <strong>패턴과 확률</strong>, <strong>문맥과 의미 흐름</strong>을 기가 막히게 예측합니다.</p>
+<p>예를 들어:</p>
+<blockquote>
+<p>너 오늘 기분 어때?<br>
+→ “좋아” / “별로야” / “괜찮아” 등 다양한 답이 올 수 있죠.</p>
+</blockquote>
+<p>GPT는 방대한 텍스트 학습을 통해<br>
+**“이런 질문엔 보통 이런 단어들이 오더라”**는 걸<br>
+확률적으로 계산해내는 능력이 엄청납니다.</p>
+<hr>
+<h2>2. 말하는 AI의 비밀 — GPT는 ‘언어의 퍼즐’을 푸는 천재</h2>
+<h3>🧠 사람은 어떻게 말을 이해할까요?</h3>
+<ol>
+<li>글자를 보고</li>
+<li>단어를 조합하고</li>
+<li>문맥을 파악하고</li>
+<li>머릿속 배경지식을 동원해</li>
+<li>대답을 합니다.</li>
+</ol>
+<p>GPT도 비슷한 과정을 거칩니다.<br>
+다만 이 모든 걸 <strong>수학과 벡터, 확률</strong>로 처리합니다.</p>
+<hr>
+<h2>3. GPT의 작동 방식, 쉽게 풀어보자</h2>
+<h3>🔹 Step 1: 단어를 ‘쪼개기’ (Tokenizing)</h3>
+<p>AI는 사람처럼 문장을 통째로 이해하지 못합니다.<br>
+대신 단어들을 **“토큰(token)“**이라는 작은 단위로 쪼갭니다.</p>
+<blockquote>
+<p>예: “Hello, world!”<br>
+→ [‘Hello’, ’,’, ‘world’, ’!‘]</p>
+</blockquote>
+<p>이게 AI의 ‘읽기’ 방식입니다.<br>
+(심지어 ‘안녕하세요’는 [‘안’, ‘녕’, ‘하’, ‘세’, ‘요’]처럼 쪼개지기도 해요!)</p>
+<hr>
+<h3>🔹 Step 2: 단어를 숫자로 바꾸기 (Embedding)</h3>
+<p>쪼개진 단어들은 이제 숫자(벡터)로 바뀝니다.<br>
+예를 들어 “사과”는 [0.1, 0.8, -0.2, …] 같은 벡터가 됩니다.</p>
+<p>이 벡터는 <strong>단어의 의미</strong>를 숫자 공간에서 표현한 거예요.<br>
+그래서 AI는</p>
+<ul>
+<li>‘사과’와 ‘과일’은 가까이 있고</li>
+<li>‘사과’와 ‘자동차’는 멀리 있다는 걸</li>
+</ul>
+<p>벡터 거리로 판단합니다.</p>
+<hr>
+<h3>🔹 Step 3: 문맥 이해 (Transformer 구조)</h3>
+<p>이제 GPT의 진짜 두뇌, <strong>Transformer</strong>의 출동입니다.</p>
+<p>Transformer는 다음을 고려합니다:</p>
+<ul>
+<li><strong>문맥</strong>: 앞뒤 문장을 다 살펴봄</li>
+<li><strong>순서</strong>: 어떤 단어가 먼저 나왔는지</li>
+<li><strong>중요도</strong>: 어떤 단어가 핵심인지 강조</li>
+</ul>
+<p>이걸 가능하게 하는 게 바로 <strong>Attention(주의집중) 메커니즘</strong>입니다.</p>
+<blockquote>
+<p>“나는 오늘 회사에 갔는데, 거기서 고양이를 만났어.”</p>
+</blockquote>
+<p>여기서 ‘거기서’는 ‘회사’를 가리키는 거죠.<br>
+GPT는 이런 연결을 <strong>확률과 가중치</strong>로 파악합니다.</p>
+<hr>
+<h3>🔹 Step 4: 다음 단어 예측</h3>
+<p>AI는 위 과정을 거쳐<br>
+**“지금까지 이 말을 봤을 때, 다음 단어로 올 확률이 가장 높은 건?”**을 계산합니다.</p>
+<p>예:</p>
+<blockquote>
+<p>“비가 오는 날에는” →<br>
+예측: [‘우산을’, ‘집에’, ‘밖에’, ‘커피를’…]</p>
+</blockquote>
+<p>그 중에서 가장 그럴싸한 걸 하나씩 택해 문장을 이어갑니다.</p>
+<p>이 과정을 수천 번 반복하면,<br>
+GPT는 하나의 <strong>매끄러운 글, 대화, 요약, 번역</strong>을 완성해냅니다.</p>
+<hr>
+<h2>4. 그럼 GPT는 ‘기억’도 하나요?</h2>
+<p>아니요. 기본적으로는 <strong>기억하지 못합니다.</strong><br>
+대화도 한 번에 넣는 <strong>입력 범위(토큰 수)</strong> 안에서만 기억해요.</p>
+<p>다만, <strong>ChatGPT처럼 대화를 이어가는 시스템</strong>에서는<br>
+이전 대화 내용을 계속 다시 보내주기 때문에<br>
+‘기억하는 것처럼’ 느껴지는 거랍니다.</p>
+<hr>
+<h2>5. 결국 중요한 건 “확률”과 “패턴”</h2>
+<p>GPT는 인간처럼 이해하거나 느끼지는 않지만,<br>
+<strong>수십억 개 문장의 패턴과 확률</strong>을 학습해<br>
+놀랍도록 자연스러운 언어 생성이 가능해진 겁니다.</p>
+<hr>
+<h2>✨ 마무리하며 — AI는 생각하지 않지만, 생각처럼 보이게 한다</h2>
+<p>GPT는 인간의 뇌처럼 <strong>이해</strong>하진 않지만,<br>
+말을 조합하는 <strong>확률적 사고</strong>는 어쩌면 인간보다 뛰어납니다.</p>
+<p>우리가 이 원리를 알면,<br>
+GPT를 더 잘 활용하고,<br>
+어디까지 가능하고 어디서부터 조심해야 하는지도 판단할 수 있습니다.</p>
+<blockquote>
+<p><strong>“AI는 마법이 아닙니다. 수학과 데이터, 그리고 확률의 예술이죠.”</strong></p>
+</blockquote></div><style data-emotion="css hx9xpc">@media (max-width: 768px){.css-hx9xpc{padding:0 20px;}}</style><div class="css-hx9xpc e1gqsjds0"></div><style data-emotion="css 1yungzt">.css-1yungzt{position:relative;width:100%;padding:40px 0;background:linear-gradient(180deg, rgba(66, 105, 78, 0.05) 0%, rgba(73, 110, 93, 0.1) 100%);border-top:1px solid rgba(66, 105, 78, 0.1);}</style><footer class="css-1yungzt e1oae0v84"><style data-emotion="css 1uamirr">.css-1uamirr{max-width:960px;margin:0 auto;padding:0 20px;text-align:center;}</style><div class="css-1uamirr e1oae0v83"><style data-emotion="css 1ghcw8y">.css-1ghcw8y{font-size:16px;line-height:1.6;color:#426950;margin-bottom:10px;-webkit-transition:color 0.3s ease;transition:color 0.3s ease;}.css-1ghcw8y:hover{color:#2c4735;}@media (max-width: 768px){.css-1ghcw8y{font-size:14px;}}</style><p class="css-1ghcw8y e1oae0v82">Thank You for Visiting My Blog, Have a Good Day <style data-emotion="css lzb4fa">.css-lzb4fa{display:inline-block;-webkit-transition:-webkit-transform 0.3s ease;transition:transform 0.3s ease;}.css-lzb4fa:hover{-webkit-transform:scale(1.2) rotate(10deg);-moz-transform:scale(1.2) rotate(10deg);-ms-transform:scale(1.2) rotate(10deg);transform:scale(1.2) rotate(10deg);}</style><span class="css-lzb4fa e1oae0v80">🌿</span></p><style data-emotion="css y3pbt1">.css-y3pbt1{font-size:14px;color:#666;margin-top:5px;}@media (max-width: 768px){.css-y3pbt1{font-size:12px;}}</style><p class="css-y3pbt1 e1oae0v81">© 2024 Developer LIM.</p></div></footer></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/gpt_natural_language_understanding/";/*]]>*/</script><!-- slice-start id="_gatsby-scripts-1" -->
+          <script
+            id="gatsby-chunk-mapping"
+          >
+            window.___chunkMapping="{\"app\":[\"/app-5ab049b1a7d9afaa2ddb.js\"],\"component---cache-caches-gatsby-plugin-offline-app-shell-js\":[\"/component---cache-caches-gatsby-plugin-offline-app-shell-js-27e0e967a98f3dffdf9e.js\"],\"component---src-pages-404-tsx\":[\"/component---src-pages-404-tsx-198e8648605be5d74a6a.js\"],\"component---src-pages-index-tsx\":[\"/component---src-pages-index-tsx-0b1030ebf0c9df342d73.js\"],\"component---src-pages-info-tsx\":[\"/component---src-pages-info-tsx-91ad86a40368117a0a55.js\"],\"component---src-templates-post-template-tsx\":[\"/component---src-templates-post-template-tsx-a5c59433344b41e75835.js\"]}";
+          </script>
+        <script>window.___webpackCompilationHash="7af849cfb4846b220a30";</script><script src="/webpack-runtime-71d02f8e664a0760dfc0.js" async></script><script src="/framework-9d608f77b5c9a88afabd.js" async></script><script src="/app-5ab049b1a7d9afaa2ddb.js" async></script><!-- slice-end id="_gatsby-scripts-1" --></body></html>
