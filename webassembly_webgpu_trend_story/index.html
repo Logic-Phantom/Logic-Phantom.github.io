@@ -1,0 +1,121 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><meta name="generator" content="Gatsby 5.14.0"/><meta name="theme-color" content="#426950"/><meta data-react-helmet="true" name="description" content="🌐 Prologue: 브라우저는 더 이상 단순한 문서 뷰어가 아니다"/><meta data-react-helmet="true" name="viewport" content="width=device-width, initial-scale=1.0"/><meta data-react-helmet="true" http-equiv="Content-Type" content="text/html;charset=UTF-8"/><meta data-react-helmet="true" property="og:type" content="website"/><meta data-react-helmet="true" property="og:title" content="🚀 브라우저 안의 혁명: WebAssembly + WebGPU로 여는 고성능 웹의 미래"/><meta data-react-helmet="true" property="og:description" content="🌐 Prologue: 브라우저는 더 이상 단순한 문서 뷰어가 아니다"/><meta data-react-helmet="true" property="og:image" content="/static/9f0a5c6c36809b475b3036130624dd70/WebGPU.png"/><meta data-react-helmet="true" property="og:url"/><meta data-react-helmet="true" property="og:site_name" content="🚀 브라우저 안의 혁명: WebAssembly + WebGPU로 여는 고성능 웹의 미래"/><meta data-react-helmet="true" name="twitter:card" content="summary"/><meta data-react-helmet="true" name="twitter:title" content="🚀 브라우저 안의 혁명: WebAssembly + WebGPU로 여는 고성능 웹의 미래"/><meta data-react-helmet="true" name="twitter:description" content="🌐 Prologue: 브라우저는 더 이상 단순한 문서 뷰어가 아니다"/><meta data-react-helmet="true" name="twitter:image" content="/static/9f0a5c6c36809b475b3036130624dd70/WebGPU.png"/><meta data-react-helmet="true" name="twitter:site" content="@사용자이름"/><meta data-react-helmet="true" name="twitter:creator" content="@사용자이름"/><style data-href="/styles.9e907bc32054b7771552.css" data-identity="gatsby-global-css">code[class*=language-],pre[class*=language-]{word-wrap:normal;background:none;color:#ccc;font-family:Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;font-size:1em;-webkit-hyphens:none;hyphens:none;line-height:1.5;tab-size:4;text-align:left;white-space:pre;word-break:normal;word-spacing:normal}pre[class*=language-]{margin:.5em 0;overflow:auto;padding:1em}:not(pre)>code[class*=language-],pre[class*=language-]{background:#2d2d2d}:not(pre)>code[class*=language-]{border-radius:.3em;padding:.1em;white-space:normal}.token.block-comment,.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#999}.token.punctuation{color:#ccc}.token.attr-name,.token.deleted,.token.namespace,.token.tag{color:#e2777a}.token.function-name{color:#6196cc}.token.boolean,.token.function,.token.number{color:#f08d49}.token.class-name,.token.constant,.token.property,.token.symbol{color:#f8c555}.token.atrule,.token.builtin,.token.important,.token.keyword,.token.selector{color:#cc99cd}.token.attr-value,.token.char,.token.regex,.token.string,.token.variable{color:#7ec699}.token.entity,.token.operator,.token.url{color:#67cdcc}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}.token.inserted{color:green}</style><link rel="sitemap" type="application/xml" href="/sitemap-index.xml"/><link rel="canonical" href="https://logic-phantom.github.io/webassembly_webgpu_trend_story/" data-baseprotocol="https:" data-basehost="logic-phantom.github.io"/><link rel="icon" href="/favicon-32x32.png" type="image/png"/><link rel="manifest" href="/manifest.webmanifest" crossorigin="use-credentials"/><link rel="apple-touch-icon" sizes="192x192" href="/contents/forestLim.png"/><link rel="apple-touch-icon" sizes="512x512" href="/contents/forestLim.png"/><title data-react-helmet="true">🚀 브라우저 안의 혁명: WebAssembly + WebGPU로 여는 고성능 웹의 미래</title><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){const t=e.target;if(void 0===t.dataset.mainImage)return;if(void 0===t.dataset.gatsbyImageSsr)return;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><style data-emotion="css zyllbl">.css-zyllbl{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;height:100vh;}</style><div class="css-zyllbl e1strnqo0"><style data-emotion="css-global kxm5mf">@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap');*{padding:0;margin:0;box-sizing:border-box;font-family:'Nanum Myeongjo',serif;}html,body,#___gatsby{height:100%;}a,a:hover{color:inherit;-webkit-text-decoration:none;text-decoration:none;cursor:pointer;}</style><style data-emotion="css 16cz9yp">.css-16cz9yp{position:relative;width:100%;height:400px;}@media (max-width: 768px){.css-16cz9yp{height:300px;}}</style><div class="css-16cz9yp e1opi4mu1"><style data-emotion="css 1bjn9yo">.css-1bjn9yo{z-index:-1;width:100%;height:400px;object-fit:cover;-webkit-filter:brightness(0.25);filter:brightness(0.25);}@media (max-width: 768px){.css-1bjn9yo{height:300px;}}</style><div data-gatsby-image-wrapper="" style="position:absolute" class="gatsby-image-wrapper gatsby-image-wrapper-constrained css-1bjn9yo e1opi4mu0"><div style="max-width:1024px;display:block"><img alt="" role="presentation" aria-hidden="true" src="data:image/svg+xml;charset=utf-8,%3Csvg%20height=&#x27;1024&#x27;%20width=&#x27;1024&#x27;%20xmlns=&#x27;http://www.w3.org/2000/svg&#x27;%20version=&#x27;1.1&#x27;%3E%3C/svg%3E" style="max-width:100%;display:block;position:static"/></div><img aria-hidden="true" data-placeholder-image="" style="opacity:1;transition:opacity 500ms linear" decoding="async" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAIAAAAC64paAAAACXBIWXMAAAsTAAALEwEAmpwYAAAEWUlEQVR42kVUWU8bVxjloUIBG4jNGGbujLeZ8dizeBvbxGaRUxsKCQnYxkAAY8+Md3tssxSIIatSEoWmUl6qKq2UVEmXtE1VpWneSkiati9VnvtQqVLVhypP7T9or0mkSkefrr57j87V+ZY2jFEwm4zREkbLgJExRu6nWxFjcsBRbN3aszAitIJQCm6XaV5GqGwf3Uq2wXeALeKuGsqWu6iSnimbhSLKZHFh1TRwjfA2MWoZIaXRwbQoZmhemgovBXyZcHC5l8q2YTYJCFXCv0WJtVhUuaUk/cEiwpRwvoILK4BViUATeNctTGpwID0VTkEE/WnCLqOvlDG2RDiUvcWZf29E7+anu6kCzuYxew64G8DVIGN3TJF3caF8+nhmNNQiJyNLHm/GQL/6NlfCHAUbn/2mFBsKKXp7jYCyXN06+h4du81AzN4jE3cNtsLxUDo6mJ4+nnI4pT4bJEO3HDnI15MpvSWpNyV7rfO95IKBzqD+Bh5+Bxu6hEd2DZHr4cC06E520KsjIZlzpg10tg21SUZxG3eudqJjneak1npGa13QmGc05qTGPKsxxrvNyS5jXINNwngEO2HgakeZmoFbA3alRTb5LwDXmgZM9vErmGur11k3DlwBvsuIax0JnNf5LusCV/Tito6tdRmnbfwS5WmQ/ubrb0NZ3NPsMiWGhh5ORH4ZCH4xHn0xHPpK66kD+Ts+/ymf/5wsPuoavopbxh9UTr44N72XXiCgMnTVHLpBiBe1xpmJt55Ic38szvyWS/0ZGXqsCWxG1NuzS2paqc6qu+3DewwTPdg88WRj6tdrE5HhVItMuLcwXu3A4nOz3z/bf/nl/d8fP3wZn3x0xLsxlruZSC4spRYTi412T5Mgx4OBxX6mWIgtuMXMYZ0Z2chWOkE8Pv3j/Xt/3/nor48//Cc9v98ubg1XPksn1EyiPrN8scN3VgNOIeyKJbCLeK72MYWWYYz3UjB8W2eaYYRdnn+fZW8Kzg8Y+wUtI+kie5aQag2Wu8VVLZ3WoCdbBgkNI18GdtieTNY7eCsYvou4Klo+0yUsQ2j4ZS0v9QiFbjbT6ZA7HUo3K3ULuR4hjzpgR+XxwLlWe6KMbOXXrM4NYvEBqP5sLP2Al55T6nNr9amlsm+tHlDqM6r6lKwckDCT+RY411FnA/U3YZmgsgKEuoGWHN6CNJWrJuSpsTwqqFrTqTf6RzrwMYwv4eImHjiLHzuHHztP+Hb0VEqLjgF7vkUmuIrBURs8pnxdPv3Txqm3p2ImcUPn2+lxr+rFJurZQmkJ5SvAs4b5toB7tZc8c9QUf03GeRVxrEQHM58UYg9rse1E0siV+vg1VGihn6tDY1Guggd2iJHrQFBROEicih0apgAHvKuRnJx8c0Ean4+GlvuYEmChMUWMrQC2jHFVuDD6+TLirgOujLvWAVeFZrXIKBwsew5uFh2Z1UNQWZj5H8yrg9JPpRDLHKwOZs8fdofyH/GIQjglwJ2IAAAAAElFTkSuQmCC" alt=""/><picture><source type="image/webp" data-srcset="/static/9f0a5c6c36809b475b3036130624dd70/99d55/WebGPU.webp 256w,/static/9f0a5c6c36809b475b3036130624dd70/3591c/WebGPU.webp 512w,/static/9f0a5c6c36809b475b3036130624dd70/e306d/WebGPU.webp 1024w" sizes="(min-width: 1024px) 1024px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 1024px) 1024px, 100vw" decoding="async" loading="lazy" data-src="/static/9f0a5c6c36809b475b3036130624dd70/34104/WebGPU.png" data-srcset="/static/9f0a5c6c36809b475b3036130624dd70/5ce94/WebGPU.png 256w,/static/9f0a5c6c36809b475b3036130624dd70/8a20a/WebGPU.png 512w,/static/9f0a5c6c36809b475b3036130624dd70/34104/WebGPU.png 1024w" alt="thumbnail"/></picture><noscript><picture><source type="image/webp" srcSet="/static/9f0a5c6c36809b475b3036130624dd70/99d55/WebGPU.webp 256w,/static/9f0a5c6c36809b475b3036130624dd70/3591c/WebGPU.webp 512w,/static/9f0a5c6c36809b475b3036130624dd70/e306d/WebGPU.webp 1024w" sizes="(min-width: 1024px) 1024px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 1024px) 1024px, 100vw" decoding="async" loading="lazy" src="/static/9f0a5c6c36809b475b3036130624dd70/34104/WebGPU.png" srcSet="/static/9f0a5c6c36809b475b3036130624dd70/5ce94/WebGPU.png 256w,/static/9f0a5c6c36809b475b3036130624dd70/8a20a/WebGPU.png 512w,/static/9f0a5c6c36809b475b3036130624dd70/34104/WebGPU.png 1024w" alt="thumbnail"/></picture></noscript><script type="module">const t="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;if(t){const t=document.querySelectorAll("img[data-main-image]");for(let e of t){e.dataset.src&&(e.setAttribute("src",e.dataset.src),e.removeAttribute("data-src")),e.dataset.srcset&&(e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset"));const t=e.parentNode.querySelectorAll("source[data-srcset]");for(let e of t)e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset");e.complete&&(e.style.opacity=1,e.parentNode.parentNode.querySelector("[data-placeholder-image]").style.opacity=0)}}</script></div><style data-emotion="css m1156n">.css-m1156n{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;width:768px;height:100%;margin:0 auto;padding:60px 0;color:#ffffff;}@media (max-width: 768px){.css-m1156n{width:100%;padding:40px 20px;}}</style><div class="css-m1156n e1st1jau4"><style data-emotion="css gywgo7">.css-gywgo7{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:#ffffff;color:#000000;font-size:22px;cursor:pointer;box-shadow:0 0 10px rgba(0, 0, 0, 0.3);}@media (max-width: 768px){.css-gywgo7{width:30px;height:30px;font-size:18px;}}</style><div class="css-gywgo7 e1st1jau3"><style data-emotion="css 1ij64l8">.css-1ij64l8{display:inline-block;width:12px;height:12px;border-left:2px solid #000000;border-bottom:2px solid #000000;-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg);-ms-transform:rotate(45deg);transform:rotate(45deg);}</style><span class="css-1ij64l8 e1st1jau2"></span></div><style data-emotion="css gn4qtp">.css-gn4qtp{display:-webkit-box;overflow:hidden;overflow-wrap:break-word;margin-top:auto;text-overflow:ellipsis;white-space:normal;-webkit-line-clamp:2;-webkit-box-orient:vertical;font-size:45px;font-weight:800;}@media (max-width: 768px){.css-gn4qtp{font-size:30px;}}</style><div class="css-gn4qtp e1st1jau1">🚀 브라우저 안의 혁명: WebAssembly + WebGPU로 여는 고성능 웹의 미래</div><style data-emotion="css 3gcnt2">.css-3gcnt2{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;justify-content:space-between;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;margin-top:10px;font-size:18px;font-weight:700;}@media (max-width: 768px){.css-3gcnt2{-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-align-items:flex-start;-webkit-box-align:flex-start;-ms-flex-align:flex-start;align-items:flex-start;font-size:15px;font-weight:400;}}</style><div class="css-3gcnt2 e1st1jau0"><div>Web</div><div>2025.08.06.</div></div></div></div><style data-emotion="css 12g9cpd">.css-12g9cpd{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;width:768px;margin:0 auto;padding:200px 0 0 0;word-break:break-all;line-height:1.8;font-size:16px;font-weight:400;}.css-12g9cpd p{padding:3px 0;}.css-12g9cpd h1,.css-12g9cpd h2,.css-12g9cpd h3{font-weight:800;margin-bottom:30px;}.css-12g9cpd *+h1,.css-12g9cpd *+h2,.css-12g9cpd *+h3{margin-top:80px;}.css-12g9cpd hr+h1,.css-12g9cpd hr+h2,.css-12g9cpd hr+h3{margin-top:0;}.css-12g9cpd h1{font-size:30px;}.css-12g9cpd h2{font-size:25px;}.css-12g9cpd h3{font-size:20px;}.css-12g9cpd blockquote{margin:30px 0;padding:5px 15px;border-left:2px solid #000000;font-weight:800;}.css-12g9cpd ol,.css-12g9cpd ul{margin-left:20px;padding:30px 0;}.css-12g9cpd hr{border:1px solid #000000;margin:100px 0;}.css-12g9cpd a{color:#4263eb;-webkit-text-decoration:underline;text-decoration:underline;}.css-12g9cpd pre[class*='language-']{margin:30px 0;padding:15px;font-size:15px;}.css-12g9cpd pre[class*='language-']::-webkit-scrollbar-thumb{background:rgba(255, 255, 255, 0.5);border-radius:3px;}.css-12g9cpd code[class*='language-'],.css-12g9cpd pre[class*='language-']{tab-size:2;}@media (max-width: 768px){.css-12g9cpd{width:100%;padding:140px 20px 0 20px;line-height:1.6;font-size:14px;}.css-12g9cpd h1{font-size:23px;}.css-12g9cpd h2{font-size:20px;}.css-12g9cpd h3{font-size:17px;}.css-12g9cpd img{width:100%;}.css-12g9cpd hr{margin:50px 0;}}</style><div class="css-12g9cpd e1ijh0y10"><h1>🚀 브라우저 안의 혁명: WebAssembly + WebGPU로 여는 고성능 웹의 미래</h1>
+<h2>🌐 Prologue: 브라우저는 더 이상 단순한 문서 뷰어가 아니다</h2>
+<p>한때 웹 브라우저는 단순히 HTML과 CSS, 그리고 약간의 JavaScript로 꾸며진 문서를 보여주는 도구에 불과했습니다.<br>
+하지만 지금의 웹은 어떨까요?<br>
+게임, 영상 편집, 인공지능 모델 실행, CAD 툴까지도 브라우저에서 돌아갑니다.<br>
+이런 놀라운 변화의 중심에 바로 <strong>WebAssembly(WASM)</strong> 와 <strong>WebGPU</strong> 가 있습니다.</p>
+<hr>
+<h2>🧩 WebAssembly란?</h2>
+<h3>✔ 정의</h3>
+<p>WebAssembly(WASM)는 웹을 위한 <strong>이진 포맷의 저수준 가상 머신</strong>입니다.<br>
+브라우저가 거의 네이티브에 가까운 속도로 C/C++, Rust 등의 언어로 작성된 코드를 실행할 수 있게 해줍니다.</p>
+<h3>✔ 특징</h3>
+<ul>
+<li>바이너리 형식: 빠른 파싱과 실행</li>
+<li>브라우저 샌드박스 내에서 안전하게 실행</li>
+<li>다양한 언어 지원 (C/C++, Rust, AssemblyScript 등)</li>
+<li>JavaScript와 함께 사용 가능 (JS ↔ WASM 상호 호출 가능)</li>
+</ul>
+<h3>✔ 활용 예시</h3>
+<ul>
+<li>Figma: UI 렌더링 엔진 일부 WASM으로 구현</li>
+<li>AutoCAD Web: 브라우저에서 CAD 모델 편집</li>
+<li>Photoshop Web: 이미지 필터 등 고성능 작업 처리</li>
+</ul>
+<hr>
+<h2>🎮 WebGPU란?</h2>
+<h3>✔ 정의</h3>
+<p>WebGPU는 브라우저에서 GPU를 직접 제어할 수 있게 해주는 새로운 <strong>저수준 그래픽 API</strong>입니다.<br>
+기존 WebGL의 단점을 극복하고, <strong>DirectX 12, Vulkan, Metal</strong> 등과 유사한 성능을 브라우저에서 구현합니다.</p>
+<h3>✔ 특징</h3>
+<ul>
+<li>GPU 메모리 및 파이프라인 세밀 제어</li>
+<li>병렬 연산(Compute Shader) 가능 → AI, 시뮬레이션에 적합</li>
+<li>WebGL 대비 2~3배 이상 빠른 성능 가능</li>
+</ul>
+<h3>✔ 활용 예시</h3>
+<ul>
+<li>AI 추론 모델 실행 (ex. Stable Diffusion Web UI)</li>
+<li>실시간 3D 렌더링 (게임, 가상현실)</li>
+<li>데이터 시각화 (고밀도 그래프 등)</li>
+</ul>
+<hr>
+<h2>🧠 함께 쓰면 생기는 시너지</h2>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>WebAssembly</th>
+<th>WebGPU</th>
+<th>함께 사용 시</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>주요 역할</td>
+<td>CPU 연산 최적화</td>
+<td>GPU 연산/그래픽 최적화</td>
+<td>AI/게임/렌더링 엔진을 웹에 이식</td>
+</tr>
+<tr>
+<td>장점</td>
+<td>고성능, 다언어 지원</td>
+<td>병렬처리, 3D 그래픽 최적화</td>
+<td>데스크탑급 앱을 웹에서 구동</td>
+</tr>
+<tr>
+<td>단점</td>
+<td>그래픽 처리 한계</td>
+<td>복잡한 API 구조</td>
+<td>초기 진입장벽 ↑</td>
+</tr>
+</tbody>
+</table>
+<h3>✔ 활용 예시</h3>
+<ul>
+<li><strong>AI Web IDE</strong>: 모델 로딩(WASM) + 추론(WebGPU)</li>
+<li><strong>웹게임 엔진</strong>: 게임 로직(WASM) + 그래픽 처리(WebGPU)</li>
+<li><strong>Figma, AutoCAD Web</strong>: 렌더링 성능 극대화</li>
+</ul>
+<hr>
+<h2>⚖️ 장단점 비교</h2>
+<h3>✅ 장점</h3>
+<ul>
+<li>플랫폼 독립성 (브라우저만 있으면 실행 가능)</li>
+<li>설치 없는 고성능 앱 (AI, CAD, 게임)</li>
+<li>빠른 초기화/로드 속도</li>
+</ul>
+<h3>❌ 단점</h3>
+<ul>
+<li>초기 진입 장벽 (학습 곡선, 복잡한 툴체인)</li>
+<li>일부 브라우저/WebGPU 미지원</li>
+<li>디버깅 및 DevTools 미흡</li>
+</ul>
+<hr>
+<h2>🔮 앞으로의 미래 동향</h2>
+<h3>📈 기술 발전 전망</h3>
+<ul>
+<li>WebGPU 정식 표준화 → 크로스 브라우저 지원 확장</li>
+<li>WASM + AI 프레임워크 증가 (ONNX.js, TensorFlow.js + WebGPU)</li>
+<li>데스크탑 앱의 웹 이전 가속화</li>
+</ul>
+<h3>🧑‍💻 실무 적용 가능성</h3>
+<ul>
+<li>스타트업: 설치 없는 SaaS형 고성능 앱 구축 가능</li>
+<li>기업 내부 도구: AI + 시각화 도구 통합 가능</li>
+<li>프론트엔드 개발자: 기존 JS 기술로 고성능 앱 접근 가능</li>
+</ul>
+<hr>
+<h2>📝 Epilogue: 웹의 미래는 “네이티브화”된다</h2>
+<p>WebAssembly와 WebGPU는 웹을 더 이상 ‘느리고 제한된 공간’이 아닌, <strong>강력한 실행 플랫폼</strong>으로 탈바꿈시키고 있습니다.<br>
+이 둘이 만나는 지점에서 우리는 <strong>브라우저라는 새로운 운영체제</strong>를 마주하게 됩니다.<br>
+AI, 게임, 그래픽, 생산성 도구까지 — 웹은 이제 무엇이든 가능한 공간이 되어가고 있습니다.</p>
+<blockquote>
+<p>💡 이제는 “웹에서 될까?”가 아니라 “웹으로 만들 수 있을까?”를 고민해야 할 때입니다.</p>
+</blockquote></div><style data-emotion="css hx9xpc">@media (max-width: 768px){.css-hx9xpc{padding:0 20px;}}</style><div class="css-hx9xpc e1gqsjds0"></div><style data-emotion="css 1yungzt">.css-1yungzt{position:relative;width:100%;padding:40px 0;background:linear-gradient(180deg, rgba(66, 105, 78, 0.05) 0%, rgba(73, 110, 93, 0.1) 100%);border-top:1px solid rgba(66, 105, 78, 0.1);}</style><footer class="css-1yungzt e1oae0v84"><style data-emotion="css 1uamirr">.css-1uamirr{max-width:960px;margin:0 auto;padding:0 20px;text-align:center;}</style><div class="css-1uamirr e1oae0v83"><style data-emotion="css 1ghcw8y">.css-1ghcw8y{font-size:16px;line-height:1.6;color:#426950;margin-bottom:10px;-webkit-transition:color 0.3s ease;transition:color 0.3s ease;}.css-1ghcw8y:hover{color:#2c4735;}@media (max-width: 768px){.css-1ghcw8y{font-size:14px;}}</style><p class="css-1ghcw8y e1oae0v82">Thank You for Visiting My Blog, Have a Good Day <style data-emotion="css lzb4fa">.css-lzb4fa{display:inline-block;-webkit-transition:-webkit-transform 0.3s ease;transition:transform 0.3s ease;}.css-lzb4fa:hover{-webkit-transform:scale(1.2) rotate(10deg);-moz-transform:scale(1.2) rotate(10deg);-ms-transform:scale(1.2) rotate(10deg);transform:scale(1.2) rotate(10deg);}</style><span class="css-lzb4fa e1oae0v80">🌿</span></p><style data-emotion="css y3pbt1">.css-y3pbt1{font-size:14px;color:#666;margin-top:5px;}@media (max-width: 768px){.css-y3pbt1{font-size:12px;}}</style><p class="css-y3pbt1 e1oae0v81">© 2024 Developer LIM.</p></div></footer></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/webassembly_webgpu_trend_story/";/*]]>*/</script><!-- slice-start id="_gatsby-scripts-1" -->
+          <script
+            id="gatsby-chunk-mapping"
+          >
+            window.___chunkMapping="{\"app\":[\"/app-5ab049b1a7d9afaa2ddb.js\"],\"component---cache-caches-gatsby-plugin-offline-app-shell-js\":[\"/component---cache-caches-gatsby-plugin-offline-app-shell-js-27e0e967a98f3dffdf9e.js\"],\"component---src-pages-404-tsx\":[\"/component---src-pages-404-tsx-198e8648605be5d74a6a.js\"],\"component---src-pages-index-tsx\":[\"/component---src-pages-index-tsx-0b1030ebf0c9df342d73.js\"],\"component---src-pages-info-tsx\":[\"/component---src-pages-info-tsx-91ad86a40368117a0a55.js\"],\"component---src-templates-post-template-tsx\":[\"/component---src-templates-post-template-tsx-a5c59433344b41e75835.js\"]}";
+          </script>
+        <script>window.___webpackCompilationHash="7af849cfb4846b220a30";</script><script src="/webpack-runtime-71d02f8e664a0760dfc0.js" async></script><script src="/framework-9d608f77b5c9a88afabd.js" async></script><script src="/app-5ab049b1a7d9afaa2ddb.js" async></script><!-- slice-end id="_gatsby-scripts-1" --></body></html>
