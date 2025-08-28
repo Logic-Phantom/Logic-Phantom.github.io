@@ -1,0 +1,170 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><meta name="generator" content="Gatsby 5.14.0"/><meta name="theme-color" content="#426950"/><meta data-react-helmet="true" name="description" content="아키텍처 속으로.."/><meta data-react-helmet="true" name="viewport" content="width=device-width, initial-scale=1.0"/><meta data-react-helmet="true" http-equiv="Content-Type" content="text/html;charset=UTF-8"/><meta data-react-helmet="true" property="og:type" content="website"/><meta data-react-helmet="true" property="og:title" content="Monolith vs Microservices vs Serverless 아키텍처 심층 가이드"/><meta data-react-helmet="true" property="og:description" content="아키텍처 속으로.."/><meta data-react-helmet="true" property="og:image" content="/static/395c4f7f7152c8e769bf929dc01eb931/Architecture.png"/><meta data-react-helmet="true" property="og:url"/><meta data-react-helmet="true" property="og:site_name" content="Monolith vs Microservices vs Serverless 아키텍처 심층 가이드"/><meta data-react-helmet="true" name="twitter:card" content="summary"/><meta data-react-helmet="true" name="twitter:title" content="Monolith vs Microservices vs Serverless 아키텍처 심층 가이드"/><meta data-react-helmet="true" name="twitter:description" content="아키텍처 속으로.."/><meta data-react-helmet="true" name="twitter:image" content="/static/395c4f7f7152c8e769bf929dc01eb931/Architecture.png"/><meta data-react-helmet="true" name="twitter:site" content="@사용자이름"/><meta data-react-helmet="true" name="twitter:creator" content="@사용자이름"/><style data-href="/styles.9e907bc32054b7771552.css" data-identity="gatsby-global-css">code[class*=language-],pre[class*=language-]{word-wrap:normal;background:none;color:#ccc;font-family:Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;font-size:1em;-webkit-hyphens:none;hyphens:none;line-height:1.5;tab-size:4;text-align:left;white-space:pre;word-break:normal;word-spacing:normal}pre[class*=language-]{margin:.5em 0;overflow:auto;padding:1em}:not(pre)>code[class*=language-],pre[class*=language-]{background:#2d2d2d}:not(pre)>code[class*=language-]{border-radius:.3em;padding:.1em;white-space:normal}.token.block-comment,.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#999}.token.punctuation{color:#ccc}.token.attr-name,.token.deleted,.token.namespace,.token.tag{color:#e2777a}.token.function-name{color:#6196cc}.token.boolean,.token.function,.token.number{color:#f08d49}.token.class-name,.token.constant,.token.property,.token.symbol{color:#f8c555}.token.atrule,.token.builtin,.token.important,.token.keyword,.token.selector{color:#cc99cd}.token.attr-value,.token.char,.token.regex,.token.string,.token.variable{color:#7ec699}.token.entity,.token.operator,.token.url{color:#67cdcc}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}.token.inserted{color:green}</style><link rel="sitemap" type="application/xml" href="/sitemap-index.xml"/><link rel="canonical" href="https://logic-phantom.github.io/Monolith/" data-baseprotocol="https:" data-basehost="logic-phantom.github.io"/><link rel="icon" href="/favicon-32x32.png" type="image/png"/><link rel="manifest" href="/manifest.webmanifest" crossorigin="use-credentials"/><link rel="apple-touch-icon" sizes="192x192" href="/contents/forestLim.png"/><link rel="apple-touch-icon" sizes="512x512" href="/contents/forestLim.png"/><title data-react-helmet="true">Monolith vs Microservices vs Serverless 아키텍처 심층 가이드</title><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){const t=e.target;if(void 0===t.dataset.mainImage)return;if(void 0===t.dataset.gatsbyImageSsr)return;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><style data-emotion="css zyllbl">.css-zyllbl{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;height:100vh;}</style><div class="css-zyllbl e1strnqo0"><style data-emotion="css-global kxm5mf">@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap');*{padding:0;margin:0;box-sizing:border-box;font-family:'Nanum Myeongjo',serif;}html,body,#___gatsby{height:100%;}a,a:hover{color:inherit;-webkit-text-decoration:none;text-decoration:none;cursor:pointer;}</style><style data-emotion="css 16cz9yp">.css-16cz9yp{position:relative;width:100%;height:400px;}@media (max-width: 768px){.css-16cz9yp{height:300px;}}</style><div class="css-16cz9yp e1opi4mu1"><style data-emotion="css 1bjn9yo">.css-1bjn9yo{z-index:-1;width:100%;height:400px;object-fit:cover;-webkit-filter:brightness(0.25);filter:brightness(0.25);}@media (max-width: 768px){.css-1bjn9yo{height:300px;}}</style><div data-gatsby-image-wrapper="" style="position:absolute" class="gatsby-image-wrapper gatsby-image-wrapper-constrained css-1bjn9yo e1opi4mu0"><div style="max-width:1536px;display:block"><img alt="" role="presentation" aria-hidden="true" src="data:image/svg+xml;charset=utf-8,%3Csvg%20height=&#x27;1024&#x27;%20width=&#x27;1536&#x27;%20xmlns=&#x27;http://www.w3.org/2000/svg&#x27;%20version=&#x27;1.1&#x27;%3E%3C/svg%3E" style="max-width:100%;display:block;position:static"/></div><img aria-hidden="true" data-placeholder-image="" style="opacity:1;transition:opacity 500ms linear" decoding="async" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAIAAAAmMtkJAAAACXBIWXMAAAsTAAALEwEAmpwYAAACsElEQVR42lVS/U9SURi+/0w/9UO21sxN12atNUdtrbW1NWu5sKmJltV0frBKl86JIWWiTlTKQdPwKyt1+AGCgmBwuZcLeC8fggMFFbzCRfCezkXmant29r7Pznnf8z7vg9ijLH5wcgYiBogosB+w9syJcwHLkRnAOINsipBx4E+DrRQH7zFHOWKAinPwJDnSzZw+Ay4akix5xDrpbEVkwuxrGFY3K7XCL0uiCYMjCtBwquyDqvi9QjK13iRfHFBjzkPgOgKW3cTbEU2FZNoUjFIMwKMsAt/k8LsKqqV5lT3Xa/rQSMq2l37YMnK3cVDwcfLCo7aq7h8eBiyTew9alNdeyfKr+qs/z2yEGMchQFq+6XLLP1152plXLrnVILeGU9j+yUvpT37H2PASLhCPydQonKtMPHm5QsprUvCEyhy+pGva5DsGyDulFvYsfNF79Xkfr34IdkYj6XvCoaLXvZVd45eedAi6p71JoNCTNb2/StpH+aLvcBaN+wBKgLwZWc6v7r8tVNys/1pUK7OGj6HCdQOzFZLJvjnLM7Gqe8ZMJsCaP9Yo+63QEuJxvUilw/bTnGCto/qCqh5eg/xG7eAdoRwOvLGTLBRIcktFJW2K88WtpZ0q+G3prPXc/WaF3lU3OHfxcfs8sQMrIiR9YgnFLaGEeZvGI8lNGngZ4GPY7TSw7dLj654VdwQKBjcEb3oSLJUJ4DW4PMSEU4sGm9ZMWAiPCaN29mKLRky9hi4ZsXmdFcYaE064t3HSP7WwPqezQH5hFaWC+3B5CBGIGJ1+ozPwhwwS/kgwxljdIQOxZXBsrdg8Rodfh3kdgYjdH9agbpMrsGr3aa0UuUs7oWCwAMlw2IxzgNuDnqMSHKC34GDQD644B3cym0LecfptzslZx7Knxv6XyfL/p2du/wulCGWLjTQDhQAAAABJRU5ErkJggg==" alt=""/><picture><source type="image/webp" data-srcset="/static/395c4f7f7152c8e769bf929dc01eb931/b642b/Architecture.webp 384w,/static/395c4f7f7152c8e769bf929dc01eb931/c9564/Architecture.webp 768w,/static/395c4f7f7152c8e769bf929dc01eb931/18b4b/Architecture.webp 1536w" sizes="(min-width: 1536px) 1536px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 1536px) 1536px, 100vw" decoding="async" loading="lazy" data-src="/static/395c4f7f7152c8e769bf929dc01eb931/4d776/Architecture.png" data-srcset="/static/395c4f7f7152c8e769bf929dc01eb931/4a410/Architecture.png 384w,/static/395c4f7f7152c8e769bf929dc01eb931/f5189/Architecture.png 768w,/static/395c4f7f7152c8e769bf929dc01eb931/4d776/Architecture.png 1536w" alt="thumbnail"/></picture><noscript><picture><source type="image/webp" srcSet="/static/395c4f7f7152c8e769bf929dc01eb931/b642b/Architecture.webp 384w,/static/395c4f7f7152c8e769bf929dc01eb931/c9564/Architecture.webp 768w,/static/395c4f7f7152c8e769bf929dc01eb931/18b4b/Architecture.webp 1536w" sizes="(min-width: 1536px) 1536px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 1536px) 1536px, 100vw" decoding="async" loading="lazy" src="/static/395c4f7f7152c8e769bf929dc01eb931/4d776/Architecture.png" srcSet="/static/395c4f7f7152c8e769bf929dc01eb931/4a410/Architecture.png 384w,/static/395c4f7f7152c8e769bf929dc01eb931/f5189/Architecture.png 768w,/static/395c4f7f7152c8e769bf929dc01eb931/4d776/Architecture.png 1536w" alt="thumbnail"/></picture></noscript><script type="module">const t="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;if(t){const t=document.querySelectorAll("img[data-main-image]");for(let e of t){e.dataset.src&&(e.setAttribute("src",e.dataset.src),e.removeAttribute("data-src")),e.dataset.srcset&&(e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset"));const t=e.parentNode.querySelectorAll("source[data-srcset]");for(let e of t)e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset");e.complete&&(e.style.opacity=1,e.parentNode.parentNode.querySelector("[data-placeholder-image]").style.opacity=0)}}</script></div><style data-emotion="css m1156n">.css-m1156n{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;width:768px;height:100%;margin:0 auto;padding:60px 0;color:#ffffff;}@media (max-width: 768px){.css-m1156n{width:100%;padding:40px 20px;}}</style><div class="css-m1156n e1st1jau4"><style data-emotion="css gywgo7">.css-gywgo7{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:#ffffff;color:#000000;font-size:22px;cursor:pointer;box-shadow:0 0 10px rgba(0, 0, 0, 0.3);}@media (max-width: 768px){.css-gywgo7{width:30px;height:30px;font-size:18px;}}</style><div class="css-gywgo7 e1st1jau3"><style data-emotion="css 1ij64l8">.css-1ij64l8{display:inline-block;width:12px;height:12px;border-left:2px solid #000000;border-bottom:2px solid #000000;-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg);-ms-transform:rotate(45deg);transform:rotate(45deg);}</style><span class="css-1ij64l8 e1st1jau2"></span></div><style data-emotion="css gn4qtp">.css-gn4qtp{display:-webkit-box;overflow:hidden;overflow-wrap:break-word;margin-top:auto;text-overflow:ellipsis;white-space:normal;-webkit-line-clamp:2;-webkit-box-orient:vertical;font-size:45px;font-weight:800;}@media (max-width: 768px){.css-gn4qtp{font-size:30px;}}</style><div class="css-gn4qtp e1st1jau1">Monolith vs Microservices vs Serverless 아키텍처 심층 가이드</div><style data-emotion="css 3gcnt2">.css-3gcnt2{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;justify-content:space-between;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;margin-top:10px;font-size:18px;font-weight:700;}@media (max-width: 768px){.css-3gcnt2{-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-align-items:flex-start;-webkit-box-align:flex-start;-ms-flex-align:flex-start;align-items:flex-start;font-size:15px;font-weight:400;}}</style><div class="css-3gcnt2 e1st1jau0"><div>Web / ETC</div><div>2025.08.28.</div></div></div></div><style data-emotion="css 12g9cpd">.css-12g9cpd{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;width:768px;margin:0 auto;padding:200px 0 0 0;word-break:break-all;line-height:1.8;font-size:16px;font-weight:400;}.css-12g9cpd p{padding:3px 0;}.css-12g9cpd h1,.css-12g9cpd h2,.css-12g9cpd h3{font-weight:800;margin-bottom:30px;}.css-12g9cpd *+h1,.css-12g9cpd *+h2,.css-12g9cpd *+h3{margin-top:80px;}.css-12g9cpd hr+h1,.css-12g9cpd hr+h2,.css-12g9cpd hr+h3{margin-top:0;}.css-12g9cpd h1{font-size:30px;}.css-12g9cpd h2{font-size:25px;}.css-12g9cpd h3{font-size:20px;}.css-12g9cpd blockquote{margin:30px 0;padding:5px 15px;border-left:2px solid #000000;font-weight:800;}.css-12g9cpd ol,.css-12g9cpd ul{margin-left:20px;padding:30px 0;}.css-12g9cpd hr{border:1px solid #000000;margin:100px 0;}.css-12g9cpd a{color:#4263eb;-webkit-text-decoration:underline;text-decoration:underline;}.css-12g9cpd pre[class*='language-']{margin:30px 0;padding:15px;font-size:15px;}.css-12g9cpd pre[class*='language-']::-webkit-scrollbar-thumb{background:rgba(255, 255, 255, 0.5);border-radius:3px;}.css-12g9cpd code[class*='language-'],.css-12g9cpd pre[class*='language-']{tab-size:2;}@media (max-width: 768px){.css-12g9cpd{width:100%;padding:140px 20px 0 20px;line-height:1.6;font-size:14px;}.css-12g9cpd h1{font-size:23px;}.css-12g9cpd h2{font-size:20px;}.css-12g9cpd h3{font-size:17px;}.css-12g9cpd img{width:100%;}.css-12g9cpd hr{margin:50px 0;}}</style><div class="css-12g9cpd e1ijh0y10"><h1>Monolith vs Microservices vs Serverless 아키텍처 심층 가이드</h1>
+<h2>1. 아키텍처 개요</h2>
+<p>현대 소프트웨어 아키텍처는 크게 <strong>Monolith(모놀리식)</strong>, <strong>Microservices(마이크로서비스)</strong>, **Serverless(서버리스)**로 구분할 수 있습니다.<br>
+각각의 아키텍처는 소프트웨어의 <strong>구조</strong>, <strong>운영 방식</strong>, <strong>확장성</strong>, <strong>비용 모델</strong>에 큰 영향을 줍니다.</p>
+<hr>
+<h2>2. Monolith Architecture (모놀리식 아키텍처)</h2>
+<h3>개념</h3>
+<ul>
+<li>애플리케이션 전체가 <strong>하나의 코드베이스</strong>와 <strong>하나의 배포 단위</strong>로 구성된 아키텍처.</li>
+<li>전통적인 방식으로, 웹 애플리케이션 + DB + UI가 모두 한 프로젝트 안에 포함됨.</li>
+</ul>
+<h3>장점</h3>
+<ul>
+<li><strong>개발 단순성</strong>: 코드 구조가 단일 프로젝트로 관리되어 진입 장벽이 낮음.</li>
+<li><strong>테스트 용이성</strong>: 통합 테스트 환경을 쉽게 구축 가능.</li>
+<li><strong>배포 편의성</strong>: 하나의 빌드 → 하나의 배포.</li>
+</ul>
+<h3>단점</h3>
+<ul>
+<li><strong>규모 확장 한계</strong>: 특정 모듈만 확장 불가, 전체 앱을 수평 확장해야 함.</li>
+<li><strong>의존성 문제</strong>: 하나의 모듈 변경이 전체 시스템에 영향.</li>
+<li><strong>팀 협업 제약</strong>: 대규모 팀이 동시에 작업하면 충돌이 잦음.</li>
+</ul>
+<h3>적합한 상황</h3>
+<ul>
+<li>스타트업/초기 서비스 (빠른 MVP 개발).</li>
+<li>소규모 팀에서 단일 코드베이스 유지가 효율적일 때.</li>
+</ul>
+<hr>
+<h2>3. Microservices Architecture (마이크로서비스 아키텍처)</h2>
+<h3>개념</h3>
+<ul>
+<li>애플리케이션을 <strong>독립적으로 배포 가능한 작은 서비스들</strong>로 분리.</li>
+<li>서비스 간은 보통 REST API, gRPC, 메시지 브로커 등을 통해 통신.</li>
+</ul>
+<h3>장점</h3>
+<ul>
+<li><strong>독립 배포</strong>: 특정 서비스만 업데이트 가능 → 빠른 릴리즈 주기.</li>
+<li><strong>확장성</strong>: 필요한 서비스만 개별적으로 확장 가능.</li>
+<li><strong>기술 다양성</strong>: 각 서비스마다 언어/프레임워크 선택 가능.</li>
+<li><strong>장애 격리</strong>: 한 서비스 장애가 전체 시스템으로 전이되는 것을 최소화.</li>
+</ul>
+<h3>단점</h3>
+<ul>
+<li><strong>복잡한 운영</strong>: 서비스가 많아지면 네트워크, 모니터링, 트랜잭션 관리가 어려움.</li>
+<li><strong>데이터 일관성</strong>: 분산 환경에서 강력한 일관성 보장 어려움.</li>
+<li><strong>배포 파이프라인</strong>: CI/CD 자동화 필수.</li>
+</ul>
+<h3>적합한 상황</h3>
+<ul>
+<li><strong>대규모 서비스</strong>: Netflix, Amazon 같은 글로벌 서비스.</li>
+<li>팀 단위로 독립된 도메인 개발을 하는 조직.</li>
+</ul>
+<hr>
+<h2>4. Serverless Architecture (서버리스 아키텍처)</h2>
+<h3>개념</h3>
+<ul>
+<li>서버 관리 없이, <strong>클라우드 제공업체의 FaaS(Function as a Service)</strong> 플랫폼에 코드를 실행.</li>
+<li>대표 서비스: AWS Lambda, Azure Functions, Google Cloud Functions.</li>
+</ul>
+<h3>장점</h3>
+<ul>
+<li><strong>운영 단순화</strong>: 서버 관리 불필요 → 인프라 부담 감소.</li>
+<li><strong>비용 최적화</strong>: 사용한 만큼 과금(초 단위).</li>
+<li><strong>자동 확장</strong>: 트래픽 증가 시 자동 스케일링.</li>
+</ul>
+<h3>단점</h3>
+<ul>
+<li><strong>콜드 스타트 지연</strong>: 함수가 처음 실행될 때 지연 발생 가능.</li>
+<li><strong>벤더 종속성</strong>: 특정 클라우드 서비스에 종속될 위험.</li>
+<li><strong>복잡한 워크플로</strong>: 상태 관리가 필요한 경우 아키텍처가 복잡해짐.</li>
+</ul>
+<h3>적합한 상황</h3>
+<ul>
+<li>이벤트 기반 시스템 (IoT, 로그 처리, 알림).</li>
+<li>간헐적인 트래픽을 가진 애플리케이션.</li>
+<li>PoC(Proof of Concept) 또는 빠른 실험.</li>
+</ul>
+<hr>
+<h2>5. 아키텍처 비교</h2>
+<table>
+<thead>
+<tr>
+<th>구분</th>
+<th>Monolith</th>
+<th>Microservices</th>
+<th>Serverless</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>구조</td>
+<td>단일 코드베이스</td>
+<td>독립 서비스 집합</td>
+<td>함수 단위 실행</td>
+</tr>
+<tr>
+<td>배포</td>
+<td>전체 단위 배포</td>
+<td>서비스 단위 배포</td>
+<td>이벤트 기반 실행</td>
+</tr>
+<tr>
+<td>확장성</td>
+<td>전체 확장</td>
+<td>서비스별 확장</td>
+<td>자동 확장</td>
+</tr>
+<tr>
+<td>운영 난이도</td>
+<td>낮음</td>
+<td>높음 (DevOps 필요)</td>
+<td>낮음 (클라우드 의존)</td>
+</tr>
+<tr>
+<td>비용 모델</td>
+<td>서버 유지 비용 고정</td>
+<td>서버 유지 + 관리 비용</td>
+<td>사용량 기반 과금</td>
+</tr>
+<tr>
+<td>적합한 상황</td>
+<td>소규모 서비스, 초기 MVP</td>
+<td>대규모, 복잡한 도메인</td>
+<td>이벤트 기반, 간헐적 트래픽</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2>6. 전문가 시각 (운영 및 전략 관점)</h2>
+<ol>
+<li>
+<p><strong>DevOps 관점</strong></p>
+<ul>
+<li>Monolith → 간단한 CI/CD로 충분.</li>
+<li>Microservices → 서비스별 파이프라인, 모니터링, 분산 로깅 필수.</li>
+<li>Serverless → 인프라보다는 코드 품질과 이벤트 흐름 관리가 핵심.</li>
+</ul>
+</li>
+<li>
+<p><strong>비용 및 효율성</strong></p>
+<ul>
+<li>Monolith → 초기에는 효율적, 장기적으로 확장 비용 증가.</li>
+<li>Microservices → 초기 구축 비용 높음, 장기적으로 대규모 운영에 효율적.</li>
+<li>Serverless → 간헐적 사용 시 매우 저렴, 지속적 대규모 서비스에는 오히려 비쌀 수 있음.</li>
+</ul>
+</li>
+<li>
+<p><strong>전략적 선택</strong></p>
+<ul>
+<li>스타트업 → Monolith로 시작 → 성장 시 Microservices로 리팩토링.</li>
+<li>대기업/플랫폼 → Microservices 기본 선택.</li>
+<li>이벤트 처리 중심 → Serverless 활용.</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2>7. 결론</h2>
+<ul>
+<li><strong>Monolith</strong>: 단순성과 빠른 개발이 필요할 때 유리.</li>
+<li><strong>Microservices</strong>: 확장성과 대규모 협업이 필요할 때 강력.</li>
+<li><strong>Serverless</strong>: 이벤트 기반, 운영 최소화를 원할 때 적합.</li>
+</ul>
+<p>✅ 아키텍처 선택은 기술적 요인뿐만 아니라 <strong>비즈니스 전략, 팀 역량, 운영 환경</strong>에 따라 달라집니다.</p></div><style data-emotion="css hx9xpc">@media (max-width: 768px){.css-hx9xpc{padding:0 20px;}}</style><div class="css-hx9xpc e1gqsjds0"></div><style data-emotion="css 1yungzt">.css-1yungzt{position:relative;width:100%;padding:40px 0;background:linear-gradient(180deg, rgba(66, 105, 78, 0.05) 0%, rgba(73, 110, 93, 0.1) 100%);border-top:1px solid rgba(66, 105, 78, 0.1);}</style><footer class="css-1yungzt e1oae0v84"><style data-emotion="css 1uamirr">.css-1uamirr{max-width:960px;margin:0 auto;padding:0 20px;text-align:center;}</style><div class="css-1uamirr e1oae0v83"><style data-emotion="css 1ghcw8y">.css-1ghcw8y{font-size:16px;line-height:1.6;color:#426950;margin-bottom:10px;-webkit-transition:color 0.3s ease;transition:color 0.3s ease;}.css-1ghcw8y:hover{color:#2c4735;}@media (max-width: 768px){.css-1ghcw8y{font-size:14px;}}</style><p class="css-1ghcw8y e1oae0v82">Thank You for Visiting My Blog, Have a Good Day <style data-emotion="css lzb4fa">.css-lzb4fa{display:inline-block;-webkit-transition:-webkit-transform 0.3s ease;transition:transform 0.3s ease;}.css-lzb4fa:hover{-webkit-transform:scale(1.2) rotate(10deg);-moz-transform:scale(1.2) rotate(10deg);-ms-transform:scale(1.2) rotate(10deg);transform:scale(1.2) rotate(10deg);}</style><span class="css-lzb4fa e1oae0v80">🌿</span></p><style data-emotion="css y3pbt1">.css-y3pbt1{font-size:14px;color:#666;margin-top:5px;}@media (max-width: 768px){.css-y3pbt1{font-size:12px;}}</style><p class="css-y3pbt1 e1oae0v81">© 2024 Developer LIM.</p></div></footer></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/Monolith/";/*]]>*/</script><!-- slice-start id="_gatsby-scripts-1" -->
+          <script
+            id="gatsby-chunk-mapping"
+          >
+            window.___chunkMapping="{\"app\":[\"/app-5ab049b1a7d9afaa2ddb.js\"],\"component---cache-caches-gatsby-plugin-offline-app-shell-js\":[\"/component---cache-caches-gatsby-plugin-offline-app-shell-js-27e0e967a98f3dffdf9e.js\"],\"component---src-pages-404-tsx\":[\"/component---src-pages-404-tsx-198e8648605be5d74a6a.js\"],\"component---src-pages-index-tsx\":[\"/component---src-pages-index-tsx-0b1030ebf0c9df342d73.js\"],\"component---src-pages-info-tsx\":[\"/component---src-pages-info-tsx-91ad86a40368117a0a55.js\"],\"component---src-templates-post-template-tsx\":[\"/component---src-templates-post-template-tsx-a5c59433344b41e75835.js\"]}";
+          </script>
+        <script>window.___webpackCompilationHash="7af849cfb4846b220a30";</script><script src="/webpack-runtime-71d02f8e664a0760dfc0.js" async></script><script src="/framework-9d608f77b5c9a88afabd.js" async></script><script src="/app-5ab049b1a7d9afaa2ddb.js" async></script><!-- slice-end id="_gatsby-scripts-1" --></body></html>
