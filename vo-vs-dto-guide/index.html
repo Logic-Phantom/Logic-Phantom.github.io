@@ -1,0 +1,180 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><meta name="generator" content="Gatsby 5.14.0"/><meta name="theme-color" content="#426950"/><meta data-react-helmet="true" name="description" content="데이터 구조 정의 및 전달 방식"/><meta data-react-helmet="true" name="viewport" content="width=device-width, initial-scale=1.0"/><meta data-react-helmet="true" http-equiv="Content-Type" content="text/html;charset=UTF-8"/><meta data-react-helmet="true" property="og:type" content="website"/><meta data-react-helmet="true" property="og:title" content="VO와 DTO 개념 심층 가이드"/><meta data-react-helmet="true" property="og:description" content="데이터 구조 정의 및 전달 방식"/><meta data-react-helmet="true" property="og:image" content="/static/2c177f90f763961c7e0b9ab7f8f09e47/voDto.png"/><meta data-react-helmet="true" property="og:url"/><meta data-react-helmet="true" property="og:site_name" content="VO와 DTO 개념 심층 가이드"/><meta data-react-helmet="true" name="twitter:card" content="summary"/><meta data-react-helmet="true" name="twitter:title" content="VO와 DTO 개념 심층 가이드"/><meta data-react-helmet="true" name="twitter:description" content="데이터 구조 정의 및 전달 방식"/><meta data-react-helmet="true" name="twitter:image" content="/static/2c177f90f763961c7e0b9ab7f8f09e47/voDto.png"/><meta data-react-helmet="true" name="twitter:site" content="@사용자이름"/><meta data-react-helmet="true" name="twitter:creator" content="@사용자이름"/><style data-href="/styles.9e907bc32054b7771552.css" data-identity="gatsby-global-css">code[class*=language-],pre[class*=language-]{word-wrap:normal;background:none;color:#ccc;font-family:Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;font-size:1em;-webkit-hyphens:none;hyphens:none;line-height:1.5;tab-size:4;text-align:left;white-space:pre;word-break:normal;word-spacing:normal}pre[class*=language-]{margin:.5em 0;overflow:auto;padding:1em}:not(pre)>code[class*=language-],pre[class*=language-]{background:#2d2d2d}:not(pre)>code[class*=language-]{border-radius:.3em;padding:.1em;white-space:normal}.token.block-comment,.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#999}.token.punctuation{color:#ccc}.token.attr-name,.token.deleted,.token.namespace,.token.tag{color:#e2777a}.token.function-name{color:#6196cc}.token.boolean,.token.function,.token.number{color:#f08d49}.token.class-name,.token.constant,.token.property,.token.symbol{color:#f8c555}.token.atrule,.token.builtin,.token.important,.token.keyword,.token.selector{color:#cc99cd}.token.attr-value,.token.char,.token.regex,.token.string,.token.variable{color:#7ec699}.token.entity,.token.operator,.token.url{color:#67cdcc}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}.token.inserted{color:green}</style><link rel="sitemap" type="application/xml" href="/sitemap-index.xml"/><link rel="canonical" href="https://logic-phantom.github.io/vo-vs-dto-guide/" data-baseprotocol="https:" data-basehost="logic-phantom.github.io"/><link rel="icon" href="/favicon-32x32.png" type="image/png"/><link rel="manifest" href="/manifest.webmanifest" crossorigin="use-credentials"/><link rel="apple-touch-icon" sizes="192x192" href="/contents/forestLim.png"/><link rel="apple-touch-icon" sizes="512x512" href="/contents/forestLim.png"/><title data-react-helmet="true">VO와 DTO 개념 심층 가이드</title><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){const t=e.target;if(void 0===t.dataset.mainImage)return;if(void 0===t.dataset.gatsbyImageSsr)return;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><style data-emotion="css zyllbl">.css-zyllbl{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;height:100vh;}</style><div class="css-zyllbl e1strnqo0"><style data-emotion="css-global kxm5mf">@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap');*{padding:0;margin:0;box-sizing:border-box;font-family:'Nanum Myeongjo',serif;}html,body,#___gatsby{height:100%;}a,a:hover{color:inherit;-webkit-text-decoration:none;text-decoration:none;cursor:pointer;}</style><style data-emotion="css 16cz9yp">.css-16cz9yp{position:relative;width:100%;height:400px;}@media (max-width: 768px){.css-16cz9yp{height:300px;}}</style><div class="css-16cz9yp e1opi4mu1"><style data-emotion="css 1bjn9yo">.css-1bjn9yo{z-index:-1;width:100%;height:400px;object-fit:cover;-webkit-filter:brightness(0.25);filter:brightness(0.25);}@media (max-width: 768px){.css-1bjn9yo{height:300px;}}</style><div data-gatsby-image-wrapper="" style="position:absolute" class="gatsby-image-wrapper gatsby-image-wrapper-constrained css-1bjn9yo e1opi4mu0"><div style="max-width:1536px;display:block"><img alt="" role="presentation" aria-hidden="true" src="data:image/svg+xml;charset=utf-8,%3Csvg%20height=&#x27;1024&#x27;%20width=&#x27;1536&#x27;%20xmlns=&#x27;http://www.w3.org/2000/svg&#x27;%20version=&#x27;1.1&#x27;%3E%3C/svg%3E" style="max-width:100%;display:block;position:static"/></div><img aria-hidden="true" data-placeholder-image="" style="opacity:1;transition:opacity 500ms linear" decoding="async" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAIAAAAmMtkJAAAACXBIWXMAAAsTAAALEwEAmpwYAAACbElEQVR42l2S7U/aUBSH+b/3YR+XLZtZ3GLmcMumok55Kcg7yEuhFIHS3va20N7y1loqAgr7YJQJ3Wn1w7Lkyc3pTZ6cnnN/vgi6AmLYjuGxh1tEkBlGVwnJvJ+IzlxwFthl6bJZSE9Tfj0TAB+YYcE8YNR9oNp1YdSoCJcgGyCvp+2ZTk9J+YaUJ2px1qtuFvhFjkrjQF1P0JX+QFRUQSP8x7PcdgbBfVwcrebybY9u0sGxXh3IBUuvRb+/JuyRs5ShP8jWIUv4Lu849tPKWt0bbcx/DmV/VNUkNh9neE5KA7XsPAwelt31fV9hf6WP3k60srOQfJQnc1Kr3q4Hkpn9WCpbKcka7y8ree1mtez+NmqtcjAd8SdDX6njT8XUYYuhrnAO5nfln4ym96ULtrJ1EArn8ifJNFbRVoTePqZOD3fkelRgIuHAdp0O0vnjRPBLs3RqdwqwQh8lWgcsETBnGVgjAocauNMaGsr7SPXVm3d7ux/OT3ZsUpkMWLvHXPcYu1+z9MpITMPYrgwLa6Am06yl6FK2Wma5Gu62/SUljgZ3JmcreSJkxHqskg1UcwG+Rg2VgiFlPNmdWW9hrqvxLdQAOmq7owswc6Yz/rPo3PZpIuWGnaLcjMutRF++MAk9EjMvM8PCipesbSnwWv2BZJlyQ2hA55TsbVsvSZfnM+PSIrRFKtNRnaCM8SxDmEK84S9IewX0rSgCUPgvxLO2ERchJOjphjOk7BCl4VehIRRwPl5zmznyhZEJPkQCoLzTw/LiOQLZmfPOnQSv+g94PfcSFnZjbEJCQy5G2OXl81nezNoQpv94judfYTl5PG2e2FgAAAAASUVORK5CYII=" alt=""/><picture><source type="image/webp" data-srcset="/static/2c177f90f763961c7e0b9ab7f8f09e47/b642b/voDto.webp 384w,/static/2c177f90f763961c7e0b9ab7f8f09e47/c9564/voDto.webp 768w,/static/2c177f90f763961c7e0b9ab7f8f09e47/18b4b/voDto.webp 1536w" sizes="(min-width: 1536px) 1536px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 1536px) 1536px, 100vw" decoding="async" loading="lazy" data-src="/static/2c177f90f763961c7e0b9ab7f8f09e47/4d776/voDto.png" data-srcset="/static/2c177f90f763961c7e0b9ab7f8f09e47/4a410/voDto.png 384w,/static/2c177f90f763961c7e0b9ab7f8f09e47/f5189/voDto.png 768w,/static/2c177f90f763961c7e0b9ab7f8f09e47/4d776/voDto.png 1536w" alt="thumbnail"/></picture><noscript><picture><source type="image/webp" srcSet="/static/2c177f90f763961c7e0b9ab7f8f09e47/b642b/voDto.webp 384w,/static/2c177f90f763961c7e0b9ab7f8f09e47/c9564/voDto.webp 768w,/static/2c177f90f763961c7e0b9ab7f8f09e47/18b4b/voDto.webp 1536w" sizes="(min-width: 1536px) 1536px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 1536px) 1536px, 100vw" decoding="async" loading="lazy" src="/static/2c177f90f763961c7e0b9ab7f8f09e47/4d776/voDto.png" srcSet="/static/2c177f90f763961c7e0b9ab7f8f09e47/4a410/voDto.png 384w,/static/2c177f90f763961c7e0b9ab7f8f09e47/f5189/voDto.png 768w,/static/2c177f90f763961c7e0b9ab7f8f09e47/4d776/voDto.png 1536w" alt="thumbnail"/></picture></noscript><script type="module">const t="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;if(t){const t=document.querySelectorAll("img[data-main-image]");for(let e of t){e.dataset.src&&(e.setAttribute("src",e.dataset.src),e.removeAttribute("data-src")),e.dataset.srcset&&(e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset"));const t=e.parentNode.querySelectorAll("source[data-srcset]");for(let e of t)e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset");e.complete&&(e.style.opacity=1,e.parentNode.parentNode.querySelector("[data-placeholder-image]").style.opacity=0)}}</script></div><style data-emotion="css m1156n">.css-m1156n{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;width:768px;height:100%;margin:0 auto;padding:60px 0;color:#ffffff;}@media (max-width: 768px){.css-m1156n{width:100%;padding:40px 20px;}}</style><div class="css-m1156n e1st1jau4"><style data-emotion="css gywgo7">.css-gywgo7{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:#ffffff;color:#000000;font-size:22px;cursor:pointer;box-shadow:0 0 10px rgba(0, 0, 0, 0.3);}@media (max-width: 768px){.css-gywgo7{width:30px;height:30px;font-size:18px;}}</style><div class="css-gywgo7 e1st1jau3"><style data-emotion="css 1ij64l8">.css-1ij64l8{display:inline-block;width:12px;height:12px;border-left:2px solid #000000;border-bottom:2px solid #000000;-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg);-ms-transform:rotate(45deg);transform:rotate(45deg);}</style><span class="css-1ij64l8 e1st1jau2"></span></div><style data-emotion="css gn4qtp">.css-gn4qtp{display:-webkit-box;overflow:hidden;overflow-wrap:break-word;margin-top:auto;text-overflow:ellipsis;white-space:normal;-webkit-line-clamp:2;-webkit-box-orient:vertical;font-size:45px;font-weight:800;}@media (max-width: 768px){.css-gn4qtp{font-size:30px;}}</style><div class="css-gn4qtp e1st1jau1">VO와 DTO 개념 심층 가이드</div><style data-emotion="css 3gcnt2">.css-3gcnt2{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;justify-content:space-between;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;margin-top:10px;font-size:18px;font-weight:700;}@media (max-width: 768px){.css-3gcnt2{-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-align-items:flex-start;-webkit-box-align:flex-start;-ms-flex-align:flex-start;align-items:flex-start;font-size:15px;font-weight:400;}}</style><div class="css-3gcnt2 e1st1jau0"><div>Web / Server</div><div>2025.09.02.</div></div></div></div><style data-emotion="css 12g9cpd">.css-12g9cpd{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;width:768px;margin:0 auto;padding:200px 0 0 0;word-break:break-all;line-height:1.8;font-size:16px;font-weight:400;}.css-12g9cpd p{padding:3px 0;}.css-12g9cpd h1,.css-12g9cpd h2,.css-12g9cpd h3{font-weight:800;margin-bottom:30px;}.css-12g9cpd *+h1,.css-12g9cpd *+h2,.css-12g9cpd *+h3{margin-top:80px;}.css-12g9cpd hr+h1,.css-12g9cpd hr+h2,.css-12g9cpd hr+h3{margin-top:0;}.css-12g9cpd h1{font-size:30px;}.css-12g9cpd h2{font-size:25px;}.css-12g9cpd h3{font-size:20px;}.css-12g9cpd blockquote{margin:30px 0;padding:5px 15px;border-left:2px solid #000000;font-weight:800;}.css-12g9cpd ol,.css-12g9cpd ul{margin-left:20px;padding:30px 0;}.css-12g9cpd hr{border:1px solid #000000;margin:100px 0;}.css-12g9cpd a{color:#4263eb;-webkit-text-decoration:underline;text-decoration:underline;}.css-12g9cpd pre[class*='language-']{margin:30px 0;padding:15px;font-size:15px;}.css-12g9cpd pre[class*='language-']::-webkit-scrollbar-thumb{background:rgba(255, 255, 255, 0.5);border-radius:3px;}.css-12g9cpd code[class*='language-'],.css-12g9cpd pre[class*='language-']{tab-size:2;}@media (max-width: 768px){.css-12g9cpd{width:100%;padding:140px 20px 0 20px;line-height:1.6;font-size:14px;}.css-12g9cpd h1{font-size:23px;}.css-12g9cpd h2{font-size:20px;}.css-12g9cpd h3{font-size:17px;}.css-12g9cpd img{width:100%;}.css-12g9cpd hr{margin:50px 0;}}</style><div class="css-12g9cpd e1ijh0y10"><h1>VO와 DTO 개념 심층 가이드</h1>
+<h2>1. 들어가며</h2>
+<p>백엔드 개발에서 데이터 구조를 정의하고 전달하는 방식은 매우 중요합니다.
+특히 <strong>VO(Value Object)</strong> 와 <strong>DTO(Data Transfer Object)</strong> 는 자주
+사용되는 개념으로, 소프트웨어 아키텍처의 품질과 유지보수성에 큰 영향을
+줍니다.</p>
+<p>이 문서에서는 VO와 DTO의 기초 개념부터 실무 적용 사례, 그리고 전문가적
+관점에서의 활용 방안까지 단계적으로 설명합니다.</p>
+<hr>
+<h2>2. VO(Value Object)</h2>
+<h3>2.1 개념</h3>
+<ul>
+<li><strong>정의</strong>: VO는 <em>값을 표현하기 위한 객체</em>로, 특정 도메인의 속성을
+불변(Immutable)하게 표현합니다.</li>
+<li><strong>특징</strong>
+<ul>
+<li>동일성(Identity)이 아닌 <strong>동등성(Equality)</strong> 로 비교합니다.</li>
+<li>값이 같으면 같은 객체로 취급합니다.</li>
+<li>변경 불가능(Immutable)한 성격을 가집니다.</li>
+</ul>
+</li>
+</ul>
+<h3>2.2 예시 (Java)</h3>
+<div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Money</span> <span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token keyword">final</span> <span class="token keyword">int</span> amount<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token keyword">final</span> <span class="token class-name">String</span> currency<span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token class-name">Money</span><span class="token punctuation">(</span><span class="token keyword">int</span> amount<span class="token punctuation">,</span> <span class="token class-name">String</span> currency<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>amount <span class="token operator">=</span> amount<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>currency <span class="token operator">=</span> currency<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">getAmount</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> amount<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+    <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">getCurrency</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> currency<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">equals</span><span class="token punctuation">(</span><span class="token class-name">Object</span> o<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span> <span class="token operator">==</span> o<span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token punctuation">(</span>o <span class="token keyword">instanceof</span> <span class="token class-name">Money</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+        <span class="token class-name">Money</span> money <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">Money</span><span class="token punctuation">)</span> o<span class="token punctuation">;</span>
+        <span class="token keyword">return</span> amount <span class="token operator">==</span> money<span class="token punctuation">.</span>amount <span class="token operator">&amp;&amp;</span> currency<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>money<span class="token punctuation">.</span>currency<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">hashCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token class-name">Objects</span><span class="token punctuation">.</span><span class="token function">hash</span><span class="token punctuation">(</span>amount<span class="token punctuation">,</span> currency<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>여기서 <code class="language-text">Money</code> 객체는 금액과 통화를 나타내는 <strong>VO</strong>이며, 값이 동일하면
+같은 객체로 취급합니다.</p>
+<h3>2.3 장점</h3>
+<ul>
+<li>불변성을 통한 안정성 확보</li>
+<li>도메인 개념을 코드로 명확하게 표현</li>
+<li>값 기반 비교로 직관적인 동등성 판단 가능</li>
+</ul>
+<hr>
+<h2>3. DTO(Data Transfer Object)</h2>
+<h3>3.1 개념</h3>
+<ul>
+<li><strong>정의</strong>: DTO는 <em>데이터 전송을 위한 객체</em>로, 계층 간 데이터 교환에
+사용됩니다.</li>
+<li><strong>특징</strong>
+<ul>
+<li>보통 <strong>getter/setter</strong> 를 가짐</li>
+<li>직렬화/역직렬화에 용이</li>
+<li>비즈니스 로직을 포함하지 않음</li>
+</ul>
+</li>
+</ul>
+<h3>3.2 예시 (Java)</h3>
+<div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">UserDTO</span> <span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token class-name">String</span> name<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token class-name">String</span> email<span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token class-name">UserDTO</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token class-name">UserDTO</span><span class="token punctuation">(</span><span class="token class-name">String</span> name<span class="token punctuation">,</span> <span class="token class-name">String</span> email<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>email <span class="token operator">=</span> email<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> name<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setName</span><span class="token punctuation">(</span><span class="token class-name">String</span> name<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">getEmail</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> email<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setEmail</span><span class="token punctuation">(</span><span class="token class-name">String</span> email<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">this</span><span class="token punctuation">.</span>email <span class="token operator">=</span> email<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p><code class="language-text">UserDTO</code>는 컨트롤러와 서비스 계층, 혹은 API 통신에서 데이터를 담아
+전달하는 용도로 사용됩니다.</p>
+<h3>3.3 장점</h3>
+<ul>
+<li>계층 간 데이터 교환 단순화</li>
+<li>네트워크 전송 최적화 (필요한 데이터만 포함 가능)</li>
+<li>보안 강화 (민감한 엔티티 정보 노출 방지)</li>
+</ul>
+<hr>
+<h2>4. VO vs DTO 비교</h2>
+<p>구분             VO (Value Object)       DTO (Data Transfer Object)</p>
+<hr>
+<p>목적             도메인 모델의 값 표현   계층 간 데이터 전달
+불변성           불변 (Immutable)        가변 (Mutable)
+로직 포함 여부   도메인 규칙 포함 가능   로직 없음
+비교 기준        값 동등성               주로 참조 비교
+사용 위치        도메인 계층             프레젠테이션, API 계층</p>
+<hr>
+<h2>5. 실무 적용 전략</h2>
+<h3>5.1 언제 VO를 사용할까?</h3>
+<ul>
+<li>금액, 좌표, 이메일, 전화번호 등 <strong>도메인에서 불변성이 필요한 값</strong>을
+표현할 때</li>
+<li>비즈니스 규칙을 캡슐화해야 할 때</li>
+</ul>
+<h3>5.2 언제 DTO를 사용할까?</h3>
+<ul>
+<li>API 요청/응답에서 데이터 전달 시</li>
+<li>외부 시스템 간 데이터 교환 시</li>
+<li>DB에서 조회한 데이터를 가공하여 반환할 때</li>
+</ul>
+<h3>5.3 함께 쓰는 방식</h3>
+<ul>
+<li><strong>Entity → VO → DTO</strong> 변환 패턴
+<ul>
+<li>Entity: 데이터베이스의 영속 객체</li>
+<li>VO: 도메인 로직을 가진 불변 객체</li>
+<li>DTO: 외부와 데이터를 주고받기 위한 객체</li>
+</ul>
+</li>
+</ul>
+<div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java"><span class="token comment">// Entity → VO 변환</span>
+<span class="token class-name">User</span> user <span class="token operator">=</span> userRepository<span class="token punctuation">.</span><span class="token function">findById</span><span class="token punctuation">(</span><span class="token number">1L</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name">Email</span> email <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Email</span><span class="token punctuation">(</span>user<span class="token punctuation">.</span><span class="token function">getEmail</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// VO → DTO 변환</span>
+<span class="token class-name">UserDTO</span> dto <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">UserDTO</span><span class="token punctuation">(</span>user<span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> email<span class="token punctuation">.</span><span class="token function">getValue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<hr>
+<h2>6. 전문가 관점에서의 심화 내용</h2>
+<h3>6.1 VO의 활용 심화</h3>
+<ul>
+<li><strong>DDD(Domain-Driven Design)</strong> 에서 핵심 개념</li>
+<li>값 객체를 활용해 <strong>풍부한 도메인 모델(Rich Domain Model)</strong> 을 설계
+가능</li>
+<li>예: <code class="language-text">Address</code>, <code class="language-text">Money</code>, <code class="language-text">Period</code> 등 복합 값 표현</li>
+</ul>
+<h3>6.2 DTO의 활용 심화</h3>
+<ul>
+<li><strong>API 최적화</strong>: 필요한 데이터만 담아 전송 → 성능 개선</li>
+<li><strong>MapStruct, ModelMapper</strong> 와 같은 매퍼 라이브러리로 자동 변환 가능</li>
+<li>CQRS(Command Query Responsibility Segregation) 패턴에서 <strong>Query
+DTO</strong> 로 자주 사용</li>
+</ul>
+<h3>6.3 잘못된 사용 시 문제점</h3>
+<ul>
+<li>VO를 단순 데이터 홀더처럼 사용 → 엔티티와 차이 없어짐</li>
+<li>DTO에 비즈니스 로직 포함 → 유지보수 어려움</li>
+<li>계층 간 경계 모호 → 코드 품질 저하</li>
+</ul>
+<hr>
+<h2>7. 결론</h2>
+<ul>
+<li><strong>VO</strong>는 도메인 모델을 풍부하게 하고, 불변성을 보장하며 안정성을
+높입니다.</li>
+<li><strong>DTO</strong>는 계층 간 데이터 교환을 단순화하고 보안을 강화합니다.</li>
+<li>둘을 적절히 구분하고 조합하여 사용하는 것이 유지보수성과 확장성을
+모두 잡는 핵심 전략입니다.</li>
+</ul>
+<hr>
+<h2>참고 자료</h2>
+<ul>
+<li>Eric Evans, <em>Domain-Driven Design: Tackling Complexity in the Heart
+of Software</em></li>
+<li>Martin Fowler, <em>Patterns of Enterprise Application Architecture</em></li>
+<li>Spring Framework 공식 문서</li>
+</ul></div><style data-emotion="css hx9xpc">@media (max-width: 768px){.css-hx9xpc{padding:0 20px;}}</style><div class="css-hx9xpc e1gqsjds0"></div><style data-emotion="css 1yungzt">.css-1yungzt{position:relative;width:100%;padding:40px 0;background:linear-gradient(180deg, rgba(66, 105, 78, 0.05) 0%, rgba(73, 110, 93, 0.1) 100%);border-top:1px solid rgba(66, 105, 78, 0.1);}</style><footer class="css-1yungzt e1oae0v84"><style data-emotion="css 1uamirr">.css-1uamirr{max-width:960px;margin:0 auto;padding:0 20px;text-align:center;}</style><div class="css-1uamirr e1oae0v83"><style data-emotion="css 1ghcw8y">.css-1ghcw8y{font-size:16px;line-height:1.6;color:#426950;margin-bottom:10px;-webkit-transition:color 0.3s ease;transition:color 0.3s ease;}.css-1ghcw8y:hover{color:#2c4735;}@media (max-width: 768px){.css-1ghcw8y{font-size:14px;}}</style><p class="css-1ghcw8y e1oae0v82">Thank You for Visiting My Blog, Have a Good Day <style data-emotion="css lzb4fa">.css-lzb4fa{display:inline-block;-webkit-transition:-webkit-transform 0.3s ease;transition:transform 0.3s ease;}.css-lzb4fa:hover{-webkit-transform:scale(1.2) rotate(10deg);-moz-transform:scale(1.2) rotate(10deg);-ms-transform:scale(1.2) rotate(10deg);transform:scale(1.2) rotate(10deg);}</style><span class="css-lzb4fa e1oae0v80">🌿</span></p><style data-emotion="css y3pbt1">.css-y3pbt1{font-size:14px;color:#666;margin-top:5px;}@media (max-width: 768px){.css-y3pbt1{font-size:12px;}}</style><p class="css-y3pbt1 e1oae0v81">© 2024 Developer LIM.</p></div></footer></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/vo-vs-dto-guide/";/*]]>*/</script><!-- slice-start id="_gatsby-scripts-1" -->
+          <script
+            id="gatsby-chunk-mapping"
+          >
+            window.___chunkMapping="{\"app\":[\"/app-5ab049b1a7d9afaa2ddb.js\"],\"component---cache-caches-gatsby-plugin-offline-app-shell-js\":[\"/component---cache-caches-gatsby-plugin-offline-app-shell-js-27e0e967a98f3dffdf9e.js\"],\"component---src-pages-404-tsx\":[\"/component---src-pages-404-tsx-198e8648605be5d74a6a.js\"],\"component---src-pages-index-tsx\":[\"/component---src-pages-index-tsx-0b1030ebf0c9df342d73.js\"],\"component---src-pages-info-tsx\":[\"/component---src-pages-info-tsx-91ad86a40368117a0a55.js\"],\"component---src-templates-post-template-tsx\":[\"/component---src-templates-post-template-tsx-a5c59433344b41e75835.js\"]}";
+          </script>
+        <script>window.___webpackCompilationHash="7af849cfb4846b220a30";</script><script src="/webpack-runtime-71d02f8e664a0760dfc0.js" async></script><script src="/framework-9d608f77b5c9a88afabd.js" async></script><script src="/app-5ab049b1a7d9afaa2ddb.js" async></script><!-- slice-end id="_gatsby-scripts-1" --></body></html>
