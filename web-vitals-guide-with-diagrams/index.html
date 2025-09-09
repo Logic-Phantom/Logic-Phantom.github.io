@@ -1,0 +1,275 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><meta name="generator" content="Gatsby 5.14.0"/><meta name="theme-color" content="#426950"/><meta data-react-helmet="true" name="description" content="웹의 최적화"/><meta data-react-helmet="true" name="viewport" content="width=device-width, initial-scale=1.0"/><meta data-react-helmet="true" http-equiv="Content-Type" content="text/html;charset=UTF-8"/><meta data-react-helmet="true" property="og:type" content="website"/><meta data-react-helmet="true" property="og:title" content="🌐 웹 성능 최적화 (Web Vitals) 완벽 가이드 "/><meta data-react-helmet="true" property="og:description" content="웹의 최적화"/><meta data-react-helmet="true" property="og:image" content="/static/b19723a0b067f64fbee8d3ee9e5c7d61/WebVitals.png"/><meta data-react-helmet="true" property="og:url"/><meta data-react-helmet="true" property="og:site_name" content="🌐 웹 성능 최적화 (Web Vitals) 완벽 가이드 "/><meta data-react-helmet="true" name="twitter:card" content="summary"/><meta data-react-helmet="true" name="twitter:title" content="🌐 웹 성능 최적화 (Web Vitals) 완벽 가이드 "/><meta data-react-helmet="true" name="twitter:description" content="웹의 최적화"/><meta data-react-helmet="true" name="twitter:image" content="/static/b19723a0b067f64fbee8d3ee9e5c7d61/WebVitals.png"/><meta data-react-helmet="true" name="twitter:site" content="@사용자이름"/><meta data-react-helmet="true" name="twitter:creator" content="@사용자이름"/><style data-href="/styles.9e907bc32054b7771552.css" data-identity="gatsby-global-css">code[class*=language-],pre[class*=language-]{word-wrap:normal;background:none;color:#ccc;font-family:Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;font-size:1em;-webkit-hyphens:none;hyphens:none;line-height:1.5;tab-size:4;text-align:left;white-space:pre;word-break:normal;word-spacing:normal}pre[class*=language-]{margin:.5em 0;overflow:auto;padding:1em}:not(pre)>code[class*=language-],pre[class*=language-]{background:#2d2d2d}:not(pre)>code[class*=language-]{border-radius:.3em;padding:.1em;white-space:normal}.token.block-comment,.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#999}.token.punctuation{color:#ccc}.token.attr-name,.token.deleted,.token.namespace,.token.tag{color:#e2777a}.token.function-name{color:#6196cc}.token.boolean,.token.function,.token.number{color:#f08d49}.token.class-name,.token.constant,.token.property,.token.symbol{color:#f8c555}.token.atrule,.token.builtin,.token.important,.token.keyword,.token.selector{color:#cc99cd}.token.attr-value,.token.char,.token.regex,.token.string,.token.variable{color:#7ec699}.token.entity,.token.operator,.token.url{color:#67cdcc}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}.token.inserted{color:green}</style><link rel="sitemap" type="application/xml" href="/sitemap-index.xml"/><link rel="canonical" href="https://logic-phantom.github.io/web-vitals-guide-with-diagrams/" data-baseprotocol="https:" data-basehost="logic-phantom.github.io"/><link rel="icon" href="/favicon-32x32.png" type="image/png"/><link rel="manifest" href="/manifest.webmanifest" crossorigin="use-credentials"/><link rel="apple-touch-icon" sizes="192x192" href="/contents/forestLim.png"/><link rel="apple-touch-icon" sizes="512x512" href="/contents/forestLim.png"/><title data-react-helmet="true">🌐 웹 성능 최적화 (Web Vitals) 완벽 가이드 </title><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){const t=e.target;if(void 0===t.dataset.mainImage)return;if(void 0===t.dataset.gatsbyImageSsr)return;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><style data-emotion="css zyllbl">.css-zyllbl{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;height:100vh;}</style><div class="css-zyllbl e1strnqo0"><style data-emotion="css-global kxm5mf">@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap');*{padding:0;margin:0;box-sizing:border-box;font-family:'Nanum Myeongjo',serif;}html,body,#___gatsby{height:100%;}a,a:hover{color:inherit;-webkit-text-decoration:none;text-decoration:none;cursor:pointer;}</style><style data-emotion="css 16cz9yp">.css-16cz9yp{position:relative;width:100%;height:400px;}@media (max-width: 768px){.css-16cz9yp{height:300px;}}</style><div class="css-16cz9yp e1opi4mu1"><style data-emotion="css 1bjn9yo">.css-1bjn9yo{z-index:-1;width:100%;height:400px;object-fit:cover;-webkit-filter:brightness(0.25);filter:brightness(0.25);}@media (max-width: 768px){.css-1bjn9yo{height:300px;}}</style><div data-gatsby-image-wrapper="" style="position:absolute" class="gatsby-image-wrapper gatsby-image-wrapper-constrained css-1bjn9yo e1opi4mu0"><div style="max-width:1536px;display:block"><img alt="" role="presentation" aria-hidden="true" src="data:image/svg+xml;charset=utf-8,%3Csvg%20height=&#x27;1024&#x27;%20width=&#x27;1536&#x27;%20xmlns=&#x27;http://www.w3.org/2000/svg&#x27;%20version=&#x27;1.1&#x27;%3E%3C/svg%3E" style="max-width:100%;display:block;position:static"/></div><img aria-hidden="true" data-placeholder-image="" style="opacity:1;transition:opacity 500ms linear" decoding="async" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAIAAAAmMtkJAAAACXBIWXMAAAsTAAALEwEAmpwYAAAC00lEQVR42i1QS08aYRTl33XVNC7aXRMXbRdNk6aLuqBtYiyaarXVpFjwSYsigvJQXhVkQAozgsi8AMGBGYZhQFBe8lCB+fpBmpzcnHtzT869R5arD8SWVGyD8p10fS/BWmxLlbshrh8AV71PlTrpq86w/idtCDjPNwYysQXC6YodZbac+Lo1ondTR2fsrofaPIxqDsNfdnC5hlDspmZN7LQx89mQmbGIkwZ+4ygjtgYy6HlCFva88cVt/5LuZM2CITg3pXYuG4IKtVPrIO2xugmr7GPXCFXFs43DP14vRvsIka/3ZMUWCNCiDU2r9tEV8+nGQUTrih2fs+dsZU5zHKKLP/y9BXd3xtHxZ8BV9uwuOlGNzAUJjm+OnEPJ0viHX1Mqh1IfmFTan71TT8zvmZD4uFxz4E8g8cZhpGxGS1T+Xshn+WM5G1KhtJir92V8vZ+r9Y5O2b+EiGdv4MOhdG3VRtsw/rcjdkqyTCaHU+kUk+v3HwAA3W5HGvQTbIWt9oZivto3UKQiYHMnmfIdoGJuITCVSISLXWBEUj/NtMpK644ZZ1iwhnhzkDeecHA+SvsWRLmb5zrVk9WFt8bddKHmWH2xMT3m2nzD3Ty4Ylc6rLKHFuUa6qUyqdDROyd5jZf3EOXC7UDGNwa5am/J533v0e/FSKEBCJ+Wtb6iUVO+DYRah8UvMDL33RSf3b9UHdBCvd0FoNyV+PpAVmhKhNDQRmilD7PQl0S+uRW9UPuCeiJNVx68i+uRsaeuj3MYUw3Sgp8qILgQSpS4Wm94NkzbRzJz28uzWtX8yhaCs9/06q869ZflNZS59n6aRR49dr6eODrjdt2kwU2afInwZQXeCyETbkGCFROYJYqYwkYPmb1Khq1kwBzS25lSJ05zMeU6hVJ8C8AI2JseDBj6QduhM2zyzQEPe/jhPRBGHKIw5H2hLbGQdIbbQlOCgGQoGYn/AdVadFx4p2CzAAAAAElFTkSuQmCC" alt=""/><picture><source type="image/webp" data-srcset="/static/b19723a0b067f64fbee8d3ee9e5c7d61/b642b/WebVitals.webp 384w,/static/b19723a0b067f64fbee8d3ee9e5c7d61/c9564/WebVitals.webp 768w,/static/b19723a0b067f64fbee8d3ee9e5c7d61/18b4b/WebVitals.webp 1536w" sizes="(min-width: 1536px) 1536px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 1536px) 1536px, 100vw" decoding="async" loading="lazy" data-src="/static/b19723a0b067f64fbee8d3ee9e5c7d61/4d776/WebVitals.png" data-srcset="/static/b19723a0b067f64fbee8d3ee9e5c7d61/4a410/WebVitals.png 384w,/static/b19723a0b067f64fbee8d3ee9e5c7d61/f5189/WebVitals.png 768w,/static/b19723a0b067f64fbee8d3ee9e5c7d61/4d776/WebVitals.png 1536w" alt="thumbnail"/></picture><noscript><picture><source type="image/webp" srcSet="/static/b19723a0b067f64fbee8d3ee9e5c7d61/b642b/WebVitals.webp 384w,/static/b19723a0b067f64fbee8d3ee9e5c7d61/c9564/WebVitals.webp 768w,/static/b19723a0b067f64fbee8d3ee9e5c7d61/18b4b/WebVitals.webp 1536w" sizes="(min-width: 1536px) 1536px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 1536px) 1536px, 100vw" decoding="async" loading="lazy" src="/static/b19723a0b067f64fbee8d3ee9e5c7d61/4d776/WebVitals.png" srcSet="/static/b19723a0b067f64fbee8d3ee9e5c7d61/4a410/WebVitals.png 384w,/static/b19723a0b067f64fbee8d3ee9e5c7d61/f5189/WebVitals.png 768w,/static/b19723a0b067f64fbee8d3ee9e5c7d61/4d776/WebVitals.png 1536w" alt="thumbnail"/></picture></noscript><script type="module">const t="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;if(t){const t=document.querySelectorAll("img[data-main-image]");for(let e of t){e.dataset.src&&(e.setAttribute("src",e.dataset.src),e.removeAttribute("data-src")),e.dataset.srcset&&(e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset"));const t=e.parentNode.querySelectorAll("source[data-srcset]");for(let e of t)e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset");e.complete&&(e.style.opacity=1,e.parentNode.parentNode.querySelector("[data-placeholder-image]").style.opacity=0)}}</script></div><style data-emotion="css m1156n">.css-m1156n{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;width:768px;height:100%;margin:0 auto;padding:60px 0;color:#ffffff;}@media (max-width: 768px){.css-m1156n{width:100%;padding:40px 20px;}}</style><div class="css-m1156n e1st1jau4"><style data-emotion="css gywgo7">.css-gywgo7{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:#ffffff;color:#000000;font-size:22px;cursor:pointer;box-shadow:0 0 10px rgba(0, 0, 0, 0.3);}@media (max-width: 768px){.css-gywgo7{width:30px;height:30px;font-size:18px;}}</style><div class="css-gywgo7 e1st1jau3"><style data-emotion="css 1ij64l8">.css-1ij64l8{display:inline-block;width:12px;height:12px;border-left:2px solid #000000;border-bottom:2px solid #000000;-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg);-ms-transform:rotate(45deg);transform:rotate(45deg);}</style><span class="css-1ij64l8 e1st1jau2"></span></div><style data-emotion="css gn4qtp">.css-gn4qtp{display:-webkit-box;overflow:hidden;overflow-wrap:break-word;margin-top:auto;text-overflow:ellipsis;white-space:normal;-webkit-line-clamp:2;-webkit-box-orient:vertical;font-size:45px;font-weight:800;}@media (max-width: 768px){.css-gn4qtp{font-size:30px;}}</style><div class="css-gn4qtp e1st1jau1">🌐 웹 성능 최적화 (Web Vitals) 완벽 가이드 </div><style data-emotion="css 3gcnt2">.css-3gcnt2{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;justify-content:space-between;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;margin-top:10px;font-size:18px;font-weight:700;}@media (max-width: 768px){.css-3gcnt2{-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-align-items:flex-start;-webkit-box-align:flex-start;-ms-flex-align:flex-start;align-items:flex-start;font-size:15px;font-weight:400;}}</style><div class="css-3gcnt2 e1st1jau0"><div>Web</div><div>2025.09.09.</div></div></div></div><style data-emotion="css 12g9cpd">.css-12g9cpd{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;width:768px;margin:0 auto;padding:200px 0 0 0;word-break:break-all;line-height:1.8;font-size:16px;font-weight:400;}.css-12g9cpd p{padding:3px 0;}.css-12g9cpd h1,.css-12g9cpd h2,.css-12g9cpd h3{font-weight:800;margin-bottom:30px;}.css-12g9cpd *+h1,.css-12g9cpd *+h2,.css-12g9cpd *+h3{margin-top:80px;}.css-12g9cpd hr+h1,.css-12g9cpd hr+h2,.css-12g9cpd hr+h3{margin-top:0;}.css-12g9cpd h1{font-size:30px;}.css-12g9cpd h2{font-size:25px;}.css-12g9cpd h3{font-size:20px;}.css-12g9cpd blockquote{margin:30px 0;padding:5px 15px;border-left:2px solid #000000;font-weight:800;}.css-12g9cpd ol,.css-12g9cpd ul{margin-left:20px;padding:30px 0;}.css-12g9cpd hr{border:1px solid #000000;margin:100px 0;}.css-12g9cpd a{color:#4263eb;-webkit-text-decoration:underline;text-decoration:underline;}.css-12g9cpd pre[class*='language-']{margin:30px 0;padding:15px;font-size:15px;}.css-12g9cpd pre[class*='language-']::-webkit-scrollbar-thumb{background:rgba(255, 255, 255, 0.5);border-radius:3px;}.css-12g9cpd code[class*='language-'],.css-12g9cpd pre[class*='language-']{tab-size:2;}@media (max-width: 768px){.css-12g9cpd{width:100%;padding:140px 20px 0 20px;line-height:1.6;font-size:14px;}.css-12g9cpd h1{font-size:23px;}.css-12g9cpd h2{font-size:20px;}.css-12g9cpd h3{font-size:17px;}.css-12g9cpd img{width:100%;}.css-12g9cpd hr{margin:50px 0;}}</style><div class="css-12g9cpd e1ijh0y10"><h1>🌐 웹 성능 최적화 (Web Vitals) 완벽 가이드</h1>
+<blockquote>
+<p>본 문서는 기본 개념부터 실전 코드, 심화 이론까지 한 번에 정리한 확장판입니다.<br>
+아래에는 LCP·CLS 시각화 그림과 즉시 적용 가능한 최적화 코드 예제가 포함되어 있습니다.</p>
+</blockquote>
+<h2>1. Core Web Vitals 핵심 요약</h2>
+<ul>
+<li><strong>LCP (Largest Contentful Paint)</strong>: 가장 큰 콘텐츠가 화면에 나타나기까지 걸린 시간. 목표 ≤ <strong>2.5s</strong></li>
+<li><strong>INP (Interaction to Next Paint)</strong>: 상호작용 후 다음 페인트까지 지연. 목표 ≤ <strong>200ms</strong></li>
+<li><strong>CLS (Cumulative Layout Shift)</strong>: 예기치 않은 레이아웃 이동의 누적. 목표 ≤ <strong>0.1</strong></li>
+</ul>
+<hr>
+<h2>2. 시각화: LCP, CLS 이해하기</h2>
+<h3>2.1 LCP 타임라인 예시</h3>
+<p>아래 타임라인은 탐색 시작 → FCP → LCP 이벤트의 상대적 시점을 보여줍니다.</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 768px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/a4ae1d28cd5c24788152f054de037f73/64756/lcp-diagram.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 50%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAAB7CAAAewgFu0HU+AAABgUlEQVR42o1Si2qFMAz1/79wg8FgqLVTq3346PMsqVe4uzBYIJyaJqcnMQ3ISikMOM8TwzBgWZaK7NM0QX6PEIOEEByT6AmnWUHKb3S9wEAYYqwcTc4ZRhssZoXeNAZKnucZbdtCKQXnNozyHWr8hJ5bWNVibd/glg5uFVinLxg6eydIWULDxYKVDAJxc2i7rqqy1iCz8OhgXYuQzlpQUkAxCmDMEZmc4zke1GlG0/c92I3WFE8IIVRPpDzngHyMcN4S4dUSj6dYeyF952ckb3hO3J4mwruAx8BJicgKvWy9oxn5i4QfMubCO/cJK2FVSElER8F0JQaLdKr6iGWFMfB1JaoKX4h+EUopafgOt5WcaqtMzuaCQ3y0DN4IIsRjM8oLNt77ugrTKOBth3gs2JcP+EOTqgR/emg67+eORDOOPGNaq/iYNa8ax4/jqNgwa6SDXleoSeDYHeFQFVtSwqtjna1j4b+/bRtmwvuet4RJx3GspA3+YayEC7j4bu0v+wGgYwgfLTEHewAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <picture>
+          <source
+              srcset="/static/a4ae1d28cd5c24788152f054de037f73/a59e9/lcp-diagram.webp 192w,
+/static/a4ae1d28cd5c24788152f054de037f73/0ca9f/lcp-diagram.webp 384w,
+/static/a4ae1d28cd5c24788152f054de037f73/dc9b9/lcp-diagram.webp 768w,
+/static/a4ae1d28cd5c24788152f054de037f73/e2c2f/lcp-diagram.webp 1152w,
+/static/a4ae1d28cd5c24788152f054de037f73/cbd37/lcp-diagram.webp 1200w"
+              sizes="(max-width: 768px) 100vw, 768px"
+              type="image/webp"
+            />
+          <source
+            srcset="/static/a4ae1d28cd5c24788152f054de037f73/3b721/lcp-diagram.png 192w,
+/static/a4ae1d28cd5c24788152f054de037f73/66595/lcp-diagram.png 384w,
+/static/a4ae1d28cd5c24788152f054de037f73/fe486/lcp-diagram.png 768w,
+/static/a4ae1d28cd5c24788152f054de037f73/d2d74/lcp-diagram.png 1152w,
+/static/a4ae1d28cd5c24788152f054de037f73/64756/lcp-diagram.png 1200w"
+            sizes="(max-width: 768px) 100vw, 768px"
+            type="image/png"
+          />
+          <img
+            class="gatsby-resp-image-image"
+            src="/static/a4ae1d28cd5c24788152f054de037f73/fe486/lcp-diagram.png"
+            alt="LCP 다이어그램"
+            title=""
+            loading="lazy"
+            decoding="async"
+            style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+          />
+        </picture>
+  </a>
+    </span></p>
+<p><strong>개선 포인트</strong></p>
+<ul>
+<li>이미지/히어로 미디어의 파일 포맷(WebP/AVIF), 사이즈, 압축</li>
+<li>서버 응답 지연 감소(CDN, 캐시, TTFB 개선)</li>
+<li>크리티컬 CSS 인라인, JS 지연 로딩</li>
+</ul>
+<h3>2.2 CLS 레이아웃 시프트 예시</h3>
+<p>점선 박스는 <strong>레이아웃이 이동된 최종 위치</strong>를 의미합니다.</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 768px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/f85e67bf028f29368c0d90100829bd43/64756/cls-diagram.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 50%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAAB7CAAAewgFu0HU+AAACHElEQVR42n2SXWvUUBCGA/VjpSgVe+OF9EsEwZv+wF64pSAo3oltr0ToTxDaam0FiyiFlUJLt9A2cXezm81mk81JstmP5HFOVtSrDry8mZOZ98zMGYP/LM9zOp0OrqDjurTbbWq1WsG+79NqtXDlu9VsYnsebhTRFESDwV8NQ4t48lPJD209pQgF2ldxjN/rEQlr3w+C4iyUs3BrC7W+TrC5SbqxAScn5FpQi0USHAsTJ+RJX5BAvy9+TC4gEY6U+HJpmpLr2Pl5yTbIS6WCWVmZCLrSWlNaCHyP0TAlFYFULhhKYjYcCkaQyThGEq4hNg5DsqVFchHKpqcLzsvliaBt24QSEARdkkRRrzdkZi7dbrdIHg7b0kFFcEykfhKnZ9KBVLqw+KfCO5MKV1f/VagfwvMc+lEPr9fFVz6B8hhIRPXqJR92DXb277K9N8Xe4UOCrkn8ZIlIhNS9UsHR6gojLahfrniUWOEkDrayC9RDi0RatX69ZnvHYG//Fh8/GRx8fUAaNskWHjMWobHMsODycz0ZjHSQEquYRrvB8ttlZl/MMvdqjlL5Jm9+vCdovmNXhL4c3Gf/820Ovz0i6dpkT58xvjHFYGammOFobW1SYbEqsgaWZXHhXHBaP+WoekTVqWLaluxdTUZyRrX6HdOsyOpc0ajXiE2L8PycRqVCenlJxzSLlTO4xvSOagvDCMfpyGK7jMfZdSn8Bnh7skyy2XkMAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <picture>
+          <source
+              srcset="/static/f85e67bf028f29368c0d90100829bd43/a59e9/cls-diagram.webp 192w,
+/static/f85e67bf028f29368c0d90100829bd43/0ca9f/cls-diagram.webp 384w,
+/static/f85e67bf028f29368c0d90100829bd43/dc9b9/cls-diagram.webp 768w,
+/static/f85e67bf028f29368c0d90100829bd43/e2c2f/cls-diagram.webp 1152w,
+/static/f85e67bf028f29368c0d90100829bd43/cbd37/cls-diagram.webp 1200w"
+              sizes="(max-width: 768px) 100vw, 768px"
+              type="image/webp"
+            />
+          <source
+            srcset="/static/f85e67bf028f29368c0d90100829bd43/3b721/cls-diagram.png 192w,
+/static/f85e67bf028f29368c0d90100829bd43/66595/cls-diagram.png 384w,
+/static/f85e67bf028f29368c0d90100829bd43/fe486/cls-diagram.png 768w,
+/static/f85e67bf028f29368c0d90100829bd43/d2d74/cls-diagram.png 1152w,
+/static/f85e67bf028f29368c0d90100829bd43/64756/cls-diagram.png 1200w"
+            sizes="(max-width: 768px) 100vw, 768px"
+            type="image/png"
+          />
+          <img
+            class="gatsby-resp-image-image"
+            src="/static/f85e67bf028f29368c0d90100829bd43/fe486/cls-diagram.png"
+            alt="CLS 다이어그램"
+            title=""
+            loading="lazy"
+            decoding="async"
+            style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+          />
+        </picture>
+  </a>
+    </span></p>
+<p><strong>개선 포인트</strong></p>
+<ul>
+<li>이미지/광고/임베드에 <strong>고정 크기</strong> 또는 <code class="language-text">aspect-ratio</code> 지정</li>
+<li>웹폰트 로딩 전략(font-display, FOIT/FOUT 방지)</li>
+<li>레이아웃을 바꾸는 애니메이션 대신 <code class="language-text">transform</code>/<code class="language-text">opacity</code> 사용</li>
+</ul>
+<hr>
+<h2>3. 실전 코드 최적화 예제</h2>
+<h3>3.1 이미지 &#x26; 미디어 (LCP, CLS 모두 개선)</h3>
+<p><strong>HTML: 고정 크기와 지연 로딩</strong></p>
+<div class="gatsby-highlight" data-language="html"><pre class="language-html"><code class="language-html"><span class="token comment">&lt;!-- 히어로 이미지: width/height 또는 aspect-ratio 지정 + lazy는 fold 아래에서만 --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span>
+  <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/images/hero.webp<span class="token punctuation">"</span></span>
+  <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Hero<span class="token punctuation">"</span></span>
+  <span class="token attr-name">width</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>1200<span class="token punctuation">"</span></span>
+  <span class="token attr-name">height</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>630<span class="token punctuation">"</span></span>
+  <span class="token attr-name">decoding</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>async<span class="token punctuation">"</span></span>
+  <span class="token attr-name">fetchpriority</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>high<span class="token punctuation">"</span></span>  <span class="token attr-name">&lt;!--</span> <span class="token attr-name">Above-the-fold일</span> <span class="token attr-name">때만</span> <span class="token attr-name">--</span><span class="token punctuation">></span></span>
+/>
+
+<span class="token comment">&lt;!-- 아래 영역 이미지 --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span>
+  <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/images/gallery-1.avif<span class="token punctuation">"</span></span>
+  <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Gallery<span class="token punctuation">"</span></span>
+  <span class="token attr-name">width</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>800<span class="token punctuation">"</span></span>
+  <span class="token attr-name">height</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>600<span class="token punctuation">"</span></span>
+  <span class="token attr-name">loading</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>lazy<span class="token punctuation">"</span></span>
+  <span class="token attr-name">decoding</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>async<span class="token punctuation">"</span></span>
+<span class="token punctuation">/></span></span></code></pre></div>
+<p><strong>CSS: 비율 기반 자리 확보</strong></p>
+<div class="gatsby-highlight" data-language="css"><pre class="language-css"><code class="language-css"><span class="token selector">.card-media</span> <span class="token punctuation">{</span>
+  <span class="token property">aspect-ratio</span><span class="token punctuation">:</span> 4 / 3<span class="token punctuation">;</span> <span class="token comment">/* 고정 크기가 어려울 때 CLS 방지 */</span>
+  <span class="token property">object-fit</span><span class="token punctuation">:</span> cover<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p><strong>Video: 포스터 + 미리 연결</strong></p>
+<div class="gatsby-highlight" data-language="html"><pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>preconnect<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://cdn.example.com<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>video</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://cdn.example.com/intro.webm<span class="token punctuation">"</span></span> <span class="token attr-name">preload</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>metadata<span class="token punctuation">"</span></span> <span class="token attr-name">poster</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/images/intro-poster.jpg<span class="token punctuation">"</span></span> <span class="token attr-name">playsinline</span> <span class="token attr-name">muted</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>video</span><span class="token punctuation">></span></span></code></pre></div>
+<hr>
+<h3>3.2 폰트 최적화 (CLS, LCP)</h3>
+<p><strong>CSS: font-display로 FOIT/FOUT 제어</strong></p>
+<div class="gatsby-highlight" data-language="css"><pre class="language-css"><code class="language-css"><span class="token atrule"><span class="token rule">@font-face</span></span> <span class="token punctuation">{</span>
+  <span class="token property">font-family</span><span class="token punctuation">:</span> <span class="token string">"InterVar"</span><span class="token punctuation">;</span>
+  <span class="token property">src</span><span class="token punctuation">:</span> <span class="token url"><span class="token function">url</span><span class="token punctuation">(</span><span class="token string url">"/fonts/Inter-Variable.woff2"</span><span class="token punctuation">)</span></span> <span class="token function">format</span><span class="token punctuation">(</span><span class="token string">"woff2"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token property">font-weight</span><span class="token punctuation">:</span> 100 900<span class="token punctuation">;</span>
+  <span class="token property">font-style</span><span class="token punctuation">:</span> normal<span class="token punctuation">;</span>
+  <span class="token property">font-display</span><span class="token punctuation">:</span> swap<span class="token punctuation">;</span> <span class="token comment">/* 빠른 텍스트 표시 */</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p><strong>Metrics Override (CLS 감소: 폰트 교체 시 reflow 축소)</strong></p>
+<div class="gatsby-highlight" data-language="css"><pre class="language-css"><code class="language-css"><span class="token atrule"><span class="token rule">@font-face</span></span> <span class="token punctuation">{</span>
+  <span class="token property">font-family</span><span class="token punctuation">:</span> <span class="token string">"Brand Sans"</span><span class="token punctuation">;</span>
+  <span class="token property">src</span><span class="token punctuation">:</span> <span class="token url"><span class="token function">url</span><span class="token punctuation">(</span><span class="token string url">"/fonts/BrandSans.woff2"</span><span class="token punctuation">)</span></span> <span class="token function">format</span><span class="token punctuation">(</span><span class="token string">"woff2"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token property">ascent-override</span><span class="token punctuation">:</span> 90%<span class="token punctuation">;</span>
+  <span class="token property">descent-override</span><span class="token punctuation">:</span> 22%<span class="token punctuation">;</span>
+  <span class="token property">line-gap-override</span><span class="token punctuation">:</span> 0%<span class="token punctuation">;</span>
+  <span class="token property">size-adjust</span><span class="token punctuation">:</span> 102%<span class="token punctuation">;</span>
+  <span class="token property">font-display</span><span class="token punctuation">:</span> optional<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre></div>
+<hr>
+<h3>3.3 JavaScript 실행 최적화 (INP, TBT, TTI)</h3>
+<p><strong>스크립트 로딩 전략</strong></p>
+<div class="gatsby-highlight" data-language="html"><pre class="language-html"><code class="language-html"><span class="token comment">&lt;!-- 크리티컬하지 않은 스크립트는 defer/async --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/js/vendor.js<span class="token punctuation">"</span></span> <span class="token attr-name">defer</span><span class="token punctuation">></span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/js/app.js<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>module<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span> <span class="token comment">&lt;!-- 모듈은 기본 defer와 유사 --></span></code></pre></div>
+<p><strong>긴 태스크 분할 (메인 스레드 점유 단축)</strong></p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">chunkedWork</span><span class="token punctuation">(</span><span class="token parameter">items<span class="token punctuation">,</span> process<span class="token punctuation">,</span> chunk <span class="token operator">=</span> <span class="token number">100</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+  <span class="token keyword">function</span> <span class="token function">step</span><span class="token punctuation">(</span><span class="token parameter">deadline</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>i <span class="token operator">&lt;</span> items<span class="token punctuation">.</span>length <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span>deadline<span class="token punctuation">.</span><span class="token function">timeRemaining</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">0</span> <span class="token operator">||</span> deadline<span class="token punctuation">.</span>didTimeout<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> c <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> c <span class="token operator">&lt;</span> chunk <span class="token operator">&amp;&amp;</span> i <span class="token operator">&lt;</span> items<span class="token punctuation">.</span>length<span class="token punctuation">;</span> c<span class="token operator">++</span><span class="token punctuation">,</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">process</span><span class="token punctuation">(</span>items<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">&lt;</span> items<span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token function">requestIdleCallback</span><span class="token punctuation">(</span>step<span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">timeout</span><span class="token operator">:</span> <span class="token number">200</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token function">requestIdleCallback</span><span class="token punctuation">(</span>step<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// 사용</span>
+<span class="token function">chunkedWork</span><span class="token punctuation">(</span>bigArray<span class="token punctuation">,</span> heavyCompute<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<p><strong>이벤트 핸들러 최적화 (INP 개선)</strong></p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token comment">// 가벼운 핸들러에서 상태만 큐잉하고, 실제 무거운 작업은 idle/timeout으로 미룸</span>
+button<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'click'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token function">queueMicrotask</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token function">startTransition</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// React 18이라면 사용자 입력 우선권 보장</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<hr>
+<h3>3.4 Preload/Prefetch/Preconnect (LCP 단축)</h3>
+<div class="gatsby-highlight" data-language="html"><pre class="language-html"><code class="language-html"><span class="token comment">&lt;!-- LCP에 필요한 히어로 이미지, 핵심 폰트 등을 preload --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>preload<span class="token punctuation">"</span></span> <span class="token attr-name">as</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>image<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/images/hero.webp<span class="token punctuation">"</span></span> <span class="token attr-name">imagesrcset</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/images/hero@2x.webp 2x<span class="token punctuation">"</span></span> <span class="token attr-name">fetchpriority</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>high<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>preload<span class="token punctuation">"</span></span> <span class="token attr-name">as</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>font<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/fonts/Inter-Variable.woff2<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>font/woff2<span class="token punctuation">"</span></span> <span class="token attr-name">crossorigin</span><span class="token punctuation">></span></span>
+
+<span class="token comment">&lt;!-- 다음 페이지 리소스는 prefetch로 힌트 --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>prefetch<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/next/chunk-abc123.js<span class="token punctuation">"</span></span> <span class="token attr-name">as</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>script<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>preconnect<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://cdn.example.com<span class="token punctuation">"</span></span> <span class="token attr-name">crossorigin</span><span class="token punctuation">></span></span></code></pre></div>
+<hr>
+<h3>3.5 Next.js/React 실전 팁 (LCP/INP/CLS)</h3>
+<div class="gatsby-highlight" data-language="tsx"><pre class="language-tsx"><code class="language-tsx"><span class="token comment">// Next.js 13+</span>
+<span class="token comment">// 1) dynamic import로 코드 스플리팅</span>
+<span class="token keyword">import</span> dynamic <span class="token keyword">from</span> <span class="token string">'next/dynamic'</span>
+<span class="token keyword">const</span> HeavyChart <span class="token operator">=</span> <span class="token function">dynamic</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token keyword">import</span><span class="token punctuation">(</span><span class="token string">'./HeavyChart'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> ssr<span class="token operator">:</span> <span class="token boolean">false</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token comment">// 2) 이미지 최적화</span>
+<span class="token keyword">import</span> Image <span class="token keyword">from</span> <span class="token string">'next/image'</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token function">Hero</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Image</span></span>
+        <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/images/hero.webp<span class="token punctuation">"</span></span>
+        <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Hero<span class="token punctuation">"</span></span>
+        <span class="token attr-name">priority</span>  <span class="token comment">// LCP 후보일 때</span>
+        <span class="token attr-name">width</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token number">1200</span><span class="token punctuation">}</span></span>
+        <span class="token attr-name">height</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token number">630</span><span class="token punctuation">}</span></span>
+      <span class="token punctuation">/></span></span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">HeavyChart</span></span> <span class="token punctuation">/></span></span><span class="token plain-text">
+    </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span></span><span class="token punctuation">></span></span>
+  <span class="token punctuation">)</span>
+<span class="token punctuation">}</span></code></pre></div>
+<div class="gatsby-highlight" data-language="tsx"><pre class="language-tsx"><code class="language-tsx"><span class="token comment">// React 18 concurrent 특성 활용 (INP 개선)</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> startTransition <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react'</span>
+<span class="token keyword">function</span> <span class="token function">onFilterChange</span><span class="token punctuation">(</span>next<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">startTransition</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token comment">// 무거운 상태 변경은 낮은 우선순위로</span>
+    <span class="token function">setFilter</span><span class="token punctuation">(</span>next<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span></code></pre></div>
+<hr>
+<h3>3.6 측정과 모니터링 (RUM)</h3>
+<div class="gatsby-highlight" data-language="html"><pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>module<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
+  <span class="token keyword">import</span> <span class="token punctuation">{</span> onCLS<span class="token punctuation">,</span> onINP<span class="token punctuation">,</span> onLCP <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'https://unpkg.com/web-vitals@4/dist/web-vitals.attribution.js'</span>
+  <span class="token keyword">function</span> <span class="token function">sendToAnalytics</span><span class="token punctuation">(</span><span class="token parameter">metric</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// fetch/beacon 등으로 서버에 전송</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>metric<span class="token punctuation">.</span>name<span class="token punctuation">,</span> metric<span class="token punctuation">.</span>value<span class="token punctuation">,</span> metric<span class="token punctuation">.</span>attribution<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+  <span class="token function">onCLS</span><span class="token punctuation">(</span>sendToAnalytics<span class="token punctuation">)</span>
+  <span class="token function">onINP</span><span class="token punctuation">(</span>sendToAnalytics<span class="token punctuation">)</span>
+  <span class="token function">onLCP</span><span class="token punctuation">(</span>sendToAnalytics<span class="token punctuation">)</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span></code></pre></div>
+<hr>
+<h2>4. 체크리스트</h2>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> LCP ≤ 2.5s, INP ≤ 200ms, CLS ≤ 0.1</li>
+<li class="task-list-item"><input type="checkbox" disabled> 히어로 미디어: preload + priority, 고정 크기 지정</li>
+<li class="task-list-item"><input type="checkbox" disabled> 비동기 스크립트 로딩, 긴 태스크 분할</li>
+<li class="task-list-item"><input type="checkbox" disabled> 폰트: font-display + metrics override</li>
+<li class="task-list-item"><input type="checkbox" disabled> 이미지/광고/임베드: width/height or aspect-ratio</li>
+<li class="task-list-item"><input type="checkbox" disabled> RUM 기반 상시 모니터링(Web Vitals API)</li>
+</ul>
+<hr>
+<h2>5. 부록: 문제 해결 트러블슈팅 힌트</h2>
+<ul>
+<li><strong>LCP가 높음</strong>: TTFB 확인 → 이미지 포맷/크기/압축 → preload → 크리티컬 CSS 인라인</li>
+<li><strong>INP가 높음</strong>: 이벤트 핸들러 무거움 → 긴 태스크 분할 → 메모리 누수/리스너 중복 확인</li>
+<li><strong>CLS가 높음</strong>: 사이즈 미지정 요소 탐지 → 폰트 교체 시 reflow → 애니메이션 속성 점검</li>
+</ul></div><style data-emotion="css hx9xpc">@media (max-width: 768px){.css-hx9xpc{padding:0 20px;}}</style><div class="css-hx9xpc e1gqsjds0"></div><style data-emotion="css 1yungzt">.css-1yungzt{position:relative;width:100%;padding:40px 0;background:linear-gradient(180deg, rgba(66, 105, 78, 0.05) 0%, rgba(73, 110, 93, 0.1) 100%);border-top:1px solid rgba(66, 105, 78, 0.1);}</style><footer class="css-1yungzt e1oae0v84"><style data-emotion="css 1uamirr">.css-1uamirr{max-width:960px;margin:0 auto;padding:0 20px;text-align:center;}</style><div class="css-1uamirr e1oae0v83"><style data-emotion="css 1ghcw8y">.css-1ghcw8y{font-size:16px;line-height:1.6;color:#426950;margin-bottom:10px;-webkit-transition:color 0.3s ease;transition:color 0.3s ease;}.css-1ghcw8y:hover{color:#2c4735;}@media (max-width: 768px){.css-1ghcw8y{font-size:14px;}}</style><p class="css-1ghcw8y e1oae0v82">Thank You for Visiting My Blog, Have a Good Day <style data-emotion="css lzb4fa">.css-lzb4fa{display:inline-block;-webkit-transition:-webkit-transform 0.3s ease;transition:transform 0.3s ease;}.css-lzb4fa:hover{-webkit-transform:scale(1.2) rotate(10deg);-moz-transform:scale(1.2) rotate(10deg);-ms-transform:scale(1.2) rotate(10deg);transform:scale(1.2) rotate(10deg);}</style><span class="css-lzb4fa e1oae0v80">🌿</span></p><style data-emotion="css y3pbt1">.css-y3pbt1{font-size:14px;color:#666;margin-top:5px;}@media (max-width: 768px){.css-y3pbt1{font-size:12px;}}</style><p class="css-y3pbt1 e1oae0v81">© 2024 Developer LIM.</p></div></footer></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/web-vitals-guide-with-diagrams/";/*]]>*/</script><!-- slice-start id="_gatsby-scripts-1" -->
+          <script
+            id="gatsby-chunk-mapping"
+          >
+            window.___chunkMapping="{\"app\":[\"/app-5ab049b1a7d9afaa2ddb.js\"],\"component---cache-caches-gatsby-plugin-offline-app-shell-js\":[\"/component---cache-caches-gatsby-plugin-offline-app-shell-js-27e0e967a98f3dffdf9e.js\"],\"component---src-pages-404-tsx\":[\"/component---src-pages-404-tsx-198e8648605be5d74a6a.js\"],\"component---src-pages-index-tsx\":[\"/component---src-pages-index-tsx-0b1030ebf0c9df342d73.js\"],\"component---src-pages-info-tsx\":[\"/component---src-pages-info-tsx-91ad86a40368117a0a55.js\"],\"component---src-templates-post-template-tsx\":[\"/component---src-templates-post-template-tsx-a5c59433344b41e75835.js\"]}";
+          </script>
+        <script>window.___webpackCompilationHash="7af849cfb4846b220a30";</script><script src="/webpack-runtime-71d02f8e664a0760dfc0.js" async></script><script src="/framework-9d608f77b5c9a88afabd.js" async></script><script src="/app-5ab049b1a7d9afaa2ddb.js" async></script><!-- slice-end id="_gatsby-scripts-1" --></body></html>
