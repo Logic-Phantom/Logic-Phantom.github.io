@@ -1,0 +1,255 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><meta name="generator" content="Gatsby 5.14.0"/><meta name="theme-color" content="#426950"/><meta data-react-helmet="true" name="description" content="코딩테스트 도전기"/><meta data-react-helmet="true" name="viewport" content="width=device-width, initial-scale=1.0"/><meta data-react-helmet="true" http-equiv="Content-Type" content="text/html;charset=UTF-8"/><meta data-react-helmet="true" property="og:type" content="website"/><meta data-react-helmet="true" property="og:title" content="웹개발자를 위한 코딩테스트 완벽 가이드"/><meta data-react-helmet="true" property="og:description" content="코딩테스트 도전기"/><meta data-react-helmet="true" property="og:image" content="/static/401383d6518e74015a765c59b566363e/codeTest.png"/><meta data-react-helmet="true" property="og:url"/><meta data-react-helmet="true" property="og:site_name" content="웹개발자를 위한 코딩테스트 완벽 가이드"/><meta data-react-helmet="true" name="twitter:card" content="summary"/><meta data-react-helmet="true" name="twitter:title" content="웹개발자를 위한 코딩테스트 완벽 가이드"/><meta data-react-helmet="true" name="twitter:description" content="코딩테스트 도전기"/><meta data-react-helmet="true" name="twitter:image" content="/static/401383d6518e74015a765c59b566363e/codeTest.png"/><meta data-react-helmet="true" name="twitter:site" content="@사용자이름"/><meta data-react-helmet="true" name="twitter:creator" content="@사용자이름"/><style data-href="/styles.9e907bc32054b7771552.css" data-identity="gatsby-global-css">code[class*=language-],pre[class*=language-]{word-wrap:normal;background:none;color:#ccc;font-family:Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;font-size:1em;-webkit-hyphens:none;hyphens:none;line-height:1.5;tab-size:4;text-align:left;white-space:pre;word-break:normal;word-spacing:normal}pre[class*=language-]{margin:.5em 0;overflow:auto;padding:1em}:not(pre)>code[class*=language-],pre[class*=language-]{background:#2d2d2d}:not(pre)>code[class*=language-]{border-radius:.3em;padding:.1em;white-space:normal}.token.block-comment,.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#999}.token.punctuation{color:#ccc}.token.attr-name,.token.deleted,.token.namespace,.token.tag{color:#e2777a}.token.function-name{color:#6196cc}.token.boolean,.token.function,.token.number{color:#f08d49}.token.class-name,.token.constant,.token.property,.token.symbol{color:#f8c555}.token.atrule,.token.builtin,.token.important,.token.keyword,.token.selector{color:#cc99cd}.token.attr-value,.token.char,.token.regex,.token.string,.token.variable{color:#7ec699}.token.entity,.token.operator,.token.url{color:#67cdcc}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}.token.inserted{color:green}</style><link rel="sitemap" type="application/xml" href="/sitemap-index.xml"/><link rel="canonical" href="https://logic-phantom.github.io/webdev-codingtest-guide/" data-baseprotocol="https:" data-basehost="logic-phantom.github.io"/><link rel="icon" href="/favicon-32x32.png" type="image/png"/><link rel="manifest" href="/manifest.webmanifest" crossorigin="use-credentials"/><link rel="apple-touch-icon" sizes="192x192" href="/contents/forestLim.png"/><link rel="apple-touch-icon" sizes="512x512" href="/contents/forestLim.png"/><title data-react-helmet="true">웹개발자를 위한 코딩테스트 완벽 가이드</title><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){const t=e.target;if(void 0===t.dataset.mainImage)return;if(void 0===t.dataset.gatsbyImageSsr)return;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><style data-emotion="css zyllbl">.css-zyllbl{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;height:100vh;}</style><div class="css-zyllbl e1strnqo0"><style data-emotion="css-global kxm5mf">@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap');*{padding:0;margin:0;box-sizing:border-box;font-family:'Nanum Myeongjo',serif;}html,body,#___gatsby{height:100%;}a,a:hover{color:inherit;-webkit-text-decoration:none;text-decoration:none;cursor:pointer;}</style><style data-emotion="css 16cz9yp">.css-16cz9yp{position:relative;width:100%;height:400px;}@media (max-width: 768px){.css-16cz9yp{height:300px;}}</style><div class="css-16cz9yp e1opi4mu1"><style data-emotion="css 1bjn9yo">.css-1bjn9yo{z-index:-1;width:100%;height:400px;object-fit:cover;-webkit-filter:brightness(0.25);filter:brightness(0.25);}@media (max-width: 768px){.css-1bjn9yo{height:300px;}}</style><div data-gatsby-image-wrapper="" style="position:absolute" class="gatsby-image-wrapper gatsby-image-wrapper-constrained css-1bjn9yo e1opi4mu0"><div style="max-width:1536px;display:block"><img alt="" role="presentation" aria-hidden="true" src="data:image/svg+xml;charset=utf-8,%3Csvg%20height=&#x27;1024&#x27;%20width=&#x27;1536&#x27;%20xmlns=&#x27;http://www.w3.org/2000/svg&#x27;%20version=&#x27;1.1&#x27;%3E%3C/svg%3E" style="max-width:100%;display:block;position:static"/></div><img aria-hidden="true" data-placeholder-image="" style="opacity:1;transition:opacity 500ms linear" decoding="async" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAIAAAAmMtkJAAAACXBIWXMAAAsTAAALEwEAmpwYAAACx0lEQVR42nWSyU9TURTG31/gkMjGhYkL9ybsQBGMaIiKikYlEgGVMRhAqUQ6WVqQocxSCq+tdKDD6yvQPkHBSG0AtbUtlA6vAxSQYIglYljQFtpebynGjSZfvsXJ/eXc852DqNzgv/IA2QqQ+fd9+Y/8QOoHcn/8AfJvjIwpvUBt2/kk0nyVjJpQzPRaYxKqjajKJB6xiNRT+LTCCxDMDXAf0CzGpfbElK6YkowpnFElLBo31xl1W93tAQ5zs70p7q0vA23Nv5pZ9k6+3AcQhSsqMG3zP2/1zf6UOYLEGsCXoqg5qHQDzAN4Y95+rZOnc70acUDnEaTw3WLvsF00vYFBuNsQSKuUppYLTz9E0ysGUu7R7zdqhNY9qT0ing8V9hiK+mbyu/Q5HOIGW3eNiV9njV6m4xUCI/wv0q4PZNGJ3KY3Gc+JtJzKlqqypzSuyBYRWcOwc9vkGndijaF2vdCQbK23eXyZo/Wxtb4u/YbaG4d/XKRqr7LGkqtGxQI5WFB9MVslJJA7IjC5kWWgJHfL+TN3ONoHHe9Lew1FPXq5M7hfB4jYFmqa/M4mVlKrsdbWAR2/m6Uw40sAc8cgDMNTkpFO/ToNs7OGPQzc2TH1TboQhvXEqmLj6yC3kThypvrUFeaJLEbSBVrL29XhJSB3RjAvoKocNWILR+d61PWhRmIp4xmYGhKuBvIInBs1bZ/Mrj+eWXf0PO1wBi3pXE1WcUsJazCP0kMXfXw2ZCtom6zony3gTkDP507UDs0fwLpVQJHOHUqpOpZOycxj3SpuSL7LvnT7yc1CakZ2eb3cqIH35NoVWXeE1pDQEsQ8UZl9L3FLCPxeI7GYWso/W8IToHLhgORxgziP0ltQyyukDghNW3i8SVRgCaPm0KBtF64A6gCGoam9cProkCOCWsOCuRDMA04L01Y4I4lgVPsHg7n/Ygn4N8lxIFXR1zqDAAAAAElFTkSuQmCC" alt=""/><picture><source type="image/webp" data-srcset="/static/401383d6518e74015a765c59b566363e/b642b/codeTest.webp 384w,/static/401383d6518e74015a765c59b566363e/c9564/codeTest.webp 768w,/static/401383d6518e74015a765c59b566363e/18b4b/codeTest.webp 1536w" sizes="(min-width: 1536px) 1536px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 1536px) 1536px, 100vw" decoding="async" loading="lazy" data-src="/static/401383d6518e74015a765c59b566363e/4d776/codeTest.png" data-srcset="/static/401383d6518e74015a765c59b566363e/4a410/codeTest.png 384w,/static/401383d6518e74015a765c59b566363e/f5189/codeTest.png 768w,/static/401383d6518e74015a765c59b566363e/4d776/codeTest.png 1536w" alt="thumbnail"/></picture><noscript><picture><source type="image/webp" srcSet="/static/401383d6518e74015a765c59b566363e/b642b/codeTest.webp 384w,/static/401383d6518e74015a765c59b566363e/c9564/codeTest.webp 768w,/static/401383d6518e74015a765c59b566363e/18b4b/codeTest.webp 1536w" sizes="(min-width: 1536px) 1536px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 1536px) 1536px, 100vw" decoding="async" loading="lazy" src="/static/401383d6518e74015a765c59b566363e/4d776/codeTest.png" srcSet="/static/401383d6518e74015a765c59b566363e/4a410/codeTest.png 384w,/static/401383d6518e74015a765c59b566363e/f5189/codeTest.png 768w,/static/401383d6518e74015a765c59b566363e/4d776/codeTest.png 1536w" alt="thumbnail"/></picture></noscript><script type="module">const t="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;if(t){const t=document.querySelectorAll("img[data-main-image]");for(let e of t){e.dataset.src&&(e.setAttribute("src",e.dataset.src),e.removeAttribute("data-src")),e.dataset.srcset&&(e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset"));const t=e.parentNode.querySelectorAll("source[data-srcset]");for(let e of t)e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset");e.complete&&(e.style.opacity=1,e.parentNode.parentNode.querySelector("[data-placeholder-image]").style.opacity=0)}}</script></div><style data-emotion="css m1156n">.css-m1156n{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;width:768px;height:100%;margin:0 auto;padding:60px 0;color:#ffffff;}@media (max-width: 768px){.css-m1156n{width:100%;padding:40px 20px;}}</style><div class="css-m1156n e1st1jau4"><style data-emotion="css gywgo7">.css-gywgo7{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:#ffffff;color:#000000;font-size:22px;cursor:pointer;box-shadow:0 0 10px rgba(0, 0, 0, 0.3);}@media (max-width: 768px){.css-gywgo7{width:30px;height:30px;font-size:18px;}}</style><div class="css-gywgo7 e1st1jau3"><style data-emotion="css 1ij64l8">.css-1ij64l8{display:inline-block;width:12px;height:12px;border-left:2px solid #000000;border-bottom:2px solid #000000;-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg);-ms-transform:rotate(45deg);transform:rotate(45deg);}</style><span class="css-1ij64l8 e1st1jau2"></span></div><style data-emotion="css gn4qtp">.css-gn4qtp{display:-webkit-box;overflow:hidden;overflow-wrap:break-word;margin-top:auto;text-overflow:ellipsis;white-space:normal;-webkit-line-clamp:2;-webkit-box-orient:vertical;font-size:45px;font-weight:800;}@media (max-width: 768px){.css-gn4qtp{font-size:30px;}}</style><div class="css-gn4qtp e1st1jau1">웹개발자를 위한 코딩테스트 완벽 가이드</div><style data-emotion="css 3gcnt2">.css-3gcnt2{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;justify-content:space-between;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;margin-top:10px;font-size:18px;font-weight:700;}@media (max-width: 768px){.css-3gcnt2{-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-align-items:flex-start;-webkit-box-align:flex-start;-ms-flex-align:flex-start;align-items:flex-start;font-size:15px;font-weight:400;}}</style><div class="css-3gcnt2 e1st1jau0"><div>ETC</div><div>2025.10.15.</div></div></div></div><style data-emotion="css 12g9cpd">.css-12g9cpd{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;width:768px;margin:0 auto;padding:200px 0 0 0;word-break:break-all;line-height:1.8;font-size:16px;font-weight:400;}.css-12g9cpd p{padding:3px 0;}.css-12g9cpd h1,.css-12g9cpd h2,.css-12g9cpd h3{font-weight:800;margin-bottom:30px;}.css-12g9cpd *+h1,.css-12g9cpd *+h2,.css-12g9cpd *+h3{margin-top:80px;}.css-12g9cpd hr+h1,.css-12g9cpd hr+h2,.css-12g9cpd hr+h3{margin-top:0;}.css-12g9cpd h1{font-size:30px;}.css-12g9cpd h2{font-size:25px;}.css-12g9cpd h3{font-size:20px;}.css-12g9cpd blockquote{margin:30px 0;padding:5px 15px;border-left:2px solid #000000;font-weight:800;}.css-12g9cpd ol,.css-12g9cpd ul{margin-left:20px;padding:30px 0;}.css-12g9cpd hr{border:1px solid #000000;margin:100px 0;}.css-12g9cpd a{color:#4263eb;-webkit-text-decoration:underline;text-decoration:underline;}.css-12g9cpd pre[class*='language-']{margin:30px 0;padding:15px;font-size:15px;}.css-12g9cpd pre[class*='language-']::-webkit-scrollbar-thumb{background:rgba(255, 255, 255, 0.5);border-radius:3px;}.css-12g9cpd code[class*='language-'],.css-12g9cpd pre[class*='language-']{tab-size:2;}@media (max-width: 768px){.css-12g9cpd{width:100%;padding:140px 20px 0 20px;line-height:1.6;font-size:14px;}.css-12g9cpd h1{font-size:23px;}.css-12g9cpd h2{font-size:20px;}.css-12g9cpd h3{font-size:17px;}.css-12g9cpd img{width:100%;}.css-12g9cpd hr{margin:50px 0;}}</style><div class="css-12g9cpd e1ijh0y10"><h1>웹개발자를 위한 코딩테스트 완벽 가이드</h1>
+<blockquote>
+<p><strong>“실무에서 잘하는 개발자”와 “코딩테스트를 통과하는 개발자”는
+다릅니다.</strong><br>
+하지만 둘의 차이를 이해하면, 코딩테스트는 오히려 당신의 강점이 될 수
+있습니다.</p>
+</blockquote>
+<hr>
+<h2>1. 들어가며</h2>
+<p>웹 개발자는 주로 브라우저 환경에서 데이터를 주고받거나 UI를 구현하는
+일에 익숙합니다.<br>
+그러나 기업의 코딩테스트는 **“논리적 사고력”과 “알고리즘 이해”**를
+평가하기 때문에<br>
+처음 접할 때 매우 낯설게 느껴집니다.</p>
+<p>이 문서는 <strong>실무형 웹 개발자가 코딩테스트를 준비하는 현실적인 로드맵</strong>을
+제공합니다.<br>
+단순히 문제풀이가 아니라, 왜 그런 과정을 거쳐야 하는지 원리부터 심화까지
+설명합니다.</p>
+<hr>
+<h2>2. 왜 코딩테스트를 하는가?</h2>
+<p>기업이 코딩테스트를 하는 이유는 단순합니다.</p>
+<ul>
+<li>✅ <strong>논리적 문제 해결 능력 평가</strong></li>
+<li>✅ <strong>코드 품질과 구조적 사고 확인</strong></li>
+<li>✅ <strong>한정된 시간 내에 효율적으로 사고하는 습관 확인</strong></li>
+<li>✅ <strong>언어의 기본 문법, 자료구조, 알고리즘 이해도 파악</strong></li>
+</ul>
+<p>즉, “웹 기술을 얼마나 많이 아는가”가 아니라<br>
+“개발자로서 기본기를 얼마나 탄탄히 갖췄는가”를 보는 과정입니다.</p>
+<hr>
+<h2>3. 코딩테스트의 기본 구성</h2>
+<hr>
+<p>유형                    설명                    예시</p>
+<hr>
+<p><strong>알고리즘 문제</strong>       배열, 문자열, 정렬,     백준, 프로그래머스
+탐색, 그래프, DP 등</p>
+<p><strong>SQL 문제</strong>            데이터 조회 및 JOIN,    LeetCode SQL
+GROUP BY 등</p>
+<p><strong>프로그래밍 과제형     실제 웹 또는 API 구축   사내 과제형
+테스트</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>기술면접 연계형</strong>     테스트 코드 + 설계 질문 대기업 및 테크기업 중심</th>
+</tr>
+</thead>
+</table>
+<hr>
+<h2>4. 웹개발자의 시선에서 보는 “코딩테스트”</h2>
+<h3>💡 현실적인 어려움</h3>
+<ol>
+<li><strong>실무에서는 알고리즘을 거의 안 쓴다</strong>
+<ul>
+<li>대부분 라이브러리나 API로 해결함.</li>
+<li>코딩테스트는 기본기를 묻기 때문에 직접 구현해야 함.</li>
+</ul>
+</li>
+<li><strong>언어보다 논리가 중요하다</strong>
+<ul>
+<li>“JavaScript로만 풀 수 있을까?” 라는 고민이 많지만, 대부분의
+기업은 언어 선택 자유.</li>
+<li><strong>기본 구조는 같기 때문에</strong>, JS로 연습해도 충분함.</li>
+</ul>
+</li>
+<li><strong>시간 압박</strong>
+<ul>
+<li>문제 이해 + 구현 + 디버깅까지 1시간 안에 끝내야 하는 경우가
+많음.</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2>5. 단계별 준비 로드맵</h2>
+<h3>🔹 1단계: 기초 문법 및 입출력 익히기</h3>
+<ul>
+<li>언어: <strong>JavaScript, Python, Java</strong> 중 하나 선택</li>
+<li>학습 목표:
+<ul>
+<li>배열, 객체, 반복문, 함수의 구조를 정확히 이해</li>
+<li>입출력(<code class="language-text">stdin</code>, <code class="language-text">stdout</code>) 처리 방식 숙지</li>
+</ul>
+</li>
+<li>추천 자료:
+<ul>
+<li>프로그래머스 “코딩테스트 입문”</li>
+<li>백준 단계별 문제 1~5단계</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3>🔹 2단계: 자료구조 기본기</h3>
+<p>자료구조는 문제를 해결하는 “도구”입니다.<br>
+특히 다음은 대부분의 테스트에서 반복 등장합니다.</p>
+<p>자료구조        설명               예시 문제</p>
+<hr>
+<p>배열(Array)     순서 있는 데이터   부분합, 슬라이딩 윈도우
+스택(Stack)     LIFO 구조          괄호 검사
+큐(Queue)       FIFO 구조          BFS 탐색
+해시(HashMap)   키-값 저장         중복 검사
+트리(Tree)      계층적 구조        이진탐색트리, DFS
+그래프(Graph)   노드-간선 연결     경로 탐색</p>
+<p>📘 <strong>실무 팁:</strong><br>
+SPA(React, Vue 등) 개발에서도 상태 관리 시 트리 구조나 해시 개념을 자주
+활용합니다.<br>
+즉, 자료구조는 실무에도 직결됩니다.</p>
+<hr>
+<h3>🔹 3단계: 알고리즘 사고 훈련</h3>
+<h4>(1) 정렬 &#x26; 탐색</h4>
+<ul>
+<li>선택/삽입/퀵/병합 정렬</li>
+<li>이진 탐색 (Binary Search)</li>
+<li>투포인터, 슬라이딩 윈도우</li>
+</ul>
+<h4>(2) 재귀와 DFS/BFS</h4>
+<ul>
+<li>트리/그래프 순회</li>
+<li>백트래킹 문제 (예: N-Queen, 경로 탐색)</li>
+</ul>
+<h4>(3) 동적계획법 (Dynamic Programming)</h4>
+<ul>
+<li>점화식 기반 최적화</li>
+<li>예: 피보나치, 최대 부분합, 최소 비용 경로</li>
+</ul>
+<h4>(4) 그리디 &#x26; 완전탐색</h4>
+<ul>
+<li>매 순간 최선의 선택으로 최적해 접근</li>
+<li>예: 동전 교환, 회의실 배정</li>
+</ul>
+<hr>
+<h2>6. 웹개발자에게 맞는 학습 전략</h2>
+<hr>
+<p>전략                                설명</p>
+<hr>
+<p><strong>1. 쉬운 문제부터 꾸준히</strong>         난이도 상관없이 “매일 1문제”가 중요</p>
+<p><strong>2. 문제 풀이 후 ‘복기’</strong>          단순히 맞췄다고 끝내지 말고, 다른
+풀이를 비교</p>
+<p><strong>3. 자바스크립트로 연습</strong>          배열, Map, Set 등 JS의 내장 객체로
+직접 구현</p>
+<p><strong>4. 실무 연결 시켜보기</strong>           예: BFS → UI 트리 탐색 / 정렬 →
+목록 정렬 로직</p>
+<table>
+<thead>
+<tr>
+<th><strong>5. 노트에 정리</strong>                  자주 나오는 패턴은 직접 손으로 쓰기</th>
+</tr>
+</thead>
+</table>
+<hr>
+<h2>7. 코딩테스트 실전 전략</h2>
+<h3>🧠 문제 접근 3단계</h3>
+<ol>
+<li><strong>문제 구조 파악</strong> – 입력/출력, 제약조건 분석\</li>
+<li><strong>로직 설계</strong> – 자료구조 선택, 흐름도 작성\</li>
+<li><strong>구현 및 테스트</strong> – 예제 입력부터 단계별 검증</li>
+</ol>
+<h3>⚙️ 시간복잡도(Complexity)</h3>
+<ul>
+<li><strong>O(1)</strong> : 즉시 처리 (ex. 배열 인덱스 접근)</li>
+<li><strong>O(N)</strong> : 선형 탐색</li>
+<li><strong>O(N log N)</strong> : 정렬</li>
+<li><strong>O(N²)</strong> : 중첩 반복문 (가능하면 피할 것)</li>
+</ul>
+<h3>💬 디버깅 팁</h3>
+<ul>
+<li><code class="language-text">console.log()</code>로 단계별 값 출력</li>
+<li>“예상과 다르게 동작하는 구간”에 주석 남기기</li>
+<li>입력을 직접 바꿔보며 테스트</li>
+</ul>
+<hr>
+<h2>8. 실무형 과제 테스트 대비</h2>
+<p>일부 기업은 알고리즘보다 <strong>과제형 문제(Project Test)</strong> 를 출제합니다.<br>
+예를 들어:</p>
+<ul>
+<li>“Todo 웹앱을 만들어라”\</li>
+<li>“주어진 API 데이터를 렌더링하고 필터링 기능을 구현하라”</li>
+</ul>
+<p>이 경우 평가 포인트는 다음과 같습니다.</p>
+<p>항목          설명</p>
+<hr>
+<p>코드 구조     MVC, 컴포넌트 분리 등 아키텍처적 사고
+재사용성      함수/컴포넌트 분리
+네이밍        변수, 함수명 가독성
+에러 핸들링   예외 상황 처리
+UI 완성도     직관적이고 깔끔한 구현</p>
+<p>📘 <strong>추천 연습법:</strong>\</p>
+<ul>
+<li>1시간 제한을 두고 “간단한 CRUD 앱”을 만들어보기\</li>
+<li>코드 리뷰를 받아보거나 직접 피드백 작성하기</li>
+</ul>
+<hr>
+<h2>9. 기술 면접과의 연결</h2>
+<p>코딩테스트 이후에는 기술 면접이 이어집니다.<br>
+다음 질문들은 거의 필수적으로 등장합니다.</p>
+<p>질문                                       포인트</p>
+<hr>
+<p>“시간복잡도가 어떻게 되나요?”              Big-O 개념 이해
+“이 문제를 다른 방식으로 풀 수 있나요?”    대안 사고력
+“변수를 이렇게 설계한 이유가 있나요?”      코드 구조 이해도
+“React에서 이 자료구조가 왜 유용한가요?”   실무 연결력</p>
+<hr>
+<h2>10. 심화: 코딩테스트를 넘어서</h2>
+<ul>
+<li><strong>Clean Code 원칙 적용</strong>
+<ul>
+<li>함수 하나는 하나의 역할만</li>
+<li>의미 있는 이름 짓기</li>
+<li>중복 제거</li>
+</ul>
+</li>
+<li><strong>테스트 코드(TDD) 습관화</strong>
+<ul>
+<li><code class="language-text">Jest</code>나 <code class="language-text">Mocha</code>로 로직 검증</li>
+</ul>
+</li>
+<li><strong>AI 보조 활용</strong>
+<ul>
+<li>ChatGPT, Copilot 등을 활용해 코드 리뷰 및 리팩토링 연습</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2>11. 마무리하며</h2>
+<p>웹개발자에게 코딩테스트는<br>
+“나의 기술력을 보여주는 새로운 언어”입니다.</p>
+<p>문제풀이 자체가 목적이 아니라,<br>
+<strong>내 사고력을 코드로 명확히 표현하는 과정</strong>이라 생각하세요.<br>
+꾸준히 연습하면 어느 순간<br>
+“문제를 읽자마자 로직이 머릿속에 그려지는 순간”이 옵니다.</p>
+<hr>
+<h2>📚 추천 학습 리소스</h2>
+<hr>
+<p>구분                 사이트                                      특징</p>
+<hr>
+<p>알고리즘 연습        <a href="https://programmers.co.kr" target="_blank" rel="nofollow">프로그래머스</a>   한국어 인터페이스,
+난이도별 구성</p>
+<p>실전 문제            <a href="https://www.acmicpc.net" target="_blank" rel="nofollow">백준</a>             기업 출제 스타일</p>
+<p>과제형 연습          <a href="https://www.frontendmentor.io/" target="_blank" rel="nofollow">Frontend                                   실무형 UI 구현
+Mentor</a></p>
+<h2>알고리즘 시각화      <a href="https://visualgo.net/en" target="_blank" rel="nofollow">VisuAlgo</a>         알고리즘 동작 원리
+시각화</h2>
+<hr>
+<p><strong>💬 결론:</strong><br>
+웹 개발자는 이미 충분히 논리적 사고력을 가지고 있습니다.<br>
+다만, 코딩테스트는 “그 사고를 정형화된 틀로 표현하는 연습”일 뿐입니다.<br>
+조금의 훈련으로 누구나 통과할 수 있습니다.</p>
+<blockquote>
+<p>“웹개발자는 문제 해결자다.<br>
+알고리즘은 그 해결력을 증명하는 언어일 뿐이다.”</p>
+</blockquote></div><style data-emotion="css hx9xpc">@media (max-width: 768px){.css-hx9xpc{padding:0 20px;}}</style><div class="css-hx9xpc e1gqsjds0"></div><style data-emotion="css 1yungzt">.css-1yungzt{position:relative;width:100%;padding:40px 0;background:linear-gradient(180deg, rgba(66, 105, 78, 0.05) 0%, rgba(73, 110, 93, 0.1) 100%);border-top:1px solid rgba(66, 105, 78, 0.1);}</style><footer class="css-1yungzt e1oae0v84"><style data-emotion="css 1uamirr">.css-1uamirr{max-width:960px;margin:0 auto;padding:0 20px;text-align:center;}</style><div class="css-1uamirr e1oae0v83"><style data-emotion="css 1ghcw8y">.css-1ghcw8y{font-size:16px;line-height:1.6;color:#426950;margin-bottom:10px;-webkit-transition:color 0.3s ease;transition:color 0.3s ease;}.css-1ghcw8y:hover{color:#2c4735;}@media (max-width: 768px){.css-1ghcw8y{font-size:14px;}}</style><p class="css-1ghcw8y e1oae0v82">Thank You for Visiting My Blog, Have a Good Day <style data-emotion="css lzb4fa">.css-lzb4fa{display:inline-block;-webkit-transition:-webkit-transform 0.3s ease;transition:transform 0.3s ease;}.css-lzb4fa:hover{-webkit-transform:scale(1.2) rotate(10deg);-moz-transform:scale(1.2) rotate(10deg);-ms-transform:scale(1.2) rotate(10deg);transform:scale(1.2) rotate(10deg);}</style><span class="css-lzb4fa e1oae0v80">🌿</span></p><style data-emotion="css y3pbt1">.css-y3pbt1{font-size:14px;color:#666;margin-top:5px;}@media (max-width: 768px){.css-y3pbt1{font-size:12px;}}</style><p class="css-y3pbt1 e1oae0v81">© 2024 Developer LIM.</p></div></footer></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/webdev-codingtest-guide/";/*]]>*/</script><!-- slice-start id="_gatsby-scripts-1" -->
+          <script
+            id="gatsby-chunk-mapping"
+          >
+            window.___chunkMapping="{\"app\":[\"/app-5ab049b1a7d9afaa2ddb.js\"],\"component---cache-caches-gatsby-plugin-offline-app-shell-js\":[\"/component---cache-caches-gatsby-plugin-offline-app-shell-js-27e0e967a98f3dffdf9e.js\"],\"component---src-pages-404-tsx\":[\"/component---src-pages-404-tsx-198e8648605be5d74a6a.js\"],\"component---src-pages-index-tsx\":[\"/component---src-pages-index-tsx-0b1030ebf0c9df342d73.js\"],\"component---src-pages-info-tsx\":[\"/component---src-pages-info-tsx-91ad86a40368117a0a55.js\"],\"component---src-templates-post-template-tsx\":[\"/component---src-templates-post-template-tsx-a5c59433344b41e75835.js\"]}";
+          </script>
+        <script>window.___webpackCompilationHash="7af849cfb4846b220a30";</script><script src="/webpack-runtime-71d02f8e664a0760dfc0.js" async></script><script src="/framework-9d608f77b5c9a88afabd.js" async></script><script src="/app-5ab049b1a7d9afaa2ddb.js" async></script><!-- slice-end id="_gatsby-scripts-1" --></body></html>
