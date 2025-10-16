@@ -1,0 +1,348 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><meta name="generator" content="Gatsby 5.14.0"/><meta name="theme-color" content="#426950"/><meta data-react-helmet="true" name="description" content="구조 파악해보기"/><meta data-react-helmet="true" name="viewport" content="width=device-width, initial-scale=1.0"/><meta data-react-helmet="true" http-equiv="Content-Type" content="text/html;charset=UTF-8"/><meta data-react-helmet="true" property="og:type" content="website"/><meta data-react-helmet="true" property="og:title" content="React 스크립트 구조 vs 순수 JavaScript 스크립트 구조 완벽 비교"/><meta data-react-helmet="true" property="og:description" content="구조 파악해보기"/><meta data-react-helmet="true" property="og:image" content="/static/4e07064db6ae2e29ccb9e031dcb6e2b4/ReactScr.png"/><meta data-react-helmet="true" property="og:url"/><meta data-react-helmet="true" property="og:site_name" content="React 스크립트 구조 vs 순수 JavaScript 스크립트 구조 완벽 비교"/><meta data-react-helmet="true" name="twitter:card" content="summary"/><meta data-react-helmet="true" name="twitter:title" content="React 스크립트 구조 vs 순수 JavaScript 스크립트 구조 완벽 비교"/><meta data-react-helmet="true" name="twitter:description" content="구조 파악해보기"/><meta data-react-helmet="true" name="twitter:image" content="/static/4e07064db6ae2e29ccb9e031dcb6e2b4/ReactScr.png"/><meta data-react-helmet="true" name="twitter:site" content="@사용자이름"/><meta data-react-helmet="true" name="twitter:creator" content="@사용자이름"/><style data-href="/styles.9e907bc32054b7771552.css" data-identity="gatsby-global-css">code[class*=language-],pre[class*=language-]{word-wrap:normal;background:none;color:#ccc;font-family:Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;font-size:1em;-webkit-hyphens:none;hyphens:none;line-height:1.5;tab-size:4;text-align:left;white-space:pre;word-break:normal;word-spacing:normal}pre[class*=language-]{margin:.5em 0;overflow:auto;padding:1em}:not(pre)>code[class*=language-],pre[class*=language-]{background:#2d2d2d}:not(pre)>code[class*=language-]{border-radius:.3em;padding:.1em;white-space:normal}.token.block-comment,.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#999}.token.punctuation{color:#ccc}.token.attr-name,.token.deleted,.token.namespace,.token.tag{color:#e2777a}.token.function-name{color:#6196cc}.token.boolean,.token.function,.token.number{color:#f08d49}.token.class-name,.token.constant,.token.property,.token.symbol{color:#f8c555}.token.atrule,.token.builtin,.token.important,.token.keyword,.token.selector{color:#cc99cd}.token.attr-value,.token.char,.token.regex,.token.string,.token.variable{color:#7ec699}.token.entity,.token.operator,.token.url{color:#67cdcc}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}.token.inserted{color:green}</style><link rel="sitemap" type="application/xml" href="/sitemap-index.xml"/><link rel="canonical" href="https://logic-phantom.github.io/react-vs-js-structure/" data-baseprotocol="https:" data-basehost="logic-phantom.github.io"/><link rel="icon" href="/favicon-32x32.png" type="image/png"/><link rel="manifest" href="/manifest.webmanifest" crossorigin="use-credentials"/><link rel="apple-touch-icon" sizes="192x192" href="/contents/forestLim.png"/><link rel="apple-touch-icon" sizes="512x512" href="/contents/forestLim.png"/><title data-react-helmet="true">React 스크립트 구조 vs 순수 JavaScript 스크립트 구조 완벽 비교</title><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){const t=e.target;if(void 0===t.dataset.mainImage)return;if(void 0===t.dataset.gatsbyImageSsr)return;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><style data-emotion="css zyllbl">.css-zyllbl{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;height:100vh;}</style><div class="css-zyllbl e1strnqo0"><style data-emotion="css-global kxm5mf">@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap');*{padding:0;margin:0;box-sizing:border-box;font-family:'Nanum Myeongjo',serif;}html,body,#___gatsby{height:100%;}a,a:hover{color:inherit;-webkit-text-decoration:none;text-decoration:none;cursor:pointer;}</style><style data-emotion="css 16cz9yp">.css-16cz9yp{position:relative;width:100%;height:400px;}@media (max-width: 768px){.css-16cz9yp{height:300px;}}</style><div class="css-16cz9yp e1opi4mu1"><style data-emotion="css 1bjn9yo">.css-1bjn9yo{z-index:-1;width:100%;height:400px;object-fit:cover;-webkit-filter:brightness(0.25);filter:brightness(0.25);}@media (max-width: 768px){.css-1bjn9yo{height:300px;}}</style><div data-gatsby-image-wrapper="" style="position:absolute" class="gatsby-image-wrapper gatsby-image-wrapper-constrained css-1bjn9yo e1opi4mu0"><div style="max-width:1536px;display:block"><img alt="" role="presentation" aria-hidden="true" src="data:image/svg+xml;charset=utf-8,%3Csvg%20height=&#x27;1024&#x27;%20width=&#x27;1536&#x27;%20xmlns=&#x27;http://www.w3.org/2000/svg&#x27;%20version=&#x27;1.1&#x27;%3E%3C/svg%3E" style="max-width:100%;display:block;position:static"/></div><img aria-hidden="true" data-placeholder-image="" style="opacity:1;transition:opacity 500ms linear" decoding="async" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAIAAAAmMtkJAAAACXBIWXMAAAsTAAALEwEAmpwYAAACp0lEQVR42l2S+0tTYRjH/RcCo9+0tE3zgtNtZ9rUpXPOtjzoNOfytrykIaJd6KIhBOEvrfAy15wuLxQaogUFIqJphE0rA+miQRCBes42d3E5Z+fy9LpjIsHnwHmfcz7P9z3PeUOAsXNQdBDGTtN2oO0H9SAkMG5gvfswDq4egi4W3bF2IuBY8ro/et2OgBNYkj0waQJgC1xDsNYI5E0gW2D3G7Au1DHkINbmcY8Qvmek773X/Yc6FEtvAPiBvMusYp5PMt9nBewuAesBhgjKNOkPEG+cmwNrW4Nr3rebru0dAhU5maU3KOo3OO/9mMHaW4Vj5jQk09R+Msmiz4AdOx34ztCrDO2kA2jJot57PsLBAgA1+POD7susfmX+ErC/gA0Ek8G9sDjX2W3qsfYaLRaE2drX3m1aXn4H4ALWsb7+1dzTZek1Wq3GxwPd/YMmk7lz+vUr9BTJ/rYHD49GSaNTVJGYki/JiRZnHTkutPRbURzAts02ExYr5iWlnhRII2JFvDjsWHhMw9UraIpI3jYYuyKztRJtTaJal4yXSOR4RKLM2GNaXJiZnZuYnHwhzy9S6cpytCUK1blsNZ4iy2puvQPg3ZPvd7SHJ+dgxbUJstw4iVyQrjohSDf1mpE2/nx4dPRJBl6YlV+UpzlfqCvNUKrF0oxbLc37sqGzIzw+FcNLzhRUZOYWKzVlgjT1wNOhvT+EJrIwnaJQq4su5Gl1SlwjTpXz4rEbzbe5bfvbDIbQSGEUJueLMvnizJhkRShPZOnvA/ABeGzzU6ekCtFZTZICT0zLjhOeDuMnNF2/xsm+kbHhgvKayvqmirqG8ssNF+sb0XJi6iXaGBrpyspiqb6yoqoaoa+uqaqt05XrH1mMqG/weNII8j8On22GIv9BcHAv/AVcMx6J+VzrIgAAAABJRU5ErkJggg==" alt=""/><picture><source type="image/webp" data-srcset="/static/4e07064db6ae2e29ccb9e031dcb6e2b4/b642b/ReactScr.webp 384w,/static/4e07064db6ae2e29ccb9e031dcb6e2b4/c9564/ReactScr.webp 768w,/static/4e07064db6ae2e29ccb9e031dcb6e2b4/18b4b/ReactScr.webp 1536w" sizes="(min-width: 1536px) 1536px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 1536px) 1536px, 100vw" decoding="async" loading="lazy" data-src="/static/4e07064db6ae2e29ccb9e031dcb6e2b4/4d776/ReactScr.png" data-srcset="/static/4e07064db6ae2e29ccb9e031dcb6e2b4/4a410/ReactScr.png 384w,/static/4e07064db6ae2e29ccb9e031dcb6e2b4/f5189/ReactScr.png 768w,/static/4e07064db6ae2e29ccb9e031dcb6e2b4/4d776/ReactScr.png 1536w" alt="thumbnail"/></picture><noscript><picture><source type="image/webp" srcSet="/static/4e07064db6ae2e29ccb9e031dcb6e2b4/b642b/ReactScr.webp 384w,/static/4e07064db6ae2e29ccb9e031dcb6e2b4/c9564/ReactScr.webp 768w,/static/4e07064db6ae2e29ccb9e031dcb6e2b4/18b4b/ReactScr.webp 1536w" sizes="(min-width: 1536px) 1536px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 1536px) 1536px, 100vw" decoding="async" loading="lazy" src="/static/4e07064db6ae2e29ccb9e031dcb6e2b4/4d776/ReactScr.png" srcSet="/static/4e07064db6ae2e29ccb9e031dcb6e2b4/4a410/ReactScr.png 384w,/static/4e07064db6ae2e29ccb9e031dcb6e2b4/f5189/ReactScr.png 768w,/static/4e07064db6ae2e29ccb9e031dcb6e2b4/4d776/ReactScr.png 1536w" alt="thumbnail"/></picture></noscript><script type="module">const t="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;if(t){const t=document.querySelectorAll("img[data-main-image]");for(let e of t){e.dataset.src&&(e.setAttribute("src",e.dataset.src),e.removeAttribute("data-src")),e.dataset.srcset&&(e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset"));const t=e.parentNode.querySelectorAll("source[data-srcset]");for(let e of t)e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset");e.complete&&(e.style.opacity=1,e.parentNode.parentNode.querySelector("[data-placeholder-image]").style.opacity=0)}}</script></div><style data-emotion="css m1156n">.css-m1156n{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;width:768px;height:100%;margin:0 auto;padding:60px 0;color:#ffffff;}@media (max-width: 768px){.css-m1156n{width:100%;padding:40px 20px;}}</style><div class="css-m1156n e1st1jau4"><style data-emotion="css gywgo7">.css-gywgo7{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:#ffffff;color:#000000;font-size:22px;cursor:pointer;box-shadow:0 0 10px rgba(0, 0, 0, 0.3);}@media (max-width: 768px){.css-gywgo7{width:30px;height:30px;font-size:18px;}}</style><div class="css-gywgo7 e1st1jau3"><style data-emotion="css 1ij64l8">.css-1ij64l8{display:inline-block;width:12px;height:12px;border-left:2px solid #000000;border-bottom:2px solid #000000;-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg);-ms-transform:rotate(45deg);transform:rotate(45deg);}</style><span class="css-1ij64l8 e1st1jau2"></span></div><style data-emotion="css gn4qtp">.css-gn4qtp{display:-webkit-box;overflow:hidden;overflow-wrap:break-word;margin-top:auto;text-overflow:ellipsis;white-space:normal;-webkit-line-clamp:2;-webkit-box-orient:vertical;font-size:45px;font-weight:800;}@media (max-width: 768px){.css-gn4qtp{font-size:30px;}}</style><div class="css-gn4qtp e1st1jau1">React 스크립트 구조 vs 순수 JavaScript 스크립트 구조 완벽 비교</div><style data-emotion="css 3gcnt2">.css-3gcnt2{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;justify-content:space-between;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;margin-top:10px;font-size:18px;font-weight:700;}@media (max-width: 768px){.css-3gcnt2{-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-align-items:flex-start;-webkit-box-align:flex-start;-ms-flex-align:flex-start;align-items:flex-start;font-size:15px;font-weight:400;}}</style><div class="css-3gcnt2 e1st1jau0"><div>web</div><div>2025.10.16.</div></div></div></div><style data-emotion="css 12g9cpd">.css-12g9cpd{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;width:768px;margin:0 auto;padding:200px 0 0 0;word-break:break-all;line-height:1.8;font-size:16px;font-weight:400;}.css-12g9cpd p{padding:3px 0;}.css-12g9cpd h1,.css-12g9cpd h2,.css-12g9cpd h3{font-weight:800;margin-bottom:30px;}.css-12g9cpd *+h1,.css-12g9cpd *+h2,.css-12g9cpd *+h3{margin-top:80px;}.css-12g9cpd hr+h1,.css-12g9cpd hr+h2,.css-12g9cpd hr+h3{margin-top:0;}.css-12g9cpd h1{font-size:30px;}.css-12g9cpd h2{font-size:25px;}.css-12g9cpd h3{font-size:20px;}.css-12g9cpd blockquote{margin:30px 0;padding:5px 15px;border-left:2px solid #000000;font-weight:800;}.css-12g9cpd ol,.css-12g9cpd ul{margin-left:20px;padding:30px 0;}.css-12g9cpd hr{border:1px solid #000000;margin:100px 0;}.css-12g9cpd a{color:#4263eb;-webkit-text-decoration:underline;text-decoration:underline;}.css-12g9cpd pre[class*='language-']{margin:30px 0;padding:15px;font-size:15px;}.css-12g9cpd pre[class*='language-']::-webkit-scrollbar-thumb{background:rgba(255, 255, 255, 0.5);border-radius:3px;}.css-12g9cpd code[class*='language-'],.css-12g9cpd pre[class*='language-']{tab-size:2;}@media (max-width: 768px){.css-12g9cpd{width:100%;padding:140px 20px 0 20px;line-height:1.6;font-size:14px;}.css-12g9cpd h1{font-size:23px;}.css-12g9cpd h2{font-size:20px;}.css-12g9cpd h3{font-size:17px;}.css-12g9cpd img{width:100%;}.css-12g9cpd hr{margin:50px 0;}}</style><div class="css-12g9cpd e1ijh0y10"><h1>React 스크립트 구조 vs 순수 JavaScript 스크립트 구조 완벽 비교</h1>
+<h2>🧭 들어가며</h2>
+<p>React는 자바스크립트 기반 라이브러리이지만, 그 <strong>스크립트 구조와 개발 패러다임</strong>은 순수 JavaScript(이하 “Vanilla JS”)와 다릅니다.<br>
+이 글에서는 JavaScript만 사용해온 개발자도 <strong>React의 구조를 한눈에 이해</strong>할 수 있도록,<br>
+<strong>기본 → 심화 → 전문가 수준</strong> 순으로 정리합니다.</p>
+<hr>
+<h2>1️⃣ 기본 개념 차이</h2>
+<table>
+<thead>
+<tr>
+<th>구분</th>
+<th>Vanilla JavaScript</th>
+<th>React</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>목적</td>
+<td>DOM 직접 조작</td>
+<td>UI 상태(state)에 따른 렌더링</td>
+</tr>
+<tr>
+<td>구조</td>
+<td>HTML + JS 분리</td>
+<td>JSX(JS + XML) 통합 구조</td>
+</tr>
+<tr>
+<td>데이터 흐름</td>
+<td>수동 업데이트</td>
+<td>단방향 데이터 흐름 (state → UI)</td>
+</tr>
+<tr>
+<td>렌더링 방식</td>
+<td>DOM API를 직접 호출</td>
+<td>가상 DOM(Virtual DOM) 사용</td>
+</tr>
+<tr>
+<td>재사용성</td>
+<td>낮음 (함수 중심)</td>
+<td>높음 (컴포넌트 중심)</td>
+</tr>
+</tbody>
+</table>
+<h3>💡 핵심 요약</h3>
+<p>Vanilla JS는 <strong>명령형(Imperative)</strong> 방식이고,<br>
+React는 <strong>선언형(Declarative)</strong> 방식입니다.</p>
+<blockquote>
+<p>명령형: “무엇을 어떻게 할지” 직접 지시<br>
+선언형: “무엇이 되어야 하는지” 선언</p>
+</blockquote>
+<hr>
+<h2>2️⃣ 스크립트 구조 비교 (Hello World 예제)</h2>
+<h3>✅ Vanilla JavaScript 버전</h3>
+<div class="gatsby-highlight" data-language="html"><pre class="language-html"><code class="language-html"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">html</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>app<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
+      <span class="token keyword">const</span> app <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'app'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">const</span> message <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">'h1'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      message<span class="token punctuation">.</span>textContent <span class="token operator">=</span> <span class="token string">'Hello World!'</span><span class="token punctuation">;</span>
+      app<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>message<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    </span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span></code></pre></div>
+<p><strong>설명</strong></p>
+<ul>
+<li>DOM 요소를 직접 생성하고 <code class="language-text">appendChild()</code>로 붙입니다.</li>
+<li>코드 흐름이 “명령형”입니다.</li>
+<li>HTML, CSS, JS가 명확히 분리되어 있습니다.</li>
+</ul>
+<hr>
+<h3>✅ React 버전</h3>
+<div class="gatsby-highlight" data-language="jsx"><pre class="language-jsx"><code class="language-jsx"><span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> ReactDOM <span class="token keyword">from</span> <span class="token string">'react-dom/client'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">App</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">></span></span><span class="token plain-text">Hello World!</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> root <span class="token operator">=</span> ReactDOM<span class="token punctuation">.</span><span class="token function">createRoot</span><span class="token punctuation">(</span>document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'app'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+root<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">App</span></span> <span class="token punctuation">/></span></span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<p><strong>설명</strong></p>
+<ul>
+<li>JSX 문법을 통해 <strong>HTML과 JS를 결합</strong>.</li>
+<li>DOM을 직접 조작하지 않고 <strong>ReactDOM이 자동 렌더링</strong>.</li>
+<li>구조적으로는 <code class="language-text">컴포넌트 단위</code>로 설계됩니다.</li>
+</ul>
+<hr>
+<h2>3️⃣ 이벤트 처리 구조 비교</h2>
+<h3>🔹 Vanilla JS</h3>
+<div class="gatsby-highlight" data-language="html"><pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>btn<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Click<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
+  document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'btn'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'click'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'Button clicked!'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span></code></pre></div>
+<h3>🔹 React</h3>
+<div class="gatsby-highlight" data-language="jsx"><pre class="language-jsx"><code class="language-jsx"><span class="token keyword">function</span> <span class="token function">App</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">function</span> <span class="token function">handleClick</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'Button clicked!'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">return</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">onClick</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>handleClick<span class="token punctuation">}</span></span><span class="token punctuation">></span></span><span class="token plain-text">Click</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p><strong>차이점</strong></p>
+<table>
+<thead>
+<tr>
+<th>구분</th>
+<th>Vanilla JS</th>
+<th>React</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>이벤트 등록</td>
+<td>DOM API 직접 사용</td>
+<td>JSX 속성으로 정의</td>
+</tr>
+<tr>
+<td>스코프</td>
+<td>전역 또는 외부 함수</td>
+<td>컴포넌트 내부 함수</td>
+</tr>
+<tr>
+<td>구조적 재사용</td>
+<td>불가능</td>
+<td>가능 (컴포넌트 단위)</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2>4️⃣ 상태 관리 (State) 개념</h2>
+<p>Vanilla JS에서는 데이터가 바뀌면 직접 DOM을 수정해야 합니다.</p>
+<div class="gatsby-highlight" data-language="html"><pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>counter<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>0<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>btn<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>+1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
+  <span class="token keyword">let</span> count <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+  document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'btn'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'click'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    count<span class="token operator">++</span><span class="token punctuation">;</span>
+    document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'counter'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>textContent <span class="token operator">=</span> count<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span></code></pre></div>
+<p>React에서는 <code class="language-text">state</code>로 관리합니다.</p>
+<div class="gatsby-highlight" data-language="jsx"><pre class="language-jsx"><code class="language-jsx"><span class="token keyword">import</span> <span class="token punctuation">{</span> useState <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">Counter</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> <span class="token punctuation">[</span>count<span class="token punctuation">,</span> setCount<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span><span class="token punctuation">{</span>count<span class="token punctuation">}</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">onClick</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token function">setCount</span><span class="token punctuation">(</span>count <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">}</span></span><span class="token punctuation">></span></span><span class="token plain-text">+1</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><span class="token plain-text">
+    </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span></span><span class="token punctuation">></span></span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p><strong>React의 핵심:</strong></p>
+<ul>
+<li>UI는 <code class="language-text">state</code>의 결과물입니다.</li>
+<li><code class="language-text">setState</code> 호출 시 React가 자동으로 Virtual DOM을 비교(diffing)하고 필요한 부분만 다시 렌더링합니다.</li>
+</ul>
+<hr>
+<h2>5️⃣ 컴포넌트 기반 아키텍처</h2>
+<p>React는 <strong>UI를 작은 단위로 분리(컴포넌트화)</strong> 합니다.</p>
+<h3>Vanilla JS 구조</h3>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">index.html
+ └── script.js</code></pre></div>
+<h3>React 구조</h3>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">src/
+ ├── App.jsx
+ ├── components/
+ │   ├── Header.jsx
+ │   ├── Button.jsx
+ │   └── Footer.jsx
+ └── index.js</code></pre></div>
+<p><strong>장점</strong></p>
+<ul>
+<li>각 기능 단위로 나뉜 모듈형 구조</li>
+<li>재사용성 ↑, 유지보수성 ↑, 테스트 용이</li>
+</ul>
+<hr>
+<h2>6️⃣ JSX와 DOM의 차이</h2>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>JSX</th>
+<th>DOM</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>작성 방식</td>
+<td>HTML과 유사하지만 JS 안에서 작성</td>
+<td>브라우저가 렌더링하는 실제 노드</td>
+</tr>
+<tr>
+<td>렌더링 주체</td>
+<td>ReactDOM</td>
+<td>브라우저</td>
+</tr>
+<tr>
+<td>데이터 바인딩</td>
+<td>{변수} 사용</td>
+<td>innerText, innerHTML 직접 수정</td>
+</tr>
+<tr>
+<td>속성명</td>
+<td><code class="language-text">className</code>, <code class="language-text">onClick</code></td>
+<td><code class="language-text">class</code>, <code class="language-text">onclick</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>예시</strong></p>
+<div class="gatsby-highlight" data-language="jsx"><pre class="language-jsx"><code class="language-jsx"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">className</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>box<span class="token punctuation">"</span></span> <span class="token attr-name">onClick</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>handleClick<span class="token punctuation">}</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+  </span><span class="token punctuation">{</span>title<span class="token punctuation">}</span><span class="token plain-text">
+</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre></div>
+<hr>
+<h2>7️⃣ React의 렌더링 사이클 (전문가 영역)</h2>
+<p>React는 단순히 화면을 그리는 것이 아니라, 다음 단계를 거칩니다.</p>
+<ol>
+<li><strong>렌더 단계(Render Phase)</strong>
+<ul>
+<li>컴포넌트를 호출해 Virtual DOM 트리를 생성</li>
+</ul>
+</li>
+<li><strong>커밋 단계(Commit Phase)</strong>
+<ul>
+<li>변경된 부분만 실제 DOM에 반영 (Reconciliation)</li>
+</ul>
+</li>
+<li><strong>리렌더 조건</strong>
+<ul>
+<li>props 변경, state 변경, 부모 리렌더 시</li>
+</ul>
+</li>
+</ol>
+<p>React 18 이후부터는 **Concurrent Rendering(동시 렌더링)**이 도입되어,<br>
+UI 응답성을 유지하면서 비동기적으로 렌더링을 처리할 수 있습니다.</p>
+<hr>
+<h2>8️⃣ React vs JavaScript 아키텍처 비교 정리</h2>
+<table>
+<thead>
+<tr>
+<th>구분</th>
+<th>Vanilla JS</th>
+<th>React</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>개발 철학</td>
+<td>명령형</td>
+<td>선언형</td>
+</tr>
+<tr>
+<td>구조</td>
+<td>HTML, CSS, JS 분리</td>
+<td>컴포넌트 단위 통합</td>
+</tr>
+<tr>
+<td>렌더링</td>
+<td>DOM 직접 조작</td>
+<td>Virtual DOM 자동 반영</td>
+</tr>
+<tr>
+<td>상태 관리</td>
+<td>변수 기반</td>
+<td>useState, Redux, Context 등</td>
+</tr>
+<tr>
+<td>재사용성</td>
+<td>낮음</td>
+<td>높음</td>
+</tr>
+<tr>
+<td>유지보수</td>
+<td>어려움</td>
+<td>쉬움 (컴포넌트 단위)</td>
+</tr>
+<tr>
+<td>성능 최적화</td>
+<td>직접 처리</td>
+<td>자동 diffing &#x26; memoization 가능</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2>9️⃣ 심화: React 내부 구조 이해</h2>
+<p>React는 <strong>Fiber Architecture</strong>를 사용합니다.<br>
+이는 Virtual DOM을 효율적으로 업데이트하기 위한 <strong>비동기 스케줄링 엔진</strong>입니다.</p>
+<ul>
+<li><strong>Fiber Node</strong>: 각 컴포넌트의 렌더 정보를 담은 객체</li>
+<li><strong>Reconciliation</strong>: 이전 Fiber와 새 Fiber 비교</li>
+<li><strong>Commit</strong>: 실제 DOM 반영</li>
+</ul>
+<p>이 덕분에 React는 대규모 애플리케이션에서도 <strong>부분 업데이트</strong>만 수행하며,<br>
+렌더링 성능을 크게 개선할 수 있습니다.</p>
+<hr>
+<h2>🧩 결론</h2>
+<table>
+<thead>
+<tr>
+<th>요약 포인트</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>React는 JS 기반이지만, 구조는 전혀 다르다</td>
+<td>명령형 → 선언형 전환</td>
+</tr>
+<tr>
+<td>DOM 조작 대신 상태(state) 중심</td>
+<td>데이터 흐름이 명확</td>
+</tr>
+<tr>
+<td>컴포넌트 단위로 설계</td>
+<td>재사용성과 확장성 확보</td>
+</tr>
+<tr>
+<td>Virtual DOM, Fiber 아키텍처 등 내부 구조가 존재</td>
+<td>고성능 렌더링 가능</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2>🚀 마무리</h2>
+<p>Vanilla JS에서 React로 전환할 때 가장 중요한 것은<br>
+“<strong>DOM을 직접 조작하지 않는다</strong>”는 사고 전환입니다.</p>
+<p>React는 단순한 UI 라이브러리가 아니라,<br>
+<strong>UI 상태(State)를 기반으로 선언형 구조를 제공하는 렌더링 엔진</strong>입니다.</p>
+<p>React의 핵심을 이해했다면,<br>
+당신의 자바스크립트 코드는 한 단계 더 진화할 것입니다. ✨</p>
+<hr>
+<p><strong>📘 참고 자료</strong></p>
+<ul>
+<li><a href="https://react.dev/" target="_blank" rel="nofollow">React 공식 문서</a></li>
+<li><a href="https://developer.mozilla.org/ko/docs/Web/API/Document_Object_Model" target="_blank" rel="nofollow">MDN Web Docs - DOM</a></li>
+<li><a href="https://github.com/acdlite/react-fiber-architecture" target="_blank" rel="nofollow">React Fiber Architecture Explained</a></li>
+</ul></div><style data-emotion="css hx9xpc">@media (max-width: 768px){.css-hx9xpc{padding:0 20px;}}</style><div class="css-hx9xpc e1gqsjds0"></div><style data-emotion="css 1yungzt">.css-1yungzt{position:relative;width:100%;padding:40px 0;background:linear-gradient(180deg, rgba(66, 105, 78, 0.05) 0%, rgba(73, 110, 93, 0.1) 100%);border-top:1px solid rgba(66, 105, 78, 0.1);}</style><footer class="css-1yungzt e1oae0v84"><style data-emotion="css 1uamirr">.css-1uamirr{max-width:960px;margin:0 auto;padding:0 20px;text-align:center;}</style><div class="css-1uamirr e1oae0v83"><style data-emotion="css 1ghcw8y">.css-1ghcw8y{font-size:16px;line-height:1.6;color:#426950;margin-bottom:10px;-webkit-transition:color 0.3s ease;transition:color 0.3s ease;}.css-1ghcw8y:hover{color:#2c4735;}@media (max-width: 768px){.css-1ghcw8y{font-size:14px;}}</style><p class="css-1ghcw8y e1oae0v82">Thank You for Visiting My Blog, Have a Good Day <style data-emotion="css lzb4fa">.css-lzb4fa{display:inline-block;-webkit-transition:-webkit-transform 0.3s ease;transition:transform 0.3s ease;}.css-lzb4fa:hover{-webkit-transform:scale(1.2) rotate(10deg);-moz-transform:scale(1.2) rotate(10deg);-ms-transform:scale(1.2) rotate(10deg);transform:scale(1.2) rotate(10deg);}</style><span class="css-lzb4fa e1oae0v80">🌿</span></p><style data-emotion="css y3pbt1">.css-y3pbt1{font-size:14px;color:#666;margin-top:5px;}@media (max-width: 768px){.css-y3pbt1{font-size:12px;}}</style><p class="css-y3pbt1 e1oae0v81">© 2024 Developer LIM.</p></div></footer></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/react-vs-js-structure/";/*]]>*/</script><!-- slice-start id="_gatsby-scripts-1" -->
+          <script
+            id="gatsby-chunk-mapping"
+          >
+            window.___chunkMapping="{\"app\":[\"/app-5ab049b1a7d9afaa2ddb.js\"],\"component---cache-caches-gatsby-plugin-offline-app-shell-js\":[\"/component---cache-caches-gatsby-plugin-offline-app-shell-js-27e0e967a98f3dffdf9e.js\"],\"component---src-pages-404-tsx\":[\"/component---src-pages-404-tsx-198e8648605be5d74a6a.js\"],\"component---src-pages-index-tsx\":[\"/component---src-pages-index-tsx-0b1030ebf0c9df342d73.js\"],\"component---src-pages-info-tsx\":[\"/component---src-pages-info-tsx-91ad86a40368117a0a55.js\"],\"component---src-templates-post-template-tsx\":[\"/component---src-templates-post-template-tsx-a5c59433344b41e75835.js\"]}";
+          </script>
+        <script>window.___webpackCompilationHash="7af849cfb4846b220a30";</script><script src="/webpack-runtime-71d02f8e664a0760dfc0.js" async></script><script src="/framework-9d608f77b5c9a88afabd.js" async></script><script src="/app-5ab049b1a7d9afaa2ddb.js" async></script><!-- slice-end id="_gatsby-scripts-1" --></body></html>
