@@ -1,0 +1,207 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><meta name="generator" content="Gatsby 5.14.0"/><meta name="theme-color" content="#426950"/><meta data-react-helmet="true" name="description" content="웹 취약점과 예방"/><meta data-react-helmet="true" name="viewport" content="width=device-width, initial-scale=1.0"/><meta data-react-helmet="true" http-equiv="Content-Type" content="text/html;charset=UTF-8"/><meta data-react-helmet="true" property="og:type" content="website"/><meta data-react-helmet="true" property="og:title" content="Web 개발자를 위한 취약점 종류 및 예방 가이드"/><meta data-react-helmet="true" property="og:description" content="웹 취약점과 예방"/><meta data-react-helmet="true" property="og:image" content="/static/2d653301fc6e4bbc2f0036aec55cee88/webWeek.png"/><meta data-react-helmet="true" property="og:url"/><meta data-react-helmet="true" property="og:site_name" content="Web 개발자를 위한 취약점 종류 및 예방 가이드"/><meta data-react-helmet="true" name="twitter:card" content="summary"/><meta data-react-helmet="true" name="twitter:title" content="Web 개발자를 위한 취약점 종류 및 예방 가이드"/><meta data-react-helmet="true" name="twitter:description" content="웹 취약점과 예방"/><meta data-react-helmet="true" name="twitter:image" content="/static/2d653301fc6e4bbc2f0036aec55cee88/webWeek.png"/><meta data-react-helmet="true" name="twitter:site" content="@사용자이름"/><meta data-react-helmet="true" name="twitter:creator" content="@사용자이름"/><style data-href="/styles.9e907bc32054b7771552.css" data-identity="gatsby-global-css">code[class*=language-],pre[class*=language-]{word-wrap:normal;background:none;color:#ccc;font-family:Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;font-size:1em;-webkit-hyphens:none;hyphens:none;line-height:1.5;tab-size:4;text-align:left;white-space:pre;word-break:normal;word-spacing:normal}pre[class*=language-]{margin:.5em 0;overflow:auto;padding:1em}:not(pre)>code[class*=language-],pre[class*=language-]{background:#2d2d2d}:not(pre)>code[class*=language-]{border-radius:.3em;padding:.1em;white-space:normal}.token.block-comment,.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#999}.token.punctuation{color:#ccc}.token.attr-name,.token.deleted,.token.namespace,.token.tag{color:#e2777a}.token.function-name{color:#6196cc}.token.boolean,.token.function,.token.number{color:#f08d49}.token.class-name,.token.constant,.token.property,.token.symbol{color:#f8c555}.token.atrule,.token.builtin,.token.important,.token.keyword,.token.selector{color:#cc99cd}.token.attr-value,.token.char,.token.regex,.token.string,.token.variable{color:#7ec699}.token.entity,.token.operator,.token.url{color:#67cdcc}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}.token.inserted{color:green}</style><link rel="sitemap" type="application/xml" href="/sitemap-index.xml"/><link rel="canonical" href="https://logic-phantom.github.io/web-week/" data-baseprotocol="https:" data-basehost="logic-phantom.github.io"/><link rel="icon" href="/favicon-32x32.png" type="image/png"/><link rel="manifest" href="/manifest.webmanifest" crossorigin="use-credentials"/><link rel="apple-touch-icon" sizes="192x192" href="/contents/forestLim.png"/><link rel="apple-touch-icon" sizes="512x512" href="/contents/forestLim.png"/><title data-react-helmet="true">Web 개발자를 위한 취약점 종류 및 예방 가이드</title><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){const t=e.target;if(void 0===t.dataset.mainImage)return;if(void 0===t.dataset.gatsbyImageSsr)return;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><style data-emotion="css zyllbl">.css-zyllbl{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;height:100vh;}</style><div class="css-zyllbl e1strnqo0"><style data-emotion="css-global kxm5mf">@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap');*{padding:0;margin:0;box-sizing:border-box;font-family:'Nanum Myeongjo',serif;}html,body,#___gatsby{height:100%;}a,a:hover{color:inherit;-webkit-text-decoration:none;text-decoration:none;cursor:pointer;}</style><style data-emotion="css 16cz9yp">.css-16cz9yp{position:relative;width:100%;height:400px;}@media (max-width: 768px){.css-16cz9yp{height:300px;}}</style><div class="css-16cz9yp e1opi4mu1"><style data-emotion="css 1bjn9yo">.css-1bjn9yo{z-index:-1;width:100%;height:400px;object-fit:cover;-webkit-filter:brightness(0.25);filter:brightness(0.25);}@media (max-width: 768px){.css-1bjn9yo{height:300px;}}</style><div data-gatsby-image-wrapper="" style="position:absolute" class="gatsby-image-wrapper gatsby-image-wrapper-constrained css-1bjn9yo e1opi4mu0"><div style="max-width:1536px;display:block"><img alt="" role="presentation" aria-hidden="true" src="data:image/svg+xml;charset=utf-8,%3Csvg%20height=&#x27;1024&#x27;%20width=&#x27;1536&#x27;%20xmlns=&#x27;http://www.w3.org/2000/svg&#x27;%20version=&#x27;1.1&#x27;%3E%3C/svg%3E" style="max-width:100%;display:block;position:static"/></div><img aria-hidden="true" data-placeholder-image="" style="opacity:1;transition:opacity 500ms linear" decoding="async" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAIAAAAmMtkJAAAACXBIWXMAAAsTAAALEwEAmpwYAAAC30lEQVR42kVS60/SYRTmkx9r/QVtXdaa9dHW5Ytza9bW6kOba1bTWc7ywk3QEmc5o0SCElPUwN8N8EJcFEQyJDUVU383QK5qMxJKVAwVtdXqBW1u5313dvY85zk752GwIIINERz4IPgoxUUIDkSUI2Q5SoKch5I8lGDDZAns5cAUFyZAABYDPC4AIWQFRj3qdAkNfrltodEarNW6H2voKg1d2+OSmnzivkCNZqZXJxFgk1yU5iEkFyYZnFSbSjWd3zSRyUSza1RnWIazTGM603C8SHvigfZ0iS69THe0yNykkEzKz73TvSmDvXwE5+yRecnxqCp0StPv6LJNtvVTIBQWWjHgVA6An2q3uNoNI1H7LQK5vDqUI9SMsGEnF8aT5AoVXdQ8+kQ5FPoWCgaCHp/XPeumSMJJ0y6nkyAIbyAQ8FG4Hf3uG9RZjFXoBAehOVCKzMfo+2JzwbNupe6j6f1wu6pXqtBJMYtCPySGTRLE3IwYrXbHp8+uldWfjdbFqk43HyX3F8ZD6UKR8eKduheQ9c/vna34WmJ5ccdti7cUb6irt4OOxFokHov6gguRSLjRNFupogAZqDL2blMiH6tTOzz+ua2gM/FrN64VLmWlRZhXwvkZ4WuH/7oGBqf9F+4K23rsMouf2YHvk8HGQQYm73KEdhDJj9zMdYMqbnz59XzackNZmH0jlHVol7YOk/N5grdq87i0zwMscKBcgZGCThc6OBsTcpYLstck1QmiP3L1yBLzeuh2RjTv1NaS12AnVH2jmHlCgE0DU/wnp9owlTNy21ycGIu+rlnHxze3N1dbWSs5x6K5J2OWlvjmRjA4vxGL6j9MXSpW5IqswBfJbbPhlA0RshIj600BkfWLyOQX6d31Rm93gxCWtT43zYn0LrHB/crseyizZRTKbz7tBddld+CMPW9zU65mKXGWchpU2RDOgvBSlb8U87A6ZgCAlSwmkfdkI0AzCYbwfzeY/bZX2C3uAAAAAElFTkSuQmCC" alt=""/><picture><source type="image/webp" data-srcset="/static/2d653301fc6e4bbc2f0036aec55cee88/b642b/webWeek.webp 384w,/static/2d653301fc6e4bbc2f0036aec55cee88/c9564/webWeek.webp 768w,/static/2d653301fc6e4bbc2f0036aec55cee88/18b4b/webWeek.webp 1536w" sizes="(min-width: 1536px) 1536px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 1536px) 1536px, 100vw" decoding="async" loading="lazy" data-src="/static/2d653301fc6e4bbc2f0036aec55cee88/4d776/webWeek.png" data-srcset="/static/2d653301fc6e4bbc2f0036aec55cee88/4a410/webWeek.png 384w,/static/2d653301fc6e4bbc2f0036aec55cee88/f5189/webWeek.png 768w,/static/2d653301fc6e4bbc2f0036aec55cee88/4d776/webWeek.png 1536w" alt="thumbnail"/></picture><noscript><picture><source type="image/webp" srcSet="/static/2d653301fc6e4bbc2f0036aec55cee88/b642b/webWeek.webp 384w,/static/2d653301fc6e4bbc2f0036aec55cee88/c9564/webWeek.webp 768w,/static/2d653301fc6e4bbc2f0036aec55cee88/18b4b/webWeek.webp 1536w" sizes="(min-width: 1536px) 1536px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 1536px) 1536px, 100vw" decoding="async" loading="lazy" src="/static/2d653301fc6e4bbc2f0036aec55cee88/4d776/webWeek.png" srcSet="/static/2d653301fc6e4bbc2f0036aec55cee88/4a410/webWeek.png 384w,/static/2d653301fc6e4bbc2f0036aec55cee88/f5189/webWeek.png 768w,/static/2d653301fc6e4bbc2f0036aec55cee88/4d776/webWeek.png 1536w" alt="thumbnail"/></picture></noscript><script type="module">const t="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;if(t){const t=document.querySelectorAll("img[data-main-image]");for(let e of t){e.dataset.src&&(e.setAttribute("src",e.dataset.src),e.removeAttribute("data-src")),e.dataset.srcset&&(e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset"));const t=e.parentNode.querySelectorAll("source[data-srcset]");for(let e of t)e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset");e.complete&&(e.style.opacity=1,e.parentNode.parentNode.querySelector("[data-placeholder-image]").style.opacity=0)}}</script></div><style data-emotion="css m1156n">.css-m1156n{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;width:768px;height:100%;margin:0 auto;padding:60px 0;color:#ffffff;}@media (max-width: 768px){.css-m1156n{width:100%;padding:40px 20px;}}</style><div class="css-m1156n e1st1jau4"><style data-emotion="css gywgo7">.css-gywgo7{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:#ffffff;color:#000000;font-size:22px;cursor:pointer;box-shadow:0 0 10px rgba(0, 0, 0, 0.3);}@media (max-width: 768px){.css-gywgo7{width:30px;height:30px;font-size:18px;}}</style><div class="css-gywgo7 e1st1jau3"><style data-emotion="css 1ij64l8">.css-1ij64l8{display:inline-block;width:12px;height:12px;border-left:2px solid #000000;border-bottom:2px solid #000000;-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg);-ms-transform:rotate(45deg);transform:rotate(45deg);}</style><span class="css-1ij64l8 e1st1jau2"></span></div><style data-emotion="css gn4qtp">.css-gn4qtp{display:-webkit-box;overflow:hidden;overflow-wrap:break-word;margin-top:auto;text-overflow:ellipsis;white-space:normal;-webkit-line-clamp:2;-webkit-box-orient:vertical;font-size:45px;font-weight:800;}@media (max-width: 768px){.css-gn4qtp{font-size:30px;}}</style><div class="css-gn4qtp e1st1jau1">Web 개발자를 위한 취약점 종류 및 예방 가이드</div><style data-emotion="css 3gcnt2">.css-3gcnt2{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;justify-content:space-between;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;margin-top:10px;font-size:18px;font-weight:700;}@media (max-width: 768px){.css-3gcnt2{-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-align-items:flex-start;-webkit-box-align:flex-start;-ms-flex-align:flex-start;align-items:flex-start;font-size:15px;font-weight:400;}}</style><div class="css-3gcnt2 e1st1jau0"><div>web</div><div>2025.11.10.</div></div></div></div><style data-emotion="css 12g9cpd">.css-12g9cpd{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;width:768px;margin:0 auto;padding:200px 0 0 0;word-break:break-all;line-height:1.8;font-size:16px;font-weight:400;}.css-12g9cpd p{padding:3px 0;}.css-12g9cpd h1,.css-12g9cpd h2,.css-12g9cpd h3{font-weight:800;margin-bottom:30px;}.css-12g9cpd *+h1,.css-12g9cpd *+h2,.css-12g9cpd *+h3{margin-top:80px;}.css-12g9cpd hr+h1,.css-12g9cpd hr+h2,.css-12g9cpd hr+h3{margin-top:0;}.css-12g9cpd h1{font-size:30px;}.css-12g9cpd h2{font-size:25px;}.css-12g9cpd h3{font-size:20px;}.css-12g9cpd blockquote{margin:30px 0;padding:5px 15px;border-left:2px solid #000000;font-weight:800;}.css-12g9cpd ol,.css-12g9cpd ul{margin-left:20px;padding:30px 0;}.css-12g9cpd hr{border:1px solid #000000;margin:100px 0;}.css-12g9cpd a{color:#4263eb;-webkit-text-decoration:underline;text-decoration:underline;}.css-12g9cpd pre[class*='language-']{margin:30px 0;padding:15px;font-size:15px;}.css-12g9cpd pre[class*='language-']::-webkit-scrollbar-thumb{background:rgba(255, 255, 255, 0.5);border-radius:3px;}.css-12g9cpd code[class*='language-'],.css-12g9cpd pre[class*='language-']{tab-size:2;}@media (max-width: 768px){.css-12g9cpd{width:100%;padding:140px 20px 0 20px;line-height:1.6;font-size:14px;}.css-12g9cpd h1{font-size:23px;}.css-12g9cpd h2{font-size:20px;}.css-12g9cpd h3{font-size:17px;}.css-12g9cpd img{width:100%;}.css-12g9cpd hr{margin:50px 0;}}</style><div class="css-12g9cpd e1ijh0y10"><h1>Web 개발자를 위한 취약점 종류 및 예방 가이드</h1>
+<blockquote>
+<p>이 문서는 웹 개발 시 고려해야 할 대표적인 취약점 종류와 각 취약점의 원인, 식별 방법, 예방(개발·운영 관점) 및 깊이 있는(전문가 수준) 대책을 한 번에 정리한 기술 문서입니다. 기본 개념 → 실무 대책 → 심화/전문가 팁 순으로 구성되어 있습니다.</p>
+</blockquote>
+<hr>
+<h2>목차</h2>
+<ol>
+<li>서론</li>
+<li>OWASP/CWE 개요</li>
+<li>주요 취약점 목록(개요)</li>
+<li>취약점별 설명과 예방
+<ul>
+<li>인증·권한(Identity &#x26; Access)</li>
+<li>입력 검증·인젝션(SQL/OS/LDAP 등)</li>
+<li>XSS(크로스사이트 스크립팅)</li>
+<li>CSRF(Cross-Site Request Forgery)</li>
+<li>보안 구성 오류(Security Misconfiguration)</li>
+<li>민감정보 보호(암호화·비밀 관리)</li>
+<li>의존성·서드파티(라이브러리) 취약점</li>
+<li>파일 업로드 유효성/서버 측 검증</li>
+<li>SSRF(Server-Side Request Forgery)</li>
+<li>로깅·모니터링 및 사고 대응</li>
+</ul>
+</li>
+<li>개발 체크리스트(사전/코드/배포)</li>
+<li>보안 테스트(정적·동적·SCA·SAST·DAST·RASP)</li>
+<li>운영·인프라 관점의 심화 대책</li>
+<li>정책·컴플라이언스 및 문화(보안 SDLC)</li>
+<li>요약 및 권장 우선순위</li>
+</ol>
+<hr>
+<h2>1. 서론</h2>
+<p>웹 애플리케이션은 복잡한 구성(클라이언트, 서버, DB, 서드파티 API, CDN, CI/CD 등)으로 인해 다양한 공격 표면(attack surface)을 갖습니다. 이 문서는 개발자가 바로 적용할 수 있는 실무 대책과, 보안 엔지니어/아키텍트가 적용할 고급 대책을 함께 제시합니다.</p>
+<h2>2. OWASP/CWE 개요</h2>
+<ul>
+<li>OWASP Top 10은 웹 애플리케이션에서 자주 나타나는 위험을 정리한 참조 목록입니다. (개발 우선순위 선정에 유용)</li>
+<li>CWE Top 25는 전세계적으로 흔한 소프트웨어 약점을 정리한 목록으로, 근본 원인 관점에서 취약점을 살펴볼 때 도움이 됩니다.</li>
+</ul>
+<h2>3. 주요 취약점 목록(개요)</h2>
+<ul>
+<li>Broken Access Control (권한/인가 실패)</li>
+<li>Cryptographic Failures (민감정보 처리 실패)</li>
+<li>Injection (SQL/OS/LDAP 등)</li>
+<li>Insecure Design (비안전한 설계)</li>
+<li>Security Misconfiguration (설정 오류)</li>
+<li>Vulnerable &#x26; Outdated Components (취약한 라이브러리)</li>
+<li>Identification &#x26; Authentication Failures (인증 실패)</li>
+<li>Software/Data Integrity Failures (공급망/무결성)</li>
+<li>Security Logging &#x26; Monitoring Failures</li>
+<li>Server-Side Request Forgery (SSRF)</li>
+</ul>
+<p>(프로젝트/서비스 별로 우선순위를 정해 방어 계층을 쌓으세요.)</p>
+<h2>4. 취약점별 설명과 예방</h2>
+<h3>A. 인증·권한(Identification, Authentication, Authorization)</h3>
+<p><strong>문제</strong>: 로그인/세션/토큰 관련 취약으로 인해 권한이 없는 사용자가 민감 기능에 접근.</p>
+<p><strong>예방(기본)</strong></p>
+<ul>
+<li>안전한 비밀번호 저장: Argon2/bcrypt/scrypt 같은 패스워드 해싱 KDF 사용. Salt는 사용자별 고유값 사용.</li>
+<li>세션 관리: 세션 토큰은 HttpOnly, Secure, SameSite 속성 적용. 세션 타임아웃 설정.</li>
+<li>다중요소 인증(MFA) 도입.</li>
+<li>비밀번호 재사용/유출 검사(비밀번호 대입 공격 방지).</li>
+</ul>
+<p><strong>심화(전문가)</strong></p>
+<ul>
+<li>권한 체크는 서버/비즈니스 로직 레벨에서 강제(클라이언트 신뢰 금지).</li>
+<li>권한 모델은 최소 권한 원칙(least privilege)으로 설계. 권한 검증은 엔드포인트·서비스 레벨에서 표준화.</li>
+<li>토큰 기반 인증(OAuth2/OpenID Connect) 사용 시 토큰 무효화, 키 롤오버 전략 수립.</li>
+</ul>
+<h3>B. 입력 검증 및 인젝션(SQL / Command / LDAP 등)</h3>
+<p><strong>문제</strong>: 사용자 입력이 그대로 쿼리/명령으로 실행되어 데이터 유출·조작 발생.</p>
+<p><strong>예방(기본)</strong></p>
+<ul>
+<li>Prepared statements(매개변수화된 쿼리) 사용. 절대 문자열 연결로 쿼리 조립 금지.</li>
+<li>ORM 사용 시도하라(하지만 raw query는 주의).</li>
+<li>입력값 허용 목록(allow-list) 검증 우선. 길이·형식 검사.</li>
+<li>DB 계정의 최소 권한 부여.</li>
+</ul>
+<p><strong>심화(전문가)</strong></p>
+<ul>
+<li>DB 레이어에서 쿼리 빌더/ORM과 방어를 병행. 쿼리 로그와 이상 탐지 규칙(예: 비정상 수정·대량 추출 감지).</li>
+<li>SQL 인젝션에 대비한 WAF 규칙(정책) 적용, 그러나 WAF는 보완 수단일 뿐 근본 방어는 코드 내 파라미터화.</li>
+</ul>
+<h3>C. XSS(크로스사이트 스크립팅)</h3>
+<p><strong>문제</strong>: 악성 스크립트가 사용자 브라우저에서 실행되어 세션 탈취·피싱·클라이언트 측 권한 오용 발생.</p>
+<p><strong>예방(기본)</strong></p>
+<ul>
+<li>출력 시 맥락에 맞는 인코딩(output encoding) 적용(HTML, JavaScript, URL, CSS 각각 다른 인코딩).</li>
+<li>입력값 필터링에만 의존하지 말고, 프레임워크의 자동 이스케이프 기능 활용.</li>
+<li>사용자 작성 HTML을 허용할 때는 검증/정제(HTML Sanitization, 예: DOMPurify) 사용.</li>
+<li>CSP(Content-Security-Policy) 헤더로 스크립트 실행 출처 제한.</li>
+</ul>
+<p><strong>심화(전문가)</strong></p>
+<ul>
+<li>DOM 기반 XSS 보호: 클라이언트 스크립트에서 사용자 입력을 DOM에 삽입할 때 안전한 API 사용.</li>
+<li>CSP를 엄격하게 구성하고 nonce 또는 hash 기반 스크립트 허용 방식을 병행.</li>
+</ul>
+<h3>D. CSRF(Cross-Site Request Forgery)</h3>
+<p><strong>문제</strong>: 사용자가 의도하지 않은 요청을 인증된 상태에서 전송하여 상태 변조 발생.</p>
+<p><strong>예방</strong></p>
+<ul>
+<li>상태 변경 요청은 CSRF 토큰(서버 생성, 검증)으로 보호.</li>
+<li>인증 쿠키는 <code class="language-text">SameSite=strict</code> 또는 적절한 SameSite 정책 사용.</li>
+<li>민감한 동작은 추가 인증(비밀번호 확인, OTP) 요구.</li>
+</ul>
+<h3>E. 보안 구성 오류(Security Misconfiguration)</h3>
+<p><strong>문제</strong>: 디폴트 설정·불필요한 서비스·취약한 HTTP 헤더 등으로 공격 표면 증가.</p>
+<p><strong>예방</strong></p>
+<ul>
+<li>불필요한 서비스 비활성화, 관리 인터페이스 접근 제한.</li>
+<li>보안 관련 HTTP 헤더 설정: CSP, X-Frame-Options, X-Content-Type-Options, Referrer-Policy 등.</li>
+<li>배포 자동화 파이프라인에서 시크릿이 노출되지 않도록 비밀 관리(환경 변수, 시크릿 스토어 사용).</li>
+</ul>
+<h3>F. 민감정보 보호 및 암호화</h3>
+<p><strong>문제</strong>: 평문 비밀·API 키·개인정보가 유출될 위험.</p>
+<p><strong>예방</strong></p>
+<ul>
+<li>전송 중 TLS 적용(HTTPS 강제), 최신 TLS 버전 사용 및 강력한 암호화 스위트 적용.</li>
+<li>저장된 민감 정보는 필수 항목만 보관, 가능한 경우 토큰화/암호화.</li>
+<li>비밀 관리는 Vault/KMS 사용(클라우드 KMS, HashiCorp Vault 등).</li>
+</ul>
+<h3>G. 의존성·서드파티 취약점</h3>
+<p><strong>문제</strong>: 오픈소스/서드파티 라이브러리의 취약점이 서비스에 전파.</p>
+<p><strong>예방</strong></p>
+<ul>
+<li>SCA(Software Composition Analysis) 도구로 취약 라이브러리 식별(예: OWASP Dependency-Check, Snyk 등).</li>
+<li>정기적 의존성 업데이트, 자동화된 리포트 및 긴급 패치 정책 수립.</li>
+<li>서드파티 코드의 서명·출처 검증과 최소 권한 원칙 적용.</li>
+</ul>
+<h3>H. 파일 업로드 취약성</h3>
+<p><strong>문제</strong>: 악성 파일 업로드 후 원격코드실행(RCE), 정보노출 등.</p>
+<p><strong>예방</strong></p>
+<ul>
+<li>확장자 검사뿐만 아니라 파일의 MIMETYPE/매직바이트 검사.</li>
+<li>업로드된 파일은 실행 권한 제거 및 별도 스토리지/도메인에 저장(서비스 도메인과 분리).</li>
+<li>파일명 무작위화, 경로 탐색 공격 차단.</li>
+</ul>
+<h3>I. SSRF (Server-Side Request Forgery)</h3>
+<p><strong>문제</strong>: 서버가 임의의 내부 서비스/메타데이터에 접근하여 민감정보를 노출.</p>
+<p><strong>예방</strong></p>
+<ul>
+<li>외부로 나가는 요청에 대해 allow-list(허용 목록)만 허용.</li>
+<li>내부 네트워크에 접근할 수 없는 프록시 사용, 요청 목적지 검증.</li>
+</ul>
+<h3>J. 로깅·모니터링·사고 대응</h3>
+<p><strong>문제</strong>: 취약점이 악용되어도 탐지·대응이 없으면 피해 확대.</p>
+<p><strong>예방</strong></p>
+<ul>
+<li>중요 이벤트(로그인 실패, 권한 변경, 관리자 작업 등)를 위한 구조화된 로깅.</li>
+<li>로그 중앙화(ELK, SIEM)와 탐지 규칙(이상 징후 탐지) 설정.</li>
+<li>침해사고 대응(Incident Response) 시나리오·절차 및 정기 모의 훈련.</li>
+</ul>
+<h2>5. 개발 체크리스트(사전/코드/배포)</h2>
+<ul>
+<li>요구사항 단계에서 보안 요구사항 정의</li>
+<li>위협 모델링(Threat Modeling) 및 위험 우선순위화</li>
+<li>정적분석(SAST)과 동적검사(DAST) 통합</li>
+<li>비밀(Secrets) 자동 검출 및 차단</li>
+<li>코드 리뷰에서 보안 항목 필수 확인</li>
+<li>CI/CD 파이프라인에 보안 검사(빌드 실패 조건) 통합</li>
+</ul>
+<h2>6. 보안 테스트: SAST/DAST/SCA 및 펜테스트</h2>
+<ul>
+<li>정적 분석(SAST): 코드 레벨 취약점 사전 식별</li>
+<li>동적 분석(DAST): 실제 실행 상태의 취약점 탐지</li>
+<li>SCA: 의존성 취약점 탐지</li>
+<li>RASP/EDR: 런타임 방어(제품 선택 시 성능 영향 고려)</li>
+<li>정기적인 외부 펜테스팅 및 버그바운티 고려</li>
+</ul>
+<h2>7. 운영·인프라 관점의 심화 대책</h2>
+<ul>
+<li>네트워크 분할(내부 서비스 접근 최소화)</li>
+<li>WAF/IDS/IPS 도입(정책은 자주 점검)</li>
+<li>자동화된 패치 관리(이미지 빌드 파이프라인에서 취약점 제거)</li>
+<li>백업 및 안전한 복원 계획</li>
+</ul>
+<h2>8. 조직/프로세스: 보안 SDLC</h2>
+<ul>
+<li>보안 책임자 지정 및 보안 교육 정기화</li>
+<li>코드 변경 시 보안 검사 통과 의무화</li>
+<li>사고 발생 시 커뮤니케이션·법적 대응 절차 정의</li>
+</ul>
+<h2>9. 요약 및 권장 우선순위</h2>
+<ol>
+<li>인증·인가(권한 검증)와 비밀번호 저장 안전화</li>
+<li>인젝션 방지(파라미터화된 쿼리)와 입력 검증</li>
+<li>XSS 예방(출력 인코딩 + CSP)</li>
+<li>의존성 관리 및 패치 자동화</li>
+<li>로깅/모니터링 및 사고 대응</li>
+</ol>
+<hr>
+<h3>부록: 빠른 체크리스트 (개발자용)</h3>
+<ul>
+<li>모든 사용자 입력은 신뢰하지 말라(Validate + Encode)</li>
+<li>비밀번호는 반드시 KDF(Argon2/bcrypt 등)로 저장</li>
+<li>SQL은 PreparedStatement로 실행</li>
+<li>파일 업로드는 별도 저장소 및 실행 권한 제거</li>
+<li>중요한 설정은 코드 리포지토리에 직접 커밋 금지</li>
+<li>CSP로 스크립트·리소스 출처 제한</li>
+</ul>
+<hr>
+<p>이 문서는 실무에서 바로 적용 가능하도록 예제·체크리스트 중심으로 작성했습니다. 더 상세한 프레임워크별(예: Spring, Express, Django) 구현 코드 예시나 CI/CD 통합 스크립트가 필요하면 이어서 만들어 드리겠습니다.</p></div><style data-emotion="css hx9xpc">@media (max-width: 768px){.css-hx9xpc{padding:0 20px;}}</style><div class="css-hx9xpc e1gqsjds0"></div><style data-emotion="css 1lgr7vy">.css-1lgr7vy{position:fixed;bottom:30px;right:30px;width:50px;height:50px;border-radius:50%;background:linear-gradient(60deg, rgb(66, 105, 78) 0%, rgb(73, 110, 93) 100%);border:2px solid white;cursor:pointer;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;-webkit-justify-content:center;justify-content:center;box-shadow:0 4px 15px rgba(0, 0, 0, 0.15);-webkit-transition:all 0.3s ease;transition:all 0.3s ease;z-index:1000;opacity:0;visibility:hidden;-webkit-transform:translateY(20px);-moz-transform:translateY(20px);-ms-transform:translateY(20px);transform:translateY(20px);}.css-1lgr7vy:hover{-webkit-transform:translateY(-3px);-moz-transform:translateY(-3px);-ms-transform:translateY(-3px);transform:translateY(-3px);box-shadow:0 6px 20px rgba(0, 0, 0, 0.3);background:white;border-color:rgb(66, 105, 78);}.css-1lgr7vy:active{-webkit-transform:translateY(0);-moz-transform:translateY(0);-ms-transform:translateY(0);transform:translateY(0);}.css-1lgr7vy.visible{opacity:1;visibility:visible;-webkit-transform:translateY(0);-moz-transform:translateY(0);-ms-transform:translateY(0);transform:translateY(0);}@media (max-width: 768px){.css-1lgr7vy{bottom:20px;right:20px;width:45px;height:45px;}}</style><button class="css-1lgr7vy e14t44do1" aria-label="맨 위로 이동"><style data-emotion="css 1lzpihr">.css-1lzpihr{width:0;height:0;border-left:8px solid transparent;border-right:8px solid transparent;border-bottom:12px solid white;margin-bottom:2px;-webkit-transition:border-bottom-color 0.3s ease;transition:border-bottom-color 0.3s ease;}.e14t44do1:hover .css-1lzpihr{border-bottom-color:rgb(66, 105, 78);}</style><div class="css-1lzpihr e14t44do0"></div></button><style data-emotion="css 1yungzt">.css-1yungzt{position:relative;width:100%;padding:40px 0;background:linear-gradient(180deg, rgba(66, 105, 78, 0.05) 0%, rgba(73, 110, 93, 0.1) 100%);border-top:1px solid rgba(66, 105, 78, 0.1);}</style><footer class="css-1yungzt e1oae0v84"><style data-emotion="css 1uamirr">.css-1uamirr{max-width:960px;margin:0 auto;padding:0 20px;text-align:center;}</style><div class="css-1uamirr e1oae0v83"><style data-emotion="css 1ghcw8y">.css-1ghcw8y{font-size:16px;line-height:1.6;color:#426950;margin-bottom:10px;-webkit-transition:color 0.3s ease;transition:color 0.3s ease;}.css-1ghcw8y:hover{color:#2c4735;}@media (max-width: 768px){.css-1ghcw8y{font-size:14px;}}</style><p class="css-1ghcw8y e1oae0v82">Thank You for Visiting My Blog, Have a Good Day <style data-emotion="css lzb4fa">.css-lzb4fa{display:inline-block;-webkit-transition:-webkit-transform 0.3s ease;transition:transform 0.3s ease;}.css-lzb4fa:hover{-webkit-transform:scale(1.2) rotate(10deg);-moz-transform:scale(1.2) rotate(10deg);-ms-transform:scale(1.2) rotate(10deg);transform:scale(1.2) rotate(10deg);}</style><span class="css-lzb4fa e1oae0v80">🌿</span></p><style data-emotion="css y3pbt1">.css-y3pbt1{font-size:14px;color:#666;margin-top:5px;}@media (max-width: 768px){.css-y3pbt1{font-size:12px;}}</style><p class="css-y3pbt1 e1oae0v81">© 2024 Developer LIM.</p></div></footer></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/web-week/";/*]]>*/</script><!-- slice-start id="_gatsby-scripts-1" -->
+          <script
+            id="gatsby-chunk-mapping"
+          >
+            window.___chunkMapping="{\"app\":[\"/app-5ab049b1a7d9afaa2ddb.js\"],\"component---cache-caches-gatsby-plugin-offline-app-shell-js\":[\"/component---cache-caches-gatsby-plugin-offline-app-shell-js-27e0e967a98f3dffdf9e.js\"],\"component---src-pages-404-tsx\":[\"/component---src-pages-404-tsx-198e8648605be5d74a6a.js\"],\"component---src-pages-index-tsx\":[\"/component---src-pages-index-tsx-49aed13bd17edca89f1a.js\"],\"component---src-pages-info-tsx\":[\"/component---src-pages-info-tsx-91ad86a40368117a0a55.js\"],\"component---src-templates-post-template-tsx\":[\"/component---src-templates-post-template-tsx-6e3542f1f00a7c16e4e6.js\"]}";
+          </script>
+        <script>window.___webpackCompilationHash="c5f50b18458ce60ff11e";</script><script src="/webpack-runtime-cc6a3bd86707474f9378.js" async></script><script src="/framework-9d608f77b5c9a88afabd.js" async></script><script src="/app-5ab049b1a7d9afaa2ddb.js" async></script><!-- slice-end id="_gatsby-scripts-1" --></body></html>
