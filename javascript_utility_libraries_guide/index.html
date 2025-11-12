@@ -1,0 +1,226 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><meta name="generator" content="Gatsby 5.14.0"/><meta name="theme-color" content="#426950"/><meta data-react-helmet="true" name="description" content="코드를 단순하게, 버그는 적게"/><meta data-react-helmet="true" name="viewport" content="width=device-width, initial-scale=1.0"/><meta data-react-helmet="true" http-equiv="Content-Type" content="text/html;charset=UTF-8"/><meta data-react-helmet="true" property="og:type" content="website"/><meta data-react-helmet="true" property="og:title" content="🔧 JavaScript에서 자주 사용되는 내장 유틸리티 및 대표 라이브러리 완벽 가이드"/><meta data-react-helmet="true" property="og:description" content="코드를 단순하게, 버그는 적게"/><meta data-react-helmet="true" property="og:image" content="/static/6b8846d671bea137a6ad6b21eebd0b41/jsUtil.png"/><meta data-react-helmet="true" property="og:url"/><meta data-react-helmet="true" property="og:site_name" content="🔧 JavaScript에서 자주 사용되는 내장 유틸리티 및 대표 라이브러리 완벽 가이드"/><meta data-react-helmet="true" name="twitter:card" content="summary"/><meta data-react-helmet="true" name="twitter:title" content="🔧 JavaScript에서 자주 사용되는 내장 유틸리티 및 대표 라이브러리 완벽 가이드"/><meta data-react-helmet="true" name="twitter:description" content="코드를 단순하게, 버그는 적게"/><meta data-react-helmet="true" name="twitter:image" content="/static/6b8846d671bea137a6ad6b21eebd0b41/jsUtil.png"/><meta data-react-helmet="true" name="twitter:site" content="@사용자이름"/><meta data-react-helmet="true" name="twitter:creator" content="@사용자이름"/><style data-href="/styles.9e907bc32054b7771552.css" data-identity="gatsby-global-css">code[class*=language-],pre[class*=language-]{word-wrap:normal;background:none;color:#ccc;font-family:Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;font-size:1em;-webkit-hyphens:none;hyphens:none;line-height:1.5;tab-size:4;text-align:left;white-space:pre;word-break:normal;word-spacing:normal}pre[class*=language-]{margin:.5em 0;overflow:auto;padding:1em}:not(pre)>code[class*=language-],pre[class*=language-]{background:#2d2d2d}:not(pre)>code[class*=language-]{border-radius:.3em;padding:.1em;white-space:normal}.token.block-comment,.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#999}.token.punctuation{color:#ccc}.token.attr-name,.token.deleted,.token.namespace,.token.tag{color:#e2777a}.token.function-name{color:#6196cc}.token.boolean,.token.function,.token.number{color:#f08d49}.token.class-name,.token.constant,.token.property,.token.symbol{color:#f8c555}.token.atrule,.token.builtin,.token.important,.token.keyword,.token.selector{color:#cc99cd}.token.attr-value,.token.char,.token.regex,.token.string,.token.variable{color:#7ec699}.token.entity,.token.operator,.token.url{color:#67cdcc}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}.token.inserted{color:green}</style><link rel="sitemap" type="application/xml" href="/sitemap-index.xml"/><link rel="canonical" href="https://logic-phantom.github.io/javascript_utility_libraries_guide/" data-baseprotocol="https:" data-basehost="logic-phantom.github.io"/><link rel="icon" href="/favicon-32x32.png" type="image/png"/><link rel="manifest" href="/manifest.webmanifest" crossorigin="use-credentials"/><link rel="apple-touch-icon" sizes="192x192" href="/contents/forestLim.png"/><link rel="apple-touch-icon" sizes="512x512" href="/contents/forestLim.png"/><title data-react-helmet="true">🔧 JavaScript에서 자주 사용되는 내장 유틸리티 및 대표 라이브러리 완벽 가이드</title><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){const t=e.target;if(void 0===t.dataset.mainImage)return;if(void 0===t.dataset.gatsbyImageSsr)return;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><style data-emotion="css zyllbl">.css-zyllbl{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;height:100vh;}</style><div class="css-zyllbl e1strnqo0"><style data-emotion="css-global kxm5mf">@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap');*{padding:0;margin:0;box-sizing:border-box;font-family:'Nanum Myeongjo',serif;}html,body,#___gatsby{height:100%;}a,a:hover{color:inherit;-webkit-text-decoration:none;text-decoration:none;cursor:pointer;}</style><style data-emotion="css 16cz9yp">.css-16cz9yp{position:relative;width:100%;height:400px;}@media (max-width: 768px){.css-16cz9yp{height:300px;}}</style><div class="css-16cz9yp e1opi4mu1"><style data-emotion="css 1bjn9yo">.css-1bjn9yo{z-index:-1;width:100%;height:400px;object-fit:cover;-webkit-filter:brightness(0.25);filter:brightness(0.25);}@media (max-width: 768px){.css-1bjn9yo{height:300px;}}</style><div data-gatsby-image-wrapper="" style="position:absolute" class="gatsby-image-wrapper gatsby-image-wrapper-constrained css-1bjn9yo e1opi4mu0"><div style="max-width:1536px;display:block"><img alt="" role="presentation" aria-hidden="true" src="data:image/svg+xml;charset=utf-8,%3Csvg%20height=&#x27;1024&#x27;%20width=&#x27;1536&#x27;%20xmlns=&#x27;http://www.w3.org/2000/svg&#x27;%20version=&#x27;1.1&#x27;%3E%3C/svg%3E" style="max-width:100%;display:block;position:static"/></div><img aria-hidden="true" data-placeholder-image="" style="opacity:1;transition:opacity 500ms linear" decoding="async" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAIAAAAmMtkJAAAACXBIWXMAAAsTAAALEwEAmpwYAAACk0lEQVR42mOQscyFIAnTLEGDNEGDdAWbfEXbAmHDDAmzbCHDdDmrPKCIrFWeom2+jEWuqHEmXAsDUBSoyNinqr5nWXbN7Ozq2QGpPdWdS2LyJubVzanrXhaW1ZdUMq2ifVFdz7Lm/hUhGb1S5jkwzZa5QI6ue7lLVItrTKtjZJNdWGNswaTg9F6/5M608ulOkS0u0a12YQ3WwXWe8e1ANZJm2VDNEArIFzHKACIe7ZSAlO6ylgUV7YuLWpeVtS8ta11Y2b5I17OaTSNdxDgL6Dtpi1wUzTJg+5XsCkz8KjVditWcShSsMuW1nJSN/JXtC5UdShwCMoKiElTssqQs8uRt8qXhmoEmqTgUqjoW6XlVRBVPU3EsFTbJM7cNmZ5skeKqq2gWw2tY3FXlc3i6XkB0RkBmn7ZbsSTY28AAA9lp6FNpGVyrap/vF53tHJgmaJzn7Z/2clb0obZIPYc0YZN837CE4vxYY59SY69Cfadkacs8hM2qDgXKjmX2/ukP15rume0mbpYrYlk5sSh1YXWGhG2tgnUuj152WcuiuQtXGXhVqtkky1vnwDXnAJ0dlttv5lPYV+VVWxxs5F3qEFbhEZLtHd9ilbhAw7dXziq3Z/Kites26nmUi5lmAyMYEWBAy/U8ygIz2sUsy0OjY+5vdFjcbL6xz/L6SptNk90MohYqONYo2+VbhdQDbUIkEggFjG1xkyx9zzKg46eXRfw/Yn18tsmdleb/j5ifm2+pHzJZ03+ivFWOa2wzKKgxowqoX9I8W9Q0tyM/5skGpxc73J9s83i50uXq5FDbqClqfhOV7PI1XErQbM4BI7B+q1xpEJml7ZJrET3NLHZ2WFJ3VnabmmuNNMhr2VLm2TDFIF0AwtYFmLWTa40AAAAASUVORK5CYII=" alt=""/><picture><source type="image/webp" data-srcset="/static/6b8846d671bea137a6ad6b21eebd0b41/b642b/jsUtil.webp 384w,/static/6b8846d671bea137a6ad6b21eebd0b41/c9564/jsUtil.webp 768w,/static/6b8846d671bea137a6ad6b21eebd0b41/18b4b/jsUtil.webp 1536w" sizes="(min-width: 1536px) 1536px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 1536px) 1536px, 100vw" decoding="async" loading="lazy" data-src="/static/6b8846d671bea137a6ad6b21eebd0b41/4d776/jsUtil.png" data-srcset="/static/6b8846d671bea137a6ad6b21eebd0b41/4a410/jsUtil.png 384w,/static/6b8846d671bea137a6ad6b21eebd0b41/f5189/jsUtil.png 768w,/static/6b8846d671bea137a6ad6b21eebd0b41/4d776/jsUtil.png 1536w" alt="thumbnail"/></picture><noscript><picture><source type="image/webp" srcSet="/static/6b8846d671bea137a6ad6b21eebd0b41/b642b/jsUtil.webp 384w,/static/6b8846d671bea137a6ad6b21eebd0b41/c9564/jsUtil.webp 768w,/static/6b8846d671bea137a6ad6b21eebd0b41/18b4b/jsUtil.webp 1536w" sizes="(min-width: 1536px) 1536px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 1536px) 1536px, 100vw" decoding="async" loading="lazy" src="/static/6b8846d671bea137a6ad6b21eebd0b41/4d776/jsUtil.png" srcSet="/static/6b8846d671bea137a6ad6b21eebd0b41/4a410/jsUtil.png 384w,/static/6b8846d671bea137a6ad6b21eebd0b41/f5189/jsUtil.png 768w,/static/6b8846d671bea137a6ad6b21eebd0b41/4d776/jsUtil.png 1536w" alt="thumbnail"/></picture></noscript><script type="module">const t="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;if(t){const t=document.querySelectorAll("img[data-main-image]");for(let e of t){e.dataset.src&&(e.setAttribute("src",e.dataset.src),e.removeAttribute("data-src")),e.dataset.srcset&&(e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset"));const t=e.parentNode.querySelectorAll("source[data-srcset]");for(let e of t)e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset");e.complete&&(e.style.opacity=1,e.parentNode.parentNode.querySelector("[data-placeholder-image]").style.opacity=0)}}</script></div><style data-emotion="css m1156n">.css-m1156n{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;width:768px;height:100%;margin:0 auto;padding:60px 0;color:#ffffff;}@media (max-width: 768px){.css-m1156n{width:100%;padding:40px 20px;}}</style><div class="css-m1156n e1st1jau4"><style data-emotion="css gywgo7">.css-gywgo7{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:#ffffff;color:#000000;font-size:22px;cursor:pointer;box-shadow:0 0 10px rgba(0, 0, 0, 0.3);}@media (max-width: 768px){.css-gywgo7{width:30px;height:30px;font-size:18px;}}</style><div class="css-gywgo7 e1st1jau3"><style data-emotion="css 1ij64l8">.css-1ij64l8{display:inline-block;width:12px;height:12px;border-left:2px solid #000000;border-bottom:2px solid #000000;-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg);-ms-transform:rotate(45deg);transform:rotate(45deg);}</style><span class="css-1ij64l8 e1st1jau2"></span></div><style data-emotion="css gn4qtp">.css-gn4qtp{display:-webkit-box;overflow:hidden;overflow-wrap:break-word;margin-top:auto;text-overflow:ellipsis;white-space:normal;-webkit-line-clamp:2;-webkit-box-orient:vertical;font-size:45px;font-weight:800;}@media (max-width: 768px){.css-gn4qtp{font-size:30px;}}</style><div class="css-gn4qtp e1st1jau1">🔧 JavaScript에서 자주 사용되는 내장 유틸리티 및 대표 라이브러리 완벽 가이드</div><style data-emotion="css 3gcnt2">.css-3gcnt2{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;justify-content:space-between;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;margin-top:10px;font-size:18px;font-weight:700;}@media (max-width: 768px){.css-3gcnt2{-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-align-items:flex-start;-webkit-box-align:flex-start;-ms-flex-align:flex-start;align-items:flex-start;font-size:15px;font-weight:400;}}</style><div class="css-3gcnt2 e1st1jau0"><div>web</div><div>2025.11.12.</div></div></div></div><style data-emotion="css 12g9cpd">.css-12g9cpd{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;width:768px;margin:0 auto;padding:200px 0 0 0;word-break:break-all;line-height:1.8;font-size:16px;font-weight:400;}.css-12g9cpd p{padding:3px 0;}.css-12g9cpd h1,.css-12g9cpd h2,.css-12g9cpd h3{font-weight:800;margin-bottom:30px;}.css-12g9cpd *+h1,.css-12g9cpd *+h2,.css-12g9cpd *+h3{margin-top:80px;}.css-12g9cpd hr+h1,.css-12g9cpd hr+h2,.css-12g9cpd hr+h3{margin-top:0;}.css-12g9cpd h1{font-size:30px;}.css-12g9cpd h2{font-size:25px;}.css-12g9cpd h3{font-size:20px;}.css-12g9cpd blockquote{margin:30px 0;padding:5px 15px;border-left:2px solid #000000;font-weight:800;}.css-12g9cpd ol,.css-12g9cpd ul{margin-left:20px;padding:30px 0;}.css-12g9cpd hr{border:1px solid #000000;margin:100px 0;}.css-12g9cpd a{color:#4263eb;-webkit-text-decoration:underline;text-decoration:underline;}.css-12g9cpd pre[class*='language-']{margin:30px 0;padding:15px;font-size:15px;}.css-12g9cpd pre[class*='language-']::-webkit-scrollbar-thumb{background:rgba(255, 255, 255, 0.5);border-radius:3px;}.css-12g9cpd code[class*='language-'],.css-12g9cpd pre[class*='language-']{tab-size:2;}@media (max-width: 768px){.css-12g9cpd{width:100%;padding:140px 20px 0 20px;line-height:1.6;font-size:14px;}.css-12g9cpd h1{font-size:23px;}.css-12g9cpd h2{font-size:20px;}.css-12g9cpd h3{font-size:17px;}.css-12g9cpd img{width:100%;}.css-12g9cpd hr{margin:50px 0;}}</style><div class="css-12g9cpd e1ijh0y10"><h1>🔧 JavaScript에서 자주 사용되는 내장 유틸리티 및 대표 라이브러리 완벽 가이드</h1>
+<blockquote>
+<p>“코드를 단순하게, 버그는 적게.”<br>
+자바스크립트 개발자라면 한 번쯤 반드시 만나게 되는 유틸리티 라이브러리들을, 기본부터 전문가 수준까지 깊이 있게 다뤄봅니다.</p>
+</blockquote>
+<hr>
+<h2>📚 1. 개요</h2>
+<p>JavaScript는 빠르게 진화하는 언어이지만, <strong>반복적인 데이터 조작·날짜 계산·포맷 처리</strong> 등을 효율적으로 다루기 위해 다양한 <strong>유틸리티 라이브러리</strong>가 등장했습니다.</p>
+<p>이 문서는 다음을 다룹니다.</p>
+<ul>
+<li>✅ 실무에서 가장 많이 쓰이는 유틸리티 라이브러리 개요</li>
+<li>✅ 각 라이브러리별 핵심 기능 및 사용 예시</li>
+<li>✅ ES6 이후 내장 함수로 대체 가능한 사례</li>
+<li>✅ 성능 및 코드 품질 관점에서의 선택 가이드</li>
+</ul>
+<hr>
+<h2>🧩 2. Lodash / Underscore.js</h2>
+<h3>2.1 개요</h3>
+<p>Lodash(<code class="language-text">_</code>)는 Underscore.js의 개선 버전으로, <strong>배열·객체·문자열·함수 조작</strong>을 간결하게 처리할 수 있는 유틸리티 모음입니다.</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token comment">// Lodash 예제</span>
+_<span class="token punctuation">.</span><span class="token function">uniq</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token comment">// [1, 2, 3]</span>
+_<span class="token punctuation">.</span><span class="token function">flattenDeep</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// [1, 2, 3]</span>
+_<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>obj<span class="token punctuation">,</span> <span class="token string">'user.name'</span><span class="token punctuation">,</span> <span class="token string">'N/A'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<h3>2.2 Lodash vs ES6+</h3>
+<p>ES6 이후 <code class="language-text">Array.prototype.map</code>, <code class="language-text">Object.assign</code>, <code class="language-text">Set</code> 등이 생기면서 일부 기능은 내장으로 대체됩니다.</p>
+<table>
+<thead>
+<tr>
+<th>Lodash</th>
+<th>ES6 대체</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="language-text">_.map(arr, fn)</code></td>
+<td><code class="language-text">arr.map(fn)</code></td>
+<td>배열 변환</td>
+</tr>
+<tr>
+<td><code class="language-text">_.filter(arr, fn)</code></td>
+<td><code class="language-text">arr.filter(fn)</code></td>
+<td>조건 필터링</td>
+</tr>
+<tr>
+<td><code class="language-text">_.uniq(arr)</code></td>
+<td><code class="language-text">[...new Set(arr)]</code></td>
+<td>중복 제거</td>
+</tr>
+</tbody>
+</table>
+<p>➡️ <strong>그러나</strong> Lodash는 여전히 “깊은 객체 접근”(<code class="language-text">_.get</code>), “딥 클론”(<code class="language-text">_.cloneDeep</code>) 등 복잡한 작업에서 유리합니다.</p>
+<hr>
+<h2>🕓 3. Moment.js / Day.js / date-fns</h2>
+<h3>3.1 Moment.js (클래식)</h3>
+<p>가장 널리 사용된 날짜 라이브러리입니다.</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token function">moment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span><span class="token string">'YYYY-MM-DD HH:mm'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">moment</span><span class="token punctuation">(</span><span class="token string">'2025-11-12'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">fromNow</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "3 days ago"</span></code></pre></div>
+<h3>3.2 Day.js (경량 대체)</h3>
+<p>Moment와 99% 호환되지만 <strong>2KB 이하</strong>의 경량 버전입니다.</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token function">dayjs</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token string">'day'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span><span class="token string">'YYYY/MM/DD'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<h3>3.3 date-fns (함수형 접근)</h3>
+<p>Moment처럼 “체이닝”이 아닌 “모듈 함수 호출” 방식입니다.</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> format<span class="token punctuation">,</span> addDays <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'date-fns'</span><span class="token punctuation">;</span>
+<span class="token function">format</span><span class="token punctuation">(</span><span class="token function">addDays</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'yyyy-MM-dd'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<p>📊 <strong>비교 요약</strong></p>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th>Moment.js</th>
+<th>Day.js</th>
+<th>date-fns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>크기</td>
+<td>약 60KB</td>
+<td>2KB</td>
+<td>20KB</td>
+</tr>
+<tr>
+<td>체이닝</td>
+<td>지원</td>
+<td>지원</td>
+<td>미지원</td>
+</tr>
+<tr>
+<td>타임존</td>
+<td>moment-timezone 필요</td>
+<td>플러그인</td>
+<td>별도</td>
+</tr>
+<tr>
+<td>트렌드</td>
+<td>유지보수 중단</td>
+<td>최신 대세</td>
+<td>함수형 선호</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2>💰 4. Numeral.js / accounting.js (숫자 &#x26; 통화 처리)</h2>
+<h3>4.1 Numeral.js</h3>
+<p>숫자 포맷팅 전문 라이브러리.</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token function">numeral</span><span class="token punctuation">(</span><span class="token number">12345.6789</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span><span class="token string">'0,0.00'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "12,345.68"</span>
+<span class="token function">numeral</span><span class="token punctuation">(</span><span class="token number">0.25</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span><span class="token string">'0%'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>           <span class="token comment">// "25%"</span></code></pre></div>
+<h3>4.2 accounting.js</h3>
+<p>통화 중심 포맷팅.</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js">accounting<span class="token punctuation">.</span><span class="token function">formatMoney</span><span class="token punctuation">(</span><span class="token number">1234567.89</span><span class="token punctuation">,</span> <span class="token string">"₩"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "₩1,234,567.89"</span></code></pre></div>
+<hr>
+<h2>🧮 5. validator.js (입력 검증)</h2>
+<p>유저 입력값을 검증할 때 강력합니다.</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js">validator<span class="token punctuation">.</span><span class="token function">isEmail</span><span class="token punctuation">(</span><span class="token string">'test@example.com'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+validator<span class="token punctuation">.</span><span class="token function">isURL</span><span class="token punctuation">(</span><span class="token string">'https://openai.com'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span></code></pre></div>
+<p>📌 실제로는 <strong>폼 검증 로직</strong>이나 <strong>API 요청 데이터 유효성 검사</strong>에 사용됩니다.</p>
+<hr>
+<h2>🔗 6. qs / query-string (URL 파라미터 처리)</h2>
+<p>URL 쿼리 스트링을 객체로 파싱하거나 문자열로 직렬화할 때 사용합니다.</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js">qs<span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span><span class="token string">'a=1&amp;b=2'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token comment">// { a: '1', b: '2' }</span>
+qs<span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">a</span><span class="token operator">:</span> <span class="token number">1</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 'a=1'</span></code></pre></div>
+<blockquote>
+<p>💡 ES6의 <code class="language-text">URLSearchParams</code> 로도 대체 가능하지만, 중첩 객체나 배열 처리에서는 <code class="language-text">qs</code>가 더 강력합니다.</p>
+</blockquote>
+<hr>
+<h2>⚙️ 7. Async / RxJS / Axios 유틸리티</h2>
+<h3>7.1 Async.js</h3>
+<p>비동기 제어 플로우를 단순화합니다.</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js">async<span class="token punctuation">.</span><span class="token function">parallel</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
+  <span class="token parameter">cb</span> <span class="token operator">=></span> <span class="token function">fetchData</span><span class="token punctuation">(</span>cb<span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token parameter">cb</span> <span class="token operator">=></span> <span class="token function">readFile</span><span class="token punctuation">(</span>cb<span class="token punctuation">)</span>
+<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">err<span class="token punctuation">,</span> results</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span> <span class="token operator">...</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<h3>7.2 Axios 내부 util</h3>
+<p>Axios는 <code class="language-text">interceptors</code>, <code class="language-text">transformResponse</code>, <code class="language-text">cancelToken</code> 등 <strong>비동기 흐름 제어용 유틸리티</strong>를 내장하고 있습니다.</p>
+<h3>7.3 RxJS</h3>
+<p>반응형 프로그래밍의 정점. <code class="language-text">Observable</code> 기반으로 이벤트 스트림을 다룹니다.</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> fromEvent <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'rxjs'</span><span class="token punctuation">;</span>
+<span class="token function">fromEvent</span><span class="token punctuation">(</span>document<span class="token punctuation">,</span> <span class="token string">'click'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">subscribe</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Clicked!'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<hr>
+<h2>🧠 8. Ramda / Lodash-fp (함수형 유틸리티)</h2>
+<p>Ramda는 “불변성”과 “함수 조합”에 초점을 맞춘 라이브러리입니다.</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token operator">*</span> <span class="token keyword">as</span> <span class="token constant">R</span> <span class="token keyword">from</span> <span class="token string">'ramda'</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> getActiveNames <span class="token operator">=</span> <span class="token constant">R</span><span class="token punctuation">.</span><span class="token function">pipe</span><span class="token punctuation">(</span>
+  <span class="token constant">R</span><span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token constant">R</span><span class="token punctuation">.</span><span class="token function">propEq</span><span class="token punctuation">(</span><span class="token string">'active'</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token constant">R</span><span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token constant">R</span><span class="token punctuation">.</span><span class="token function">prop</span><span class="token punctuation">(</span><span class="token string">'name'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<blockquote>
+<p>Lodash-fp는 Lodash를 Ramda 스타일의 <strong>커링/불변 버전</strong>으로 포장한 라이브러리입니다.</p>
+</blockquote>
+<hr>
+<h2>⚡ 9. 트렌드 및 선택 가이드</h2>
+<table>
+<thead>
+<tr>
+<th>목적</th>
+<th>추천 라이브러리</th>
+<th>비고</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>배열/객체 조작</td>
+<td>Lodash / Underscore</td>
+<td>유지보수 쉬움</td>
+</tr>
+<tr>
+<td>날짜 처리</td>
+<td>Day.js / date-fns</td>
+<td>경량 &#x26; 최신</td>
+</tr>
+<tr>
+<td>숫자/화폐</td>
+<td>Numeral.js / accounting.js</td>
+<td>국제화 대응</td>
+</tr>
+<tr>
+<td>폼 검증</td>
+<td>validator.js</td>
+<td>보안 필수</td>
+</tr>
+<tr>
+<td>URL 파싱</td>
+<td>qs</td>
+<td>복잡한 쿼리 대응</td>
+</tr>
+<tr>
+<td>함수형 패턴</td>
+<td>Ramda</td>
+<td>코드 품질 향상</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2>🔍 10. ES6+ 이후의 대체와 결론</h2>
+<p>현대 JavaScript에서는 많은 유틸리티가 <strong>언어 내장 기능</strong>으로 대체되고 있습니다.</p>
+<p>예시:</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token comment">// Lodash: _.cloneDeep(obj)</span>
+<span class="token function">structuredClone</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Moment.js: moment().add(1, 'day')</span>
+<span class="token keyword">const</span> tomorrow <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span>Date<span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">24</span> <span class="token operator">*</span> <span class="token number">60</span> <span class="token operator">*</span> <span class="token number">60</span> <span class="token operator">*</span> <span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<p>그러나 <strong>대형 프로젝트</strong>, <strong>팀 협업</strong>, <strong>레거시 코드 유지보수</strong> 환경에서는 여전히 유틸리티 라이브러리가 <strong>일관된 코드 품질과 가독성</strong>을 제공합니다.</p>
+<hr>
+<h2>🧾 참고 자료</h2>
+<ul>
+<li><a href="https://lodash.com/docs/" target="_blank" rel="nofollow">Lodash 공식 문서</a></li>
+<li><a href="https://momentjs.com/" target="_blank" rel="nofollow">Moment.js 공식 문서</a></li>
+<li><a href="https://day.js.org/" target="_blank" rel="nofollow">Day.js 공식 문서</a></li>
+<li><a href="https://date-fns.org/" target="_blank" rel="nofollow">date-fns 공식 문서</a></li>
+<li><a href="http://numeraljs.com/" target="_blank" rel="nofollow">Numeral.js 공식 문서</a></li>
+<li><a href="https://github.com/validatorjs/validator.js" target="_blank" rel="nofollow">validator.js GitHub</a></li>
+<li><a href="https://ramdajs.com/" target="_blank" rel="nofollow">Ramda 공식 사이트</a></li>
+</ul>
+<hr>
+<blockquote>
+<p>✨ <strong>요약:</strong><br>
+JavaScript 유틸리티는 단순한 편의 도구가 아니라, 코드의 구조적 안정성과 유지보수성을 확보하는 핵심 도구입니다.<br>
+ES6의 발전으로 일부는 대체되었지만, “명확성”과 “일관성”의 가치를 고려하면, 올바른 유틸리티 선택은 여전히 필수입니다.</p>
+</blockquote></div><style data-emotion="css hx9xpc">@media (max-width: 768px){.css-hx9xpc{padding:0 20px;}}</style><div class="css-hx9xpc e1gqsjds0"></div><style data-emotion="css 1lgr7vy">.css-1lgr7vy{position:fixed;bottom:30px;right:30px;width:50px;height:50px;border-radius:50%;background:linear-gradient(60deg, rgb(66, 105, 78) 0%, rgb(73, 110, 93) 100%);border:2px solid white;cursor:pointer;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;-webkit-justify-content:center;justify-content:center;box-shadow:0 4px 15px rgba(0, 0, 0, 0.15);-webkit-transition:all 0.3s ease;transition:all 0.3s ease;z-index:1000;opacity:0;visibility:hidden;-webkit-transform:translateY(20px);-moz-transform:translateY(20px);-ms-transform:translateY(20px);transform:translateY(20px);}.css-1lgr7vy:hover{-webkit-transform:translateY(-3px);-moz-transform:translateY(-3px);-ms-transform:translateY(-3px);transform:translateY(-3px);box-shadow:0 6px 20px rgba(0, 0, 0, 0.3);background:white;border-color:rgb(66, 105, 78);}.css-1lgr7vy:active{-webkit-transform:translateY(0);-moz-transform:translateY(0);-ms-transform:translateY(0);transform:translateY(0);}.css-1lgr7vy.visible{opacity:1;visibility:visible;-webkit-transform:translateY(0);-moz-transform:translateY(0);-ms-transform:translateY(0);transform:translateY(0);}@media (max-width: 768px){.css-1lgr7vy{bottom:20px;right:20px;width:45px;height:45px;}}</style><button class="css-1lgr7vy e14t44do1" aria-label="맨 위로 이동"><style data-emotion="css 1lzpihr">.css-1lzpihr{width:0;height:0;border-left:8px solid transparent;border-right:8px solid transparent;border-bottom:12px solid white;margin-bottom:2px;-webkit-transition:border-bottom-color 0.3s ease;transition:border-bottom-color 0.3s ease;}.e14t44do1:hover .css-1lzpihr{border-bottom-color:rgb(66, 105, 78);}</style><div class="css-1lzpihr e14t44do0"></div></button><style data-emotion="css 1yungzt">.css-1yungzt{position:relative;width:100%;padding:40px 0;background:linear-gradient(180deg, rgba(66, 105, 78, 0.05) 0%, rgba(73, 110, 93, 0.1) 100%);border-top:1px solid rgba(66, 105, 78, 0.1);}</style><footer class="css-1yungzt e1oae0v84"><style data-emotion="css 1uamirr">.css-1uamirr{max-width:960px;margin:0 auto;padding:0 20px;text-align:center;}</style><div class="css-1uamirr e1oae0v83"><style data-emotion="css 1ghcw8y">.css-1ghcw8y{font-size:16px;line-height:1.6;color:#426950;margin-bottom:10px;-webkit-transition:color 0.3s ease;transition:color 0.3s ease;}.css-1ghcw8y:hover{color:#2c4735;}@media (max-width: 768px){.css-1ghcw8y{font-size:14px;}}</style><p class="css-1ghcw8y e1oae0v82">Thank You for Visiting My Blog, Have a Good Day <style data-emotion="css lzb4fa">.css-lzb4fa{display:inline-block;-webkit-transition:-webkit-transform 0.3s ease;transition:transform 0.3s ease;}.css-lzb4fa:hover{-webkit-transform:scale(1.2) rotate(10deg);-moz-transform:scale(1.2) rotate(10deg);-ms-transform:scale(1.2) rotate(10deg);transform:scale(1.2) rotate(10deg);}</style><span class="css-lzb4fa e1oae0v80">🌿</span></p><style data-emotion="css y3pbt1">.css-y3pbt1{font-size:14px;color:#666;margin-top:5px;}@media (max-width: 768px){.css-y3pbt1{font-size:12px;}}</style><p class="css-y3pbt1 e1oae0v81">© 2024 Developer LIM.</p></div></footer></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/javascript_utility_libraries_guide/";/*]]>*/</script><!-- slice-start id="_gatsby-scripts-1" -->
+          <script
+            id="gatsby-chunk-mapping"
+          >
+            window.___chunkMapping="{\"app\":[\"/app-5ab049b1a7d9afaa2ddb.js\"],\"component---cache-caches-gatsby-plugin-offline-app-shell-js\":[\"/component---cache-caches-gatsby-plugin-offline-app-shell-js-27e0e967a98f3dffdf9e.js\"],\"component---src-pages-404-tsx\":[\"/component---src-pages-404-tsx-198e8648605be5d74a6a.js\"],\"component---src-pages-index-tsx\":[\"/component---src-pages-index-tsx-49aed13bd17edca89f1a.js\"],\"component---src-pages-info-tsx\":[\"/component---src-pages-info-tsx-91ad86a40368117a0a55.js\"],\"component---src-templates-post-template-tsx\":[\"/component---src-templates-post-template-tsx-6e3542f1f00a7c16e4e6.js\"]}";
+          </script>
+        <script>window.___webpackCompilationHash="c5f50b18458ce60ff11e";</script><script src="/webpack-runtime-cc6a3bd86707474f9378.js" async></script><script src="/framework-9d608f77b5c9a88afabd.js" async></script><script src="/app-5ab049b1a7d9afaa2ddb.js" async></script><!-- slice-end id="_gatsby-scripts-1" --></body></html>
