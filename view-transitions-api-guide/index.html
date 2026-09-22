@@ -1,0 +1,330 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><meta name="generator" content="Gatsby 5.14.0"/><meta name="theme-color" content="#426950"/><meta data-react-helmet="true" name="description" content="화면 전환, 라이브러리 없이 브라우저 네이티브로 완전 정복"/><meta data-react-helmet="true" name="viewport" content="width=device-width, initial-scale=1.0"/><meta data-react-helmet="true" http-equiv="Content-Type" content="text/html;charset=UTF-8"/><meta data-react-helmet="true" property="og:type" content="website"/><meta data-react-helmet="true" property="og:title" content="🎬 View Transitions API: SPA와 MPA를 아우르는 차세대 브라우저 애니메이션 혁명"/><meta data-react-helmet="true" property="og:description" content="화면 전환, 라이브러리 없이 브라우저 네이티브로 완전 정복"/><meta data-react-helmet="true" property="og:image" content="/static/b1449165fad53e79a7e8d4bdb829b437/view-transitions-api-guide.png"/><meta data-react-helmet="true" property="og:url"/><meta data-react-helmet="true" property="og:site_name" content="🎬 View Transitions API: SPA와 MPA를 아우르는 차세대 브라우저 애니메이션 혁명"/><meta data-react-helmet="true" name="twitter:card" content="summary"/><meta data-react-helmet="true" name="twitter:title" content="🎬 View Transitions API: SPA와 MPA를 아우르는 차세대 브라우저 애니메이션 혁명"/><meta data-react-helmet="true" name="twitter:description" content="화면 전환, 라이브러리 없이 브라우저 네이티브로 완전 정복"/><meta data-react-helmet="true" name="twitter:image" content="/static/b1449165fad53e79a7e8d4bdb829b437/view-transitions-api-guide.png"/><meta data-react-helmet="true" name="twitter:site" content="@사용자이름"/><meta data-react-helmet="true" name="twitter:creator" content="@사용자이름"/><style data-href="/styles.9e907bc32054b7771552.css" data-identity="gatsby-global-css">code[class*=language-],pre[class*=language-]{word-wrap:normal;background:none;color:#ccc;font-family:Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;font-size:1em;-webkit-hyphens:none;hyphens:none;line-height:1.5;tab-size:4;text-align:left;white-space:pre;word-break:normal;word-spacing:normal}pre[class*=language-]{margin:.5em 0;overflow:auto;padding:1em}:not(pre)>code[class*=language-],pre[class*=language-]{background:#2d2d2d}:not(pre)>code[class*=language-]{border-radius:.3em;padding:.1em;white-space:normal}.token.block-comment,.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#999}.token.punctuation{color:#ccc}.token.attr-name,.token.deleted,.token.namespace,.token.tag{color:#e2777a}.token.function-name{color:#6196cc}.token.boolean,.token.function,.token.number{color:#f08d49}.token.class-name,.token.constant,.token.property,.token.symbol{color:#f8c555}.token.atrule,.token.builtin,.token.important,.token.keyword,.token.selector{color:#cc99cd}.token.attr-value,.token.char,.token.regex,.token.string,.token.variable{color:#7ec699}.token.entity,.token.operator,.token.url{color:#67cdcc}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}.token.inserted{color:green}</style><link rel="sitemap" type="application/xml" href="/sitemap-index.xml"/><link rel="canonical" href="https://logic-phantom.github.io/view-transitions-api-guide/" data-baseprotocol="https:" data-basehost="logic-phantom.github.io"/><link rel="icon" href="/favicon-32x32.png" type="image/png"/><link rel="manifest" href="/manifest.webmanifest" crossorigin="use-credentials"/><link rel="apple-touch-icon" sizes="192x192" href="/contents/forestLim.png"/><link rel="apple-touch-icon" sizes="512x512" href="/contents/forestLim.png"/><title data-react-helmet="true">🎬 View Transitions API: SPA와 MPA를 아우르는 차세대 브라우저 애니메이션 혁명</title><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){const t=e.target;if(void 0===t.dataset.mainImage)return;if(void 0===t.dataset.gatsbyImageSsr)return;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><style data-emotion="css zyllbl">.css-zyllbl{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;height:100vh;}</style><div class="css-zyllbl e1strnqo0"><style data-emotion="css-global kxm5mf">@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap');*{padding:0;margin:0;box-sizing:border-box;font-family:'Nanum Myeongjo',serif;}html,body,#___gatsby{height:100%;}a,a:hover{color:inherit;-webkit-text-decoration:none;text-decoration:none;cursor:pointer;}</style><style data-emotion="css 16cz9yp">.css-16cz9yp{position:relative;width:100%;height:400px;}@media (max-width: 768px){.css-16cz9yp{height:300px;}}</style><div class="css-16cz9yp e1opi4mu1"><style data-emotion="css 1bjn9yo">.css-1bjn9yo{z-index:-1;width:100%;height:400px;object-fit:cover;-webkit-filter:brightness(0.25);filter:brightness(0.25);}@media (max-width: 768px){.css-1bjn9yo{height:300px;}}</style><div data-gatsby-image-wrapper="" style="position:absolute" class="gatsby-image-wrapper gatsby-image-wrapper-constrained css-1bjn9yo e1opi4mu0"><div style="max-width:1536px;display:block"><img alt="" role="presentation" aria-hidden="true" src="data:image/svg+xml;charset=utf-8,%3Csvg%20height=&#x27;1024&#x27;%20width=&#x27;1536&#x27;%20xmlns=&#x27;http://www.w3.org/2000/svg&#x27;%20version=&#x27;1.1&#x27;%3E%3C/svg%3E" style="max-width:100%;display:block;position:static"/></div><img aria-hidden="true" data-placeholder-image="" style="opacity:1;transition:opacity 500ms linear" decoding="async" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAIAAAAmMtkJAAAACXBIWXMAAAsTAAALEwEAmpwYAAACAUlEQVR42n1SS2/aQBDm5/bQqvce2l57rRT12FNVqWoPlaIcwiOAHUgIsQ1rew22MeDH7vrJo+Fp4w4kSlGUVPq0mp2Zb3Y131dQ6fb/UMiLpcKzTQrZPKLjrOF8kQy01nB1aS5Fe40PWc3P8BOw9Hgu8jYPZMy2iKRdkiqHsuyta13vQnI4RDiZVES7hggkD0NTmHsPeKYA99Zg/oszvpdxHUdmkl/1o6HDsiylQeyxCAKPxZxCzThv9JOi6JYkryyRrrMq9IJdpUMEc9K14pLo9sL8EgcsnOR5rpl2Bw8giCfzKiKanxcFp+fdkenWcJO6Gu7JF106DNYkWcEUme4avUjpj5A21C13YFOsj1V9XEVMobvTawu74XSRqqOQw9GeXO7QYLZYLFdVRI04vzESIAuy2er0Bdm4RYaq2w0t0KO8bf35VkSfvp5Xuj5y99/Oqsg/E6zSrVWSaD/MxeH8x2ntzYeT1+9P3n788urd59/nzbaZYJb1gww5S14LVQb73xZAA8lenbW9n/ywqc8gC8LyCm1itocKAW2oDHpkkkJJcjcKy1T6T6pUD3cAjWXC6I7XokYvaerTa2MGZ1Of8FrM4bA9mCs0vbKWYAqZHDkMdL9XUhwv6opfVxivBpzic6rP46CGKMQ3gxnIe+y2whPHwS9gC89CYw8ueiT/BcmprGqGi8QWAAAAAElFTkSuQmCC" alt=""/><picture><source type="image/webp" data-srcset="/static/b1449165fad53e79a7e8d4bdb829b437/b642b/view-transitions-api-guide.webp 384w,/static/b1449165fad53e79a7e8d4bdb829b437/c9564/view-transitions-api-guide.webp 768w,/static/b1449165fad53e79a7e8d4bdb829b437/18b4b/view-transitions-api-guide.webp 1536w" sizes="(min-width: 1536px) 1536px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 1536px) 1536px, 100vw" decoding="async" loading="lazy" data-src="/static/b1449165fad53e79a7e8d4bdb829b437/4d776/view-transitions-api-guide.png" data-srcset="/static/b1449165fad53e79a7e8d4bdb829b437/4a410/view-transitions-api-guide.png 384w,/static/b1449165fad53e79a7e8d4bdb829b437/f5189/view-transitions-api-guide.png 768w,/static/b1449165fad53e79a7e8d4bdb829b437/4d776/view-transitions-api-guide.png 1536w" alt="thumbnail"/></picture><noscript><picture><source type="image/webp" srcSet="/static/b1449165fad53e79a7e8d4bdb829b437/b642b/view-transitions-api-guide.webp 384w,/static/b1449165fad53e79a7e8d4bdb829b437/c9564/view-transitions-api-guide.webp 768w,/static/b1449165fad53e79a7e8d4bdb829b437/18b4b/view-transitions-api-guide.webp 1536w" sizes="(min-width: 1536px) 1536px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 1536px) 1536px, 100vw" decoding="async" loading="lazy" src="/static/b1449165fad53e79a7e8d4bdb829b437/4d776/view-transitions-api-guide.png" srcSet="/static/b1449165fad53e79a7e8d4bdb829b437/4a410/view-transitions-api-guide.png 384w,/static/b1449165fad53e79a7e8d4bdb829b437/f5189/view-transitions-api-guide.png 768w,/static/b1449165fad53e79a7e8d4bdb829b437/4d776/view-transitions-api-guide.png 1536w" alt="thumbnail"/></picture></noscript><script type="module">const t="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;if(t){const t=document.querySelectorAll("img[data-main-image]");for(let e of t){e.dataset.src&&(e.setAttribute("src",e.dataset.src),e.removeAttribute("data-src")),e.dataset.srcset&&(e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset"));const t=e.parentNode.querySelectorAll("source[data-srcset]");for(let e of t)e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset");e.complete&&(e.style.opacity=1,e.parentNode.parentNode.querySelector("[data-placeholder-image]").style.opacity=0)}}</script></div><style data-emotion="css m1156n">.css-m1156n{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;width:768px;height:100%;margin:0 auto;padding:60px 0;color:#ffffff;}@media (max-width: 768px){.css-m1156n{width:100%;padding:40px 20px;}}</style><div class="css-m1156n e1st1jau4"><style data-emotion="css gywgo7">.css-gywgo7{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:#ffffff;color:#000000;font-size:22px;cursor:pointer;box-shadow:0 0 10px rgba(0, 0, 0, 0.3);}@media (max-width: 768px){.css-gywgo7{width:30px;height:30px;font-size:18px;}}</style><div class="css-gywgo7 e1st1jau3"><style data-emotion="css 1ij64l8">.css-1ij64l8{display:inline-block;width:12px;height:12px;border-left:2px solid #000000;border-bottom:2px solid #000000;-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg);-ms-transform:rotate(45deg);transform:rotate(45deg);}</style><span class="css-1ij64l8 e1st1jau2"></span></div><style data-emotion="css gn4qtp">.css-gn4qtp{display:-webkit-box;overflow:hidden;overflow-wrap:break-word;margin-top:auto;text-overflow:ellipsis;white-space:normal;-webkit-line-clamp:2;-webkit-box-orient:vertical;font-size:45px;font-weight:800;}@media (max-width: 768px){.css-gn4qtp{font-size:30px;}}</style><div class="css-gn4qtp e1st1jau1">🎬 View Transitions API: SPA와 MPA를 아우르는 차세대 브라우저 애니메이션 혁명</div><style data-emotion="css 3gcnt2">.css-3gcnt2{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;justify-content:space-between;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;margin-top:10px;font-size:18px;font-weight:700;}@media (max-width: 768px){.css-3gcnt2{-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-align-items:flex-start;-webkit-box-align:flex-start;-ms-flex-align:flex-start;align-items:flex-start;font-size:15px;font-weight:400;}}</style><div class="css-3gcnt2 e1st1jau0"><div>Web</div><div>2026.09.22.</div></div></div></div><style data-emotion="css 12g9cpd">.css-12g9cpd{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;width:768px;margin:0 auto;padding:200px 0 0 0;word-break:break-all;line-height:1.8;font-size:16px;font-weight:400;}.css-12g9cpd p{padding:3px 0;}.css-12g9cpd h1,.css-12g9cpd h2,.css-12g9cpd h3{font-weight:800;margin-bottom:30px;}.css-12g9cpd *+h1,.css-12g9cpd *+h2,.css-12g9cpd *+h3{margin-top:80px;}.css-12g9cpd hr+h1,.css-12g9cpd hr+h2,.css-12g9cpd hr+h3{margin-top:0;}.css-12g9cpd h1{font-size:30px;}.css-12g9cpd h2{font-size:25px;}.css-12g9cpd h3{font-size:20px;}.css-12g9cpd blockquote{margin:30px 0;padding:5px 15px;border-left:2px solid #000000;font-weight:800;}.css-12g9cpd ol,.css-12g9cpd ul{margin-left:20px;padding:30px 0;}.css-12g9cpd hr{border:1px solid #000000;margin:100px 0;}.css-12g9cpd a{color:#4263eb;-webkit-text-decoration:underline;text-decoration:underline;}.css-12g9cpd pre[class*='language-']{margin:30px 0;padding:15px;font-size:15px;}.css-12g9cpd pre[class*='language-']::-webkit-scrollbar-thumb{background:rgba(255, 255, 255, 0.5);border-radius:3px;}.css-12g9cpd code[class*='language-'],.css-12g9cpd pre[class*='language-']{tab-size:2;}@media (max-width: 768px){.css-12g9cpd{width:100%;padding:140px 20px 0 20px;line-height:1.6;font-size:14px;}.css-12g9cpd h1{font-size:23px;}.css-12g9cpd h2{font-size:20px;}.css-12g9cpd h3{font-size:17px;}.css-12g9cpd img{width:100%;}.css-12g9cpd hr{margin:50px 0;}}</style><div class="css-12g9cpd e1ijh0y10"><h1>🎬 View Transitions API: SPA와 MPA를 아우르는 차세대 브라우저 애니메이션 혁명</h1>
+<blockquote>
+<p>복잡한 JS 라이브러리 없이 브라우저 네이티브 엔진만으로 부드러운 화면 전환을 구현하다.
+SPA 내부 상태 변화부터 MPA 페이지 이동까지 완벽하게 처리하는 View Transitions API의 모든 것.</p>
+</blockquote>
+<hr>
+<h2>📌 목차</h2>
+<ol>
+<li>🧭 View Transitions API란 무엇인가?</li>
+<li>⚙️ 동작 원리: 브라우저 가상 요소(Pseudo-elements)의 비밀</li>
+<li>🚀 SPA에서 View Transitions 적용하기 (<code class="language-text">document.startViewTransition</code>)</li>
+<li>🌐 MPA(Multi-Page Application) 간 Cross-Document View Transitions</li>
+<li>🎨 <code class="language-text">view-transition-name</code>을 활용한 요소 단위 전환 (Hero Animation)</li>
+<li>📊 기존 애니메이션 솔루션과의 비교</li>
+<li>🛠️ 프레임워크(React / Next.js) 통합 및 커스텀 CSS 커스스터마이징</li>
+<li>⚠️ 실무 함정 1: 레이아웃 스태킹 및 z-index context 꼬임 현상</li>
+<li>⚠️ 실무 함정 2: 비동기 데이터 패칭 및 DOM 업데이트 타이밍 미스</li>
+<li>🚫 사용을 피해야 하는 상황과 성능 안티 패턴</li>
+<li>🧭 접근성(a11y)과 <code class="language-text">prefers-reduced-motion</code> 대책</li>
+<li>🧾 정리</li>
+</ol>
+<hr>
+<h2>🧭 1. View Transitions API란 무엇인가?</h2>
+<p>과거 웹 애플리케이션에서 페이지를 전환하거나 상태를 변경할 때 네이티브 앱과 같은 부드러운 애니메이션을 구현하는 것은 대단히 까다로운 작업이었습니다. <code class="language-text">Framer Motion</code>, <code class="language-text">GSAP</code>, <code class="language-text">React Transition Group</code> 같은 외부 라이브러리를 사용하여 구 상태와 신 상태의 DOM 노드를 한 번에 유지하고, 절대 좌표(<code class="language-text">position: absolute</code>)를 계산하여 트랜지션을 부여해야 했습니다.</p>
+<p><code class="language-text">View Transitions API</code>는 이러한 복잡성을 브라우저 렌더링 엔진 자체로 가져왔습니다. 개발자는 DOM 업데이트 로직만 전달하고, 브라우저가 변경 전후의 렌더링 스냅샷을 캡처하여 GPU 가속 기반의 가상 요소(Pseudo-elements) 트리를 생성합니다.</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 768px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/e70cb0489ec83cae32a982702deb17a2/bbbf7/view-transitions-api-guide-1.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 50%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAIAAAA7N+mxAAAACXBIWXMAAAsTAAALEwEAmpwYAAAB00lEQVR42j2O22oUQRCG56HFh4jBJ9CQS68EL1QQFxQiSVCUhD04u9tz7uP09Gl6pntOG2eisSiKH/76/qrg4bG6YYBMYK5SXIKcFEwUpIoLyrjiQgtpeGVouWhaSue7v1RwmqZBKUsoDAE6xOnuGG/2cB8VhxhDCrnYQxQiuMmy+yTZZOkssJbKN+M0BWPTWspNktska3LYEuYQsVnRYHqqrezauutyLYCgQLKjIHMzW2vXKW+DqWmkNEWpthFaH4tdBMMEA8gJkydrde9RKQ8R+n0stod89zjTnHHd6K5ZYCVMXLAoI2E0exlIcRhDQquTbXTvcKWijCYFCyMIMnLMcArLyjzBUujZm5lDgkJQHFM07xEqFnjwsJRzbgLZPl7gKF+CuLb/YK1qptuEiJSIBFcxrpCohaynenmbCE2IxFTNB3NUISwRkXy53AajMd711XoXvTjPX73OLy7js3P8/qPzw6g099b145v11fPV5cvbd2fXb599vvheANdPwtXBaRh6UzuEq6tv/PqG39zSL1/lemsr6U0t24YZ/ROBD/sfK3C/AnefwK9EMeWabhyCh6fqxkm7XrZetN64Thq7tLZKW9/2Te2Nbm3txnH6j/wB+hQgXJWMb78AAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <picture>
+          <source
+              srcset="/static/e70cb0489ec83cae32a982702deb17a2/a59e9/view-transitions-api-guide-1.webp 192w,
+/static/e70cb0489ec83cae32a982702deb17a2/0ca9f/view-transitions-api-guide-1.webp 384w,
+/static/e70cb0489ec83cae32a982702deb17a2/dc9b9/view-transitions-api-guide-1.webp 768w,
+/static/e70cb0489ec83cae32a982702deb17a2/e2c2f/view-transitions-api-guide-1.webp 1152w,
+/static/e70cb0489ec83cae32a982702deb17a2/94b1e/view-transitions-api-guide-1.webp 1280w"
+              sizes="(max-width: 768px) 100vw, 768px"
+              type="image/webp"
+            />
+          <source
+            srcset="/static/e70cb0489ec83cae32a982702deb17a2/3b721/view-transitions-api-guide-1.png 192w,
+/static/e70cb0489ec83cae32a982702deb17a2/66595/view-transitions-api-guide-1.png 384w,
+/static/e70cb0489ec83cae32a982702deb17a2/fe486/view-transitions-api-guide-1.png 768w,
+/static/e70cb0489ec83cae32a982702deb17a2/d2d74/view-transitions-api-guide-1.png 1152w,
+/static/e70cb0489ec83cae32a982702deb17a2/bbbf7/view-transitions-api-guide-1.png 1280w"
+            sizes="(max-width: 768px) 100vw, 768px"
+            type="image/png"
+          />
+          <img
+            class="gatsby-resp-image-image"
+            src="/static/e70cb0489ec83cae32a982702deb17a2/fe486/view-transitions-api-guide-1.png"
+            alt="기존 JS 애니메이션과 View Transitions API 비교"
+            title=""
+            loading="lazy"
+            decoding="async"
+            style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+          />
+        </picture>
+  </a>
+    </span></p>
+<hr>
+<h2>⚙️ 2. 동작 원리: 브라우저 가상 요소(Pseudo-elements)의 비밀</h2>
+<p><code class="language-text">document.startViewTransition()</code>이 호출되면 브라우저는 다음과 같은 단계로 가상 렌더링 트리를 구축합니다.</p>
+<ol>
+<li>현재 상태의 화면을 <strong>Old 스냅샷 이미지</strong>로 캡처합니다.</li>
+<li>전달된 콜백 함수를 실행하여 실제 DOM을 변경합니다.</li>
+<li>변경 완료 후 새로운 상태의 화면을 <strong>New 스냅샷 이미지</strong>로 캡처합니다.</li>
+<li>브라우저 루트 최상위에 <code class="language-text">::view-transition</code> 가상 요소 트리를 생성합니다.</li>
+</ol>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">::view-transition
+└─ ::view-transition-group(root)
+   └─ ::view-transition-image-pair(root)
+      ├─ ::view-transition-old(root)   &lt;-- 이전 상태 캡처
+      └─ ::view-transition-new(root)   &lt;-- 이후 상태 캡처</code></pre></div>
+<p>기본적으로 <code class="language-text">::view-transition-old</code>는 opacity 1에서 0으로, <code class="language-text">::view-transition-new</code>는 opacity 0에서 1로 변하는 Cross-fade 애니메이션이 적용됩니다.</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 768px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/bda1220e26c92890a7c0b9abc110aaef/bbbf7/view-transitions-api-guide-2.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 50%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAIAAAA7N+mxAAAACXBIWXMAAAsTAAALEwEAmpwYAAABQUlEQVR42pVR206EMBDl///F+K4PJj4ZExMSTYxml+XWlt5pgV22Bdah9RKJL55MyplhDp0zJJff0KaX2irdUaFl2xGmCsRqIoAQKjfNySYX2jChmWwrzBuuEZUVESDGVGKmtuJ5nv0EgOcyBywRl8vyjcDju9jvV8GSqLY7IH6o4R71VsqblNym9DmDOWWBZYFEiTlmMII+1AxT1Yg2cqFtQhgwniORlc19Wlw94OvH5i6tdjkqiKqIenkv9wU46HPEX3cVyKi0Wc3hQ4k2A5NWmaG1fcXs016nuckbq9uOqU7oHtYWomfKAlFfHPoTMOO8d86DCXA2g5lpCg4XKIb66jP2gOcpcr/y7bb/hR/xOoLz53DbeHYh/Di603iGgHQ4jqfR/S2GeUzXm26AsPHsj3C2dl0HVMAtpOHHfYo/AGWWPEDxMnpzAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <picture>
+          <source
+              srcset="/static/bda1220e26c92890a7c0b9abc110aaef/a59e9/view-transitions-api-guide-2.webp 192w,
+/static/bda1220e26c92890a7c0b9abc110aaef/0ca9f/view-transitions-api-guide-2.webp 384w,
+/static/bda1220e26c92890a7c0b9abc110aaef/dc9b9/view-transitions-api-guide-2.webp 768w,
+/static/bda1220e26c92890a7c0b9abc110aaef/e2c2f/view-transitions-api-guide-2.webp 1152w,
+/static/bda1220e26c92890a7c0b9abc110aaef/94b1e/view-transitions-api-guide-2.webp 1280w"
+              sizes="(max-width: 768px) 100vw, 768px"
+              type="image/webp"
+            />
+          <source
+            srcset="/static/bda1220e26c92890a7c0b9abc110aaef/3b721/view-transitions-api-guide-2.png 192w,
+/static/bda1220e26c92890a7c0b9abc110aaef/66595/view-transitions-api-guide-2.png 384w,
+/static/bda1220e26c92890a7c0b9abc110aaef/fe486/view-transitions-api-guide-2.png 768w,
+/static/bda1220e26c92890a7c0b9abc110aaef/d2d74/view-transitions-api-guide-2.png 1152w,
+/static/bda1220e26c92890a7c0b9abc110aaef/bbbf7/view-transitions-api-guide-2.png 1280w"
+            sizes="(max-width: 768px) 100vw, 768px"
+            type="image/png"
+          />
+          <img
+            class="gatsby-resp-image-image"
+            src="/static/bda1220e26c92890a7c0b9abc110aaef/fe486/view-transitions-api-guide-2.png"
+            alt="View Transitions 라이프사이클 흐름도"
+            title=""
+            loading="lazy"
+            decoding="async"
+            style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+          />
+        </picture>
+  </a>
+    </span></p>
+<hr>
+<h2>🚀 3. SPA에서 View Transitions 적용하기 (<code class="language-text">document.startViewTransition</code>)</h2>
+<p>단일 페이지 애플리케이션(SPA)에서는 DOM 변경 코드를 <code class="language-text">document.startViewTransition</code> 콜백으로 감싸는 것만으로 즉시 동작합니다.</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token comment">// View Transitions API 지원 여부 확인 분기</span>
+<span class="token keyword">function</span> <span class="token function">updateDOM</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'content'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>textContent <span class="token operator">=</span> <span class="token string">'새로운 페이지 콘텐츠입니다!'</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">navigate</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>document<span class="token punctuation">.</span>startViewTransition<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 미지원 브라우저는 폴백 처리</span>
+    <span class="token function">updateDOM</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// 브라우저가 화면을 캡처하고 애니메이션 트리거</span>
+  <span class="token keyword">const</span> transition <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">startViewTransition</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token function">updateDOM</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  transition<span class="token punctuation">.</span>ready<span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'가상 애니메이션 요소를 사용할 준비가 되었습니다.'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  transition<span class="token punctuation">.</span>finished<span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'트랜지션이 완전히 끝났습니다.'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre></div>
+<hr>
+<h2>🌐 4. MPA(Multi-Page Application) 간 Cross-Document View Transitions</h2>
+<p>Chrome 126부터는 SPA뿐만 아니라 동일 출처(Same-Origin)의 MPA 간 페이지 이동 시에도 CSS 설정만으로 브라우저 수준 트랜지션을 지원합니다.</p>
+<div class="gatsby-highlight" data-language="css"><pre class="language-css"><code class="language-css"><span class="token comment">/* origin 및 target 문서 양쪽 모두의 CSS에 선언해야 동작합니다 */</span>
+<span class="token atrule"><span class="token rule">@view-transition</span></span> <span class="token punctuation">{</span>
+  <span class="token property">navigation</span><span class="token punctuation">:</span> auto<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>별도의 JavaScript 코딩 없이 <code class="language-text">&lt;a></code> 태그 클릭을 통한 페이지 전환 시에도 자연스러운 배너 공유, 이미지 트랜지션 등이 이루어집니다.</p>
+<hr>
+<h2>🎨 5. <code class="language-text">view-transition-name</code>을 활용한 요소 단위 전환 (Hero Animation)</h2>
+<p>전체 화면 교체 외에 특정 개별 요소를 매칭하여 부드럽게 위치와 크기를 변환(Shared Element Transition)할 수 있습니다.</p>
+<div class="gatsby-highlight" data-language="css"><pre class="language-css"><code class="language-css"><span class="token comment">/* 목록 페이지의 이미지 카테고리 */</span>
+<span class="token selector">.card-image</span> <span class="token punctuation">{</span>
+  <span class="token property">view-transition-name</span><span class="token punctuation">:</span> product-hero<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/* 상세 페이지의 메인 헤더 이미지 */</span>
+<span class="token selector">.detail-hero-image</span> <span class="token punctuation">{</span>
+  <span class="token property">view-transition-name</span><span class="token punctuation">:</span> product-hero<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>두 페이지 혹은 두 상태에서 동일한 <code class="language-text">view-transition-name</code>을 가진 요소가 존재하면, 브라우저는 해당 요소의 Rect(위치, 크기) 차이를 자동 계산하여 무결점 Transform 애니메이션을 연출합니다.</p>
+<hr>
+<h2>📊 6. 기존 애니메이션 솔루션과의 비교</h2>
+<table>
+<thead>
+<tr>
+<th align="left">구분</th>
+<th align="left">기존 JS 라이브러리 (Framer/GSAP)</th>
+<th align="left">View Transitions API</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong>렌더링 방식</strong></td>
+<td align="left">실제 DOM 노드 복제 및 JS 좌표 계산</td>
+<td align="left">브라우저 렌더러 수준 스냅샷 이미지 처리</td>
+</tr>
+<tr>
+<td align="left"><strong>메인 스레드 부하</strong></td>
+<td align="left">높음 (스크립트 실행 및 Reflow 지속 발생)</td>
+<td align="left">매우 낮음 (GPU Compositor 스레드 활용)</td>
+</tr>
+<tr>
+<td align="left"><strong>MPA 지원</strong></td>
+<td align="left">불가능</td>
+<td align="left"><code class="language-text">@view-transition</code>으로 완전 지원</td>
+</tr>
+<tr>
+<td align="left"><strong>번들 사이즈</strong></td>
+<td align="left">30KB ~ 100KB+ 가중</td>
+<td align="left"><strong>0 KB</strong> (웹 표준 API)</td>
+</tr>
+<tr>
+<td align="left"><strong>복잡도</strong></td>
+<td align="left">AnimatePresence 등 리액트 트리 관리 필요</td>
+<td align="left">단순 CSS <code class="language-text">view-transition-name</code> 명시</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2>🛠️ 7. 프레임워크(React / Next.js) 통합 및 커스텀 CSS 커스텀</h2>
+<p>React 19 및 Next.js App Router 환경에서는 <code class="language-text">flushSync</code>와 함께 사용하거나 커스텀 훅으로 추상화할 수 있습니다.</p>
+<div class="gatsby-highlight" data-language="jsx"><pre class="language-jsx"><code class="language-jsx"><span class="token keyword">import</span> <span class="token punctuation">{</span> flushSync <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react-dom'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> useState <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">useViewTransition</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> <span class="token punctuation">[</span>isPending<span class="token punctuation">,</span> setIsPending<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">const</span> <span class="token function-variable function">startTransition</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">callback</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>document<span class="token punctuation">.</span>startViewTransition<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token function">callback</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">return</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token function">setIsPending</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> transition <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">startViewTransition</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+      <span class="token function">flushSync</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+        <span class="token function">callback</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    transition<span class="token punctuation">.</span>finished<span class="token punctuation">.</span><span class="token function">finally</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token function">setIsPending</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">return</span> <span class="token punctuation">{</span> startTransition<span class="token punctuation">,</span> isPending <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>CSS를 이용해 기본 애니메이션 속도와 이징(easing)도 손쉽게 제어할 수 있습니다.</p>
+<div class="gatsby-highlight" data-language="css"><pre class="language-css"><code class="language-css"><span class="token comment">/* 슬라이드 좌우 이동 커스텀 트랜지션 */</span>
+<span class="token selector">::view-transition-old(slide-card)</span> <span class="token punctuation">{</span>
+  <span class="token property">animation</span><span class="token punctuation">:</span> 300ms ease-out <span class="token function">cubic-bezier</span><span class="token punctuation">(</span>0.4<span class="token punctuation">,</span> 0<span class="token punctuation">,</span> 0.2<span class="token punctuation">,</span> 1<span class="token punctuation">)</span> slide-to-left<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">::view-transition-new(slide-card)</span> <span class="token punctuation">{</span>
+  <span class="token property">animation</span><span class="token punctuation">:</span> 300ms ease-out <span class="token function">cubic-bezier</span><span class="token punctuation">(</span>0.4<span class="token punctuation">,</span> 0<span class="token punctuation">,</span> 0.2<span class="token punctuation">,</span> 1<span class="token punctuation">)</span> slide-from-right<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token atrule"><span class="token rule">@keyframes</span> slide-to-left</span> <span class="token punctuation">{</span>
+  <span class="token selector">to</span> <span class="token punctuation">{</span> <span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">translateX</span><span class="token punctuation">(</span>-100%<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token atrule"><span class="token rule">@keyframes</span> slide-from-right</span> <span class="token punctuation">{</span>
+  <span class="token selector">from</span> <span class="token punctuation">{</span> <span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">translateX</span><span class="token punctuation">(</span>100%<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div>
+<hr>
+<h2>⚠️ 8. 실무 함정 1: 레이아웃 스태킹 및 z-index context 꼬임 현상</h2>
+<p>가장 흔히 겪는 문제는 <code class="language-text">view-transition-name</code>이 고유해야 한다는 점입니다. 한 화면 내에서 두 개 이상의 요소에 동일한 <code class="language-text">view-transition-name</code>을 지정하면 트랜지션 전체가 무시되고 콘솔 에러가 발생합니다.</p>
+<div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript"><span class="token comment">// ❌ 잘못된 예시: 반복문 안에서 동일한 name 지정</span>
+items<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token parameter">item</span> <span class="token operator">=></span> <span class="token punctuation">(</span>
+  <span class="token operator">&lt;</span>div style<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span> <span class="token literal-property property">viewTransitionName</span><span class="token operator">:</span> <span class="token string">'card-item'</span> <span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token operator">></span><span class="token punctuation">{</span>item<span class="token punctuation">.</span>title<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// ✅ 올바른 예시: 동적 고유 ID 부여</span>
+items<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token parameter">item</span> <span class="token operator">=></span> <span class="token punctuation">(</span>
+  <span class="token operator">&lt;</span>div style<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span> <span class="token literal-property property">viewTransitionName</span><span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">card-item-</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>item<span class="token punctuation">.</span>id<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span> <span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token operator">></span><span class="token punctuation">{</span>item<span class="token punctuation">.</span>title<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<p>또한 트랜지션 가상 요소 트리는 항상 Document 최상단 레이어에 오버레이 되므로, <code class="language-text">overflow: hidden</code>이나 부모의 <code class="language-text">z-index</code> 규칙을 무시할 수 있어 시각적 잘림 현상을 확인해야 합니다.</p>
+<hr>
+<h2>⚠️ 9. 실무 함정 2: 비동기 데이터 패칭 및 DOM 업데이트 타이밍 미스</h2>
+<p><code class="language-text">startViewTransition</code>의 콜백 함수에서 Promise를 처리할 때, 비동기 로직이 완전히 종료될 때까지 브라우저는 화면을 스냅샷 캡처 대기 상태로 고정시킵니다.</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token comment">// ❌ 안쁜 예시: 너무 긴 비동기 대기로 화면 Freeze 발생</span>
+document<span class="token punctuation">.</span><span class="token function">startViewTransition</span><span class="token punctuation">(</span><span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> data <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">fetchLargeData</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 2초 소요 시 2초간 화면 완전 먹통</span>
+  <span class="token function">renderUI</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// ✅ 올바른 예시: 데이터를 먼저 받아온 후 DOM 업데이트만 콜백으로 전달</span>
+<span class="token keyword">const</span> data <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">fetchLargeData</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+document<span class="token punctuation">.</span><span class="token function">startViewTransition</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token function">renderUI</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<hr>
+<h2>🚫 10. 사용을 피해야 하는 상황과 성능 안티 패턴</h2>
+<ol>
+<li><strong>수백 개의 리스트 항목 전체에 <code class="language-text">view-transition-name</code> 부여</strong>: 개별 캡처 스냅샷 레이어가 수백 개 생겨 GPU 메모리 폭증 및 프레임 드롭을 유발합니다.</li>
+<li><strong>실시간 데이터 스트리밍(Chart, Canvas)</strong>: 초당 수십 번 바뀌는 데이터 표시에 View Transition을 걸면 비동기 스냅샷이 꼬이게 됩니다.</li>
+<li><strong>인풋 키보드 입력 타이밍</strong>: 텍스트 입력 시마다 트랜지션을 실행하면 입력 딜레이(INP 저하)가 발생합니다.</li>
+</ol>
+<hr>
+<h2>🧭 11. 접근성(a11y)과 <code class="language-text">prefers-reduced-motion</code> 대책</h2>
+<p>모션 시각 장애나 어지럼증을 느끼는 사용자를 위해 반드시 <code class="language-text">prefers-reduced-motion</code> 미디어 쿼리를 적용해야 합니다.</p>
+<div class="gatsby-highlight" data-language="css"><pre class="language-css"><code class="language-css"><span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">prefers-reduced-motion</span><span class="token punctuation">:</span> reduce<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+  <span class="token selector">::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*)</span> <span class="token punctuation">{</span>
+    <span class="token property">animation</span><span class="token punctuation">:</span> none <span class="token important">!important</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div>
+<hr>
+<h2>🧾 12. 정리</h2>
+<ul>
+<li>View Transitions API는 브라우저 네이티브 수준의 스냅샷 애니메이션 메커니즘을 제공합니다.</li>
+<li><code class="language-text">document.startViewTransition</code> 하나로 SPA의 DOM 변경을 부드럽게 이을 수 있습니다.</li>
+<li><code class="language-text">view-transition-name</code>을 통해 서로 다른 페이지 간의 Hero 애니메이션을 무설정 수준으로 선언할 수 있습니다.</li>
+<li>고유한 name 관리, 비동기 데이터 처리 순서, <code class="language-text">prefers-reduced-motion</code> 대응이 실무 적용의 핵심 키포인트입니다.</li>
+</ul>
+<blockquote>
+<p>✨ <strong>한 줄 요약</strong>
+무거운 JS 애니메이션 라이브러리를 내려놓고, 브라우저 가상 요소 스냅샷 기반의 View Transitions API로 부드러운 웹 경험을 구축하자!</p>
+</blockquote>
+<hr>
+<h2>📚 참고 자료</h2>
+<ul>
+<li><a href="https://www.w3.org/TR/css-view-transitions-1/" target="_blank" rel="nofollow">W3C Draft: CSS View Transitions Module Level 1</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/View_Transitions_API" target="_blank" rel="nofollow">MDN Web Docs: View Transitions API</a></li>
+<li><a href="https://developer.chrome.com/docs/web-platform/view-transitions/" target="_blank" rel="nofollow">Chrome Dev: Smooth transitions with the View Transitions API</a></li>
+</ul></div><style data-emotion="css hx9xpc">@media (max-width: 768px){.css-hx9xpc{padding:0 20px;}}</style><div class="css-hx9xpc e1gqsjds0"></div><style data-emotion="css 1lgr7vy">.css-1lgr7vy{position:fixed;bottom:30px;right:30px;width:50px;height:50px;border-radius:50%;background:linear-gradient(60deg, rgb(66, 105, 78) 0%, rgb(73, 110, 93) 100%);border:2px solid white;cursor:pointer;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;-webkit-justify-content:center;justify-content:center;box-shadow:0 4px 15px rgba(0, 0, 0, 0.15);-webkit-transition:all 0.3s ease;transition:all 0.3s ease;z-index:1000;opacity:0;visibility:hidden;-webkit-transform:translateY(20px);-moz-transform:translateY(20px);-ms-transform:translateY(20px);transform:translateY(20px);}.css-1lgr7vy:hover{-webkit-transform:translateY(-3px);-moz-transform:translateY(-3px);-ms-transform:translateY(-3px);transform:translateY(-3px);box-shadow:0 6px 20px rgba(0, 0, 0, 0.3);background:white;border-color:rgb(66, 105, 78);}.css-1lgr7vy:active{-webkit-transform:translateY(0);-moz-transform:translateY(0);-ms-transform:translateY(0);transform:translateY(0);}.css-1lgr7vy.visible{opacity:1;visibility:visible;-webkit-transform:translateY(0);-moz-transform:translateY(0);-ms-transform:translateY(0);transform:translateY(0);}@media (max-width: 768px){.css-1lgr7vy{bottom:20px;right:20px;width:45px;height:45px;}}</style><button class="css-1lgr7vy e14t44do1" aria-label="맨 위로 이동"><style data-emotion="css 1lzpihr">.css-1lzpihr{width:0;height:0;border-left:8px solid transparent;border-right:8px solid transparent;border-bottom:12px solid white;margin-bottom:2px;-webkit-transition:border-bottom-color 0.3s ease;transition:border-bottom-color 0.3s ease;}.e14t44do1:hover .css-1lzpihr{border-bottom-color:rgb(66, 105, 78);}</style><div class="css-1lzpihr e14t44do0"></div></button><style data-emotion="css 1yungzt">.css-1yungzt{position:relative;width:100%;padding:40px 0;background:linear-gradient(180deg, rgba(66, 105, 78, 0.05) 0%, rgba(73, 110, 93, 0.1) 100%);border-top:1px solid rgba(66, 105, 78, 0.1);}</style><footer class="css-1yungzt e1oae0v84"><style data-emotion="css 1uamirr">.css-1uamirr{max-width:960px;margin:0 auto;padding:0 20px;text-align:center;}</style><div class="css-1uamirr e1oae0v83"><style data-emotion="css 1ghcw8y">.css-1ghcw8y{font-size:16px;line-height:1.6;color:#426950;margin-bottom:10px;-webkit-transition:color 0.3s ease;transition:color 0.3s ease;}.css-1ghcw8y:hover{color:#2c4735;}@media (max-width: 768px){.css-1ghcw8y{font-size:14px;}}</style><p class="css-1ghcw8y e1oae0v82">Thank You for Visiting My Blog, Have a Good Day <style data-emotion="css lzb4fa">.css-lzb4fa{display:inline-block;-webkit-transition:-webkit-transform 0.3s ease;transition:transform 0.3s ease;}.css-lzb4fa:hover{-webkit-transform:scale(1.2) rotate(10deg);-moz-transform:scale(1.2) rotate(10deg);-ms-transform:scale(1.2) rotate(10deg);transform:scale(1.2) rotate(10deg);}</style><span class="css-lzb4fa e1oae0v80">🌿</span></p><style data-emotion="css y3pbt1">.css-y3pbt1{font-size:14px;color:#666;margin-top:5px;}@media (max-width: 768px){.css-y3pbt1{font-size:12px;}}</style><p class="css-y3pbt1 e1oae0v81">© 2024 Developer LIM.</p></div></footer></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/view-transitions-api-guide/";/*]]>*/</script><!-- slice-start id="_gatsby-scripts-1" -->
+          <script
+            id="gatsby-chunk-mapping"
+          >
+            window.___chunkMapping="{\"app\":[\"/app-5ab049b1a7d9afaa2ddb.js\"],\"component---cache-caches-gatsby-plugin-offline-app-shell-js\":[\"/component---cache-caches-gatsby-plugin-offline-app-shell-js-27e0e967a98f3dffdf9e.js\"],\"component---src-pages-404-tsx\":[\"/component---src-pages-404-tsx-198e8648605be5d74a6a.js\"],\"component---src-pages-index-tsx\":[\"/component---src-pages-index-tsx-49aed13bd17edca89f1a.js\"],\"component---src-pages-info-tsx\":[\"/component---src-pages-info-tsx-91ad86a40368117a0a55.js\"],\"component---src-templates-post-template-tsx\":[\"/component---src-templates-post-template-tsx-6e3542f1f00a7c16e4e6.js\"]}";
+          </script>
+        <script>window.___webpackCompilationHash="c5f50b18458ce60ff11e";</script><script src="/webpack-runtime-cc6a3bd86707474f9378.js" async></script><script src="/framework-9d608f77b5c9a88afabd.js" async></script><script src="/app-5ab049b1a7d9afaa2ddb.js" async></script><!-- slice-end id="_gatsby-scripts-1" --></body></html>
