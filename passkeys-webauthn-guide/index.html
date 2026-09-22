@@ -1,0 +1,723 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><meta name="generator" content="Gatsby 5.14.0"/><meta name="theme-color" content="#426950"/><meta data-react-helmet="true" name="description" content="비밀번호를 외우는 시대의 끝"/><meta data-react-helmet="true" name="viewport" content="width=device-width, initial-scale=1.0"/><meta data-react-helmet="true" http-equiv="Content-Type" content="text/html;charset=UTF-8"/><meta data-react-helmet="true" property="og:type" content="website"/><meta data-react-helmet="true" property="og:title" content="🔑 패스키(Passkeys)와 WebAuthn 완벽 가이드"/><meta data-react-helmet="true" property="og:description" content="비밀번호를 외우는 시대의 끝"/><meta data-react-helmet="true" property="og:image" content="/static/8221b5320d71d5581aedd7b5fd2209b6/passkey.png"/><meta data-react-helmet="true" property="og:url"/><meta data-react-helmet="true" property="og:site_name" content="🔑 패스키(Passkeys)와 WebAuthn 완벽 가이드"/><meta data-react-helmet="true" name="twitter:card" content="summary"/><meta data-react-helmet="true" name="twitter:title" content="🔑 패스키(Passkeys)와 WebAuthn 완벽 가이드"/><meta data-react-helmet="true" name="twitter:description" content="비밀번호를 외우는 시대의 끝"/><meta data-react-helmet="true" name="twitter:image" content="/static/8221b5320d71d5581aedd7b5fd2209b6/passkey.png"/><meta data-react-helmet="true" name="twitter:site" content="@사용자이름"/><meta data-react-helmet="true" name="twitter:creator" content="@사용자이름"/><style data-href="/styles.9e907bc32054b7771552.css" data-identity="gatsby-global-css">code[class*=language-],pre[class*=language-]{word-wrap:normal;background:none;color:#ccc;font-family:Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;font-size:1em;-webkit-hyphens:none;hyphens:none;line-height:1.5;tab-size:4;text-align:left;white-space:pre;word-break:normal;word-spacing:normal}pre[class*=language-]{margin:.5em 0;overflow:auto;padding:1em}:not(pre)>code[class*=language-],pre[class*=language-]{background:#2d2d2d}:not(pre)>code[class*=language-]{border-radius:.3em;padding:.1em;white-space:normal}.token.block-comment,.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#999}.token.punctuation{color:#ccc}.token.attr-name,.token.deleted,.token.namespace,.token.tag{color:#e2777a}.token.function-name{color:#6196cc}.token.boolean,.token.function,.token.number{color:#f08d49}.token.class-name,.token.constant,.token.property,.token.symbol{color:#f8c555}.token.atrule,.token.builtin,.token.important,.token.keyword,.token.selector{color:#cc99cd}.token.attr-value,.token.char,.token.regex,.token.string,.token.variable{color:#7ec699}.token.entity,.token.operator,.token.url{color:#67cdcc}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}.token.inserted{color:green}</style><link rel="sitemap" type="application/xml" href="/sitemap-index.xml"/><link rel="canonical" href="https://logic-phantom.github.io/passkeys-webauthn-guide/" data-baseprotocol="https:" data-basehost="logic-phantom.github.io"/><link rel="icon" href="/favicon-32x32.png" type="image/png"/><link rel="manifest" href="/manifest.webmanifest" crossorigin="use-credentials"/><link rel="apple-touch-icon" sizes="192x192" href="/contents/forestLim.png"/><link rel="apple-touch-icon" sizes="512x512" href="/contents/forestLim.png"/><title data-react-helmet="true">🔑 패스키(Passkeys)와 WebAuthn 완벽 가이드</title><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){const t=e.target;if(void 0===t.dataset.mainImage)return;if(void 0===t.dataset.gatsbyImageSsr)return;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><style data-emotion="css zyllbl">.css-zyllbl{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;height:100vh;}</style><div class="css-zyllbl e1strnqo0"><style data-emotion="css-global kxm5mf">@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap');*{padding:0;margin:0;box-sizing:border-box;font-family:'Nanum Myeongjo',serif;}html,body,#___gatsby{height:100%;}a,a:hover{color:inherit;-webkit-text-decoration:none;text-decoration:none;cursor:pointer;}</style><style data-emotion="css 16cz9yp">.css-16cz9yp{position:relative;width:100%;height:400px;}@media (max-width: 768px){.css-16cz9yp{height:300px;}}</style><div class="css-16cz9yp e1opi4mu1"><style data-emotion="css 1bjn9yo">.css-1bjn9yo{z-index:-1;width:100%;height:400px;object-fit:cover;-webkit-filter:brightness(0.25);filter:brightness(0.25);}@media (max-width: 768px){.css-1bjn9yo{height:300px;}}</style><div data-gatsby-image-wrapper="" style="position:absolute" class="gatsby-image-wrapper gatsby-image-wrapper-constrained css-1bjn9yo e1opi4mu0"><div style="max-width:1536px;display:block"><img alt="" role="presentation" aria-hidden="true" src="data:image/svg+xml;charset=utf-8,%3Csvg%20height=&#x27;1024&#x27;%20width=&#x27;1536&#x27;%20xmlns=&#x27;http://www.w3.org/2000/svg&#x27;%20version=&#x27;1.1&#x27;%3E%3C/svg%3E" style="max-width:100%;display:block;position:static"/></div><img aria-hidden="true" data-placeholder-image="" style="opacity:1;transition:opacity 500ms linear" decoding="async" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAIAAAAmMtkJAAAACXBIWXMAAAsTAAALEwEAmpwYAAACAElEQVR42oVSW4vTQBTOnxUEEQQRH/TFF19EBPFB310QV8SXfdh17W7Tdttk225uk2lza9I0M5NJeomx3V7SxkkrZZFdhY/D3L7vnDnf4XSy+jcAvvOKu/URwMs95MGCxTvJjCa685p9feUv4Pa0Q9d6mO0B6RqyxQ1dFS3/kGG4UnHGsEsO0LKsoIqK6jCsAcKrqKwiDS0KUSZUaBVyBblDs0snPeStg1PIw6E9zuvdYUBibxBetHQZOgGOwnjCA2KNctFOeC2sAMrrFJAlZ0SbUwk5OA1octIOunFe1aPh+KePo7KgnVTalouSdHquYEjzHxIyXOL06ZVJBTvhutGaialeKhqjcxVrZFMGdDRJu7ZfbYK2ZpkFeVaSsYrXxy3f9IgbRGIHCVZB3pwppB//iibTsratzRzZHoaWL8qGBB2l0/OCqKrTXpJ/+Fp/+PLj41efnrw+bJjjIvOZSo8ll1e87xI24lz20oNvpfvP3j568f7B83f3nr75fMS37AmzQBlcy/5U6s9a7pT1nGPdk/z5URN9qfbqVgpw1vZmVQ0LHVoDuK4Thgs9bLpTFa00tJKDlYYzlnJvVWbGGwZIMm3rFvtPSQkbVtIwE9FJ2WI3DsxewZ1feovdM+6vkdptRZt5EwrWuGGMmT0M/xnPm2C1sEayT7Ip2Mb1reTfrCipSP3zqlMAAAAASUVORK5CYII=" alt=""/><picture><source type="image/webp" data-srcset="/static/8221b5320d71d5581aedd7b5fd2209b6/b642b/passkey.webp 384w,/static/8221b5320d71d5581aedd7b5fd2209b6/c9564/passkey.webp 768w,/static/8221b5320d71d5581aedd7b5fd2209b6/18b4b/passkey.webp 1536w" sizes="(min-width: 1536px) 1536px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 1536px) 1536px, 100vw" decoding="async" loading="lazy" data-src="/static/8221b5320d71d5581aedd7b5fd2209b6/4d776/passkey.png" data-srcset="/static/8221b5320d71d5581aedd7b5fd2209b6/4a410/passkey.png 384w,/static/8221b5320d71d5581aedd7b5fd2209b6/f5189/passkey.png 768w,/static/8221b5320d71d5581aedd7b5fd2209b6/4d776/passkey.png 1536w" alt="thumbnail"/></picture><noscript><picture><source type="image/webp" srcSet="/static/8221b5320d71d5581aedd7b5fd2209b6/b642b/passkey.webp 384w,/static/8221b5320d71d5581aedd7b5fd2209b6/c9564/passkey.webp 768w,/static/8221b5320d71d5581aedd7b5fd2209b6/18b4b/passkey.webp 1536w" sizes="(min-width: 1536px) 1536px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 1536px) 1536px, 100vw" decoding="async" loading="lazy" src="/static/8221b5320d71d5581aedd7b5fd2209b6/4d776/passkey.png" srcSet="/static/8221b5320d71d5581aedd7b5fd2209b6/4a410/passkey.png 384w,/static/8221b5320d71d5581aedd7b5fd2209b6/f5189/passkey.png 768w,/static/8221b5320d71d5581aedd7b5fd2209b6/4d776/passkey.png 1536w" alt="thumbnail"/></picture></noscript><script type="module">const t="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;if(t){const t=document.querySelectorAll("img[data-main-image]");for(let e of t){e.dataset.src&&(e.setAttribute("src",e.dataset.src),e.removeAttribute("data-src")),e.dataset.srcset&&(e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset"));const t=e.parentNode.querySelectorAll("source[data-srcset]");for(let e of t)e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset");e.complete&&(e.style.opacity=1,e.parentNode.parentNode.querySelector("[data-placeholder-image]").style.opacity=0)}}</script></div><style data-emotion="css m1156n">.css-m1156n{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;width:768px;height:100%;margin:0 auto;padding:60px 0;color:#ffffff;}@media (max-width: 768px){.css-m1156n{width:100%;padding:40px 20px;}}</style><div class="css-m1156n e1st1jau4"><style data-emotion="css gywgo7">.css-gywgo7{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:#ffffff;color:#000000;font-size:22px;cursor:pointer;box-shadow:0 0 10px rgba(0, 0, 0, 0.3);}@media (max-width: 768px){.css-gywgo7{width:30px;height:30px;font-size:18px;}}</style><div class="css-gywgo7 e1st1jau3"><style data-emotion="css 1ij64l8">.css-1ij64l8{display:inline-block;width:12px;height:12px;border-left:2px solid #000000;border-bottom:2px solid #000000;-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg);-ms-transform:rotate(45deg);transform:rotate(45deg);}</style><span class="css-1ij64l8 e1st1jau2"></span></div><style data-emotion="css gn4qtp">.css-gn4qtp{display:-webkit-box;overflow:hidden;overflow-wrap:break-word;margin-top:auto;text-overflow:ellipsis;white-space:normal;-webkit-line-clamp:2;-webkit-box-orient:vertical;font-size:45px;font-weight:800;}@media (max-width: 768px){.css-gn4qtp{font-size:30px;}}</style><div class="css-gn4qtp e1st1jau1">🔑 패스키(Passkeys)와 WebAuthn 완벽 가이드</div><style data-emotion="css 3gcnt2">.css-3gcnt2{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;justify-content:space-between;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;margin-top:10px;font-size:18px;font-weight:700;}@media (max-width: 768px){.css-3gcnt2{-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-align-items:flex-start;-webkit-box-align:flex-start;-ms-flex-align:flex-start;align-items:flex-start;font-size:15px;font-weight:400;}}</style><div class="css-3gcnt2 e1st1jau0"><div>Web</div><div>2026.09.22.</div></div></div></div><style data-emotion="css 12g9cpd">.css-12g9cpd{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;width:768px;margin:0 auto;padding:200px 0 0 0;word-break:break-all;line-height:1.8;font-size:16px;font-weight:400;}.css-12g9cpd p{padding:3px 0;}.css-12g9cpd h1,.css-12g9cpd h2,.css-12g9cpd h3{font-weight:800;margin-bottom:30px;}.css-12g9cpd *+h1,.css-12g9cpd *+h2,.css-12g9cpd *+h3{margin-top:80px;}.css-12g9cpd hr+h1,.css-12g9cpd hr+h2,.css-12g9cpd hr+h3{margin-top:0;}.css-12g9cpd h1{font-size:30px;}.css-12g9cpd h2{font-size:25px;}.css-12g9cpd h3{font-size:20px;}.css-12g9cpd blockquote{margin:30px 0;padding:5px 15px;border-left:2px solid #000000;font-weight:800;}.css-12g9cpd ol,.css-12g9cpd ul{margin-left:20px;padding:30px 0;}.css-12g9cpd hr{border:1px solid #000000;margin:100px 0;}.css-12g9cpd a{color:#4263eb;-webkit-text-decoration:underline;text-decoration:underline;}.css-12g9cpd pre[class*='language-']{margin:30px 0;padding:15px;font-size:15px;}.css-12g9cpd pre[class*='language-']::-webkit-scrollbar-thumb{background:rgba(255, 255, 255, 0.5);border-radius:3px;}.css-12g9cpd code[class*='language-'],.css-12g9cpd pre[class*='language-']{tab-size:2;}@media (max-width: 768px){.css-12g9cpd{width:100%;padding:140px 20px 0 20px;line-height:1.6;font-size:14px;}.css-12g9cpd h1{font-size:23px;}.css-12g9cpd h2{font-size:20px;}.css-12g9cpd h3{font-size:17px;}.css-12g9cpd img{width:100%;}.css-12g9cpd hr{margin:50px 0;}}</style><div class="css-12g9cpd e1ijh0y10"><h1>🔑 패스키(Passkeys)와 WebAuthn 완벽 가이드</h1>
+<blockquote>
+<p>“가장 안전한 비밀번호는 <strong>존재하지 않는 비밀번호</strong>다.”</p>
+<p>지문 한 번, 얼굴 한 번으로 끝나는 로그인. 그 뒤에서 돌아가는 <strong>공개키 암호와 WebAuthn API</strong>를
+개념부터 프론트·백엔드 구현, 그리고 실무에서 반드시 부딪히는 함정까지 정리합니다.</p>
+</blockquote>
+<hr>
+<h2>📌 목차</h2>
+<ol>
+<li>왜 비밀번호는 끝나가고 있는가</li>
+<li>패스키란 무엇인가 — 한 문장 정의</li>
+<li>용어 정리: FIDO2, WebAuthn, CTAP, Passkey</li>
+<li>동작 원리 — 공개키 암호 30초 요약</li>
+<li>등록(Registration) 흐름과 코드</li>
+<li>인증(Authentication) 흐름과 코드</li>
+<li>조건부 UI — 자동완성으로 뜨는 패스키</li>
+<li>서버 검증: 무엇을, 왜 확인하는가</li>
+<li>동기화 패스키 vs 기기 결합 패스키</li>
+<li>피싱이 통하지 않는 이유</li>
+<li>실무에서 마주치는 함정</li>
+<li>패스키를 <strong>바로 도입하면 안 되는</strong> 경우</li>
+<li>기존 서비스에 점진 도입하기</li>
+<li>정리</li>
+</ol>
+<hr>
+<h2>🧭 1. 왜 비밀번호는 끝나가고 있는가</h2>
+<p>비밀번호는 50년 넘게 인증의 기본값이었지만, 구조적으로 세 가지 약점을 안고 있습니다.</p>
+<ul>
+<li><strong>공유 비밀(Shared Secret)</strong>: 사용자와 서버가 같은 비밀을 알고 있어야 합니다. 서버 DB가 털리면 해시라도 오프라인 크래킹 대상이 됩니다.</li>
+<li><strong>사람이 입력한다</strong>: 사람은 URL을 착각합니다. <code class="language-text">bank.com</code>과 <code class="language-text">bank-login.co</code>를 구분하지 못하는 순간 피싱이 성립합니다.</li>
+<li><strong>재사용된다</strong>: 대부분의 사용자는 여러 사이트에 같은 비밀번호를 씁니다. 한 곳이 털리면 크리덴셜 스터핑으로 연쇄 피해가 납니다.</li>
+</ul>
+<p>그래서 OTP, SMS 인증, 푸시 승인 같은 2단계 인증(2FA)이 덧대어졌지만, 이것들도 <strong>실시간 피싱 프록시(AiTM)</strong> 앞에서는 무력합니다.
+사용자가 가짜 사이트에 OTP를 입력하면 공격자가 그대로 진짜 사이트에 중계하면 되니까요.</p>
+<table>
+<thead>
+<tr>
+<th>방식</th>
+<th>서버 유출 시</th>
+<th>피싱 저항</th>
+<th>사용자 경험</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>비밀번호</td>
+<td>❌ 해시 크래킹 위험</td>
+<td>❌</td>
+<td>외워야 함</td>
+</tr>
+<tr>
+<td>비밀번호 + SMS OTP</td>
+<td>⚠️</td>
+<td>❌ (중계 가능, SIM 스와핑)</td>
+<td>느림</td>
+</tr>
+<tr>
+<td>비밀번호 + TOTP 앱</td>
+<td>⚠️</td>
+<td>❌ (중계 가능)</td>
+<td>앱 전환 필요</td>
+</tr>
+<tr>
+<td><strong>패스키</strong></td>
+<td>✅ 공개키뿐이라 무의미</td>
+<td>✅ origin 바인딩</td>
+<td>생체 인증 1회</td>
+</tr>
+</tbody>
+</table>
+<p>2020년대 중반 이후 Apple·Google·Microsoft가 OS와 비밀번호 관리자 수준에서 패스키를 기본 지원하면서,
+패스키는 “보안팀이 원하는 기능”에서 <strong>“사용자가 더 편해서 쓰는 기능”</strong> 으로 넘어왔습니다.</p>
+<hr>
+<h2>🔐 2. 패스키란 무엇인가 — 한 문장 정의</h2>
+<blockquote>
+<p><strong>패스키 = 특정 웹사이트(도메인)에 묶인 공개키·개인키 쌍. 개인키는 사용자 기기 안에만 있고, 생체 인증이나 PIN으로 잠금 해제된다.</strong></p>
+</blockquote>
+<p>사용자 입장에서는 이렇게 보입니다.</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">[아이디 입력칸 클릭] → "패스키로 로그인" 제안 → 지문/Face ID → 끝</code></pre></div>
+<p>비밀번호를 <strong>입력하지 않습니다</strong>. 서버로 전송되는 비밀도 없습니다.
+기기가 서버가 보낸 무작위 문자열(challenge)에 <strong>개인키로 서명</strong>하고, 서버는 저장해 둔 <strong>공개키로 검증</strong>할 뿐입니다.</p>
+<p>중요한 오해 하나를 짚고 가겠습니다.</p>
+<blockquote>
+<p>🙅 “지문 데이터가 서버로 간다” — <strong>아닙니다.</strong>
+생체 정보는 기기 안에서 개인키 잠금을 푸는 용도로만 쓰이고, 기기 밖으로 나가지 않습니다.
+서버는 사용자가 지문을 썼는지 PIN을 썼는지조차 알 수 없고, “사용자 확인이 됐다(UV 플래그)“는 사실만 받습니다.</p>
+</blockquote>
+<hr>
+<h2>📚 3. 용어 정리: FIDO2, WebAuthn, CTAP, Passkey</h2>
+<p>이 분야는 이름이 많아서 처음에 헷갈립니다. 계층으로 보면 명확해집니다.</p>
+<table>
+<thead>
+<tr>
+<th>용어</th>
+<th>정체</th>
+<th>누가 만듦</th>
+<th>한 줄 설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>FIDO2</strong></td>
+<td>표준 묶음의 이름</td>
+<td>FIDO Alliance + W3C</td>
+<td>WebAuthn + CTAP의 총칭</td>
+</tr>
+<tr>
+<td><strong>WebAuthn</strong></td>
+<td>브라우저 JS API</td>
+<td>W3C</td>
+<td><code class="language-text">navigator.credentials.create/get</code></td>
+</tr>
+<tr>
+<td><strong>CTAP2</strong></td>
+<td>기기 간 통신 프로토콜</td>
+<td>FIDO Alliance</td>
+<td>브라우저 ↔ 보안키/휴대폰 (USB·NFC·BLE)</td>
+</tr>
+<tr>
+<td><strong>Authenticator</strong></td>
+<td>키를 보관·서명하는 주체</td>
+<td>—</td>
+<td>Touch ID, Windows Hello, YubiKey, 휴대폰</td>
+</tr>
+<tr>
+<td><strong>Relying Party (RP)</strong></td>
+<td>인증을 요청하는 서비스</td>
+<td>—</td>
+<td>우리가 만드는 웹 서비스 (+ 서버)</td>
+</tr>
+<tr>
+<td><strong>Passkey</strong></td>
+<td>마케팅 용어이자 사실상 표준명</td>
+<td>업계 공통</td>
+<td><strong>발견 가능한(discoverable) FIDO 크리덴셜</strong></td>
+</tr>
+</tbody>
+</table>
+<p>기술적으로 패스키는 WebAuthn의 <strong>Discoverable Credential(구 Resident Key)</strong> 입니다.
+아이디를 먼저 묻지 않아도 기기가 “이 사이트용 키가 있다”고 스스로 찾아 줄 수 있는 크리덴셜이라는 뜻입니다.</p>
+<hr>
+<h2>🧮 4. 동작 원리 — 공개키 암호 30초 요약</h2>
+<p>패스키를 이해하는 데 필요한 암호학은 딱 이것뿐입니다.</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">개인키로 서명한 것은 → 짝이 되는 공개키로만 검증할 수 있다.
+공개키를 알아도 → 개인키를 역산할 수 없다.</code></pre></div>
+<p>여기에 두 가지 장치가 더해집니다.</p>
+<ol>
+<li><strong>Challenge</strong>: 서버가 매번 새로 만드는 무작위 값. 서명을 재사용(리플레이)하지 못하게 합니다.</li>
+<li><strong>rpId 바인딩</strong>: 키는 생성 시점의 도메인(<code class="language-text">example.com</code>)에 묶입니다. 다른 도메인에서는 키가 아예 <strong>보이지 않습니다.</strong></li>
+</ol>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 768px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/dd6f5d9dd840a4ea4cdf2ea8c64c9179/bbbf7/passkey-flow.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 53.125%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAIAAADwazoUAAAACXBIWXMAAAsTAAALEwEAmpwYAAABqUlEQVR42lVSyY7bMAz1//9J0UMP/YOiQC9FURTpTDLTLI4XRZIla7dWp1TaAAlBEALNR/I9urneLabUDoRM4tTj/jJ1Iz2PFGFOmGCzwpOgTORcrg/WdFgchuk0shOaR8zAN7vTr+1xdxigRY/ovkWv++7tOEDrXJ7Bn751H78eP3w5fP6OOjwTps6Ib947Lt00a8oV4Wbz1p1HhplafHgCj5PpJ4tmR4TzMRnnpVmgbrNrt3862OLnywFRIZQV2oaYpHKzNNosQKGpbPPqQ5RCT0xeMIc6ZYPWTigDLrWV1kPZuq7QnnB9GAmDVEjNkiNztqX0TEhLSU8nzMTiU62+rxcSACsY8sIvg55NiPBukOEvtNvy/jc+/xj2G3QSzj6LWsH/JgNgVPKdY6BYJ9++FTbrfqTdQI4t6i/MhQyAJRSfSkzFxzs4Zq+MObYh5OU/OK+PNyjrVdiMZo/mcBEBiyhMZQE0rI/GLJpL42DtWMGprOVGKVerowJoeLNSal8fax4eEFPKUA+xlJva94GrVBZuIGp00N0uAdTmQoPDTwayV90e7vwXY85ycu6Nc7cAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <picture>
+          <source
+              srcset="/static/dd6f5d9dd840a4ea4cdf2ea8c64c9179/a59e9/passkey-flow.webp 192w,
+/static/dd6f5d9dd840a4ea4cdf2ea8c64c9179/0ca9f/passkey-flow.webp 384w,
+/static/dd6f5d9dd840a4ea4cdf2ea8c64c9179/dc9b9/passkey-flow.webp 768w,
+/static/dd6f5d9dd840a4ea4cdf2ea8c64c9179/e2c2f/passkey-flow.webp 1152w,
+/static/dd6f5d9dd840a4ea4cdf2ea8c64c9179/94b1e/passkey-flow.webp 1280w"
+              sizes="(max-width: 768px) 100vw, 768px"
+              type="image/webp"
+            />
+          <source
+            srcset="/static/dd6f5d9dd840a4ea4cdf2ea8c64c9179/3b721/passkey-flow.png 192w,
+/static/dd6f5d9dd840a4ea4cdf2ea8c64c9179/66595/passkey-flow.png 384w,
+/static/dd6f5d9dd840a4ea4cdf2ea8c64c9179/fe486/passkey-flow.png 768w,
+/static/dd6f5d9dd840a4ea4cdf2ea8c64c9179/d2d74/passkey-flow.png 1152w,
+/static/dd6f5d9dd840a4ea4cdf2ea8c64c9179/bbbf7/passkey-flow.png 1280w"
+            sizes="(max-width: 768px) 100vw, 768px"
+            type="image/png"
+          />
+          <img
+            class="gatsby-resp-image-image"
+            src="/static/dd6f5d9dd840a4ea4cdf2ea8c64c9179/fe486/passkey-flow.png"
+            alt="패스키 인증 흐름"
+            title=""
+            loading="lazy"
+            decoding="async"
+            style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+          />
+        </picture>
+  </a>
+    </span></p>
+<p>결과적으로 서버 DB에는 공개키만 남습니다. DB가 통째로 유출되어도 공격자가 할 수 있는 일은
+“이 공개키로 서명을 검증하는 것”뿐이고, 서명을 <strong>만들 수는</strong> 없습니다.</p>
+<hr>
+<h2>📝 5. 등록(Registration) 흐름과 코드</h2>
+<p>등록은 “이 계정에 새 키를 묶는” 과정입니다. 보통 로그인된 상태(또는 회원가입 직후)에서 진행합니다.</p>
+<h3>5-1. 서버: 옵션 생성</h3>
+<p>Node.js에서는 사실상 표준인 <code class="language-text">@simplewebauthn/server</code>를 쓰면 바이너리 파싱을 직접 할 필요가 없습니다.</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token comment">// server/passkey.js</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> generateRegistrationOptions <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@simplewebauthn/server'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> rpID <span class="token operator">=</span> <span class="token string">'example.com'</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> rpName <span class="token operator">=</span> <span class="token string">'Logic-Phantom'</span><span class="token punctuation">;</span>
+
+app<span class="token punctuation">.</span><span class="token function">post</span><span class="token punctuation">(</span><span class="token string">'/passkey/register/options'</span><span class="token punctuation">,</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> user <span class="token operator">=</span> req<span class="token punctuation">.</span>session<span class="token punctuation">.</span>user<span class="token punctuation">;</span>
+  <span class="token keyword">const</span> existing <span class="token operator">=</span> <span class="token keyword">await</span> db<span class="token punctuation">.</span>credentials<span class="token punctuation">.</span><span class="token function">findByUser</span><span class="token punctuation">(</span>user<span class="token punctuation">.</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">const</span> options <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">generateRegistrationOptions</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    rpName<span class="token punctuation">,</span>
+    rpID<span class="token punctuation">,</span>
+    <span class="token literal-property property">userName</span><span class="token operator">:</span> user<span class="token punctuation">.</span>email<span class="token punctuation">,</span>
+    <span class="token literal-property property">userDisplayName</span><span class="token operator">:</span> user<span class="token punctuation">.</span>nickname<span class="token punctuation">,</span>
+    <span class="token literal-property property">userID</span><span class="token operator">:</span> user<span class="token punctuation">.</span>webauthnUserId<span class="token punctuation">,</span>          <span class="token comment">// ⚠️ 이메일이 아닌 랜덤 바이트</span>
+    <span class="token literal-property property">attestationType</span><span class="token operator">:</span> <span class="token string">'none'</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">excludeCredentials</span><span class="token operator">:</span> existing<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">c</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">id</span><span class="token operator">:</span> c<span class="token punctuation">.</span>credentialId <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">authenticatorSelection</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token literal-property property">residentKey</span><span class="token operator">:</span> <span class="token string">'required'</span><span class="token punctuation">,</span>            <span class="token comment">// 패스키(발견 가능)로 생성</span>
+      <span class="token literal-property property">userVerification</span><span class="token operator">:</span> <span class="token string">'preferred'</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  req<span class="token punctuation">.</span>session<span class="token punctuation">.</span>currentChallenge <span class="token operator">=</span> options<span class="token punctuation">.</span>challenge<span class="token punctuation">;</span> <span class="token comment">// 서버 세션에 보관</span>
+  res<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span>options<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<h3>5-2. 브라우저: 키 생성</h3>
+<p>최신 브라우저는 JSON ↔ ArrayBuffer 변환 헬퍼를 내장하고 있어 Base64URL 변환 코드를 따로 짤 필요가 줄었습니다.</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token comment">// client/register.js</span>
+<span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">registerPasskey</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> optionsJSON <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">fetch</span><span class="token punctuation">(</span><span class="token string">'/passkey/register/options'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">method</span><span class="token operator">:</span> <span class="token string">'POST'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">r</span><span class="token punctuation">)</span> <span class="token operator">=></span> r<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">const</span> publicKey <span class="token operator">=</span> PublicKeyCredential<span class="token punctuation">.</span><span class="token function">parseCreationOptionsFromJSON</span><span class="token punctuation">(</span>optionsJSON<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> credential <span class="token operator">=</span> <span class="token keyword">await</span> navigator<span class="token punctuation">.</span>credentials<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">{</span> publicKey <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">await</span> <span class="token function">fetch</span><span class="token punctuation">(</span><span class="token string">'/passkey/register/verify'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">method</span><span class="token operator">:</span> <span class="token string">'POST'</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">headers</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token string-property property">'Content-Type'</span><span class="token operator">:</span> <span class="token string">'application/json'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">body</span><span class="token operator">:</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>credential<span class="token punctuation">.</span><span class="token function">toJSON</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre></div>
+<blockquote>
+<p>💡 <code class="language-text">parseCreationOptionsFromJSON</code>을 지원하지 않는 구형 브라우저까지 대응해야 한다면
+<code class="language-text">@simplewebauthn/browser</code>의 <code class="language-text">startRegistration()</code>을 쓰면 폴리필을 대신 해 줍니다.</p>
+</blockquote>
+<h3>5-3. 서버: 검증 후 저장</h3>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> verifyRegistrationResponse <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@simplewebauthn/server'</span><span class="token punctuation">;</span>
+
+app<span class="token punctuation">.</span><span class="token function">post</span><span class="token punctuation">(</span><span class="token string">'/passkey/register/verify'</span><span class="token punctuation">,</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> <span class="token punctuation">{</span> verified<span class="token punctuation">,</span> registrationInfo <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">verifyRegistrationResponse</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    <span class="token literal-property property">response</span><span class="token operator">:</span> req<span class="token punctuation">.</span>body<span class="token punctuation">,</span>
+    <span class="token literal-property property">expectedChallenge</span><span class="token operator">:</span> req<span class="token punctuation">.</span>session<span class="token punctuation">.</span>currentChallenge<span class="token punctuation">,</span>
+    <span class="token literal-property property">expectedOrigin</span><span class="token operator">:</span> <span class="token string">'https://example.com'</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">expectedRPID</span><span class="token operator">:</span> <span class="token string">'example.com'</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  req<span class="token punctuation">.</span>session<span class="token punctuation">.</span>currentChallenge <span class="token operator">=</span> <span class="token keyword">undefined</span><span class="token punctuation">;</span> <span class="token comment">// 1회용</span>
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>verified<span class="token punctuation">)</span> <span class="token keyword">return</span> res<span class="token punctuation">.</span><span class="token function">status</span><span class="token punctuation">(</span><span class="token number">400</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">const</span> <span class="token punctuation">{</span> credential<span class="token punctuation">,</span> credentialDeviceType<span class="token punctuation">,</span> credentialBackedUp <span class="token punctuation">}</span> <span class="token operator">=</span> registrationInfo<span class="token punctuation">;</span>
+  <span class="token keyword">await</span> db<span class="token punctuation">.</span>credentials<span class="token punctuation">.</span><span class="token function">insert</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    <span class="token literal-property property">userId</span><span class="token operator">:</span> req<span class="token punctuation">.</span>session<span class="token punctuation">.</span>user<span class="token punctuation">.</span>id<span class="token punctuation">,</span>
+    <span class="token literal-property property">credentialId</span><span class="token operator">:</span> credential<span class="token punctuation">.</span>id<span class="token punctuation">,</span>
+    <span class="token literal-property property">publicKey</span><span class="token operator">:</span> Buffer<span class="token punctuation">.</span><span class="token function">from</span><span class="token punctuation">(</span>credential<span class="token punctuation">.</span>publicKey<span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">counter</span><span class="token operator">:</span> credential<span class="token punctuation">.</span>counter<span class="token punctuation">,</span>
+    <span class="token literal-property property">transports</span><span class="token operator">:</span> req<span class="token punctuation">.</span>body<span class="token punctuation">.</span>response<span class="token punctuation">.</span>transports<span class="token punctuation">,</span>
+    <span class="token literal-property property">deviceType</span><span class="token operator">:</span> credentialDeviceType<span class="token punctuation">,</span>   <span class="token comment">// 'singleDevice' | 'multiDevice'</span>
+    <span class="token literal-property property">backedUp</span><span class="token operator">:</span> credentialBackedUp<span class="token punctuation">,</span>
+    <span class="token literal-property property">createdAt</span><span class="token operator">:</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  res<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">ok</span><span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<p>저장해야 할 컬럼은 최소 다음과 같습니다.</p>
+<table>
+<thead>
+<tr>
+<th>컬럼</th>
+<th>용도</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="language-text">credential_id</code></td>
+<td>인증 시 어떤 키인지 찾는 키 (UNIQUE 인덱스)</td>
+</tr>
+<tr>
+<td><code class="language-text">public_key</code></td>
+<td>서명 검증용 (COSE 형식 바이너리)</td>
+</tr>
+<tr>
+<td><code class="language-text">user_id</code></td>
+<td>계정 연결 (1:N — 한 계정에 여러 패스키)</td>
+</tr>
+<tr>
+<td><code class="language-text">counter</code></td>
+<td>signCount, 복제 탐지용</td>
+</tr>
+<tr>
+<td><code class="language-text">transports</code></td>
+<td><code class="language-text">internal</code>, <code class="language-text">hybrid</code>, <code class="language-text">usb</code> 등 — 인증 시 힌트</td>
+</tr>
+<tr>
+<td><code class="language-text">backed_up</code></td>
+<td>동기화 여부 — 복구 정책 판단에 사용</td>
+</tr>
+<tr>
+<td><code class="language-text">created_at</code>, <code class="language-text">last_used_at</code></td>
+<td>관리 화면에 “마지막 사용” 표시</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2>🔓 6. 인증(Authentication) 흐름과 코드</h2>
+<p>인증은 등록보다 단순합니다. 서버가 challenge를 주고, 기기가 서명하고, 서버가 검증합니다.</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token comment">// server</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> generateAuthenticationOptions<span class="token punctuation">,</span> verifyAuthenticationResponse <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@simplewebauthn/server'</span><span class="token punctuation">;</span>
+
+app<span class="token punctuation">.</span><span class="token function">post</span><span class="token punctuation">(</span><span class="token string">'/passkey/login/options'</span><span class="token punctuation">,</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> options <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">generateAuthenticationOptions</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    rpID<span class="token punctuation">,</span>
+    <span class="token literal-property property">userVerification</span><span class="token operator">:</span> <span class="token string">'preferred'</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">allowCredentials</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>     <span class="token comment">// 비워 두면 기기가 이 사이트의 패스키를 알아서 찾음</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  req<span class="token punctuation">.</span>session<span class="token punctuation">.</span>currentChallenge <span class="token operator">=</span> options<span class="token punctuation">.</span>challenge<span class="token punctuation">;</span>
+  res<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span>options<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+app<span class="token punctuation">.</span><span class="token function">post</span><span class="token punctuation">(</span><span class="token string">'/passkey/login/verify'</span><span class="token punctuation">,</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> cred <span class="token operator">=</span> <span class="token keyword">await</span> db<span class="token punctuation">.</span>credentials<span class="token punctuation">.</span><span class="token function">findById</span><span class="token punctuation">(</span>req<span class="token punctuation">.</span>body<span class="token punctuation">.</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>cred<span class="token punctuation">)</span> <span class="token keyword">return</span> res<span class="token punctuation">.</span><span class="token function">status</span><span class="token punctuation">(</span><span class="token number">404</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">const</span> <span class="token punctuation">{</span> verified<span class="token punctuation">,</span> authenticationInfo <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">verifyAuthenticationResponse</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    <span class="token literal-property property">response</span><span class="token operator">:</span> req<span class="token punctuation">.</span>body<span class="token punctuation">,</span>
+    <span class="token literal-property property">expectedChallenge</span><span class="token operator">:</span> req<span class="token punctuation">.</span>session<span class="token punctuation">.</span>currentChallenge<span class="token punctuation">,</span>
+    <span class="token literal-property property">expectedOrigin</span><span class="token operator">:</span> <span class="token string">'https://example.com'</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">expectedRPID</span><span class="token operator">:</span> rpID<span class="token punctuation">,</span>
+    <span class="token literal-property property">credential</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token literal-property property">id</span><span class="token operator">:</span> cred<span class="token punctuation">.</span>credentialId<span class="token punctuation">,</span> <span class="token literal-property property">publicKey</span><span class="token operator">:</span> cred<span class="token punctuation">.</span>publicKey<span class="token punctuation">,</span> <span class="token literal-property property">counter</span><span class="token operator">:</span> cred<span class="token punctuation">.</span>counter <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  req<span class="token punctuation">.</span>session<span class="token punctuation">.</span>currentChallenge <span class="token operator">=</span> <span class="token keyword">undefined</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>verified<span class="token punctuation">)</span> <span class="token keyword">return</span> res<span class="token punctuation">.</span><span class="token function">status</span><span class="token punctuation">(</span><span class="token number">401</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">await</span> db<span class="token punctuation">.</span>credentials<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span>cred<span class="token punctuation">.</span>id<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">counter</span><span class="token operator">:</span> authenticationInfo<span class="token punctuation">.</span>newCounter<span class="token punctuation">,</span>
+    <span class="token literal-property property">lastUsedAt</span><span class="token operator">:</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  req<span class="token punctuation">.</span>session<span class="token punctuation">.</span>userId <span class="token operator">=</span> cred<span class="token punctuation">.</span>userId<span class="token punctuation">;</span>   <span class="token comment">// 로그인 성공</span>
+  res<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">ok</span><span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token comment">// client</span>
+<span class="token keyword">const</span> optionsJSON <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">fetch</span><span class="token punctuation">(</span><span class="token string">'/passkey/login/options'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">method</span><span class="token operator">:</span> <span class="token string">'POST'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">r</span><span class="token punctuation">)</span> <span class="token operator">=></span> r<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> publicKey <span class="token operator">=</span> PublicKeyCredential<span class="token punctuation">.</span><span class="token function">parseRequestOptionsFromJSON</span><span class="token punctuation">(</span>optionsJSON<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> assertion <span class="token operator">=</span> <span class="token keyword">await</span> navigator<span class="token punctuation">.</span>credentials<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">{</span> publicKey <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">await</span> <span class="token function">fetch</span><span class="token punctuation">(</span><span class="token string">'/passkey/login/verify'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">method</span><span class="token operator">:</span> <span class="token string">'POST'</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">headers</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token string-property property">'Content-Type'</span><span class="token operator">:</span> <span class="token string">'application/json'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">body</span><span class="token operator">:</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>assertion<span class="token punctuation">.</span><span class="token function">toJSON</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<h3>Spring 진영이라면</h3>
+<p>Spring Security 6.4부터 WebAuthn(패스키) 지원이 들어왔습니다. 최소 설정은 이 정도입니다.</p>
+<div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java"><span class="token annotation punctuation">@Bean</span>
+<span class="token class-name">SecurityFilterChain</span> <span class="token function">security</span><span class="token punctuation">(</span><span class="token class-name">HttpSecurity</span> http<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> http
+        <span class="token punctuation">.</span><span class="token function">authorizeHttpRequests</span><span class="token punctuation">(</span>a <span class="token operator">-></span> a<span class="token punctuation">.</span><span class="token function">anyRequest</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">authenticated</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">formLogin</span><span class="token punctuation">(</span><span class="token class-name">Customizer</span><span class="token punctuation">.</span><span class="token function">withDefaults</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">webAuthn</span><span class="token punctuation">(</span>w <span class="token operator">-></span> w
+            <span class="token punctuation">.</span><span class="token function">rpName</span><span class="token punctuation">(</span><span class="token string">"Logic-Phantom"</span><span class="token punctuation">)</span>
+            <span class="token punctuation">.</span><span class="token function">rpId</span><span class="token punctuation">(</span><span class="token string">"example.com"</span><span class="token punctuation">)</span>
+            <span class="token punctuation">.</span><span class="token function">allowedOrigins</span><span class="token punctuation">(</span><span class="token string">"https://example.com"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>기본 구현은 인메모리 저장소를 쓰므로, 운영에서는 <code class="language-text">UserCredentialRepository</code>와
+<code class="language-text">PublicKeyCredentialUserEntityRepository</code>를 JDBC 구현으로 교체해야 합니다.
+더 세밀한 제어가 필요하면 <code class="language-text">webauthn4j</code>나 Yubico의 <code class="language-text">java-webauthn-server</code>를 직접 쓰는 방법도 있습니다.</p>
+<hr>
+<h2>✨ 7. 조건부 UI — 자동완성으로 뜨는 패스키</h2>
+<p>“패스키로 로그인” 버튼을 따로 두면 사용자가 잘 누르지 않습니다.
+<strong>Conditional Mediation</strong>을 쓰면 아이디 입력칸의 자동완성 목록에 패스키가 비밀번호와 함께 나타납니다.</p>
+<div class="gatsby-highlight" data-language="html"><pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>username<span class="token punctuation">"</span></span> <span class="token attr-name">autocomplete</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>username webauthn<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span></code></pre></div>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">initConditionalUI</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token punctuation">(</span><span class="token keyword">await</span> PublicKeyCredential<span class="token punctuation">.</span>isConditionalMediationAvailable<span class="token operator">?.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">return</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">const</span> optionsJSON <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">fetch</span><span class="token punctuation">(</span><span class="token string">'/passkey/login/options'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">method</span><span class="token operator">:</span> <span class="token string">'POST'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">r</span><span class="token punctuation">)</span> <span class="token operator">=></span> r<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> assertion <span class="token operator">=</span> <span class="token keyword">await</span> navigator<span class="token punctuation">.</span>credentials<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    <span class="token literal-property property">publicKey</span><span class="token operator">:</span> PublicKeyCredential<span class="token punctuation">.</span><span class="token function">parseRequestOptionsFromJSON</span><span class="token punctuation">(</span>optionsJSON<span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">mediation</span><span class="token operator">:</span> <span class="token string">'conditional'</span><span class="token punctuation">,</span>   <span class="token comment">// 모달 없이 자동완성에 대기</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">await</span> <span class="token function">verifyOnServer</span><span class="token punctuation">(</span>assertion<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token function">initConditionalUI</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 페이지 로드 시 바로 호출</span></code></pre></div>
+<p>핵심 포인트:</p>
+<ul>
+<li><code class="language-text">autocomplete</code> 값에 <strong><code class="language-text">webauthn</code> 토큰이 반드시</strong> 들어가야 합니다. 없으면 목록에 뜨지 않습니다.</li>
+<li><code class="language-text">get()</code>은 사용자가 패스키를 고를 때까지 <strong>pending 상태로 대기</strong>합니다. 다른 로그인 방식(비밀번호 제출)으로 넘어갈 때는 <code class="language-text">AbortController</code>로 취소하세요.</li>
+<li>기존 비밀번호 폼을 그대로 둔 채 <strong>덧붙이기만</strong> 하면 되므로 도입 비용이 가장 낮은 진입점입니다.</li>
+</ul>
+<p>최근에는 비밀번호로 로그인한 직후, 비밀번호 관리자가 <strong>자동으로 패스키를 만들어 주는 조건부 생성</strong>(<code class="language-text">create()</code>에 <code class="language-text">mediation: 'conditional'</code>)도 등장했습니다.
+지원 여부는 <code class="language-text">PublicKeyCredential.getClientCapabilities()</code>로 확인할 수 있습니다.</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> caps <span class="token operator">=</span> <span class="token keyword">await</span> PublicKeyCredential<span class="token punctuation">.</span>getClientCapabilities<span class="token operator">?.</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">??</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>caps<span class="token punctuation">.</span>conditionalCreate<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 비밀번호 로그인 성공 직후 조용히 패스키 업그레이드 시도</span>
+<span class="token punctuation">}</span></code></pre></div>
+<hr>
+<h2>🛡️ 8. 서버 검증: 무엇을, 왜 확인하는가</h2>
+<p>라이브러리가 해 주더라도 <strong>무엇을 검증하는지</strong> 알아야 설정 실수를 잡을 수 있습니다.</p>
+<table>
+<thead>
+<tr>
+<th>검증 항목</th>
+<th>위치</th>
+<th>왜 필요한가</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="language-text">type</code></td>
+<td>clientDataJSON</td>
+<td><code class="language-text">webauthn.create</code> / <code class="language-text">webauthn.get</code> 혼용 방지</td>
+</tr>
+<tr>
+<td><code class="language-text">challenge</code></td>
+<td>clientDataJSON</td>
+<td>리플레이 공격 방지 — 서버가 발급한 값과 일치 + 1회용</td>
+</tr>
+<tr>
+<td><code class="language-text">origin</code></td>
+<td>clientDataJSON</td>
+<td>피싱 사이트·다른 서브도메인에서 온 요청 차단</td>
+</tr>
+<tr>
+<td><code class="language-text">rpIdHash</code></td>
+<td>authenticatorData</td>
+<td>키가 우리 도메인용인지 확인</td>
+</tr>
+<tr>
+<td><strong>UP 플래그</strong></td>
+<td>authenticatorData</td>
+<td>사용자가 실제로 존재(터치)했는가</td>
+</tr>
+<tr>
+<td><strong>UV 플래그</strong></td>
+<td>authenticatorData</td>
+<td>생체/PIN으로 본인 확인했는가 — 필요 시 <code class="language-text">required</code></td>
+</tr>
+<tr>
+<td><code class="language-text">signCount</code></td>
+<td>authenticatorData</td>
+<td>값이 줄어들면 키 복제 의심</td>
+</tr>
+<tr>
+<td>서명</td>
+<td>signature</td>
+<td>저장된 공개키로 <code class="language-text">authenticatorData + hash(clientDataJSON)</code> 검증</td>
+</tr>
+</tbody>
+</table>
+<p>authenticatorData의 플래그 바이트는 다음 비트로 구성됩니다.</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">bit 0  UP  User Present       — 터치했다
+bit 2  UV  User Verified      — 생체/PIN으로 본인 확인
+bit 3  BE  Backup Eligible    — 동기화 가능한 키인가
+bit 4  BS  Backup State       — 지금 실제로 백업되어 있는가
+bit 6  AT  Attested data      — 등록 시 공개키 포함
+bit 7  ED  Extension data     — 확장 데이터 포함</code></pre></div>
+<hr>
+<h2>☁️ 9. 동기화 패스키 vs 기기 결합 패스키</h2>
+<p>패스키 확산의 결정적 계기는 <strong>동기화</strong>였습니다. 예전 FIDO 키는 기기를 잃어버리면 끝이었지만,
+지금의 패스키는 iCloud 키체인, Google 비밀번호 관리자, 1Password 같은 <strong>패스키 제공자</strong>를 통해 기기 간에 동기화됩니다.</p>
+<table>
+<thead>
+<tr>
+<th>구분</th>
+<th>동기화 패스키 (Multi-device)</th>
+<th>기기 결합 패스키 (Device-bound)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>예시</td>
+<td>iCloud 키체인, Google PM, 1Password</td>
+<td>YubiKey, 일부 기업용 Windows Hello</td>
+</tr>
+<tr>
+<td>기기 분실 시</td>
+<td>다른 기기에서 그대로 사용</td>
+<td>해당 키 사용 불가</td>
+</tr>
+<tr>
+<td>BE / BS 플래그</td>
+<td>1 / 1</td>
+<td>0 / 0</td>
+</tr>
+<tr>
+<td>signCount</td>
+<td>대부분 항상 0</td>
+<td>증가함</td>
+</tr>
+<tr>
+<td>보안 수준</td>
+<td>제공자 계정 보안에 의존</td>
+<td>가장 높음 (하드웨어 격리)</td>
+</tr>
+<tr>
+<td>적합한 곳</td>
+<td>일반 소비자 서비스</td>
+<td>금융·관리자 콘솔·규제 산업</td>
+</tr>
+</tbody>
+</table>
+<p>다른 기기(예: 친구 PC)에서 로그인할 때는 <strong>하이브리드(Hybrid) 전송</strong>이 쓰입니다.
+PC 화면의 QR 코드를 휴대폰으로 찍으면, 블루투스로 <strong>근접성을 확인</strong>한 뒤 휴대폰이 서명해 줍니다.
+블루투스 근접 확인 덕분에 원격 공격자가 QR만 가로채서는 인증할 수 없습니다.</p>
+<hr>
+<h2>🎣 10. 피싱이 통하지 않는 이유</h2>
+<p>패스키의 진짜 가치는 편의성이 아니라 <strong>구조적 피싱 저항성</strong>입니다.</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 768px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/e1bb2d0d8d20de83ff820e29f0d299f6/bbbf7/passkey-phishing.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 50%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAIAAAA7N+mxAAAACXBIWXMAAAsTAAALEwEAmpwYAAABx0lEQVR42l2Ry27UMBSG88TwElAk3oBuYImExKpCqthQ0bIYVYjLDJ1OM7nHdhzHt/ieZIpnVoWzOJKP/s/fkZ08Pilt3b7usqbLm2MvW4wwA2hAPavavgHE+fA0nxyWJQgxyXEele4wesi6CvQNwjXoESFSZgiVfV9gvGmqllPhDLOaWTUflmRWyghlbbAmyKqVaeatD2Fxyi6jot4I6+y0aD/tKQaCKzeNLjDjuNPJojWlsuloXne7Cm0L+FDCEvSwowelxeRazCpAiganOdymTVyrRUMvlPDmCHMqceQhWe/KX9uiggQR3vc8wjxYOHBMRFajn3f5XVpDTPEgiNDCn8xsEDENu2FfwvusjbfERIfZ0RwcIAxgWsJ+l7f7ErX4+H4n8wnmbKTaDdqXiOaRZIoaT6g4jEczZqOUtidxtaFFlHMdj4M8mWcpnQ3Dert78bJ8c16/fZeevQIXn6ybZi6IU8bP79fXzy7PX3/7eHb94fnl+apObVioHZPDNAU5WgD5zY24vaWrFf5yxTZ/9MD9qLjVWIrvYH9xv7oqfn+tNp/zHwXHce7nKXn8t8w0SxeE8SL+4Ghk7FIb460O87T8F/4LB8om9JXhiXwAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <picture>
+          <source
+              srcset="/static/e1bb2d0d8d20de83ff820e29f0d299f6/a59e9/passkey-phishing.webp 192w,
+/static/e1bb2d0d8d20de83ff820e29f0d299f6/0ca9f/passkey-phishing.webp 384w,
+/static/e1bb2d0d8d20de83ff820e29f0d299f6/dc9b9/passkey-phishing.webp 768w,
+/static/e1bb2d0d8d20de83ff820e29f0d299f6/e2c2f/passkey-phishing.webp 1152w,
+/static/e1bb2d0d8d20de83ff820e29f0d299f6/94b1e/passkey-phishing.webp 1280w"
+              sizes="(max-width: 768px) 100vw, 768px"
+              type="image/webp"
+            />
+          <source
+            srcset="/static/e1bb2d0d8d20de83ff820e29f0d299f6/3b721/passkey-phishing.png 192w,
+/static/e1bb2d0d8d20de83ff820e29f0d299f6/66595/passkey-phishing.png 384w,
+/static/e1bb2d0d8d20de83ff820e29f0d299f6/fe486/passkey-phishing.png 768w,
+/static/e1bb2d0d8d20de83ff820e29f0d299f6/d2d74/passkey-phishing.png 1152w,
+/static/e1bb2d0d8d20de83ff820e29f0d299f6/bbbf7/passkey-phishing.png 1280w"
+            sizes="(max-width: 768px) 100vw, 768px"
+            type="image/png"
+          />
+          <img
+            class="gatsby-resp-image-image"
+            src="/static/e1bb2d0d8d20de83ff820e29f0d299f6/fe486/passkey-phishing.png"
+            alt="피싱 방어 원리"
+            title=""
+            loading="lazy"
+            decoding="async"
+            style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+          />
+        </picture>
+  </a>
+    </span></p>
+<ul>
+<li>브라우저는 <code class="language-text">create()</code>/<code class="language-text">get()</code>을 호출한 페이지의 origin을 <strong>직접</strong> <code class="language-text">clientDataJSON</code>에 기록합니다. 페이지 JS가 위조할 수 없습니다.</li>
+<li>인증기는 요청된 rpId에 해당하는 키만 꺼냅니다. <code class="language-text">bank-login.co</code>에는 <code class="language-text">bank.com</code>의 키가 <strong>존재하지 않습니다.</strong></li>
+<li>설령 공격자가 서명을 중계하더라도, 서명 안의 origin이 <code class="language-text">bank-login.co</code>로 찍혀 있어 서버 검증에서 탈락합니다.</li>
+</ul>
+<p>즉 <strong>사용자가 속더라도 인증이 성립하지 않습니다.</strong> 사용자 교육에 의존하던 보안을 프로토콜이 대신 떠맡는 셈입니다.</p>
+<hr>
+<h2>⚠️ 11. 실무에서 마주치는 함정</h2>
+<h3>① rpId는 사실상 되돌릴 수 없다</h3>
+<p>패스키는 등록 시점의 rpId에 영구히 묶입니다. <code class="language-text">app.example.com</code>으로 등록하면 나중에 <code class="language-text">example.com</code>에서 쓸 수 없습니다.</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">✅ rpId = 'example.com'        → example.com, app.example.com, admin.example.com 모두 사용 가능
+❌ rpId = 'app.example.com'    → 상위 도메인·형제 서브도메인에서 사용 불가</code></pre></div>
+<p>처음부터 <strong>등록 가능한 최상위 도메인</strong>을 rpId로 잡으세요. 서로 다른 도메인(예: <code class="language-text">example.com</code>과 <code class="language-text">example.co.kr</code>)을 묶어야 한다면
+<code class="language-text">https://example.com/.well-known/webauthn</code>에 허용 origin 목록을 두는 <strong>Related Origin Requests</strong>를 검토해야 합니다.</p>
+<h3>② <code class="language-text">user.id</code>에 이메일을 넣지 마라</h3>
+<p><code class="language-text">user.id</code>(user handle)는 인증기에 저장되고, 인증 응답에 그대로 돌아옵니다. 개인정보를 넣으면 안 되고,
+이메일 변경 시 연결이 깨집니다. <strong>계정당 64바이트 이하의 랜덤 값</strong>을 따로 생성해 저장하세요.</p>
+<h3>③ challenge를 클라이언트에 맡기지 마라</h3>
+<p>challenge를 쿠키나 hidden 필드에 넣어 두고 “돌아온 값과 비교”하면 리플레이 방어가 무너집니다.
+<strong>서버 세션(또는 짧은 TTL의 서버 저장소)</strong> 에 두고, 한 번 쓰면 즉시 폐기합니다.</p>
+<h3>④ signCount 0을 에러로 처리하지 마라</h3>
+<p>동기화 패스키는 대부분 signCount를 항상 <code class="language-text">0</code>으로 보냅니다. “카운터가 증가하지 않았다 → 복제”로 판단하면
+정상 사용자를 전부 막게 됩니다. <strong>두 값이 모두 0이면 검사를 건너뛰는</strong> 것이 표준 동작입니다.</p>
+<h3>⑤ 삭제한 패스키가 기기에 유령처럼 남는다</h3>
+<p>서버에서 크리덴셜을 지워도 사용자 기기의 패스키는 남아 있어, 선택하면 로그인이 실패합니다.
+최신 브라우저가 제공하는 <strong>Signal API</strong>로 비밀번호 관리자에게 알려 줄 수 있습니다.</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token comment">// 서버가 "모르는 credential"이라고 응답했을 때</span>
+<span class="token keyword">await</span> PublicKeyCredential<span class="token punctuation">.</span>signalUnknownCredential<span class="token operator">?.</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token literal-property property">rpId</span><span class="token operator">:</span> <span class="token string">'example.com'</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">credentialId</span><span class="token operator">:</span> assertion<span class="token punctuation">.</span>id<span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<h3>⑥ iframe·WebView에서는 기본적으로 막혀 있다</h3>
+<ul>
+<li>iframe 안에서 호출하려면 부모 페이지에 <code class="language-text">allow="publickey-credentials-get *"</code> 권한 정책이 필요합니다.</li>
+<li>안드로이드 앱의 WebView는 브라우저와 동작이 다릅니다. 앱이라면 <strong>Credential Manager API</strong>(Android), <strong>AuthenticationServices</strong>(iOS) 같은 네이티브 API와 <code class="language-text">assetlinks.json</code> / <code class="language-text">apple-app-site-association</code> 연결을 고려하세요.</li>
+</ul>
+<h3>⑦ 개발 환경은 HTTPS 또는 localhost</h3>
+<p>WebAuthn은 Secure Context에서만 동작합니다. <code class="language-text">http://localhost</code>는 예외로 허용되지만,
+<code class="language-text">http://192.168.0.10:3000</code>처럼 IP로 접속하면 <code class="language-text">navigator.credentials</code>가 동작하지 않습니다. 모바일 실기 테스트는 터널(HTTPS)을 쓰세요.</p>
+<hr>
+<h2>🚫 12. 패스키를 <strong>바로 도입하면 안 되는</strong> 경우</h2>
+<p>패스키가 만능은 아닙니다. 다음 상황에서는 “비밀번호 제거”를 서두르면 안 됩니다.</p>
+<table>
+<thead>
+<tr>
+<th>상황</th>
+<th>이유</th>
+<th>대안</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>계정 복구 체계가 없다</strong></td>
+<td>모든 기기를 잃은 사용자를 구제할 수단이 없음</td>
+<td>복구 코드·본인확인 절차를 먼저 설계</td>
+</tr>
+<tr>
+<td><strong>공용 PC·키오스크 중심 서비스</strong></td>
+<td>개인 기기에 키를 저장한다는 전제가 깨짐</td>
+<td>하이브리드(QR) 로그인 또는 기존 방식 유지</td>
+</tr>
+<tr>
+<td><strong>사내 레거시 브라우저 강제</strong></td>
+<td>구형 IE 모드·임베디드 브라우저 미지원</td>
+<td>지원 브라우저 전환 이후로 연기</td>
+</tr>
+<tr>
+<td><strong>공유 계정 문화</strong></td>
+<td>팀이 하나의 계정을 돌려 쓰면 키 관리 불가</td>
+<td>계정 분리 + 권한 모델 먼저 정비</td>
+</tr>
+<tr>
+<td><strong>규제상 기기 결합 필수</strong></td>
+<td>동기화 패스키는 “소지 요소” 인정이 모호할 수 있음</td>
+<td>attestation 검증 + 하드웨어 키 한정</td>
+</tr>
+</tbody>
+</table>
+<p>특히 첫 번째가 가장 흔한 실패입니다. <strong>“패스키 도입”은 사실 “계정 복구 재설계”와 같은 프로젝트</strong>라고 생각해야 합니다.
+복구 경로가 SMS 하나라면, 공격자는 패스키 대신 복구 경로를 공격합니다. 가장 약한 고리가 전체 보안 수준을 결정합니다.</p>
+<hr>
+<h2>🪜 13. 기존 서비스에 점진 도입하기</h2>
+<p>한 번에 비밀번호를 없애는 서비스는 없습니다. 검증된 순서는 다음과 같습니다.</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">1단계  패스키를 "추가 로그인 수단"으로 제공      (설정 > 보안 > 패스키 추가)
+2단계  조건부 UI 적용                            (아이디 칸 자동완성에 노출)
+3단계  비밀번호 로그인 직후 패스키 등록 권유      (또는 조건부 생성)
+4단계  패스키 보유자에게 2FA 면제                  (UX 보상)
+5단계  신규 가입을 패스키 우선으로               (비밀번호는 선택)
+6단계  패스키 전용 계정 허용 (비밀번호 삭제 옵션)</code></pre></div>
+<p>단계마다 측정해야 할 지표도 정해 두면 좋습니다.</p>
+<table>
+<thead>
+<tr>
+<th>지표</th>
+<th>의미</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>패스키 등록률</td>
+<td>활성 사용자 중 패스키 1개 이상 보유 비율</td>
+</tr>
+<tr>
+<td>패스키 로그인 비중</td>
+<td>전체 로그인 중 패스키로 성공한 비율</td>
+</tr>
+<tr>
+<td>등록 이탈률</td>
+<td>등록 모달에서 취소(<code class="language-text">NotAllowedError</code>)한 비율</td>
+</tr>
+<tr>
+<td>로그인 소요 시간</td>
+<td>비밀번호 대비 단축 폭</td>
+</tr>
+<tr>
+<td>복구 요청 건수</td>
+<td>도입 후 증가한다면 복구 UX 점검 신호</td>
+</tr>
+</tbody>
+</table>
+<p>그리고 설정 화면에는 반드시 <strong>패스키 목록 관리</strong> 기능을 두세요. 이름(예: “iCloud 키체인”, “YubiKey 5C”),
+등록일, 마지막 사용일, 삭제 버튼 정도면 충분합니다. 사용자가 무엇을 등록했는지 모르면 신뢰가 생기지 않습니다.</p>
+<blockquote>
+<p>💡 패스키 이름은 등록 응답의 <code class="language-text">aaguid</code>로 인증기 종류를 조회해 자동으로 붙일 수 있습니다.
+커뮤니티가 관리하는 passkey-authenticator-aaguids 목록을 참고하면 편합니다.</p>
+</blockquote>
+<hr>
+<h2>🧾 14. 정리</h2>
+<ul>
+<li>패스키는 <strong>도메인에 묶인 공개키 쌍</strong>이며, 개인키는 기기를 떠나지 않는다</li>
+<li>서버에는 공개키만 남아 <strong>DB 유출이 곧 계정 탈취로 이어지지 않는다</strong></li>
+<li>브라우저가 origin을 직접 기록하므로 <strong>사용자가 속아도 피싱이 성립하지 않는다</strong></li>
+<li>구현의 핵심은 <code class="language-text">navigator.credentials.create/get</code> + 서버의 challenge·origin·rpId 검증</li>
+<li><strong>rpId 설계, user handle, signCount 0, 계정 복구</strong>가 실무 4대 함정이다</li>
+<li>도입은 “추가 수단 → 조건부 UI → 등록 권유 → 패스키 우선” 순으로 점진적으로</li>
+</ul>
+<blockquote>
+<p>✨ <strong>한 줄 요약</strong>
+패스키는 사용자를 더 똑똑하게 만드는 대신, <strong>속아도 안전한 구조</strong>를 만든다.</p>
+</blockquote>
+<hr>
+<h2>📚 참고 자료</h2>
+<ul>
+<li><a href="https://www.w3.org/TR/webauthn-3/" target="_blank" rel="nofollow">W3C Web Authentication Level 3</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Authentication_API" target="_blank" rel="nofollow">MDN — Web Authentication API</a></li>
+<li><a href="https://passkeys.dev/" target="_blank" rel="nofollow">passkeys.dev — 개발자 가이드</a></li>
+<li><a href="https://fidoalliance.org/passkeys/" target="_blank" rel="nofollow">FIDO Alliance — Passkeys</a></li>
+<li><a href="https://simplewebauthn.dev/" target="_blank" rel="nofollow">SimpleWebAuthn 문서</a></li>
+<li><a href="https://docs.spring.io/spring-security/reference/servlet/authentication/passkeys.html" target="_blank" rel="nofollow">Spring Security — Passkeys</a></li>
+<li><a href="https://web.dev/articles/passkey-form-autofill" target="_blank" rel="nofollow">web.dev — 폼 자동완성을 통한 패스키 로그인</a></li>
+</ul></div><style data-emotion="css hx9xpc">@media (max-width: 768px){.css-hx9xpc{padding:0 20px;}}</style><div class="css-hx9xpc e1gqsjds0"></div><style data-emotion="css 1lgr7vy">.css-1lgr7vy{position:fixed;bottom:30px;right:30px;width:50px;height:50px;border-radius:50%;background:linear-gradient(60deg, rgb(66, 105, 78) 0%, rgb(73, 110, 93) 100%);border:2px solid white;cursor:pointer;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;-webkit-justify-content:center;justify-content:center;box-shadow:0 4px 15px rgba(0, 0, 0, 0.15);-webkit-transition:all 0.3s ease;transition:all 0.3s ease;z-index:1000;opacity:0;visibility:hidden;-webkit-transform:translateY(20px);-moz-transform:translateY(20px);-ms-transform:translateY(20px);transform:translateY(20px);}.css-1lgr7vy:hover{-webkit-transform:translateY(-3px);-moz-transform:translateY(-3px);-ms-transform:translateY(-3px);transform:translateY(-3px);box-shadow:0 6px 20px rgba(0, 0, 0, 0.3);background:white;border-color:rgb(66, 105, 78);}.css-1lgr7vy:active{-webkit-transform:translateY(0);-moz-transform:translateY(0);-ms-transform:translateY(0);transform:translateY(0);}.css-1lgr7vy.visible{opacity:1;visibility:visible;-webkit-transform:translateY(0);-moz-transform:translateY(0);-ms-transform:translateY(0);transform:translateY(0);}@media (max-width: 768px){.css-1lgr7vy{bottom:20px;right:20px;width:45px;height:45px;}}</style><button class="css-1lgr7vy e14t44do1" aria-label="맨 위로 이동"><style data-emotion="css 1lzpihr">.css-1lzpihr{width:0;height:0;border-left:8px solid transparent;border-right:8px solid transparent;border-bottom:12px solid white;margin-bottom:2px;-webkit-transition:border-bottom-color 0.3s ease;transition:border-bottom-color 0.3s ease;}.e14t44do1:hover .css-1lzpihr{border-bottom-color:rgb(66, 105, 78);}</style><div class="css-1lzpihr e14t44do0"></div></button><style data-emotion="css 1yungzt">.css-1yungzt{position:relative;width:100%;padding:40px 0;background:linear-gradient(180deg, rgba(66, 105, 78, 0.05) 0%, rgba(73, 110, 93, 0.1) 100%);border-top:1px solid rgba(66, 105, 78, 0.1);}</style><footer class="css-1yungzt e1oae0v84"><style data-emotion="css 1uamirr">.css-1uamirr{max-width:960px;margin:0 auto;padding:0 20px;text-align:center;}</style><div class="css-1uamirr e1oae0v83"><style data-emotion="css 1ghcw8y">.css-1ghcw8y{font-size:16px;line-height:1.6;color:#426950;margin-bottom:10px;-webkit-transition:color 0.3s ease;transition:color 0.3s ease;}.css-1ghcw8y:hover{color:#2c4735;}@media (max-width: 768px){.css-1ghcw8y{font-size:14px;}}</style><p class="css-1ghcw8y e1oae0v82">Thank You for Visiting My Blog, Have a Good Day <style data-emotion="css lzb4fa">.css-lzb4fa{display:inline-block;-webkit-transition:-webkit-transform 0.3s ease;transition:transform 0.3s ease;}.css-lzb4fa:hover{-webkit-transform:scale(1.2) rotate(10deg);-moz-transform:scale(1.2) rotate(10deg);-ms-transform:scale(1.2) rotate(10deg);transform:scale(1.2) rotate(10deg);}</style><span class="css-lzb4fa e1oae0v80">🌿</span></p><style data-emotion="css y3pbt1">.css-y3pbt1{font-size:14px;color:#666;margin-top:5px;}@media (max-width: 768px){.css-y3pbt1{font-size:12px;}}</style><p class="css-y3pbt1 e1oae0v81">© 2024 Developer LIM.</p></div></footer></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/passkeys-webauthn-guide/";/*]]>*/</script><!-- slice-start id="_gatsby-scripts-1" -->
+          <script
+            id="gatsby-chunk-mapping"
+          >
+            window.___chunkMapping="{\"app\":[\"/app-5ab049b1a7d9afaa2ddb.js\"],\"component---cache-caches-gatsby-plugin-offline-app-shell-js\":[\"/component---cache-caches-gatsby-plugin-offline-app-shell-js-27e0e967a98f3dffdf9e.js\"],\"component---src-pages-404-tsx\":[\"/component---src-pages-404-tsx-198e8648605be5d74a6a.js\"],\"component---src-pages-index-tsx\":[\"/component---src-pages-index-tsx-49aed13bd17edca89f1a.js\"],\"component---src-pages-info-tsx\":[\"/component---src-pages-info-tsx-91ad86a40368117a0a55.js\"],\"component---src-templates-post-template-tsx\":[\"/component---src-templates-post-template-tsx-6e3542f1f00a7c16e4e6.js\"]}";
+          </script>
+        <script>window.___webpackCompilationHash="c5f50b18458ce60ff11e";</script><script src="/webpack-runtime-cc6a3bd86707474f9378.js" async></script><script src="/framework-9d608f77b5c9a88afabd.js" async></script><script src="/app-5ab049b1a7d9afaa2ddb.js" async></script><!-- slice-end id="_gatsby-scripts-1" --></body></html>
