@@ -1,0 +1,469 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><meta name="generator" content="Gatsby 5.14.0"/><meta name="theme-color" content="#426950"/><meta data-react-helmet="true" name="description" content="뷰포트가 아닌 컨테이너 크기와 자식 상태에 반응하는 CSS 레이아웃 혁명"/><meta data-react-helmet="true" name="viewport" content="width=device-width, initial-scale=1.0"/><meta data-react-helmet="true" http-equiv="Content-Type" content="text/html;charset=UTF-8"/><meta data-react-helmet="true" property="og:type" content="website"/><meta data-react-helmet="true" property="og:title" content="🎨 CSS Container Queries와 :has() 부모 선택자로 완성하는 진정한 컴포넌트 기반 레이아웃"/><meta data-react-helmet="true" property="og:description" content="뷰포트가 아닌 컨테이너 크기와 자식 상태에 반응하는 CSS 레이아웃 혁명"/><meta data-react-helmet="true" property="og:image" content="/static/0978c0e3593ac8f3f7f760badc1ae993/css-container-queries-and-has-selector.png"/><meta data-react-helmet="true" property="og:url"/><meta data-react-helmet="true" property="og:site_name" content="🎨 CSS Container Queries와 :has() 부모 선택자로 완성하는 진정한 컴포넌트 기반 레이아웃"/><meta data-react-helmet="true" name="twitter:card" content="summary"/><meta data-react-helmet="true" name="twitter:title" content="🎨 CSS Container Queries와 :has() 부모 선택자로 완성하는 진정한 컴포넌트 기반 레이아웃"/><meta data-react-helmet="true" name="twitter:description" content="뷰포트가 아닌 컨테이너 크기와 자식 상태에 반응하는 CSS 레이아웃 혁명"/><meta data-react-helmet="true" name="twitter:image" content="/static/0978c0e3593ac8f3f7f760badc1ae993/css-container-queries-and-has-selector.png"/><meta data-react-helmet="true" name="twitter:site" content="@사용자이름"/><meta data-react-helmet="true" name="twitter:creator" content="@사용자이름"/><style data-href="/styles.9e907bc32054b7771552.css" data-identity="gatsby-global-css">code[class*=language-],pre[class*=language-]{word-wrap:normal;background:none;color:#ccc;font-family:Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;font-size:1em;-webkit-hyphens:none;hyphens:none;line-height:1.5;tab-size:4;text-align:left;white-space:pre;word-break:normal;word-spacing:normal}pre[class*=language-]{margin:.5em 0;overflow:auto;padding:1em}:not(pre)>code[class*=language-],pre[class*=language-]{background:#2d2d2d}:not(pre)>code[class*=language-]{border-radius:.3em;padding:.1em;white-space:normal}.token.block-comment,.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#999}.token.punctuation{color:#ccc}.token.attr-name,.token.deleted,.token.namespace,.token.tag{color:#e2777a}.token.function-name{color:#6196cc}.token.boolean,.token.function,.token.number{color:#f08d49}.token.class-name,.token.constant,.token.property,.token.symbol{color:#f8c555}.token.atrule,.token.builtin,.token.important,.token.keyword,.token.selector{color:#cc99cd}.token.attr-value,.token.char,.token.regex,.token.string,.token.variable{color:#7ec699}.token.entity,.token.operator,.token.url{color:#67cdcc}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}.token.inserted{color:green}</style><link rel="sitemap" type="application/xml" href="/sitemap-index.xml"/><link rel="canonical" href="https://logic-phantom.github.io/css-container-queries-and-has-selector/" data-baseprotocol="https:" data-basehost="logic-phantom.github.io"/><link rel="icon" href="/favicon-32x32.png" type="image/png"/><link rel="manifest" href="/manifest.webmanifest" crossorigin="use-credentials"/><link rel="apple-touch-icon" sizes="192x192" href="/contents/forestLim.png"/><link rel="apple-touch-icon" sizes="512x512" href="/contents/forestLim.png"/><title data-react-helmet="true">🎨 CSS Container Queries와 :has() 부모 선택자로 완성하는 진정한 컴포넌트 기반 레이아웃</title><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){const t=e.target;if(void 0===t.dataset.mainImage)return;if(void 0===t.dataset.gatsbyImageSsr)return;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><style data-emotion="css zyllbl">.css-zyllbl{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;height:100vh;}</style><div class="css-zyllbl e1strnqo0"><style data-emotion="css-global kxm5mf">@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap');*{padding:0;margin:0;box-sizing:border-box;font-family:'Nanum Myeongjo',serif;}html,body,#___gatsby{height:100%;}a,a:hover{color:inherit;-webkit-text-decoration:none;text-decoration:none;cursor:pointer;}</style><style data-emotion="css 16cz9yp">.css-16cz9yp{position:relative;width:100%;height:400px;}@media (max-width: 768px){.css-16cz9yp{height:300px;}}</style><div class="css-16cz9yp e1opi4mu1"><style data-emotion="css 1bjn9yo">.css-1bjn9yo{z-index:-1;width:100%;height:400px;object-fit:cover;-webkit-filter:brightness(0.25);filter:brightness(0.25);}@media (max-width: 768px){.css-1bjn9yo{height:300px;}}</style><div data-gatsby-image-wrapper="" style="position:absolute" class="gatsby-image-wrapper gatsby-image-wrapper-constrained css-1bjn9yo e1opi4mu0"><div style="max-width:1536px;display:block"><img alt="" role="presentation" aria-hidden="true" src="data:image/svg+xml;charset=utf-8,%3Csvg%20height=&#x27;1024&#x27;%20width=&#x27;1536&#x27;%20xmlns=&#x27;http://www.w3.org/2000/svg&#x27;%20version=&#x27;1.1&#x27;%3E%3C/svg%3E" style="max-width:100%;display:block;position:static"/></div><img aria-hidden="true" data-placeholder-image="" style="opacity:1;transition:opacity 500ms linear" decoding="async" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAIAAAAmMtkJAAAACXBIWXMAAAsTAAALEwEAmpwYAAACDElEQVR42n2Sy27TQBSG8yRskUBdoIgFYtsNO9iwAiF2PAALVKkU0cJb0AUgKAIJdQMFJIQqVEpDLo4TJ/FtPLbnZjtO3FycOBdz0lStiEqlX0f/eM434znnZAQZnS/u/ncrc2YSd5MTuWgI8TzYUgd6NYa8+dJnkwV59B+MOckpTPGIWmPmjCAJNqQCLeWJXGQg8FKBUXvo0XHA09CbCfwxDH+FzQ42OhB9PlGV0MaiHXUZa1IaNJsRZ2GlJAI2MRqtWiUAuVYMfKblp3vf1Y21N49X3q0+eivlOdIizkMgkckadQdbIgw7Wq1VzNnZ6zcvX7t14dLy1tZur51mmmKa3ye7X3x4sIOi/G+uKlFNsTAWukYICSgJdM1Vq9G3r40rV7MXl28sZZdebH7qR0dwMcd2tk25JOQSUaTA1A4rMjINqqquprnIoHAKvEWWxN37K/cePLl95+HOZylqppl56agdExw7qA8Fs1H3w/sfz9ZfPd94vf705drq5vbHn1o9DL1py5u2vbTtp8IdQ2uPYXAc1rNqTwgeVkq8XvXqFW8Wq55SFi4aAMBsaHtCcXLaZ7gNYIITaJXRgNocWnofaT1T7er1DlK74PVaZBk9yDGUGKkDuGZhwpKAT+SiONjD5SKX8uzPvpP7ZRcOSLnA4aOqtObtPWM85xMKPJQQ4pGZ6cT7bLwwnn8BPCmnOxI+cSoAAAAASUVORK5CYII=" alt=""/><picture><source type="image/webp" data-srcset="/static/0978c0e3593ac8f3f7f760badc1ae993/b642b/css-container-queries-and-has-selector.webp 384w,/static/0978c0e3593ac8f3f7f760badc1ae993/c9564/css-container-queries-and-has-selector.webp 768w,/static/0978c0e3593ac8f3f7f760badc1ae993/18b4b/css-container-queries-and-has-selector.webp 1536w" sizes="(min-width: 1536px) 1536px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 1536px) 1536px, 100vw" decoding="async" loading="lazy" data-src="/static/0978c0e3593ac8f3f7f760badc1ae993/4d776/css-container-queries-and-has-selector.png" data-srcset="/static/0978c0e3593ac8f3f7f760badc1ae993/4a410/css-container-queries-and-has-selector.png 384w,/static/0978c0e3593ac8f3f7f760badc1ae993/f5189/css-container-queries-and-has-selector.png 768w,/static/0978c0e3593ac8f3f7f760badc1ae993/4d776/css-container-queries-and-has-selector.png 1536w" alt="thumbnail"/></picture><noscript><picture><source type="image/webp" srcSet="/static/0978c0e3593ac8f3f7f760badc1ae993/b642b/css-container-queries-and-has-selector.webp 384w,/static/0978c0e3593ac8f3f7f760badc1ae993/c9564/css-container-queries-and-has-selector.webp 768w,/static/0978c0e3593ac8f3f7f760badc1ae993/18b4b/css-container-queries-and-has-selector.webp 1536w" sizes="(min-width: 1536px) 1536px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 1536px) 1536px, 100vw" decoding="async" loading="lazy" src="/static/0978c0e3593ac8f3f7f760badc1ae993/4d776/css-container-queries-and-has-selector.png" srcSet="/static/0978c0e3593ac8f3f7f760badc1ae993/4a410/css-container-queries-and-has-selector.png 384w,/static/0978c0e3593ac8f3f7f760badc1ae993/f5189/css-container-queries-and-has-selector.png 768w,/static/0978c0e3593ac8f3f7f760badc1ae993/4d776/css-container-queries-and-has-selector.png 1536w" alt="thumbnail"/></picture></noscript><script type="module">const t="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;if(t){const t=document.querySelectorAll("img[data-main-image]");for(let e of t){e.dataset.src&&(e.setAttribute("src",e.dataset.src),e.removeAttribute("data-src")),e.dataset.srcset&&(e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset"));const t=e.parentNode.querySelectorAll("source[data-srcset]");for(let e of t)e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset");e.complete&&(e.style.opacity=1,e.parentNode.parentNode.querySelector("[data-placeholder-image]").style.opacity=0)}}</script></div><style data-emotion="css m1156n">.css-m1156n{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;width:768px;height:100%;margin:0 auto;padding:60px 0;color:#ffffff;}@media (max-width: 768px){.css-m1156n{width:100%;padding:40px 20px;}}</style><div class="css-m1156n e1st1jau4"><style data-emotion="css gywgo7">.css-gywgo7{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:#ffffff;color:#000000;font-size:22px;cursor:pointer;box-shadow:0 0 10px rgba(0, 0, 0, 0.3);}@media (max-width: 768px){.css-gywgo7{width:30px;height:30px;font-size:18px;}}</style><div class="css-gywgo7 e1st1jau3"><style data-emotion="css 1ij64l8">.css-1ij64l8{display:inline-block;width:12px;height:12px;border-left:2px solid #000000;border-bottom:2px solid #000000;-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg);-ms-transform:rotate(45deg);transform:rotate(45deg);}</style><span class="css-1ij64l8 e1st1jau2"></span></div><style data-emotion="css gn4qtp">.css-gn4qtp{display:-webkit-box;overflow:hidden;overflow-wrap:break-word;margin-top:auto;text-overflow:ellipsis;white-space:normal;-webkit-line-clamp:2;-webkit-box-orient:vertical;font-size:45px;font-weight:800;}@media (max-width: 768px){.css-gn4qtp{font-size:30px;}}</style><div class="css-gn4qtp e1st1jau1">🎨 CSS Container Queries와 :has() 부모 선택자로 완성하는 진정한 컴포넌트 기반 레이아웃</div><style data-emotion="css 3gcnt2">.css-3gcnt2{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;justify-content:space-between;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;margin-top:10px;font-size:18px;font-weight:700;}@media (max-width: 768px){.css-3gcnt2{-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-align-items:flex-start;-webkit-box-align:flex-start;-ms-flex-align:flex-start;align-items:flex-start;font-size:15px;font-weight:400;}}</style><div class="css-3gcnt2 e1st1jau0"><div>Web</div><div>2026.09.26.</div></div></div></div><style data-emotion="css 12g9cpd">.css-12g9cpd{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;width:768px;margin:0 auto;padding:200px 0 0 0;word-break:break-all;line-height:1.8;font-size:16px;font-weight:400;}.css-12g9cpd p{padding:3px 0;}.css-12g9cpd h1,.css-12g9cpd h2,.css-12g9cpd h3{font-weight:800;margin-bottom:30px;}.css-12g9cpd *+h1,.css-12g9cpd *+h2,.css-12g9cpd *+h3{margin-top:80px;}.css-12g9cpd hr+h1,.css-12g9cpd hr+h2,.css-12g9cpd hr+h3{margin-top:0;}.css-12g9cpd h1{font-size:30px;}.css-12g9cpd h2{font-size:25px;}.css-12g9cpd h3{font-size:20px;}.css-12g9cpd blockquote{margin:30px 0;padding:5px 15px;border-left:2px solid #000000;font-weight:800;}.css-12g9cpd ol,.css-12g9cpd ul{margin-left:20px;padding:30px 0;}.css-12g9cpd hr{border:1px solid #000000;margin:100px 0;}.css-12g9cpd a{color:#4263eb;-webkit-text-decoration:underline;text-decoration:underline;}.css-12g9cpd pre[class*='language-']{margin:30px 0;padding:15px;font-size:15px;}.css-12g9cpd pre[class*='language-']::-webkit-scrollbar-thumb{background:rgba(255, 255, 255, 0.5);border-radius:3px;}.css-12g9cpd code[class*='language-'],.css-12g9cpd pre[class*='language-']{tab-size:2;}@media (max-width: 768px){.css-12g9cpd{width:100%;padding:140px 20px 0 20px;line-height:1.6;font-size:14px;}.css-12g9cpd h1{font-size:23px;}.css-12g9cpd h2{font-size:20px;}.css-12g9cpd h3{font-size:17px;}.css-12g9cpd img{width:100%;}.css-12g9cpd hr{margin:50px 0;}}</style><div class="css-12g9cpd e1ijh0y10"><h1>🎨 CSS Container Queries와 :has() 부모 선택자로 완성하는 진정한 컴포넌트 기반 레이아웃</h1>
+<blockquote>
+<p>뷰포트(Viewport) 크기 의존성에서 벗어나, 컴포넌트 자체의 상태와 부모 크기에 반응하는 진정한 모듈형 CSS 시대를 탐구합니다.
+이 글에서는 Container Queries와 <code class="language-text">:has()</code> 선택자의 기초부터 실무 패턴, 그리고 무한 루프 위험 요소까지 깊이 있게 다룹니다.</p>
+</blockquote>
+<hr>
+<h2>📌 목차</h2>
+<ol>
+<li>🧭 미디어 쿼리의 한계와 현대 UI의 도전 과제</li>
+<li>📦 Container Queries 핵심 개념과 기본 문법</li>
+<li>📏 Container Query Units (cqw, cqh, cqmin) 활용법</li>
+<li>🎯 :has() 선택자: 자식 상태로 부모를 선택하는 CSS 혁명</li>
+<li>⚡ Container Queries와 :has()의 강력한 시너지</li>
+<li>💻 실전 예제 1: 어디서나 재사용 가능한 반응형 카드 컴포넌트</li>
+<li>💻 실전 예제 2: JavaScript 없이 구현하는 폼 Validation &#x26; 상태 레이아웃</li>
+<li>🚀 기존 JavaScript 기반 해결 방식과의 성능 및 DX 비교</li>
+<li>⚠️ 실무 함정: Container Queries 사용 시 무한 루프와 순환 참조</li>
+<li>🚫 이 기술을 신중하게 사용해야 하는 예외적 상황</li>
+<li>🔮 브라우저 지원 현황과 하위 호환성 폴백(Fallback) 전략</li>
+<li>🧾 정리</li>
+</ol>
+<hr>
+<h2>🧭 1. 미디어 쿼리의 한계와 현대 UI의 도전 과제</h2>
+<p>지난 10여 년간 웹 반응형 레이아웃의 절대적인 표준은 <code class="language-text">@media (min-width: ...)</code> 형태의 뷰포트 미디어 쿼리(Viewport Media Queries)였습니다. 그러나 React, Vue, Svelte와 같은 컴포넌트 기반 아키텍처가 메인스트림으로 자리 잡으면서 미디어 쿼리의 결정적인 한계가 드러나기 시작했습니다.</p>
+<div class="gatsby-highlight" data-language="css"><pre class="language-css"><code class="language-css"><span class="token comment">/* 기존 뷰포트 미디어 쿼리 */</span>
+<span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 768px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+  <span class="token selector">.card</span> <span class="token punctuation">{</span>
+    <span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span>
+    <span class="token property">flex-direction</span><span class="token punctuation">:</span> row<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>위 코드는 화면 너비가 768px 이상일 때 카드 컴포넌트를 가로 배열로 전환합니다. 하지만 이 카드가 메인 영역(너비 900px)에 들어갈 때와, 사이드바 영역(너비 300px)에 들어갈 때를 생각해보겠습니다. 화면 전체 너비는 1024px이지만 사이드바 내부 공간은 300px에 불과함에도 불구하고, 뷰포트 미디어 쿼리는 화면 너비만 보고 카드를 가로로 렌더링하여 레이아웃이 완전히 깨지게 됩니다.</p>
+<p>이 문제를 해결하기 위해 개발자들은 <code class="language-text">.sidebar .card</code> 와 같은 상위 클래스 중첩 방식을 사용하거나, <code class="language-text">ResizeObserver</code>를 이용해 JavaScript로 DOM 요소를 직접 측정하는 편법을 써야 했습니다.</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 768px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/89daaa2e100a4af47ed06b583d5f729b/bbbf7/css-container-queries-and-has-selector-1.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 50%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAIAAAA7N+mxAAAACXBIWXMAAAsTAAALEwEAmpwYAAABxUlEQVR42lXRyY7TQBAA0Pw4EvcZ+AK4gBASFzggDlwGRmgIYsSIKJksttvtXry12727vcQJJopEqFOpql7VoWbHi+DKxpTRsiY5h6QU2gYxpVmVlzWmJYBZLc3l/Owwjr3WvdJDXRcAxY8BDeIUIBQmohIhydYYrwn+HccPEQBlwZxiTgtv94dxtrfWa+eEFgEwiDSIGAAbLrq2H7VRvRe+CXge1HmiqoAXywIjwaVvZetm4wRrA0i5BnQZ4lWIN4BOeV6Ig3UTJmW9CckO0MUGbiO6BTSEWaWd6k5YCYOyaiptY7oOcQDTHUxLdsY5V2GSRShf7dDUmnKIy9o0ZyxrfcLpLv67OEqyaagozzirZIxygPNNRKYVQZImlPF/l6XJpYWFgBkHlKFSIKa40KNxsvdMWsY0TjnEDKcVoVxIx80J77Vufc+X6+jqGr14SV69jq+fZx8/+XbYS1W11nXDu9Xd09u3V/P3z+Yfnnx5M8eB78fam9lhGHptfJrJu+/q/p7/+Mm+3srVo+WiVUY0rtTqVxp9Dh9uwOIbXt3ARSwK6V23H2aXTz8cj7rtpe9s19fK8glLo6ZHuraxrW+64//xBw7DIfXiek9sAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <picture>
+          <source
+              srcset="/static/89daaa2e100a4af47ed06b583d5f729b/a59e9/css-container-queries-and-has-selector-1.webp 192w,
+/static/89daaa2e100a4af47ed06b583d5f729b/0ca9f/css-container-queries-and-has-selector-1.webp 384w,
+/static/89daaa2e100a4af47ed06b583d5f729b/dc9b9/css-container-queries-and-has-selector-1.webp 768w,
+/static/89daaa2e100a4af47ed06b583d5f729b/e2c2f/css-container-queries-and-has-selector-1.webp 1152w,
+/static/89daaa2e100a4af47ed06b583d5f729b/94b1e/css-container-queries-and-has-selector-1.webp 1280w"
+              sizes="(max-width: 768px) 100vw, 768px"
+              type="image/webp"
+            />
+          <source
+            srcset="/static/89daaa2e100a4af47ed06b583d5f729b/3b721/css-container-queries-and-has-selector-1.png 192w,
+/static/89daaa2e100a4af47ed06b583d5f729b/66595/css-container-queries-and-has-selector-1.png 384w,
+/static/89daaa2e100a4af47ed06b583d5f729b/fe486/css-container-queries-and-has-selector-1.png 768w,
+/static/89daaa2e100a4af47ed06b583d5f729b/d2d74/css-container-queries-and-has-selector-1.png 1152w,
+/static/89daaa2e100a4af47ed06b583d5f729b/bbbf7/css-container-queries-and-has-selector-1.png 1280w"
+            sizes="(max-width: 768px) 100vw, 768px"
+            type="image/png"
+          />
+          <img
+            class="gatsby-resp-image-image"
+            src="/static/89daaa2e100a4af47ed06b583d5f729b/fe486/css-container-queries-and-has-selector-1.png"
+            alt="뷰포트 미디어 쿼리와 컨테이너 쿼리의 동작 방식 비교"
+            title=""
+            loading="lazy"
+            decoding="async"
+            style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+          />
+        </picture>
+  </a>
+    </span></p>
+<hr>
+<h2>📦 2. Container Queries 핵심 개념과 기본 문법</h2>
+<p>CSS Container Queries는 컴포넌트가 위치한 <strong>부모 컨테이너의 크기</strong>를 기준으로 스타일을 재정의할 수 있게 해주는 CSS 사양입니다.</p>
+<h3>컨테이너 정의하기 (<code class="language-text">container-type</code>)</h3>
+<p>요소를 반응형 컨테이너로 지정하려면 먼저 <code class="language-text">container-type</code> 또는 단축 속성인 <code class="language-text">container</code>를 정의해야 합니다.</p>
+<div class="gatsby-highlight" data-language="css"><pre class="language-css"><code class="language-css"><span class="token selector">.card-container</span> <span class="token punctuation">{</span>
+  <span class="token comment">/* inline-size(너비) 기준으로 컨테이너를 측정하도록 설정 */</span>
+  <span class="token property">container-type</span><span class="token punctuation">:</span> inline-size<span class="token punctuation">;</span>
+  <span class="token property">container-name</span><span class="token punctuation">:</span> card-wrapper<span class="token punctuation">;</span> <span class="token comment">/* 식별용 이름 (선택 사항) */</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/* 단축 속성 표기법 */</span>
+<span class="token selector">.sidebar-section</span> <span class="token punctuation">{</span>
+  <span class="token property">container</span><span class="token punctuation">:</span> sidebar / inline-size<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre></div>
+<ul>
+<li><code class="language-text">inline-size</code>: 텍스트 흐름 방향의 크기(주로 너비)를 감지합니다. 가장 흔하게 사용됩니다.</li>
+<li><code class="language-text">size</code>: 너비와 높이 모두를 감지합니다. 컨테이너의 높이가 명확히 고정되어 있어야 합니다.</li>
+<li><code class="language-text">normal</code>: 컨테이너 측정 대상에서 제외합니다.</li>
+</ul>
+<h3><code class="language-text">@container</code> 쿼리 작성하기</h3>
+<div class="gatsby-highlight" data-language="css"><pre class="language-css"><code class="language-css"><span class="token selector">.card</span> <span class="token punctuation">{</span>
+  <span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span>
+  <span class="token property">flex-direction</span><span class="token punctuation">:</span> column<span class="token punctuation">;</span>
+  <span class="token property">gap</span><span class="token punctuation">:</span> 1rem<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/* 컨테이너의 너비가 400px 이상일 때 동작 */</span>
+<span class="token atrule"><span class="token rule">@container</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 400px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+  <span class="token selector">.card</span> <span class="token punctuation">{</span>
+    <span class="token property">flex-direction</span><span class="token punctuation">:</span> row<span class="token punctuation">;</span>
+    <span class="token property">align-items</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/* 특정 이름의 컨테이너를 지정하여 타겟팅 가능 */</span>
+<span class="token atrule"><span class="token rule">@container</span> sidebar <span class="token punctuation">(</span><span class="token property">max-width</span><span class="token punctuation">:</span> 300px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+  <span class="token selector">.card-title</span> <span class="token punctuation">{</span>
+    <span class="token property">font-size</span><span class="token punctuation">:</span> 0.875rem<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div>
+<hr>
+<h2>📏 3. Container Query Units (cqw, cqh, cqmin) 활용법</h2>
+<p>Container Queries는 단순한 <code class="language-text">@container</code> 조건문뿐만 아니라, <strong>컨테이너의 크기에 비례하여 변하는 새로운 CSS 상대 단위</strong>를 제공합니다.</p>
+<table>
+<thead>
+<tr>
+<th>단위</th>
+<th>설명</th>
+<th>비고</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="language-text">cqw</code></td>
+<td>컨테이너 너비(Width)의 1%</td>
+<td><code class="language-text">100cqw</code> = 컨테이너 전체 너비</td>
+</tr>
+<tr>
+<td><code class="language-text">cqh</code></td>
+<td>컨테이너 높이(Height)의 1%</td>
+<td><code class="language-text">container-type: size</code> 설정 필요</td>
+</tr>
+<tr>
+<td><code class="language-text">cqi</code></td>
+<td>컨테이너 인라인 축 크기의 1%</td>
+<td>글자 방향 기준 (보통 너비)</td>
+</tr>
+<tr>
+<td><code class="language-text">cqb</code></td>
+<td>컨테이너 블록 축 크기의 1%</td>
+<td>글자 방향 기준 (보통 높이)</td>
+</tr>
+<tr>
+<td><code class="language-text">cqmin</code></td>
+<td><code class="language-text">cqi</code>와 <code class="language-text">cqb</code> 중 더 작은 값</td>
+<td>폭과 높이 중 소형 축 기준</td>
+</tr>
+<tr>
+<td><code class="language-text">cqmax</code></td>
+<td><code class="language-text">cqi</code>와 <code class="language-text">cqb</code> 중 더 큰 값</td>
+<td>폭과 높이 중 대형 축 기준</td>
+</tr>
+</tbody>
+</table>
+<div class="gatsby-highlight" data-language="css"><pre class="language-css"><code class="language-css"><span class="token selector">.card-header-title</span> <span class="token punctuation">{</span>
+  <span class="token comment">/* 컨테이너 너비의 5% 크기로 폰트 설정, 최소 16px ~ 최대 32px 제한 */</span>
+  <span class="token property">font-size</span><span class="token punctuation">:</span> <span class="token function">clamp</span><span class="token punctuation">(</span>1rem<span class="token punctuation">,</span> 5cqw<span class="token punctuation">,</span> 2rem<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span> 2cqw<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>뷰포트 단위(<code class="language-text">vw</code>)를 사용했을 때 부모 상자가 작아지면 글씨만 비정상적으로 커지던 현상을 <code class="language-text">cqw</code>를 통해 깔끔하게 해결할 수 있습니다.</p>
+<hr>
+<h2>🎯 4. :has() 선택자: 자식 상태로 부모를 선택하는 CSS 혁명</h2>
+<p><code class="language-text">:has()</code> 선택자는 오랫동안 CSS 개발자들이 열망했던 <strong>부모 선택자(Parent Selector)</strong> 역할을 수행합니다. 특정 자식 요소나 상태가 존재하는지 여부에 따라 부모 요소 또는 이전 형제 요소를 선택할 수 있습니다.</p>
+<div class="gatsby-highlight" data-language="css"><pre class="language-css"><code class="language-css"><span class="token comment">/* 1. 이미지(&lt;img>)를 자식으로 가지고 있는 .card 상자의 패딩 제거 */</span>
+<span class="token selector">.card:has(img)</span> <span class="token punctuation">{</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+  <span class="token property">overflow</span><span class="token punctuation">:</span> hidden<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/* 2. 에러 메시지(.error)가 표시된 form 내부의 label 색상 변경 */</span>
+<span class="token selector">form:has(.error-message) label</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> #ce4747<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/* 3. 체크박스가 체크되어 있는 형제 요소 뒤의 텍스트 스타일 수정 */</span>
+<span class="token selector">.todo-item:has(input[type="checkbox"]:checked)</span> <span class="token punctuation">{</span>
+  <span class="token property">text-decoration</span><span class="token punctuation">:</span> line-through<span class="token punctuation">;</span>
+  <span class="token property">opacity</span><span class="token punctuation">:</span> 0.6<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 768px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/1335ba418ad0dab1afd348bbf4cedb8e/bbbf7/css-container-queries-and-has-selector-2.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 50%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAIAAAA7N+mxAAAACXBIWXMAAAsTAAALEwEAmpwYAAABiElEQVR42l1RiW7UMBTM//8MQlTqD6CCVAGlB0fRZjfJOvF939mkvKZaRDsaWfPsmadnu3k6Y11XqR1w141tj4eR9YgeJ46ZJFx1iCIijpgvy/Iv0jz9Byo0Zmo/4P1ADgPpEEGYQxJ4QAQaDRN7FV6W9XQ6wbo8Yz3jeZBtnBexvpSAzbmeNm8Dcz4eptvf3f2fgQn9s+MfPneX1/27q/auZSPhP3bo7rH//qsbiURYghMIO0K5RmhHlUNUU+m51J8exvdf+OUNv7iRHx+mHtImYG4QUe2AJ6aY9KCJcBBsjItMOCotk9bYcGTu6059ayWsHXHGeCIsVZYKK7XXNgjtwSyUty42ea4q+F5RYlUsBUqbPDJMBl3mmmpl3hwNA0+uNZQ8GTFoJoIFZxPnQoLeqak3LNQM5MkeDKHRwFGcM0sWOSGzS3OxJe41htPe8lBLA8+5bE+5bKLMc8g55eJTSqUAYy4hZShLnZfzV2zi9T8DYipwGbibccH6CNqFpK2HElq8Mf8FiQ00sYc+JssAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <picture>
+          <source
+              srcset="/static/1335ba418ad0dab1afd348bbf4cedb8e/a59e9/css-container-queries-and-has-selector-2.webp 192w,
+/static/1335ba418ad0dab1afd348bbf4cedb8e/0ca9f/css-container-queries-and-has-selector-2.webp 384w,
+/static/1335ba418ad0dab1afd348bbf4cedb8e/dc9b9/css-container-queries-and-has-selector-2.webp 768w,
+/static/1335ba418ad0dab1afd348bbf4cedb8e/e2c2f/css-container-queries-and-has-selector-2.webp 1152w,
+/static/1335ba418ad0dab1afd348bbf4cedb8e/94b1e/css-container-queries-and-has-selector-2.webp 1280w"
+              sizes="(max-width: 768px) 100vw, 768px"
+              type="image/webp"
+            />
+          <source
+            srcset="/static/1335ba418ad0dab1afd348bbf4cedb8e/3b721/css-container-queries-and-has-selector-2.png 192w,
+/static/1335ba418ad0dab1afd348bbf4cedb8e/66595/css-container-queries-and-has-selector-2.png 384w,
+/static/1335ba418ad0dab1afd348bbf4cedb8e/fe486/css-container-queries-and-has-selector-2.png 768w,
+/static/1335ba418ad0dab1afd348bbf4cedb8e/d2d74/css-container-queries-and-has-selector-2.png 1152w,
+/static/1335ba418ad0dab1afd348bbf4cedb8e/bbbf7/css-container-queries-and-has-selector-2.png 1280w"
+            sizes="(max-width: 768px) 100vw, 768px"
+            type="image/png"
+          />
+          <img
+            class="gatsby-resp-image-image"
+            src="/static/1335ba418ad0dab1afd348bbf4cedb8e/fe486/css-container-queries-and-has-selector-2.png"
+            alt=":has 셀렉터 작동 방식"
+            title=""
+            loading="lazy"
+            decoding="async"
+            style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+          />
+        </picture>
+  </a>
+    </span></p>
+<hr>
+<h2>⚡ 5. Container Queries와 :has()의 강력한 시너지</h2>
+<p>Container Queries와 <code class="language-text">:has()</code>를 결합하면 이전에는 JavaScript 없이는 불가능했던 <strong>상태 및 크기 동시 대응형 UI</strong>를 순수 CSS로 구축할 수 있습니다.</p>
+<div class="gatsby-highlight" data-language="css"><pre class="language-css"><code class="language-css"><span class="token selector">.card-wrapper</span> <span class="token punctuation">{</span>
+  <span class="token property">container-type</span><span class="token punctuation">:</span> inline-size<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/* 컨테이너가 500px 이상이면서, 동시에 썸네일 이미지가 존재하는 경우에만 그리드 레이아웃 적용 */</span>
+<span class="token atrule"><span class="token rule">@container</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 500px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+  <span class="token selector">.card:has(.card-thumbnail)</span> <span class="token punctuation">{</span>
+    <span class="token property">display</span><span class="token punctuation">:</span> grid<span class="token punctuation">;</span>
+    <span class="token property">grid-template-columns</span><span class="token punctuation">:</span> 200px 1fr<span class="token punctuation">;</span>
+    <span class="token property">gap</span><span class="token punctuation">:</span> 1.5rem<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>이 패턴을 사용하면 자식 데이터(이미지 유무)와 배치 공간(컨테이너 크기)이라는 두 가지 조건이 모두 충족될 때만 레이아웃이 알아서 최적의 형태 변환을 수행합니다.</p>
+<hr>
+<h2>💻 6. 실전 예제 1: 어디서나 재사용 가능한 반응형 카드 컴포넌트</h2>
+<p>다음은 대시보드의 중앙 메인 뷰, 좁은 우측 사이드바, 하단 모달창 등 <strong>어떤 부모 밑에 들어가도 스크립트 없이 스스로 레이아웃을 맞추는</strong> 카드 컴포넌트 예시입니다.</p>
+<div class="gatsby-highlight" data-language="html"><pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>card-container<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>article</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>card<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>card-thumbnail<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/images/css/thumb.jpg<span class="token punctuation">"</span></span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>태그<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>card-body<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>badge<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Article<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h2</span><span class="token punctuation">></span></span>CSS Container Queries Deep Dive<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h2</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>뷰포트에 구애받지 않는 모듈형 CSS 스타일링 기법을 알아봅니다.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>article</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre></div>
+<div class="gatsby-highlight" data-language="css"><pre class="language-css"><code class="language-css"><span class="token selector">.card-container</span> <span class="token punctuation">{</span>
+  <span class="token property">container-type</span><span class="token punctuation">:</span> inline-size<span class="token punctuation">;</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.card</span> <span class="token punctuation">{</span>
+  <span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span>
+  <span class="token property">flex-direction</span><span class="token punctuation">:</span> column<span class="token punctuation">;</span>
+  <span class="token property">gap</span><span class="token punctuation">:</span> 1rem<span class="token punctuation">;</span>
+  <span class="token property">border</span><span class="token punctuation">:</span> 1px solid #e2e8f0<span class="token punctuation">;</span>
+  <span class="token property">border-radius</span><span class="token punctuation">:</span> 12px<span class="token punctuation">;</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span> 1rem<span class="token punctuation">;</span>
+  <span class="token property">background</span><span class="token punctuation">:</span> #ffffff<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/* 컨테이너 350px 이상: 이미지와 본문 가로 배치 */</span>
+<span class="token atrule"><span class="token rule">@container</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 350px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+  <span class="token selector">.card</span> <span class="token punctuation">{</span>
+    <span class="token property">flex-direction</span><span class="token punctuation">:</span> row<span class="token punctuation">;</span>
+    <span class="token property">align-items</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token selector">.card-thumbnail</span> <span class="token punctuation">{</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> 120px<span class="token punctuation">;</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> 120px<span class="token punctuation">;</span>
+    <span class="token property">flex-shrink</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/* 컨테이너 600px 이상: 폰트 확대 및 추가 여백 제공 */</span>
+<span class="token atrule"><span class="token rule">@container</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 600px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+  <span class="token selector">.card</span> <span class="token punctuation">{</span>
+    <span class="token property">padding</span><span class="token punctuation">:</span> 1.5rem<span class="token punctuation">;</span>
+    <span class="token property">gap</span><span class="token punctuation">:</span> 1.5rem<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token selector">.card-thumbnail</span> <span class="token punctuation">{</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> 200px<span class="token punctuation">;</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> 150px<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token selector">.card-body h2</span> <span class="token punctuation">{</span>
+    <span class="token property">font-size</span><span class="token punctuation">:</span> 1.5rem<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div>
+<hr>
+<h2>💻 7. 실전 예제 2: JavaScript 없이 구현하는 폼 Validation &#x26; 상태 레이아웃</h2>
+<p><code class="language-text">:has()</code>와 표준 HTML5 Form Validation pseudoclass(<code class="language-text">:invalid</code>, <code class="language-text">:focus</code>)를 결합하면 폼 입력 상태에 맞춰 카드 전체의 시각적 경고 레이아웃을 손쉽게 구성할 수 있습니다.</p>
+<div class="gatsby-highlight" data-language="html"><pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>user-form<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>field<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span> <span class="token attr-name">for</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>email<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>이메일 주소<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>email<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>email<span class="token punctuation">"</span></span> <span class="token attr-name">required</span> <span class="token attr-name">placeholder</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>name@example.com<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>error-text<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>유효한 이메일 형식이 아닙니다.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>submit<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>제출하기<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>form</span><span class="token punctuation">></span></span></code></pre></div>
+<div class="gatsby-highlight" data-language="css"><pre class="language-css"><code class="language-css"><span class="token selector">.user-form</span> <span class="token punctuation">{</span>
+  <span class="token property">border</span><span class="token punctuation">:</span> 2px solid #cbd5e1<span class="token punctuation">;</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span> 1.5rem<span class="token punctuation">;</span>
+  <span class="token property">border-radius</span><span class="token punctuation">:</span> 8px<span class="token punctuation">;</span>
+  <span class="token property">transition</span><span class="token punctuation">:</span> border-color 0.2s ease<span class="token punctuation">,</span> box-shadow 0.2s ease<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/* 폼 내부에 포커스된 입력창이 존재하는 경우 */</span>
+<span class="token selector">.user-form:has(input:focus)</span> <span class="token punctuation">{</span>
+  <span class="token property">border-color</span><span class="token punctuation">:</span> #5b8fd4<span class="token punctuation">;</span>
+  <span class="token property">box-shadow</span><span class="token punctuation">:</span> 0 4px 12px <span class="token function">rgba</span><span class="token punctuation">(</span>91<span class="token punctuation">,</span> 143<span class="token punctuation">,</span> 212<span class="token punctuation">,</span> 0.15<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/* 포커스 해제 후 유효하지 않은(invalid) 값이 들어있는 경우 */</span>
+<span class="token selector">.user-form:has(input:not(:focus):invalid:not(:placeholder-shown))</span> <span class="token punctuation">{</span>
+  <span class="token property">border-color</span><span class="token punctuation">:</span> #ce4747<span class="token punctuation">;</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> #fff5f5<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/* 에러 상태일 때 메시지 보이기 */</span>
+<span class="token selector">.user-form:has(input:not(:focus):invalid:not(:placeholder-shown)) .error-text</span> <span class="token punctuation">{</span>
+  <span class="token property">display</span><span class="token punctuation">:</span> block<span class="token punctuation">;</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> #ce4747<span class="token punctuation">;</span>
+  <span class="token property">font-size</span><span class="token punctuation">:</span> 0.85rem<span class="token punctuation">;</span>
+  <span class="token property">margin-top</span><span class="token punctuation">:</span> 0.25rem<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre></div>
+<hr>
+<h2>🚀 8. 기존 JavaScript 기반 해결 방식과의 성능 및 DX 비교</h2>
+<p>과거에는 이러한 컴포넌트 단위 반응형 레이아웃 및 부모 스타일 변경을 위해 JS 라이브러리나 Custom Event, <code class="language-text">ResizeObserver</code>를 남발해야 했습니다.</p>
+<table>
+<thead>
+<tr>
+<th>비교 항목</th>
+<th>기존 JS 방식 (ResizeObserver / State)</th>
+<th>Modern CSS (Container Queries &#x26; :has)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>실행 주체</strong></td>
+<td>브라우저 JS 메인 스레드 (Main Thread)</td>
+<td>브라우저 렌더링 엔진 (C++ Layout Engine)</td>
+</tr>
+<tr>
+<td><strong>성능 (FPS)</strong></td>
+<td>리사이즈 이벤트 시 JS 연산 및 Reflow 발생 가능</td>
+<td>GPU 및 렌더링 파이프라인에서 최적화 처리</td>
+</tr>
+<tr>
+<td><strong>컴포넌트 독립성</strong></td>
+<td>ResizeObserver 리스너 등록/해제 관리 필요</td>
+<td>CSS 정의만으로 완전한 캡슐화</td>
+</tr>
+<tr>
+<td><strong>코드 가독성 (DX)</strong></td>
+<td>JS 훅, useEffect, State 및 CSS-in-JS 분산</td>
+<td>단일 stylesheet/module 안에서 깔끔한 선언</td>
+</tr>
+<tr>
+<td><strong>레이아웃 시프트 (CLS)</strong></td>
+<td>JS 실행 전 초기 블링크 및 레이아웃 튐 현상 발생</td>
+<td>첫 페인팅 시점에 올바른 크기 즉시 계산</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2>⚠️ 9. 실무 함정: Container Queries 사용 시 무한 루프와 순환 참조</h2>
+<p>Container Queries를 도입할 때 개발자가 가장 흔하게 범하는 실수는 <strong>컨테이너의 자식 스타일 변경이 다시 컨테이너의 크기에 영향을 주어 무한 루프(Infinite Layout Loop)를 유발</strong>하는 것입니다.</p>
+<h3>위험한 패턴 (Layout Thrashing &#x26; Loop)</h3>
+<div class="gatsby-highlight" data-language="css"><pre class="language-css"><code class="language-css"><span class="token comment">/* BAD: 자식이 컨테이너의 크기를 변화시키는 구조 */</span>
+<span class="token selector">.parent</span> <span class="token punctuation">{</span>
+  <span class="token property">container-type</span><span class="token punctuation">:</span> inline-size<span class="token punctuation">;</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> max-content<span class="token punctuation">;</span> <span class="token comment">/* 자식 요소 크기에 의존함! */</span>
+<span class="token punctuation">}</span>
+
+<span class="token atrule"><span class="token rule">@container</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 300px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+  <span class="token selector">.child</span> <span class="token punctuation">{</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> 400px<span class="token punctuation">;</span> <span class="token comment">/* 자식이 커지면 parent도 커짐 -> 조건 재평가 반복 */</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div>
+<h3>왜 문제가 되는가?</h3>
+<p>브라우저는 <code class="language-text">@container</code> 규칙을 계산하기 위해 컨테이너의 <code class="language-text">inline-size</code>를 먼저 확정해야 합니다. 그러나 컨테이너의 너비가 자식의 너비(<code class="language-text">max-content</code>, <code class="language-text">fit-content</code>)에 의존하면, 자식의 크기 변경이 컨테이너 크기를 바꾸고, 이는 다시 <code class="language-text">@container</code> 조건 재평가를 유발하여 레이아웃 계산 불능 상태에 빠집니다.</p>
+<h3>해결 가이드</h3>
+<ol>
+<li><strong>컨테이너의 너비 확정</strong>: 컨테이너 역할을 하는 상자는 명시적인 너비(<code class="language-text">100%</code>, <code class="language-text">flex: 1</code>, <code class="language-text">grid-template-columns</code> 등)를 가져야 합니다.</li>
+<li><strong><code class="language-text">containment</code> 지침 준수</strong>: <code class="language-text">container-type</code> 속성은 내부적으로 CSS Containment(<code class="language-text">contain: layout inline-size</code>)를 자동으로 적용하므로, 외부 레이아웃 흐름에 영향을 받지 않도록 구성해야 합니다.</li>
+</ol>
+<hr>
+<h2>🚫 10. 이 기술을 신중하게 사용해야 하는 예외적 상황</h2>
+<p>아무리 뛰어난 기술이라도 모든 곳에 무분별하게 적용해서는 안 됩니다.</p>
+<h3>1. 페이지 전체 뷰포트 레이아웃 (GNB, Footer, Overall Page Grid)</h3>
+<p>페이지 최상위 레이아웃(Header, Footer, Main Content Area)은 여전히 <code class="language-text">@media</code> 뷰포트 쿼리를 사용하는 것이 유리합니다. 전체 페이지의 브레이크포인트(Mobile/Tablet/Desktop)는 화면 전체 크기 변화와 동기화되는 것이 직관적이기 때문입니다.</p>
+<h3>2. 지나치게 깊은 복합 <code class="language-text">:has()</code> 연쇄 중첩</h3>
+<p><code class="language-text">:has()</code>는 매우 유용하지만, DOM 트리 깊은 곳까지 검색하는 복잡한 <code class="language-text">:has()</code> 연쇄 조건은 CSS 선택자 엔진의 재계산 오버헤드를 증가시킬 수 있습니다.</p>
+<div class="gatsby-highlight" data-language="css"><pre class="language-css"><code class="language-css"><span class="token comment">/* BAD: 과도한 성능 저하 가능성 */</span>
+<span class="token selector">div:has(> section:has(ul > li:has(a:focus)))</span> <span class="token punctuation">{</span> ... <span class="token punctuation">}</span></code></pre></div>
+<h3>3. 고빈도 애니메이션 요소에 컨테이너 설정</h3>
+<p><code class="language-text">width</code>나 <code class="language-text">transform</code>이 초당 60프레임 이상으로 연속 애니메이션되는 요소에 <code class="language-text">container-type</code>을 지정하면 매 프레임마다 컨테이너 쿼리 평가가 유발되어 프레임 드랍이 일어날 수 있습니다.</p>
+<hr>
+<h2>🔮 11. 브라우저 지원 현황과 하위 호환성 폴백(Fallback) 전략</h2>
+<p>2026년 현재, CSS Container Queries와 <code class="language-text">:has()</code> 선택자는 Chrome, Edge, Safari, Firefox 등 **모든 최신 브라우저(Baseline Newly/Widely Available)**에서 완벽하게 지원됩니다.</p>
+<h3>Progressive Enhancement (점진적 향상) 전략</h3>
+<p>구형 브라우저 환경을 지원해야 한다면 <code class="language-text">@supports</code> 쿼리를 활용해 기본 레이아웃을 제공하고, 지원 브라우저에서 향상된 레이아웃을 제공하는 방식을 권장합니다.</p>
+<div class="gatsby-highlight" data-language="css"><pre class="language-css"><code class="language-css"><span class="token comment">/* 기본 fallback 레이아웃 (모바일 우선 모놀리식 스타일) */</span>
+<span class="token selector">.card</span> <span class="token punctuation">{</span>
+  <span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span>
+  <span class="token property">flex-direction</span><span class="token punctuation">:</span> column<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/* Container Queries 지원 시 모듈형 레이아웃 적용 */</span>
+<span class="token atrule"><span class="token rule">@supports</span> <span class="token punctuation">(</span><span class="token property">container-type</span><span class="token punctuation">:</span> inline-size<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+  <span class="token selector">.card-container</span> <span class="token punctuation">{</span>
+    <span class="token property">container-type</span><span class="token punctuation">:</span> inline-size<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token atrule"><span class="token rule">@container</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 400px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+    <span class="token selector">.card</span> <span class="token punctuation">{</span>
+      <span class="token property">flex-direction</span><span class="token punctuation">:</span> row<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div>
+<hr>
+<h2>🧾 12. 정리</h2>
+<ul>
+<li><strong>Container Queries</strong>는 뷰포트 화면 크기가 아닌 <strong>부모 컨테이너 크기</strong>를 기준으로 컴포넌트 반응형 레이아웃을 작성할 수 있게 합니다.</li>
+<li><strong><code class="language-text">:has()</code> 부모 선택자</strong>는 자식의 존재나 상태(Focus, Checked, Error 등)에 반응하여 부모 또는 형제 요소를 제어합니다.</li>
+<li><code class="language-text">cqw</code>, <code class="language-text">cqh</code> 등의 단위로 부모 상자에 완벽히 비례하는 타이포그래피와 여백 조절이 가능합니다.</li>
+<li>컨테이너 요소는 <code class="language-text">width: max-content</code> 같은 자식 의존적 너비를 피해야 무한 레이아웃 평가 루프를 막을 수 있습니다.</li>
+<li>뷰포트 단위 미디어 쿼리는 전체 페이지 틀에, 컨테이너 쿼리는 재사용 컴포넌트 내부에 적용하는 것이 가장 이상적인 CSS 아키텍처입니다.</li>
+</ul>
+<blockquote>
+<p>✨ <strong>한 줄 요약</strong>
+Container Queries와 <code class="language-text">:has()</code>는 웹 컴포넌트의 레이아웃 독립성을 완성하는 차세대 CSS 스탠다드다.</p>
+</blockquote>
+<hr>
+<h2>📚 참고 자료</h2>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_containment/Container_queries" target="_blank" rel="nofollow">MDN Web Docs: CSS Container Queries</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:has" target="_blank" rel="nofollow">MDN Web Docs: :has() pseudo-class</a></li>
+<li><a href="https://www.w3.org/TR/css-contain-3/" target="_blank" rel="nofollow">W3C CSS Containment Module Level 3</a></li>
+</ul></div><style data-emotion="css hx9xpc">@media (max-width: 768px){.css-hx9xpc{padding:0 20px;}}</style><div class="css-hx9xpc e1gqsjds0"></div><style data-emotion="css 1lgr7vy">.css-1lgr7vy{position:fixed;bottom:30px;right:30px;width:50px;height:50px;border-radius:50%;background:linear-gradient(60deg, rgb(66, 105, 78) 0%, rgb(73, 110, 93) 100%);border:2px solid white;cursor:pointer;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;-webkit-justify-content:center;justify-content:center;box-shadow:0 4px 15px rgba(0, 0, 0, 0.15);-webkit-transition:all 0.3s ease;transition:all 0.3s ease;z-index:1000;opacity:0;visibility:hidden;-webkit-transform:translateY(20px);-moz-transform:translateY(20px);-ms-transform:translateY(20px);transform:translateY(20px);}.css-1lgr7vy:hover{-webkit-transform:translateY(-3px);-moz-transform:translateY(-3px);-ms-transform:translateY(-3px);transform:translateY(-3px);box-shadow:0 6px 20px rgba(0, 0, 0, 0.3);background:white;border-color:rgb(66, 105, 78);}.css-1lgr7vy:active{-webkit-transform:translateY(0);-moz-transform:translateY(0);-ms-transform:translateY(0);transform:translateY(0);}.css-1lgr7vy.visible{opacity:1;visibility:visible;-webkit-transform:translateY(0);-moz-transform:translateY(0);-ms-transform:translateY(0);transform:translateY(0);}@media (max-width: 768px){.css-1lgr7vy{bottom:20px;right:20px;width:45px;height:45px;}}</style><button class="css-1lgr7vy e14t44do1" aria-label="맨 위로 이동"><style data-emotion="css 1lzpihr">.css-1lzpihr{width:0;height:0;border-left:8px solid transparent;border-right:8px solid transparent;border-bottom:12px solid white;margin-bottom:2px;-webkit-transition:border-bottom-color 0.3s ease;transition:border-bottom-color 0.3s ease;}.e14t44do1:hover .css-1lzpihr{border-bottom-color:rgb(66, 105, 78);}</style><div class="css-1lzpihr e14t44do0"></div></button><style data-emotion="css 1yungzt">.css-1yungzt{position:relative;width:100%;padding:40px 0;background:linear-gradient(180deg, rgba(66, 105, 78, 0.05) 0%, rgba(73, 110, 93, 0.1) 100%);border-top:1px solid rgba(66, 105, 78, 0.1);}</style><footer class="css-1yungzt e1oae0v84"><style data-emotion="css 1uamirr">.css-1uamirr{max-width:960px;margin:0 auto;padding:0 20px;text-align:center;}</style><div class="css-1uamirr e1oae0v83"><style data-emotion="css 1ghcw8y">.css-1ghcw8y{font-size:16px;line-height:1.6;color:#426950;margin-bottom:10px;-webkit-transition:color 0.3s ease;transition:color 0.3s ease;}.css-1ghcw8y:hover{color:#2c4735;}@media (max-width: 768px){.css-1ghcw8y{font-size:14px;}}</style><p class="css-1ghcw8y e1oae0v82">Thank You for Visiting My Blog, Have a Good Day <style data-emotion="css lzb4fa">.css-lzb4fa{display:inline-block;-webkit-transition:-webkit-transform 0.3s ease;transition:transform 0.3s ease;}.css-lzb4fa:hover{-webkit-transform:scale(1.2) rotate(10deg);-moz-transform:scale(1.2) rotate(10deg);-ms-transform:scale(1.2) rotate(10deg);transform:scale(1.2) rotate(10deg);}</style><span class="css-lzb4fa e1oae0v80">🌿</span></p><style data-emotion="css y3pbt1">.css-y3pbt1{font-size:14px;color:#666;margin-top:5px;}@media (max-width: 768px){.css-y3pbt1{font-size:12px;}}</style><p class="css-y3pbt1 e1oae0v81">© 2024 Developer LIM.</p></div></footer></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/css-container-queries-and-has-selector/";/*]]>*/</script><!-- slice-start id="_gatsby-scripts-1" -->
+          <script
+            id="gatsby-chunk-mapping"
+          >
+            window.___chunkMapping="{\"app\":[\"/app-5ab049b1a7d9afaa2ddb.js\"],\"component---cache-caches-gatsby-plugin-offline-app-shell-js\":[\"/component---cache-caches-gatsby-plugin-offline-app-shell-js-27e0e967a98f3dffdf9e.js\"],\"component---src-pages-404-tsx\":[\"/component---src-pages-404-tsx-198e8648605be5d74a6a.js\"],\"component---src-pages-index-tsx\":[\"/component---src-pages-index-tsx-49aed13bd17edca89f1a.js\"],\"component---src-pages-info-tsx\":[\"/component---src-pages-info-tsx-91ad86a40368117a0a55.js\"],\"component---src-templates-post-template-tsx\":[\"/component---src-templates-post-template-tsx-6e3542f1f00a7c16e4e6.js\"]}";
+          </script>
+        <script>window.___webpackCompilationHash="c5f50b18458ce60ff11e";</script><script src="/webpack-runtime-cc6a3bd86707474f9378.js" async></script><script src="/framework-9d608f77b5c9a88afabd.js" async></script><script src="/app-5ab049b1a7d9afaa2ddb.js" async></script><!-- slice-end id="_gatsby-scripts-1" --></body></html>
