@@ -1,0 +1,311 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><meta name="generator" content="Gatsby 5.14.0"/><meta name="theme-color" content="#426950"/><meta data-react-helmet="true" name="description" content="차세대 웹 실시간 통신의 모든 것"/><meta data-react-helmet="true" name="viewport" content="width=device-width, initial-scale=1.0"/><meta data-react-helmet="true" http-equiv="Content-Type" content="text/html;charset=UTF-8"/><meta data-react-helmet="true" property="og:type" content="website"/><meta data-react-helmet="true" property="og:title" content="🚀 WebTransport와 HTTP/3 스트리밍 완벽 가이드"/><meta data-react-helmet="true" property="og:description" content="차세대 웹 실시간 통신의 모든 것"/><meta data-react-helmet="true" property="og:image" content="/static/8e614b6d5eb4c42e9ed7643a76fae082/webtransport-http3-streaming-guide.png"/><meta data-react-helmet="true" property="og:url"/><meta data-react-helmet="true" property="og:site_name" content="🚀 WebTransport와 HTTP/3 스트리밍 완벽 가이드"/><meta data-react-helmet="true" name="twitter:card" content="summary"/><meta data-react-helmet="true" name="twitter:title" content="🚀 WebTransport와 HTTP/3 스트리밍 완벽 가이드"/><meta data-react-helmet="true" name="twitter:description" content="차세대 웹 실시간 통신의 모든 것"/><meta data-react-helmet="true" name="twitter:image" content="/static/8e614b6d5eb4c42e9ed7643a76fae082/webtransport-http3-streaming-guide.png"/><meta data-react-helmet="true" name="twitter:site" content="@사용자이름"/><meta data-react-helmet="true" name="twitter:creator" content="@사용자이름"/><style data-href="/styles.9e907bc32054b7771552.css" data-identity="gatsby-global-css">code[class*=language-],pre[class*=language-]{word-wrap:normal;background:none;color:#ccc;font-family:Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;font-size:1em;-webkit-hyphens:none;hyphens:none;line-height:1.5;tab-size:4;text-align:left;white-space:pre;word-break:normal;word-spacing:normal}pre[class*=language-]{margin:.5em 0;overflow:auto;padding:1em}:not(pre)>code[class*=language-],pre[class*=language-]{background:#2d2d2d}:not(pre)>code[class*=language-]{border-radius:.3em;padding:.1em;white-space:normal}.token.block-comment,.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#999}.token.punctuation{color:#ccc}.token.attr-name,.token.deleted,.token.namespace,.token.tag{color:#e2777a}.token.function-name{color:#6196cc}.token.boolean,.token.function,.token.number{color:#f08d49}.token.class-name,.token.constant,.token.property,.token.symbol{color:#f8c555}.token.atrule,.token.builtin,.token.important,.token.keyword,.token.selector{color:#cc99cd}.token.attr-value,.token.char,.token.regex,.token.string,.token.variable{color:#7ec699}.token.entity,.token.operator,.token.url{color:#67cdcc}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}.token.inserted{color:green}</style><link rel="sitemap" type="application/xml" href="/sitemap-index.xml"/><link rel="canonical" href="https://logic-phantom.github.io/webtransport-http3-streaming-guide/" data-baseprotocol="https:" data-basehost="logic-phantom.github.io"/><link rel="icon" href="/favicon-32x32.png" type="image/png"/><link rel="manifest" href="/manifest.webmanifest" crossorigin="use-credentials"/><link rel="apple-touch-icon" sizes="192x192" href="/contents/forestLim.png"/><link rel="apple-touch-icon" sizes="512x512" href="/contents/forestLim.png"/><title data-react-helmet="true">🚀 WebTransport와 HTTP/3 스트리밍 완벽 가이드</title><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){const t=e.target;if(void 0===t.dataset.mainImage)return;if(void 0===t.dataset.gatsbyImageSsr)return;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><style data-emotion="css zyllbl">.css-zyllbl{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;height:100vh;}</style><div class="css-zyllbl e1strnqo0"><style data-emotion="css-global kxm5mf">@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap');*{padding:0;margin:0;box-sizing:border-box;font-family:'Nanum Myeongjo',serif;}html,body,#___gatsby{height:100%;}a,a:hover{color:inherit;-webkit-text-decoration:none;text-decoration:none;cursor:pointer;}</style><style data-emotion="css 16cz9yp">.css-16cz9yp{position:relative;width:100%;height:400px;}@media (max-width: 768px){.css-16cz9yp{height:300px;}}</style><div class="css-16cz9yp e1opi4mu1"><style data-emotion="css 1bjn9yo">.css-1bjn9yo{z-index:-1;width:100%;height:400px;object-fit:cover;-webkit-filter:brightness(0.25);filter:brightness(0.25);}@media (max-width: 768px){.css-1bjn9yo{height:300px;}}</style><div data-gatsby-image-wrapper="" style="position:absolute" class="gatsby-image-wrapper gatsby-image-wrapper-constrained css-1bjn9yo e1opi4mu0"><div style="max-width:1536px;display:block"><img alt="" role="presentation" aria-hidden="true" src="data:image/svg+xml;charset=utf-8,%3Csvg%20height=&#x27;1024&#x27;%20width=&#x27;1536&#x27;%20xmlns=&#x27;http://www.w3.org/2000/svg&#x27;%20version=&#x27;1.1&#x27;%3E%3C/svg%3E" style="max-width:100%;display:block;position:static"/></div><img aria-hidden="true" data-placeholder-image="" style="opacity:1;transition:opacity 500ms linear" decoding="async" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAIAAAAmMtkJAAAACXBIWXMAAAsTAAALEwEAmpwYAAACZ0lEQVR42mO4+vz3jdd/7n38f+8DCN39gGDc//j//ics6OHn/zff/AFqZLj15v/+c49SMgq94rK8o/IDEkpBKL4ESPrGFrqGpKGj4FSP8Mztp+7defefAWjDqt3neaX0OCR0+eXNhJWt+eTMeGVNBRTMeWSMWEW04IhNVJtDXJdDXIdZWGveplMPPgE1v/+/7sAVCU0HOT1XbasADXNfdTNvJSN3eX1XRUN3RQN3NVMfZWNPoDiQLanpJKXlJKpmv2j7eaCnoJoFFS3tvONK63pyy1sTsqsTc6qLaroyi5ui0sris6qScmuyS5o1zX3YxPVFVW2EVWwWbjsH1vzh/3qwZke/xJT8+ozCRqBS38jsiOSSpJzarOLmpJya6PTynLKWqNSysKRiNVMvfgXLxQib918RUrIyd41wC0mxcI9wC051DUpy9E/wCk/3Cs+ISC0JjM2NTiv3i8qJSS/XswkUVLJCOHvt/sti6vayWlZKZrYGHs4KJrY6Tk7aTo7aTg7qdvZApGpjq2cfCLSQXcKAVUSXTcJw4bazUGcDNYur20mo20lq2ktq2kkAkQaILQHkaoGQlJa9jLajoKKFpUfMguWbiuv7UWyW1HQUV7eX0HCQ0LBHRmBBoCkOYmq2CgYeuw6d/fTj3/PXH09de3oFmEiAmlfvvcglZcgpoc8laYAVcUsZsohoKxm4nb18e+OBy+evPbh859mlZ78Ybr7+d+Taq5SKibFFPXHFvXhQTFHv2t1n3n34fO/Ri4OXnl1/+Zfh6ovfN179AabYux8R6B4SiYwuPPl+7Prrk7ffA3Vde/EbAIXRdqwD/sX8AAAAAElFTkSuQmCC" alt=""/><picture><source type="image/webp" data-srcset="/static/8e614b6d5eb4c42e9ed7643a76fae082/b642b/webtransport-http3-streaming-guide.webp 384w,/static/8e614b6d5eb4c42e9ed7643a76fae082/c9564/webtransport-http3-streaming-guide.webp 768w,/static/8e614b6d5eb4c42e9ed7643a76fae082/18b4b/webtransport-http3-streaming-guide.webp 1536w" sizes="(min-width: 1536px) 1536px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 1536px) 1536px, 100vw" decoding="async" loading="lazy" data-src="/static/8e614b6d5eb4c42e9ed7643a76fae082/4d776/webtransport-http3-streaming-guide.png" data-srcset="/static/8e614b6d5eb4c42e9ed7643a76fae082/4a410/webtransport-http3-streaming-guide.png 384w,/static/8e614b6d5eb4c42e9ed7643a76fae082/f5189/webtransport-http3-streaming-guide.png 768w,/static/8e614b6d5eb4c42e9ed7643a76fae082/4d776/webtransport-http3-streaming-guide.png 1536w" alt="thumbnail"/></picture><noscript><picture><source type="image/webp" srcSet="/static/8e614b6d5eb4c42e9ed7643a76fae082/b642b/webtransport-http3-streaming-guide.webp 384w,/static/8e614b6d5eb4c42e9ed7643a76fae082/c9564/webtransport-http3-streaming-guide.webp 768w,/static/8e614b6d5eb4c42e9ed7643a76fae082/18b4b/webtransport-http3-streaming-guide.webp 1536w" sizes="(min-width: 1536px) 1536px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 1536px) 1536px, 100vw" decoding="async" loading="lazy" src="/static/8e614b6d5eb4c42e9ed7643a76fae082/4d776/webtransport-http3-streaming-guide.png" srcSet="/static/8e614b6d5eb4c42e9ed7643a76fae082/4a410/webtransport-http3-streaming-guide.png 384w,/static/8e614b6d5eb4c42e9ed7643a76fae082/f5189/webtransport-http3-streaming-guide.png 768w,/static/8e614b6d5eb4c42e9ed7643a76fae082/4d776/webtransport-http3-streaming-guide.png 1536w" alt="thumbnail"/></picture></noscript><script type="module">const t="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;if(t){const t=document.querySelectorAll("img[data-main-image]");for(let e of t){e.dataset.src&&(e.setAttribute("src",e.dataset.src),e.removeAttribute("data-src")),e.dataset.srcset&&(e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset"));const t=e.parentNode.querySelectorAll("source[data-srcset]");for(let e of t)e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset");e.complete&&(e.style.opacity=1,e.parentNode.parentNode.querySelector("[data-placeholder-image]").style.opacity=0)}}</script></div><style data-emotion="css m1156n">.css-m1156n{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;width:768px;height:100%;margin:0 auto;padding:60px 0;color:#ffffff;}@media (max-width: 768px){.css-m1156n{width:100%;padding:40px 20px;}}</style><div class="css-m1156n e1st1jau4"><style data-emotion="css gywgo7">.css-gywgo7{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:#ffffff;color:#000000;font-size:22px;cursor:pointer;box-shadow:0 0 10px rgba(0, 0, 0, 0.3);}@media (max-width: 768px){.css-gywgo7{width:30px;height:30px;font-size:18px;}}</style><div class="css-gywgo7 e1st1jau3"><style data-emotion="css 1ij64l8">.css-1ij64l8{display:inline-block;width:12px;height:12px;border-left:2px solid #000000;border-bottom:2px solid #000000;-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg);-ms-transform:rotate(45deg);transform:rotate(45deg);}</style><span class="css-1ij64l8 e1st1jau2"></span></div><style data-emotion="css gn4qtp">.css-gn4qtp{display:-webkit-box;overflow:hidden;overflow-wrap:break-word;margin-top:auto;text-overflow:ellipsis;white-space:normal;-webkit-line-clamp:2;-webkit-box-orient:vertical;font-size:45px;font-weight:800;}@media (max-width: 768px){.css-gn4qtp{font-size:30px;}}</style><div class="css-gn4qtp e1st1jau1">🚀 WebTransport와 HTTP/3 스트리밍 완벽 가이드</div><style data-emotion="css 3gcnt2">.css-3gcnt2{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;justify-content:space-between;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;margin-top:10px;font-size:18px;font-weight:700;}@media (max-width: 768px){.css-3gcnt2{-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-align-items:flex-start;-webkit-box-align:flex-start;-ms-flex-align:flex-start;align-items:flex-start;font-size:15px;font-weight:400;}}</style><div class="css-3gcnt2 e1st1jau0"><div>Web</div><div>2026.09.29.</div></div></div></div><style data-emotion="css 12g9cpd">.css-12g9cpd{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;width:768px;margin:0 auto;padding:200px 0 0 0;word-break:break-all;line-height:1.8;font-size:16px;font-weight:400;}.css-12g9cpd p{padding:3px 0;}.css-12g9cpd h1,.css-12g9cpd h2,.css-12g9cpd h3{font-weight:800;margin-bottom:30px;}.css-12g9cpd *+h1,.css-12g9cpd *+h2,.css-12g9cpd *+h3{margin-top:80px;}.css-12g9cpd hr+h1,.css-12g9cpd hr+h2,.css-12g9cpd hr+h3{margin-top:0;}.css-12g9cpd h1{font-size:30px;}.css-12g9cpd h2{font-size:25px;}.css-12g9cpd h3{font-size:20px;}.css-12g9cpd blockquote{margin:30px 0;padding:5px 15px;border-left:2px solid #000000;font-weight:800;}.css-12g9cpd ol,.css-12g9cpd ul{margin-left:20px;padding:30px 0;}.css-12g9cpd hr{border:1px solid #000000;margin:100px 0;}.css-12g9cpd a{color:#4263eb;-webkit-text-decoration:underline;text-decoration:underline;}.css-12g9cpd pre[class*='language-']{margin:30px 0;padding:15px;font-size:15px;}.css-12g9cpd pre[class*='language-']::-webkit-scrollbar-thumb{background:rgba(255, 255, 255, 0.5);border-radius:3px;}.css-12g9cpd code[class*='language-'],.css-12g9cpd pre[class*='language-']{tab-size:2;}@media (max-width: 768px){.css-12g9cpd{width:100%;padding:140px 20px 0 20px;line-height:1.6;font-size:14px;}.css-12g9cpd h1{font-size:23px;}.css-12g9cpd h2{font-size:20px;}.css-12g9cpd h3{font-size:17px;}.css-12g9cpd img{width:100%;}.css-12g9cpd hr{margin:50px 0;}}</style><div class="css-12g9cpd e1ijh0y10"><h1>🚀 WebTransport와 HTTP/3 스트리밍 완벽 가이드</h1>
+<blockquote>
+<p>웹에서 구현하는 초저지연 양방향 통신의 새로운 표준
+HTTP/3와 QUIC 기반으로 WebSocket의 한계를 극복하는 방법을 알아봅니다.</p>
+</blockquote>
+<hr>
+<h2>📌 목차</h2>
+<ol>
+<li>🌐 WebTransport란 무엇인가?</li>
+<li>⚡ QUIC 프로토콜과의 관계</li>
+<li>🔄 WebSocket과의 핵심 차이점</li>
+<li>🏗️ 개발 환경 세팅과 기본 개념</li>
+<li>🔌 세션 연결 및 초기화 코드</li>
+<li>📦 데이터 스트림(Streams) 활용법</li>
+<li>📡 데이터그램(Datagrams) 활용법</li>
+<li>🎨 실제 실시간 데이터 전송 예시</li>
+<li>🛡️ 보안 및 인증 전략</li>
+<li>⚠️ 실무 함정과 주의할 점</li>
+<li>❌ 이런 경우에는 사용하지 마세요</li>
+<li>🧾 정리 및 핵심 요약</li>
+<li>📚 참고 자료</li>
+</ol>
+<hr>
+<h2>🌐 1. WebTransport란 무엇인가?</h2>
+<p>Web<code class="language-text">Transport</code>는 웹 클라이언트와 서버 간에 저지연, 양방향, 다중화된 통신을 제공하는 최신 Web API입니다. 기존의 HTTP/1.1이나 HTTP/2 기반의 WebSocket이 가졌던 TCP 전송 계층의 제약을 극복하기 위해 W3C와 IETF 표준화 그룹에 의해 설계되었습니다.</p>
+<p>HTTP/3 프로토콜 위에서 동작하며, QUIC의 강력한 기능들을 브라우저 환경에서 직접 활용할 수 있도록 돕습니다. 단일 연결 내에서 완전히 독립된 여러 스트림을 생성할 수 있어, 네트워크 자원을 효율적으로 분배하고 HOL(Head-of-Line) 블로킹 문제를 원천적으로 차단합니다.</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 768px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/aa799dfd35c4f0b8872a3c0347ca80cb/bbbf7/webtransport-http3-streaming-guide-1.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 50%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAIAAAA7N+mxAAAACXBIWXMAAAsTAAALEwEAmpwYAAABOklEQVR42qVRaU/DMAzt//85SJRfgIQYE9IQbGjs6HqluZyj59pkuJ0EYkPiA9bLSxz7ObYSnH6a954KTRgIMELZtBCHjKGb5Nw5f5EcXItzKgmVacFRibIopXgTZ8w5dynGev0wYAB53LxH4BNupK/DCQMT3JhzZu8DMNU6Iqttuo0pl3p1ELezOHyM7p7Slx2nHKJcLDdJlAnCVULE+y5DvH0kHGwgwFJpiTDSNJj6sMxv5jx8ZuFC3b+SlNC6GzBB2Qb7T3LBoEQ3KYCDCZSpsCSWKIQBbWNqZmux2Kv5Ru6JAWWpMAxsxkAqC3pU4puEa22rAFvv++GMYRwEBxv8Gd4Pzh+nEDIGcX27OPPpH/aLuO2OXXds2pHbCU3btV0/fcJf/1zVja1qbSpja1PWOJsypS2ba/EnTcs+MDlj5OAAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <picture>
+          <source
+              srcset="/static/aa799dfd35c4f0b8872a3c0347ca80cb/a59e9/webtransport-http3-streaming-guide-1.webp 192w,
+/static/aa799dfd35c4f0b8872a3c0347ca80cb/0ca9f/webtransport-http3-streaming-guide-1.webp 384w,
+/static/aa799dfd35c4f0b8872a3c0347ca80cb/dc9b9/webtransport-http3-streaming-guide-1.webp 768w,
+/static/aa799dfd35c4f0b8872a3c0347ca80cb/e2c2f/webtransport-http3-streaming-guide-1.webp 1152w,
+/static/aa799dfd35c4f0b8872a3c0347ca80cb/94b1e/webtransport-http3-streaming-guide-1.webp 1280w"
+              sizes="(max-width: 768px) 100vw, 768px"
+              type="image/webp"
+            />
+          <source
+            srcset="/static/aa799dfd35c4f0b8872a3c0347ca80cb/3b721/webtransport-http3-streaming-guide-1.png 192w,
+/static/aa799dfd35c4f0b8872a3c0347ca80cb/66595/webtransport-http3-streaming-guide-1.png 384w,
+/static/aa799dfd35c4f0b8872a3c0347ca80cb/fe486/webtransport-http3-streaming-guide-1.png 768w,
+/static/aa799dfd35c4f0b8872a3c0347ca80cb/d2d74/webtransport-http3-streaming-guide-1.png 1152w,
+/static/aa799dfd35c4f0b8872a3c0347ca80cb/bbbf7/webtransport-http3-streaming-guide-1.png 1280w"
+            sizes="(max-width: 768px) 100vw, 768px"
+            type="image/png"
+          />
+          <img
+            class="gatsby-resp-image-image"
+            src="/static/aa799dfd35c4f0b8872a3c0347ca80cb/fe486/webtransport-http3-streaming-guide-1.png"
+            alt="WebTransport 연결 수립 흐름도"
+            title=""
+            loading="lazy"
+            decoding="async"
+            style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+          />
+        </picture>
+  </a>
+    </span></p>
+<hr>
+<h2>⚡ 2. QUIC 프로토콜과의 관계</h2>
+<p>QUIC은 UDP를 기반으로 구축된 전송 계층 프로토콜입니다. TCP가 가진 HOL(Head-of-Line) 블로킹 문제를 해결하여, 하나의 패킷이 유실되더라도 다른 스트림의 데이터 전달에는 영향을 주지 않습니다.</p>
+<p>WebTransport는 이 QUIC의 특성을 그대로 이어받아 신뢰성 있는 스트림과 신뢰성 없는 데이터그램을 모두 지원합니다. TCP 3-way handshake와 TLS 협상을 결합하여 단 1-RTT(또는 0-RTT)만에 연결을 수립할 수 있으므로, 초기 연결 지연 시간이 획기적으로 줄어듭니다.</p>
+<hr>
+<h2>🔄 3. WebSocket과의 핵심 차이점</h2>
+<p>두 기술 모두 실시간 통신에 사용되지만, 내부 전송 계층과 구조에서 극단적인 차이를 보입니다.</p>
+<table>
+<thead>
+<tr>
+<th align="left">특징</th>
+<th align="left">WebSocket</th>
+<th align="left">WebTransport</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong>전송 계층</strong></td>
+<td align="left">TCP (단일 스트림)</td>
+<td align="left">QUIC / UDP (다중 스트림)</td>
+</tr>
+<tr>
+<td align="left"><strong>HOL 블로킹</strong></td>
+<td align="left">발생함 (패킷 손실 시 전체 대기)</td>
+<td align="left">발생하지 않음 (스트림별 독립 처리)</td>
+</tr>
+<tr>
+<td align="left"><strong>통신 방식</strong></td>
+<td align="left">신뢰성 있는 바이트 스트림</td>
+<td align="left">신뢰성 스트림 + 비신뢰성 데이터그램</td>
+</tr>
+<tr>
+<td align="left"><strong>연결 수립 지연</strong></td>
+<td align="left">TCP + TLS (최소 2~3 RTT)</td>
+<td align="left">QUIC + TLS 1.3 (1 RTT 또는 0 RTT)</td>
+</tr>
+<tr>
+<td align="left"><strong>다중화 지원</strong></td>
+<td align="left">단일 연결 내 단일 스트림</td>
+<td align="left">단일 연결 내 무제한 독립 스트림</td>
+</tr>
+</tbody>
+</table>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 768px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/cf85824dd5716cc78973a24898322874/bbbf7/webtransport-http3-streaming-guide-2.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 50%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAIAAAA7N+mxAAAACXBIWXMAAAsTAAALEwEAmpwYAAABw0lEQVR42mWQS2/TQBSF85/hP6DCij0KYsWKVaUKCdgQEQnUIFVtnQTb9WM8Y8/77bEd28UtbChHV3dzzqdzdVf3/4pwDYlsuGLKNkwCRJkwjGtMJZf2SXg1T9NgzEnbnvGB8zrNy0NSpSUuIalpVpNjBa+y7BaURwSp19gp3loZ3DhPq9G5VvvgO5VmOs09QL4EnW27tp+MlUNruj5X9MBQKvGB1tdN2VijQ686t5q8F8JUWMRFE6VVlFT7O5gjVmMxWa+GAKkoIV2u2ccgSkCS17DhVDvdtw+wEgZznQEc5yiKyyRHoOGMqfkRboSuibwDzSGtjhksEaXcMO117x9gyXXDVFHhpKj3KUiLGtSMEDk7r4cOMYkILyBZrF8ZWizMFFXuL6ykFb7HymeILQO54b5bnvynmUhjbceFSwucV1RKb03g5rF5NKYLA7vZxy/Oyjdr8PZdevYKnV+EbhyVZsG1w/j+evP88/r1j/OX2w/PPq2/gzgMkwh2NZ9Og7EB1Wq71ZeXeveTf93Im8gL1RurQkuM3sHkY7z7BqJNefslu8oVUcH342l1/5/CaVJtp12rjDfL1s5ov1w3z0+TvwF0ESVr36n5pwAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <picture>
+          <source
+              srcset="/static/cf85824dd5716cc78973a24898322874/a59e9/webtransport-http3-streaming-guide-2.webp 192w,
+/static/cf85824dd5716cc78973a24898322874/0ca9f/webtransport-http3-streaming-guide-2.webp 384w,
+/static/cf85824dd5716cc78973a24898322874/dc9b9/webtransport-http3-streaming-guide-2.webp 768w,
+/static/cf85824dd5716cc78973a24898322874/e2c2f/webtransport-http3-streaming-guide-2.webp 1152w,
+/static/cf85824dd5716cc78973a24898322874/94b1e/webtransport-http3-streaming-guide-2.webp 1280w"
+              sizes="(max-width: 768px) 100vw, 768px"
+              type="image/webp"
+            />
+          <source
+            srcset="/static/cf85824dd5716cc78973a24898322874/3b721/webtransport-http3-streaming-guide-2.png 192w,
+/static/cf85824dd5716cc78973a24898322874/66595/webtransport-http3-streaming-guide-2.png 384w,
+/static/cf85824dd5716cc78973a24898322874/fe486/webtransport-http3-streaming-guide-2.png 768w,
+/static/cf85824dd5716cc78973a24898322874/d2d74/webtransport-http3-streaming-guide-2.png 1152w,
+/static/cf85824dd5716cc78973a24898322874/bbbf7/webtransport-http3-streaming-guide-2.png 1280w"
+            sizes="(max-width: 768px) 100vw, 768px"
+            type="image/png"
+          />
+          <img
+            class="gatsby-resp-image-image"
+            src="/static/cf85824dd5716cc78973a24898322874/fe486/webtransport-http3-streaming-guide-2.png"
+            alt="WebSocket과 WebTransport 비교 표"
+            title=""
+            loading="lazy"
+            decoding="async"
+            style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+          />
+        </picture>
+  </a>
+    </span></p>
+<p>WebSocket은 단일 TCP 연결 안에서 바이트 스트림을 처리하므로 중간에 패킷 손실이 발생하면 전체 흐름이 멈춥니다. 반면 WebTransport는 독립적인 여러 스트림을 동시에 열 수 있습니다.</p>
+<hr>
+<h2>🏗️ 4. 개발 환경 세팅과 기본 개념</h2>
+<p>WebTransport를 사용하려면 브라우저와 서버 모두 HTTP/3와 QUIC을 지원해야 합니다. 현재 최신 크롬(Chrome), 엣지(Edge), 파이어폭스(Firefox) 등에서 기본 지원하며, 로컬 개발 시에는 자체 서명 인증서와 적절한 브라우저 플래그 설정이 필수적입니다.</p>
+<p>로컬 테스트 시 크롬 보안 제어를 우회하기 위해 다음 플래그를 활용할 수 있습니다.</p>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">chrome.exe --origin-to-force-quic-allowed<span class="token operator">=</span>localhost:4433</code></pre></div>
+<hr>
+<h2>🔌 5. 세션 연결 및 초기화 코드</h2>
+<p>클라이언트 측에서 WebTransport 객체를 생성하고 서버와 연결을 맺는 기본 코드입니다. 타임아웃 처리와 연결 상태 모니터링 로직을 포함합니다.</p>
+<div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript"><span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">connectWebTransport</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> url <span class="token operator">=</span> <span class="token string">'https://localhost:4433/transport'</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> transport <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">WebTransport</span><span class="token punctuation">(</span>url<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 필요 시 사용자 지정 인증서 해시 설정 가능</span>
+    <span class="token comment">// serverCertificateHashes: [...]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">try</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 연결 확립 대기</span>
+    <span class="token keyword">await</span> transport<span class="token punctuation">.</span>ready<span class="token punctuation">;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'WebTransport 연결 성공!'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 연결 종료 Promise 처리</span>
+    transport<span class="token punctuation">.</span>closed<span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'WebTransport 연결이 정상적으로 종료되었습니다.'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">catch</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">err</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+      console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">'WebTransport 연결이 비정상적으로 종료되었습니다:'</span><span class="token punctuation">,</span> err<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">'연결 초기화 실패:'</span><span class="token punctuation">,</span> e<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">return</span> transport<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre></div>
+<hr>
+<h2>📦 6. 데이터 스트림(Streams) 활용법</h2>
+<p>Web<code class="language-text">Transport</code>는 신뢰성 있는 양방향 스트림을 생성할 수 있습니다. TCP처럼 순서가 보장되며 유실 없이 전달됩니다. 송수신부 모두 <code class="language-text">WritableStream</code>과 <code class="language-text">ReadableStream</code>을 표준 Web Streams API 형태로 제공합니다.</p>
+<div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript"><span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">sendStreamData</span><span class="token punctuation">(</span><span class="token parameter">transport<span class="token punctuation">,</span> message</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">try</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 양방향 스트림 생성</span>
+    <span class="token keyword">const</span> stream <span class="token operator">=</span> <span class="token keyword">await</span> transport<span class="token punctuation">.</span><span class="token function">createBidirectionalStream</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> writer <span class="token operator">=</span> stream<span class="token punctuation">.</span>writable<span class="token punctuation">.</span><span class="token function">getWriter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> encoder <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">TextEncoder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    
+    <span class="token keyword">await</span> writer<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span>encoder<span class="token punctuation">.</span><span class="token function">encode</span><span class="token punctuation">(</span>message<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">await</span> writer<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'데이터 스트림 전송 완료'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">'스트림 전송 중 오류 발생:'</span><span class="token punctuation">,</span> err<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div>
+<hr>
+<h2>📡 7. 데이터그램(Datagrams) 활용법</h2>
+<p>지연 시간이 극도로 중요한 게임 상태 동기화나 오디오/비디오 스트리밍에는 데이터그램 API를 사용합니다. 유실되어도 무방한 최신 데이터를 빠르게 전송하며, 최대 페이로드 크기(MSS) 제한을 준수해야 합니다.</p>
+<div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">sendDatagram</span><span class="token punctuation">(</span><span class="token parameter">transport<span class="token punctuation">,</span> data</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> writer <span class="token operator">=</span> transport<span class="token punctuation">.</span>datagrams<span class="token punctuation">.</span>writable<span class="token punctuation">.</span><span class="token function">getWriter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> encoder <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">TextEncoder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  
+  <span class="token keyword">const</span> payload <span class="token operator">=</span> encoder<span class="token punctuation">.</span><span class="token function">encode</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  
+  <span class="token comment">// 데이터그램 최대 크기 확인 (일반적으로 MTU 고려하여 1200바이트 미만 권장)</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>payload<span class="token punctuation">.</span>byteLength <span class="token operator">></span> transport<span class="token punctuation">.</span>datagrams<span class="token punctuation">.</span>maxDatagramSize<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">'데이터그램 크기가 너무 큽니다.'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  writer<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span>payload<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">catch</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">err</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">'데이터그램 전송 실패:'</span><span class="token punctuation">,</span> err<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre></div>
+<hr>
+<h2>🎨 8. 실제 실시간 데이터 전송 예시</h2>
+<p>대규모 센서 데이터나 실시간 대시보드 업데이트를 위해 스트림을 읽고 쓰는 전체적인 흐름을 구성할 수 있습니다. 수신 측 스트림을 루프 형태로 처리하는 예제입니다.</p>
+<div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript"><span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">readIncomingStreams</span><span class="token punctuation">(</span><span class="token parameter">transport</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> reader <span class="token operator">=</span> transport<span class="token punctuation">.</span>incomingBidirectionalStreams<span class="token punctuation">.</span><span class="token function">getReader</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  
+  <span class="token keyword">try</span> <span class="token punctuation">{</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">const</span> <span class="token punctuation">{</span> <span class="token literal-property property">value</span><span class="token operator">:</span> stream<span class="token punctuation">,</span> done <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">await</span> reader<span class="token punctuation">.</span><span class="token function">read</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>done<span class="token punctuation">)</span> <span class="token keyword">break</span><span class="token punctuation">;</span>
+      
+      <span class="token comment">// 개별 스트림 처리 비동기 실행</span>
+      <span class="token function">handleIncomingStream</span><span class="token punctuation">(</span>stream<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">'스트림 리더 에러:'</span><span class="token punctuation">,</span> err<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">handleIncomingStream</span><span class="token punctuation">(</span><span class="token parameter">stream</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> reader <span class="token operator">=</span> stream<span class="token punctuation">.</span>readable<span class="token punctuation">.</span><span class="token function">getReader</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> decoder <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">TextDecoder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">let</span> data <span class="token operator">=</span> <span class="token string">''</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">try</span> <span class="token punctuation">{</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">const</span> <span class="token punctuation">{</span> value<span class="token punctuation">,</span> done <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">await</span> reader<span class="token punctuation">.</span><span class="token function">read</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>done<span class="token punctuation">)</span> <span class="token keyword">break</span><span class="token punctuation">;</span>
+      data <span class="token operator">+=</span> decoder<span class="token punctuation">.</span><span class="token function">decode</span><span class="token punctuation">(</span>value<span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">stream</span><span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'수신된 데이터:'</span><span class="token punctuation">,</span> data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">'스트림 읽기 실패:'</span><span class="token punctuation">,</span> err<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div>
+<hr>
+<h2>🛡️ 9. 보안 및 인증 전략</h2>
+<p>WebTransport는 HTTPS와 동일한 수준의 강력한 보안 모델을 따릅니다. 쿠키, 인증서 검증, CORS 정책 등이 모두 적용되며 안전한 통로를 보장합니다.</p>
+<ul>
+<li><strong>인증(Authentication)</strong>: 초기 연결 시 URL 쿼리 파라미터, 헤더, 혹은 초기 핸드셰이크 토큰을 통해 인증 정보를 전달합니다.</li>
+<li><strong>동일 출처 정책(SOP)</strong>: 서버는 적절한 CORS 헤더(<code class="language-text">Access-Control-Allow-Origin</code>)를 응답하여 악의적인 크로스 사이트 접근을 방어해야 합니다.</li>
+</ul>
+<hr>
+<h2>⚠️ 10. 실무 함정과 주의할 점</h2>
+<ul>
+<li><strong>네트워크 환경 제약</strong>: 방화벽이나 기업 네트워크 환경에서 UDP 트래픽(포트 4433 등)을 차단하는 경우가 많습니다. 폴백(Fall-back) 전략으로 WebSocket이나 HTTP/2를 반드시 준비해야 합니다.</li>
+<li><strong>서버 인프라 구축의 복잡성</strong>: Node.js 기본 모듈만으로는 완벽한 HTTP/3 &#x26; QUIC 서버 구성이 까다로울 수 있으며, C++ 기반 라이브러리(<code class="language-text">quiche</code>, <code class="language-text">ngtcp2</code>)나 Go 언어의 <code class="language-text">quic-go</code> 같은 별도 백엔드 연동이 필수적입니다.</li>
+<li><strong>메모리 및 버퍼 관리</strong>: 스트림을 무분별하게 생성하고 닫지 않으면 메모리 누수나 브라우저 탭 크래시로 이어질 수 있습니다.</li>
+</ul>
+<hr>
+<h2>❌ 11. 이런 경우에는 사용하지 마세요</h2>
+<ul>
+<li>구형 브라우저 및 레거시 시스템(예: Internet Explorer, 구형 모바일 웹뷰) 지원이 필수적인 기업용 웹 애플리케이션</li>
+<li>단순한 CRUD 요청이나 주기적인 폴링 형태의 데이터 통신 (프로토콜 오버헤드가 불필요하게 큼)</li>
+<li>UDP 트래픽이 완전히 차단되거나 신뢰할 수 없는 엄격한 사내 보안망/폐쇄망 환경</li>
+</ul>
+<hr>
+<h2>🧾 12. 정리 및 핵심 요약</h2>
+<ul>
+<li>WebTransport는 HTTP/3와 QUIC을 기반으로 하는 차세대 웹 실시간 통신 표준입니다.</li>
+<li>WebSocket의 HOL 블로킹 문제를 해결하며 다중 스트림과 데이터그램을 동시에 지원합니다.</li>
+<li>고성능 실시간 게임, 미디어 스트리밍, 대규모 센서 데이터 전송에 적합합니다.</li>
+<li>네트워크 환경에 따른 폴백 메커니즘과 복잡한 인프라 요구사항을 철저히 검토해야 합니다.</li>
+</ul>
+<blockquote>
+<p>✨ <strong>한 줄 요약</strong>
+웹에서 초저지연 실시간 통신이 필요하다면 WebSocket을 넘어 WebTransport를 검토하자.</p>
+</blockquote>
+<hr>
+<h2>📚 참고 자료</h2>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/WebTransport_API" target="_blank" rel="nofollow">MDN Web Docs: WebTransport API</a></li>
+<li><a href="https://w3c.github.io/webtransport/" target="_blank" rel="nofollow">W3C WebTransport Specification</a></li>
+</ul></div><style data-emotion="css hx9xpc">@media (max-width: 768px){.css-hx9xpc{padding:0 20px;}}</style><div class="css-hx9xpc e1gqsjds0"></div><style data-emotion="css 1lgr7vy">.css-1lgr7vy{position:fixed;bottom:30px;right:30px;width:50px;height:50px;border-radius:50%;background:linear-gradient(60deg, rgb(66, 105, 78) 0%, rgb(73, 110, 93) 100%);border:2px solid white;cursor:pointer;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;-webkit-justify-content:center;justify-content:center;box-shadow:0 4px 15px rgba(0, 0, 0, 0.15);-webkit-transition:all 0.3s ease;transition:all 0.3s ease;z-index:1000;opacity:0;visibility:hidden;-webkit-transform:translateY(20px);-moz-transform:translateY(20px);-ms-transform:translateY(20px);transform:translateY(20px);}.css-1lgr7vy:hover{-webkit-transform:translateY(-3px);-moz-transform:translateY(-3px);-ms-transform:translateY(-3px);transform:translateY(-3px);box-shadow:0 6px 20px rgba(0, 0, 0, 0.3);background:white;border-color:rgb(66, 105, 78);}.css-1lgr7vy:active{-webkit-transform:translateY(0);-moz-transform:translateY(0);-ms-transform:translateY(0);transform:translateY(0);}.css-1lgr7vy.visible{opacity:1;visibility:visible;-webkit-transform:translateY(0);-moz-transform:translateY(0);-ms-transform:translateY(0);transform:translateY(0);}@media (max-width: 768px){.css-1lgr7vy{bottom:20px;right:20px;width:45px;height:45px;}}</style><button class="css-1lgr7vy e14t44do1" aria-label="맨 위로 이동"><style data-emotion="css 1lzpihr">.css-1lzpihr{width:0;height:0;border-left:8px solid transparent;border-right:8px solid transparent;border-bottom:12px solid white;margin-bottom:2px;-webkit-transition:border-bottom-color 0.3s ease;transition:border-bottom-color 0.3s ease;}.e14t44do1:hover .css-1lzpihr{border-bottom-color:rgb(66, 105, 78);}</style><div class="css-1lzpihr e14t44do0"></div></button><style data-emotion="css 1yungzt">.css-1yungzt{position:relative;width:100%;padding:40px 0;background:linear-gradient(180deg, rgba(66, 105, 78, 0.05) 0%, rgba(73, 110, 93, 0.1) 100%);border-top:1px solid rgba(66, 105, 78, 0.1);}</style><footer class="css-1yungzt e1oae0v84"><style data-emotion="css 1uamirr">.css-1uamirr{max-width:960px;margin:0 auto;padding:0 20px;text-align:center;}</style><div class="css-1uamirr e1oae0v83"><style data-emotion="css 1ghcw8y">.css-1ghcw8y{font-size:16px;line-height:1.6;color:#426950;margin-bottom:10px;-webkit-transition:color 0.3s ease;transition:color 0.3s ease;}.css-1ghcw8y:hover{color:#2c4735;}@media (max-width: 768px){.css-1ghcw8y{font-size:14px;}}</style><p class="css-1ghcw8y e1oae0v82">Thank You for Visiting My Blog, Have a Good Day <style data-emotion="css lzb4fa">.css-lzb4fa{display:inline-block;-webkit-transition:-webkit-transform 0.3s ease;transition:transform 0.3s ease;}.css-lzb4fa:hover{-webkit-transform:scale(1.2) rotate(10deg);-moz-transform:scale(1.2) rotate(10deg);-ms-transform:scale(1.2) rotate(10deg);transform:scale(1.2) rotate(10deg);}</style><span class="css-lzb4fa e1oae0v80">🌿</span></p><style data-emotion="css y3pbt1">.css-y3pbt1{font-size:14px;color:#666;margin-top:5px;}@media (max-width: 768px){.css-y3pbt1{font-size:12px;}}</style><p class="css-y3pbt1 e1oae0v81">© 2024 Developer LIM.</p></div></footer></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/webtransport-http3-streaming-guide/";/*]]>*/</script><!-- slice-start id="_gatsby-scripts-1" -->
+          <script
+            id="gatsby-chunk-mapping"
+          >
+            window.___chunkMapping="{\"app\":[\"/app-5ab049b1a7d9afaa2ddb.js\"],\"component---cache-caches-gatsby-plugin-offline-app-shell-js\":[\"/component---cache-caches-gatsby-plugin-offline-app-shell-js-27e0e967a98f3dffdf9e.js\"],\"component---src-pages-404-tsx\":[\"/component---src-pages-404-tsx-198e8648605be5d74a6a.js\"],\"component---src-pages-index-tsx\":[\"/component---src-pages-index-tsx-49aed13bd17edca89f1a.js\"],\"component---src-pages-info-tsx\":[\"/component---src-pages-info-tsx-91ad86a40368117a0a55.js\"],\"component---src-templates-post-template-tsx\":[\"/component---src-templates-post-template-tsx-6e3542f1f00a7c16e4e6.js\"]}";
+          </script>
+        <script>window.___webpackCompilationHash="c5f50b18458ce60ff11e";</script><script src="/webpack-runtime-cc6a3bd86707474f9378.js" async></script><script src="/framework-9d608f77b5c9a88afabd.js" async></script><script src="/app-5ab049b1a7d9afaa2ddb.js" async></script><!-- slice-end id="_gatsby-scripts-1" --></body></html>
