@@ -1,0 +1,378 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><meta name="generator" content="Gatsby 5.14.0"/><meta name="theme-color" content="#426950"/><meta data-react-helmet="true" name="description" content="가상 DOM을 넘어선 세밀한 상태 관리"/><meta data-react-helmet="true" name="viewport" content="width=device-width, initial-scale=1.0"/><meta data-react-helmet="true" http-equiv="Content-Type" content="text/html;charset=UTF-8"/><meta data-react-helmet="true" property="og:type" content="website"/><meta data-react-helmet="true" property="og:title" content="⚡ Signals 기반 반응성 완벽 가이드"/><meta data-react-helmet="true" property="og:description" content="가상 DOM을 넘어선 세밀한 상태 관리"/><meta data-react-helmet="true" property="og:image" content="/static/4c1ed83c32a5750186d5f3a5c9bae9e1/signals-based-reactivity-guide.png"/><meta data-react-helmet="true" property="og:url"/><meta data-react-helmet="true" property="og:site_name" content="⚡ Signals 기반 반응성 완벽 가이드"/><meta data-react-helmet="true" name="twitter:card" content="summary"/><meta data-react-helmet="true" name="twitter:title" content="⚡ Signals 기반 반응성 완벽 가이드"/><meta data-react-helmet="true" name="twitter:description" content="가상 DOM을 넘어선 세밀한 상태 관리"/><meta data-react-helmet="true" name="twitter:image" content="/static/4c1ed83c32a5750186d5f3a5c9bae9e1/signals-based-reactivity-guide.png"/><meta data-react-helmet="true" name="twitter:site" content="@사용자이름"/><meta data-react-helmet="true" name="twitter:creator" content="@사용자이름"/><style data-href="/styles.9e907bc32054b7771552.css" data-identity="gatsby-global-css">code[class*=language-],pre[class*=language-]{word-wrap:normal;background:none;color:#ccc;font-family:Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;font-size:1em;-webkit-hyphens:none;hyphens:none;line-height:1.5;tab-size:4;text-align:left;white-space:pre;word-break:normal;word-spacing:normal}pre[class*=language-]{margin:.5em 0;overflow:auto;padding:1em}:not(pre)>code[class*=language-],pre[class*=language-]{background:#2d2d2d}:not(pre)>code[class*=language-]{border-radius:.3em;padding:.1em;white-space:normal}.token.block-comment,.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#999}.token.punctuation{color:#ccc}.token.attr-name,.token.deleted,.token.namespace,.token.tag{color:#e2777a}.token.function-name{color:#6196cc}.token.boolean,.token.function,.token.number{color:#f08d49}.token.class-name,.token.constant,.token.property,.token.symbol{color:#f8c555}.token.atrule,.token.builtin,.token.important,.token.keyword,.token.selector{color:#cc99cd}.token.attr-value,.token.char,.token.regex,.token.string,.token.variable{color:#7ec699}.token.entity,.token.operator,.token.url{color:#67cdcc}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}.token.inserted{color:green}</style><link rel="sitemap" type="application/xml" href="/sitemap-index.xml"/><link rel="canonical" href="https://logic-phantom.github.io/signals-based-reactivity-guide/" data-baseprotocol="https:" data-basehost="logic-phantom.github.io"/><link rel="icon" href="/favicon-32x32.png" type="image/png"/><link rel="manifest" href="/manifest.webmanifest" crossorigin="use-credentials"/><link rel="apple-touch-icon" sizes="192x192" href="/contents/forestLim.png"/><link rel="apple-touch-icon" sizes="512x512" href="/contents/forestLim.png"/><title data-react-helmet="true">⚡ Signals 기반 반응성 완벽 가이드</title><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){const t=e.target;if(void 0===t.dataset.mainImage)return;if(void 0===t.dataset.gatsbyImageSsr)return;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><style data-emotion="css zyllbl">.css-zyllbl{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;height:100vh;}</style><div class="css-zyllbl e1strnqo0"><style data-emotion="css-global kxm5mf">@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap');*{padding:0;margin:0;box-sizing:border-box;font-family:'Nanum Myeongjo',serif;}html,body,#___gatsby{height:100%;}a,a:hover{color:inherit;-webkit-text-decoration:none;text-decoration:none;cursor:pointer;}</style><style data-emotion="css 16cz9yp">.css-16cz9yp{position:relative;width:100%;height:400px;}@media (max-width: 768px){.css-16cz9yp{height:300px;}}</style><div class="css-16cz9yp e1opi4mu1"><style data-emotion="css 1bjn9yo">.css-1bjn9yo{z-index:-1;width:100%;height:400px;object-fit:cover;-webkit-filter:brightness(0.25);filter:brightness(0.25);}@media (max-width: 768px){.css-1bjn9yo{height:300px;}}</style><div data-gatsby-image-wrapper="" style="position:absolute" class="gatsby-image-wrapper gatsby-image-wrapper-constrained css-1bjn9yo e1opi4mu0"><div style="max-width:1536px;display:block"><img alt="" role="presentation" aria-hidden="true" src="data:image/svg+xml;charset=utf-8,%3Csvg%20height=&#x27;1024&#x27;%20width=&#x27;1536&#x27;%20xmlns=&#x27;http://www.w3.org/2000/svg&#x27;%20version=&#x27;1.1&#x27;%3E%3C/svg%3E" style="max-width:100%;display:block;position:static"/></div><img aria-hidden="true" data-placeholder-image="" style="opacity:1;transition:opacity 500ms linear" decoding="async" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAIAAAAmMtkJAAAACXBIWXMAAAsTAAALEwEAmpwYAAAC0klEQVR42mMQ1/MV1fYU0fYUBSMRLQ9RHS+gIBTp+0kY+EPYYrreYjpeYkiyDEBt9gldEQ0bgytXBlWsCKtbbxRYIaLlLmkYIKHvJ2kQIGkYKKbrI67rLQFkGIaJGYYCxYEGgTQDJWTMI5UcUhXtkhVtk5XtUyWNggXU3QQ1PATU3fnV3YW1vST1/aStkvWD64IKprqk9ii4FEqahAGNYxDS8nSPLAhPrQpPqwYi7+hCr+jimJym8PS6jLLurMpeI9d4UdO4oMLpN+48+vr12+fPX2avOaDuUylpGMQgoOGRUNBW2TYzs6KnsH5SSdNUIKO8ZVpKSYdLWIF7ZJGmfayGT+WFq3evPHhfNu/itK13fv38WdqzSsIqlUFYy8sjqjgyqyEktdrKN90zusQ3vswpJM/ILYlTyZlf1UVA298zs//N61cNqx+WdM1Om3Dg5K0PG3Yfl3UuYgD6W0jLS1THR0TbCxgSQFJIy0NYy1NUxxsYZtLGQVJm0Vax7S9evFh++El8997Cmadevv82ffluacd8kGYJfV8JIKnnI67nB9QgZRIqYxYpZxkrb50gb5MEDEh5l6K2WZv//v518e7b1x++37n/xC6hS8YmmUFC3x/odSmTMBnzKDmrOKBqBdtkBdsUMEoGIZtkJYcMJfey5Lr5y7Yem7Bol2VMu7R1EtAyBhnzGFnrBBnLOFnLeCCJQBZAFCttFiVpHCauHyCu7y9oEMFvGMNvECWqHyyi6QZMTgy6vmV6fhV6/pVAUt+/Ss8PyCjX8S7W9izQcMlUc0xRdUhWdUgCIjX7RHXHZCACstWd04GIoXb9m5Il9wvm3ShaeDt/7rWihXcKF9wqXHgzZ+bF4kV3qte+qlkHRK+haO2rqtXPK1c9q1rzonrda4bGLZ+BmnNnXy6Ydz175oWC+TfA6Gbm9HNFi+40bP6Eij7WrH1dufo50KCGzZ8ALFYq/wp2EUQAAAAASUVORK5CYII=" alt=""/><picture><source type="image/webp" data-srcset="/static/4c1ed83c32a5750186d5f3a5c9bae9e1/b642b/signals-based-reactivity-guide.webp 384w,/static/4c1ed83c32a5750186d5f3a5c9bae9e1/c9564/signals-based-reactivity-guide.webp 768w,/static/4c1ed83c32a5750186d5f3a5c9bae9e1/18b4b/signals-based-reactivity-guide.webp 1536w" sizes="(min-width: 1536px) 1536px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 1536px) 1536px, 100vw" decoding="async" loading="lazy" data-src="/static/4c1ed83c32a5750186d5f3a5c9bae9e1/4d776/signals-based-reactivity-guide.png" data-srcset="/static/4c1ed83c32a5750186d5f3a5c9bae9e1/4a410/signals-based-reactivity-guide.png 384w,/static/4c1ed83c32a5750186d5f3a5c9bae9e1/f5189/signals-based-reactivity-guide.png 768w,/static/4c1ed83c32a5750186d5f3a5c9bae9e1/4d776/signals-based-reactivity-guide.png 1536w" alt="thumbnail"/></picture><noscript><picture><source type="image/webp" srcSet="/static/4c1ed83c32a5750186d5f3a5c9bae9e1/b642b/signals-based-reactivity-guide.webp 384w,/static/4c1ed83c32a5750186d5f3a5c9bae9e1/c9564/signals-based-reactivity-guide.webp 768w,/static/4c1ed83c32a5750186d5f3a5c9bae9e1/18b4b/signals-based-reactivity-guide.webp 1536w" sizes="(min-width: 1536px) 1536px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 1536px) 1536px, 100vw" decoding="async" loading="lazy" src="/static/4c1ed83c32a5750186d5f3a5c9bae9e1/4d776/signals-based-reactivity-guide.png" srcSet="/static/4c1ed83c32a5750186d5f3a5c9bae9e1/4a410/signals-based-reactivity-guide.png 384w,/static/4c1ed83c32a5750186d5f3a5c9bae9e1/f5189/signals-based-reactivity-guide.png 768w,/static/4c1ed83c32a5750186d5f3a5c9bae9e1/4d776/signals-based-reactivity-guide.png 1536w" alt="thumbnail"/></picture></noscript><script type="module">const t="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;if(t){const t=document.querySelectorAll("img[data-main-image]");for(let e of t){e.dataset.src&&(e.setAttribute("src",e.dataset.src),e.removeAttribute("data-src")),e.dataset.srcset&&(e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset"));const t=e.parentNode.querySelectorAll("source[data-srcset]");for(let e of t)e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset");e.complete&&(e.style.opacity=1,e.parentNode.parentNode.querySelector("[data-placeholder-image]").style.opacity=0)}}</script></div><style data-emotion="css m1156n">.css-m1156n{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;width:768px;height:100%;margin:0 auto;padding:60px 0;color:#ffffff;}@media (max-width: 768px){.css-m1156n{width:100%;padding:40px 20px;}}</style><div class="css-m1156n e1st1jau4"><style data-emotion="css gywgo7">.css-gywgo7{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:#ffffff;color:#000000;font-size:22px;cursor:pointer;box-shadow:0 0 10px rgba(0, 0, 0, 0.3);}@media (max-width: 768px){.css-gywgo7{width:30px;height:30px;font-size:18px;}}</style><div class="css-gywgo7 e1st1jau3"><style data-emotion="css 1ij64l8">.css-1ij64l8{display:inline-block;width:12px;height:12px;border-left:2px solid #000000;border-bottom:2px solid #000000;-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg);-ms-transform:rotate(45deg);transform:rotate(45deg);}</style><span class="css-1ij64l8 e1st1jau2"></span></div><style data-emotion="css gn4qtp">.css-gn4qtp{display:-webkit-box;overflow:hidden;overflow-wrap:break-word;margin-top:auto;text-overflow:ellipsis;white-space:normal;-webkit-line-clamp:2;-webkit-box-orient:vertical;font-size:45px;font-weight:800;}@media (max-width: 768px){.css-gn4qtp{font-size:30px;}}</style><div class="css-gn4qtp e1st1jau1">⚡ Signals 기반 반응성 완벽 가이드</div><style data-emotion="css 3gcnt2">.css-3gcnt2{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;justify-content:space-between;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;margin-top:10px;font-size:18px;font-weight:700;}@media (max-width: 768px){.css-3gcnt2{-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-align-items:flex-start;-webkit-box-align:flex-start;-ms-flex-align:flex-start;align-items:flex-start;font-size:15px;font-weight:400;}}</style><div class="css-3gcnt2 e1st1jau0"><div>Web</div><div>2026.09.30.</div></div></div></div><style data-emotion="css 12g9cpd">.css-12g9cpd{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;width:768px;margin:0 auto;padding:200px 0 0 0;word-break:break-all;line-height:1.8;font-size:16px;font-weight:400;}.css-12g9cpd p{padding:3px 0;}.css-12g9cpd h1,.css-12g9cpd h2,.css-12g9cpd h3{font-weight:800;margin-bottom:30px;}.css-12g9cpd *+h1,.css-12g9cpd *+h2,.css-12g9cpd *+h3{margin-top:80px;}.css-12g9cpd hr+h1,.css-12g9cpd hr+h2,.css-12g9cpd hr+h3{margin-top:0;}.css-12g9cpd h1{font-size:30px;}.css-12g9cpd h2{font-size:25px;}.css-12g9cpd h3{font-size:20px;}.css-12g9cpd blockquote{margin:30px 0;padding:5px 15px;border-left:2px solid #000000;font-weight:800;}.css-12g9cpd ol,.css-12g9cpd ul{margin-left:20px;padding:30px 0;}.css-12g9cpd hr{border:1px solid #000000;margin:100px 0;}.css-12g9cpd a{color:#4263eb;-webkit-text-decoration:underline;text-decoration:underline;}.css-12g9cpd pre[class*='language-']{margin:30px 0;padding:15px;font-size:15px;}.css-12g9cpd pre[class*='language-']::-webkit-scrollbar-thumb{background:rgba(255, 255, 255, 0.5);border-radius:3px;}.css-12g9cpd code[class*='language-'],.css-12g9cpd pre[class*='language-']{tab-size:2;}@media (max-width: 768px){.css-12g9cpd{width:100%;padding:140px 20px 0 20px;line-height:1.6;font-size:14px;}.css-12g9cpd h1{font-size:23px;}.css-12g9cpd h2{font-size:20px;}.css-12g9cpd h3{font-size:17px;}.css-12g9cpd img{width:100%;}.css-12g9cpd hr{margin:50px 0;}}</style><div class="css-12g9cpd e1ijh0y10"><h1>⚡ Signals 기반 반응성 완벽 가이드</h1>
+<blockquote>
+<p>프론트엔드 성능의 새로운 패러다임, 가상 DOM의 한계를 뛰어넘다
+컴포넌트 재실행 없는 세밀한 반응성 시스템의 원리와 실무 적용법을 알아봅니다.</p>
+</blockquote>
+<hr>
+<h2>📌 목차</h2>
+<ol>
+<li>🔍 Signals 개념 이해하기</li>
+<li>🧬 가상 DOM과의 근본적인 차이</li>
+<li>⚙️ 미니 시그널 구현해보기</li>
+<li>🔄 의존성 자동 추적(Dependency Tracking)의 원리</li>
+<li>📦 대표적인 프레임워크 생태계</li>
+<li>💻 기본 사용법 및 코드 예제</li>
+<li>🔗 연산된 시그널(Computed Signals)</li>
+<li>🌊 사이드 이펙트(Effects) 관리하기</li>
+<li>⚠️ 실무에서 마주하는 함정</li>
+<li>🚫 Signals를 쓰면 안 되는 경우</li>
+<li>🧾 정리 및 요약</li>
+<li>📚 참고 자료</li>
+</ol>
+<hr>
+<h2>🔍 1. Signals 개념 이해하기</h2>
+<p>모던 프론트엔드 개발에서 상태 관리와 반응성(Reactivity)은 애플리케이션의 뼈대를 형성하는 핵심 요소입니다. 과거에는 수동으로 DOM을 조작하거나, 데이터가 바뀔 때 전체 컴포넌트를 다시 그려야 했습니다. Signals는 상태(State)가 변경되었을 때 어떤 컴포넌트나 DOM 요소가 업데이트되어야 하는지 수동으로 지정하지 않아도, 시스템이 스스로 의존성을 파악하여 갱신하는 가장 미세한 단위의 프레미티브(Primitive)입니다.</p>
+<p>실무에서 자주 쓰이는 Preact 환경의 기본적인 시그널 선언과 구독 예제는 다음과 같습니다.</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> signal<span class="token punctuation">,</span> effect <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@preact/signals'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> count <span class="token operator">=</span> <span class="token function">signal</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token function">effect</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">현재 카운트 값은: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>count<span class="token punctuation">.</span>value<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+count<span class="token punctuation">.</span>value<span class="token operator">++</span><span class="token punctuation">;</span> <span class="token comment">// 콘솔에 '현재 카운트 값은: 1'이 즉시 출력됨</span></code></pre></div>
+<p>이 방식은 기존 리액트의 <code class="language-text">useState</code>와 유사해 보이지만, 컴포넌트의 렌더링 주기와 완전히 독립되어 동작한다는 결정적인 차이가 있습니다. 시그널은 변수에 불과하며, 이 변수가 읽히고 쓰이는 모든 곳을 미세하게 추적합니다.</p>
+<hr>
+<h2>🧬 2. 가상 DOM과의 근본적인 차이</h2>
+<p>전통적인 React 같은 라이브러리는 상태가 바뀌면 컴포넌트 함수 전체를 다시 실행합니다. 그 후 이전 Virtual DOM과 새로운 Virtual DOM을 비교(Diffing)하여 변경된 부분만 실제 DOM에 반영합니다. 반면 Signals는 컴포넌트를 단 한 번만 실행하고, 상태가 바뀔 때 DOM 노드나 이펙트 콜백을 직접 호출합니다.</p>
+<p>아래 표는 가상 DOM 기반 반응성과 Signals 기반 반응성의 아키텍처 차이를 명확히 보여줍니다.</p>
+<table>
+<thead>
+<tr>
+<th align="left">비교 항목</th>
+<th align="left">가상 DOM (Virtual DOM / React 등)</th>
+<th align="left">Signals (Solid, Preact Signals, Angular Signals)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong>상태 변경 시 동작</strong></td>
+<td align="left">컴포넌트 함수 전체 재실행 (Re-render)</td>
+<td align="left">변경된 시그널을 구독하는 노드/이펙트만 직접 갱신</td>
+</tr>
+<tr>
+<td align="left"><strong>비용 (Complexity)</strong></td>
+<td align="left">트리의 크기에 비례하는 Diffing 연산 발생 $O(N)$</td>
+<td align="left">구독된 리스너 호출 중심의 $O(1)$ 혹은 $O(K)$</td>
+</tr>
+<tr>
+<td align="left"><strong>의존성 관리</strong></td>
+<td align="left"><code class="language-text">useEffect</code>, <code class="language-text">useMemo</code> 등의 의존성 배열 수동 관리</td>
+<td align="left">게터(Getter) 접근을 통한 자동 추적 (Automatic)</td>
+</tr>
+<tr>
+<td align="left"><strong>메모리 오버헤드</strong></td>
+<td align="left">가상 DOM 트리 메모리 유지 필요</td>
+<td align="left">세밀한 구독 관계를 위한 Set/Map 구조체 유지</td>
+</tr>
+</tbody>
+</table>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 768px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/be5ed35f84ef0b5d8b8c11001aa17656/bbbf7/signals-based-reactivity-guide-2.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 50%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAIAAAA7N+mxAAAACXBIWXMAAAsTAAALEwEAmpwYAAABzElEQVR42l2SS4vUQBCA5xfrnxAfJ++LgnjTo4qwIqI4B3cXlmXZYWYn6Uwy6U4n/X6mk0wS7RlwQYuiTv3VV1T14ve/wZStua6IwFRSoTERlOt8X8OKSm3/e7yYp2kwZpBy4LxnnGRFeQ/KZFftSlJTgOotqm6y7DbPNxUiXjdexSqDG+dpMToXbOsapsBOgdxmuSv2HuHOhck4NQTm3ZZjIJpYE1avGgg4kW1QnV9M3kthykZsc3yXlCsAV2kJIKmJnJyPMCJyj+g6hZsUrpMyyTGqBdVO9+0RVtLUUbzH2x3aAJjkVVFRxtRsj3AjNMQsK+s1KO8zBArcUMWN1/1fc1xHmlcxI5wWOIcNoXI+mTFXOSJJgSMZ+0YHJpIdzSdYS8ts2NVyh1kcuGgkMS0XZjqZqbKUGog4xBxhgWsplef2ZB6N6cLAV5v06bPy1Wv45m32/EX16XPoDqPSrHNtP75bLR99OXt58eHJz/ePz8+uYBqGSQS7mA+HwdhQYbFcsl8X7OKy+f5D3K0cl731MrTE6GsEPm4uv2W3X8HNeXadK6KC78fD4uHi4zzbblChjyl9p6y3Pui4GOPjNVvXWdOGtp/n+eGT/AH62iLoMCY3ogAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <picture>
+          <source
+              srcset="/static/be5ed35f84ef0b5d8b8c11001aa17656/a59e9/signals-based-reactivity-guide-2.webp 192w,
+/static/be5ed35f84ef0b5d8b8c11001aa17656/0ca9f/signals-based-reactivity-guide-2.webp 384w,
+/static/be5ed35f84ef0b5d8b8c11001aa17656/dc9b9/signals-based-reactivity-guide-2.webp 768w,
+/static/be5ed35f84ef0b5d8b8c11001aa17656/e2c2f/signals-based-reactivity-guide-2.webp 1152w,
+/static/be5ed35f84ef0b5d8b8c11001aa17656/94b1e/signals-based-reactivity-guide-2.webp 1280w"
+              sizes="(max-width: 768px) 100vw, 768px"
+              type="image/webp"
+            />
+          <source
+            srcset="/static/be5ed35f84ef0b5d8b8c11001aa17656/3b721/signals-based-reactivity-guide-2.png 192w,
+/static/be5ed35f84ef0b5d8b8c11001aa17656/66595/signals-based-reactivity-guide-2.png 384w,
+/static/be5ed35f84ef0b5d8b8c11001aa17656/fe486/signals-based-reactivity-guide-2.png 768w,
+/static/be5ed35f84ef0b5d8b8c11001aa17656/d2d74/signals-based-reactivity-guide-2.png 1152w,
+/static/be5ed35f84ef0b5d8b8c11001aa17656/bbbf7/signals-based-reactivity-guide-2.png 1280w"
+            sizes="(max-width: 768px) 100vw, 768px"
+            type="image/png"
+          />
+          <img
+            class="gatsby-resp-image-image"
+            src="/static/be5ed35f84ef0b5d8b8c11001aa17656/fe486/signals-based-reactivity-guide-2.png"
+            alt="Virtual DOM vs Signals Comparison"
+            title=""
+            loading="lazy"
+            decoding="async"
+            style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+          />
+        </picture>
+  </a>
+    </span></p>
+<p>이처럼 가상 DOM은 컴포넌트 단위의 대규모 비교 연산을 수반하지만, 시그널은 포인터처럼 정확히 변경된 지점만을 타겟팅하여 연산 횟수를 극적으로 줄입니다. 대규모 데이터 그리드나 실시간 차트 렌더링에서 이 차이는 수십 배 이상의 프레임 드랍 감소로 이어집니다.</p>
+<hr>
+<h2>⚙️ 3. 미니 시그널 구현해보기</h2>
+<p>시그널의 동작 원리를 뼈대부터 이해하기 위해, 바닐라 자바스크립트로 아주 단순한 반응성 시스템을 직접 작성해 볼 수 있습니다. 전역 변수에 현재 실행 중인 이펙트를 저장하고, 게터(Getter)와 세터(Setter)를 통해 구독 관계를 맺는 방식입니다.</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">let</span> currentEffect <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">signal</span><span class="token punctuation">(</span><span class="token parameter">initialValue</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> value <span class="token operator">=</span> initialValue<span class="token punctuation">;</span>
+  <span class="token keyword">const</span> subscribers <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Set</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">return</span> <span class="token punctuation">{</span>
+    <span class="token keyword">get</span> <span class="token function">value</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">// 현재 실행 중인 이펙트가 존재한다면 구독 관계로 등록</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>currentEffect<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        subscribers<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>currentEffect<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+      <span class="token keyword">return</span> value<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token keyword">set</span> <span class="token function">value</span><span class="token punctuation">(</span><span class="token parameter">newValue</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>value <span class="token operator">!==</span> newValue<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        value <span class="token operator">=</span> newValue<span class="token punctuation">;</span>
+        <span class="token comment">// 등록된 모든 구독자(이펙트)를 순회하며 재실행</span>
+        subscribers<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token parameter">sub</span> <span class="token operator">=></span> <span class="token function">sub</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">effect</span><span class="token punctuation">(</span><span class="token parameter">fn</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> <span class="token function-variable function">execute</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    currentEffect <span class="token operator">=</span> execute<span class="token punctuation">;</span>
+    <span class="token keyword">try</span> <span class="token punctuation">{</span>
+      <span class="token function">fn</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">finally</span> <span class="token punctuation">{</span>
+      currentEffect <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token function">execute</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>위 구현체는 시그널이 어떻게 전역 컨텍스트를 활용해 의존성을 수집하는지 명확하게 보여줍니다. 실무 라이브러리들은 메모리 누수를 막기 위한 WeakMap 기반의 정리 작업과 배치(Batching) 업데이트 최적화를 추가로 적용하여 구현되어 있습니다.</p>
+<hr>
+<h2>🔄 4. 의존성 자동 추적(Dependency Tracking)의 원리</h2>
+<p>시그널 내부의 <code class="language-text">get value</code> 접근자가 호출되는 순간, 현재 실행 중인 이펙트나 컴포넌트가 해당 시그널의 구독자 목록에 동적으로 등록됩니다. 이 과정을 통해 개발자가 직접 <code class="language-text">useEffect([dep])</code> 의존성 배열을 수동으로 관리할 필요가 완전히 사라집니다.</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> firstName <span class="token operator">=</span> <span class="token function">signal</span><span class="token punctuation">(</span><span class="token string">'홍'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> lastName <span class="token operator">=</span> <span class="token function">signal</span><span class="token punctuation">(</span><span class="token string">'길동'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token function">effect</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token comment">// 이 블록이 실행될 때 firstName.value와 lastName.value가 모두 호출됨</span>
+  <span class="token comment">// 따라서 이 이펙트는 두 시그널 모두를 구독(Subscribe)하게 됨</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">이름: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>firstName<span class="token punctuation">.</span>value<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>lastName<span class="token punctuation">.</span>value<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 성만 바꿔도 이펙트가 자동으로 다시 실행됨</span>
+firstName<span class="token punctuation">.</span>value <span class="token operator">=</span> <span class="token string">'김'</span><span class="token punctuation">;</span> <span class="token comment">// 콘솔: '이름: 김 길동'</span></code></pre></div>
+<p>이 방식은 수동 의존성 배열 관리로 인한 버그(예: 누락된 의존성으로 인한 오래된 값 참조 문제)를 원천 차단합니다. 코드가 실행되는 런타임 경로에 따라 동적으로 의존성이 맺어지고 끊어지기 때문에 조건문 안의 시그널도 유연하게 추적됩니다.</p>
+<hr>
+<h2>📦 5. 대표적인 프레임워크 생태계</h2>
+<p>Signals 패턴은 여러 모던 프레임워크와 라이브러리 진영에 적극적으로 도입되며 프론트엔드 생태계의 판도를 바꾸고 있습니다.</p>
+<ol>
+<li><strong>Solid.js</strong>: 컴파일 타임에 JSX를 실제 DOM 조작 코드로 변환하며, 내부적으로 파인 그리디(Fine-grained) 시그널 반응성을 완벽하게 구현하여 벤치마크 최상위권을 유지합니다.</li>
+<li><strong>Preact Signals</strong>: 기존 Preact 및 React 생태계에서도 시그널 기반 상태 관리를 쓸 수 있도록 오버레이 패키지 형태로 강력한 성능 향상을 제공합니다.</li>
+<li><strong>Angular Signals</strong>: Angular v16부터 도입되어 RxJS의 복잡한 연산자 없이도 템플릿과 컴포넌트 상태를 고성능으로 동기화할 수 있는 표준 반응성 메커니즘으로 자리 잡았습니다.</li>
+<li><strong>Vue.js (Reactivity API)</strong>: Vue 3의 <code class="language-text">ref</code>와 <code class="language-text">reactive</code> 역시 프락시(Proxy) 기반의 시그널 아키텍처와 매우 유사한 철학을 공유합니다.</li>
+</ol>
+<hr>
+<h2>💻 6. 기본 사용법 및 코드 예제</h2>
+<p>실무에서 Preact나 지원되는 환경에서 컴포넌트를 작성할 때의 전형적인 카운터 및 폼 입력 예제입니다. 복잡한 훅 보일러플레이트가 눈에 띄게 줄어듭니다.</p>
+<div class="gatsby-highlight" data-language="jsx"><pre class="language-jsx"><code class="language-jsx"><span class="token keyword">import</span> <span class="token punctuation">{</span> signal <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@preact/signals'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> count <span class="token operator">=</span> <span class="token function">signal</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> text <span class="token operator">=</span> <span class="token function">signal</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">CounterForm</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> <span class="token function-variable function">handleIncrement</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    count<span class="token punctuation">.</span>value <span class="token operator">+=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">const</span> <span class="token function-variable function">handleInput</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    text<span class="token punctuation">.</span>value <span class="token operator">=</span> e<span class="token punctuation">.</span>target<span class="token punctuation">.</span>value<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">style</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span> <span class="token literal-property property">padding</span><span class="token operator">:</span> <span class="token string">'20px'</span><span class="token punctuation">,</span> <span class="token literal-property property">fontFamily</span><span class="token operator">:</span> <span class="token string">'sans-serif'</span> <span class="token punctuation">}</span><span class="token punctuation">}</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h2</span><span class="token punctuation">></span></span><span class="token plain-text">시그널 기반 폼 및 카운터</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h2</span><span class="token punctuation">></span></span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span><span class="token plain-text">현재 카운트: </span><span class="token punctuation">{</span>count<span class="token punctuation">.</span>value<span class="token punctuation">}</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">onClick</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>handleIncrement<span class="token punctuation">}</span></span><span class="token punctuation">></span></span><span class="token plain-text">증가하기</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><span class="token plain-text">
+      
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">style</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span> <span class="token literal-property property">marginTop</span><span class="token operator">:</span> <span class="token string">'15px'</span> <span class="token punctuation">}</span><span class="token punctuation">}</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> 
+          <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> 
+          <span class="token attr-name">value</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>text<span class="token punctuation">.</span>value<span class="token punctuation">}</span></span> 
+          <span class="token attr-name">onInput</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>handleInput<span class="token punctuation">}</span></span> 
+          <span class="token attr-name">placeholder</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>텍스트를 입력하세요<span class="token punctuation">"</span></span> 
+        <span class="token punctuation">/></span></span><span class="token plain-text">
+        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span><span class="token plain-text">입력된 값 메아리: </span><span class="token punctuation">{</span>text<span class="token punctuation">.</span>value<span class="token punctuation">}</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><span class="token plain-text">
+    </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>이 컴포넌트는 <code class="language-text">count.value</code>나 <code class="language-text">text.value</code>가 바뀔 때 전체 <code class="language-text">CounterForm</code> 함수가 재실행되지 않고, 오직 <code class="language-text">{count.value}</code>와 <code class="language-text">{text.value}</code>가 바인딩된 DOM 텍스트 노드나 속성만 직접 갱신됩니다.</p>
+<hr>
+<h2>🔗 7. 연산된 시그널(Computed Signals)</h2>
+<p>다른 시그널의 값에 기반하여 파생된 값을 만들어야 할 때는 <code class="language-text">computed</code>를 사용합니다. 의존하는 시그널이 변경될 때만 캐시를 무효화하고 재연산(Lazy Evaluation)하므로 대규모 연산이나 가공 로직에서 불필요한 비용을 막아줍니다.</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> signal<span class="token punctuation">,</span> computed <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@preact/signals'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> items <span class="token operator">=</span> <span class="token function">signal</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
+  <span class="token punctuation">{</span> <span class="token literal-property property">id</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">'노트북'</span><span class="token punctuation">,</span> <span class="token literal-property property">price</span><span class="token operator">:</span> <span class="token number">1200000</span><span class="token punctuation">,</span> <span class="token literal-property property">selected</span><span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span> <span class="token literal-property property">id</span><span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">'마우스'</span><span class="token punctuation">,</span> <span class="token literal-property property">price</span><span class="token operator">:</span> <span class="token number">35000</span><span class="token punctuation">,</span> <span class="token literal-property property">selected</span><span class="token operator">:</span> <span class="token boolean">false</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span> <span class="token literal-property property">id</span><span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">'키보드'</span><span class="token punctuation">,</span> <span class="token literal-property property">price</span><span class="token operator">:</span> <span class="token number">150000</span><span class="token punctuation">,</span> <span class="token literal-property property">selected</span><span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 선택된 아이템들의 총합을 계산하는 파생 시그널</span>
+<span class="token keyword">const</span> totalPrice <span class="token operator">=</span> <span class="token function">computed</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'총합 계산 중...'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 의존성이 바뀔 때만 호출됨</span>
+  <span class="token keyword">return</span> items<span class="token punctuation">.</span>value
+    <span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token parameter">item</span> <span class="token operator">=></span> item<span class="token punctuation">.</span>selected<span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">reduce</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">sum<span class="token punctuation">,</span> item</span><span class="token punctuation">)</span> <span class="token operator">=></span> sum <span class="token operator">+</span> item<span class="token punctuation">.</span>price<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>totalPrice<span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 최초 연산: 1350000 출력 ('총합 계산 중...' 로그 출력)</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>totalPrice<span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 캐시된 값 반환 ('총합 계산 중...' 로그 출력 안 됨)</span></code></pre></div>
+<p>이처럼 <code class="language-text">computed</code>는 파생 상태를 안전하고 효율적으로 관리하게 해주며, 메모이제이션을 위해 <code class="language-text">useMemo</code> 같은 훅을 일일이 작성할 필요가 없습니다.</p>
+<hr>
+<h2>🌊 8. 사이드 이펙트(Effects) 관리하기</h2>
+<p>시그널 값 변화에 따라 외부 시스템(예: 로컬 스토리지, 웹소켓, 쿠키, 분석 툴)과 동기화하거나 네트워크 요청을 트리거하는 등의 부수 효과는 <code class="language-text">effect</code> 내부에서 처리합니다.</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> signal<span class="token punctuation">,</span> effect <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@preact/signals'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> theme <span class="token operator">=</span> <span class="token function">signal</span><span class="token punctuation">(</span><span class="token string">'light'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> userId <span class="token operator">=</span> <span class="token function">signal</span><span class="token punctuation">(</span><span class="token number">1042</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 테마 변경 시 DOM 및 로컬 스토리지 동기화</span>
+<span class="token function">effect</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  document<span class="token punctuation">.</span>body<span class="token punctuation">.</span>className <span class="token operator">=</span> theme<span class="token punctuation">.</span>value<span class="token punctuation">;</span>
+  localStorage<span class="token punctuation">.</span><span class="token function">setItem</span><span class="token punctuation">(</span><span class="token string">'app-theme'</span><span class="token punctuation">,</span> theme<span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 사용자 ID 변경 시 로그 전송</span>
+<span class="token function">effect</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>userId<span class="token punctuation">.</span>value<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    navigator<span class="token punctuation">.</span><span class="token function">sendBeacon</span><span class="token punctuation">(</span><span class="token string">'/api/track-user'</span><span class="token punctuation">,</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">id</span><span class="token operator">:</span> userId<span class="token punctuation">.</span>value <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<p><code class="language-text">effect</code> 블록은 내부에 사용된 시그널들의 변화를 자동으로 감지하므로, 의존성 배열 누락으로 인한 버그나 무한 루프 위험을 크게 줄여줍니다. 단, 부수 효과 내부에서 다시 시그널을 잘못 수정하면 무한 루프가 발생할 수 있으므로 주의해야 합니다.</p>
+<hr>
+<h2>⚠️ 9. 실무에서 마주하는 함정</h2>
+<p>시그널을 사용할 때 개발자들이 흔히 겪는 대표적인 함정들은 다음과 같습니다.</p>
+<ol>
+<li>
+<p><strong>비동기 컨텍스트에서의 의존성 누락</strong>
+<code class="language-text">await</code> 키워드 이후에 시그널에 접근하면 자바스크립트의 비동기 마이크로태스크 큐 전환으로 인해 현재 실행 중인 이펙트 컨텍스트(<code class="language-text">currentEffect</code>)가 유실되어 구독이 맺어지지 않습니다.</p>
+</li>
+<li>
+<p><strong>객체나 배열 내부 속성 직접 변경</strong>
+시그널에 담긴 객체의 프로퍼티를 직접 수정(<code class="language-text">state.value.name = 'kim'</code>)하면 세터가 호출되지 않아 구독자들에게 알림이 가지 않습니다. 새로운 객체 레퍼런스를 할당(<code class="language-text">state.value = { ...state.value, name: 'kim' }</code>)해야 합니다.</p>
+</li>
+</ol>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 768px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/439a6adf26df1dde3111bfe31839b5b2/bbbf7/signals-based-reactivity-guide-1.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 50%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAIAAAA7N+mxAAAACXBIWXMAAAsTAAALEwEAmpwYAAABRklEQVR42qWQ206EMBCGef+3MfGQeG2Mia4addnosu4ux1La0hOw0FIcwOiF3Dn508x05i/z4Q1/wrmBlAKEMDsmOEE0L8phKbzF2ySnMSJpThNEwAxaNve9M9b2fT8dY0AJjd7NMcDN4IbOTG3nphFnp9wrhQ7CfLOLN59pQcVHxC4f4rPb4GqVrA+wMIsQe9tGYUZzwsO0ePL36yB+fT+SUnlMaMJ1gjkVNWX8zs/On9nFI7721Y2PUoSbziIidNOFKQ5TkhUCERllrGDSE6rKiQB/USoudYTl/Za+HMRqx/ZIcKEwlbTUqOCMK1gTPkigJILLyoPVgccY25kRy41U1s1ywDZ2Z82oMGam+ZF5+Ef8muEnN6cWVDfjeWrNqe1AU9l953Br7IK5bTvgB2wAAx6la6lqqWvIhazk2KoAG574MX8Bto49qgF5U8kAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <picture>
+          <source
+              srcset="/static/439a6adf26df1dde3111bfe31839b5b2/a59e9/signals-based-reactivity-guide-1.webp 192w,
+/static/439a6adf26df1dde3111bfe31839b5b2/0ca9f/signals-based-reactivity-guide-1.webp 384w,
+/static/439a6adf26df1dde3111bfe31839b5b2/dc9b9/signals-based-reactivity-guide-1.webp 768w,
+/static/439a6adf26df1dde3111bfe31839b5b2/e2c2f/signals-based-reactivity-guide-1.webp 1152w,
+/static/439a6adf26df1dde3111bfe31839b5b2/94b1e/signals-based-reactivity-guide-1.webp 1280w"
+              sizes="(max-width: 768px) 100vw, 768px"
+              type="image/webp"
+            />
+          <source
+            srcset="/static/439a6adf26df1dde3111bfe31839b5b2/3b721/signals-based-reactivity-guide-1.png 192w,
+/static/439a6adf26df1dde3111bfe31839b5b2/66595/signals-based-reactivity-guide-1.png 384w,
+/static/439a6adf26df1dde3111bfe31839b5b2/fe486/signals-based-reactivity-guide-1.png 768w,
+/static/439a6adf26df1dde3111bfe31839b5b2/d2d74/signals-based-reactivity-guide-1.png 1152w,
+/static/439a6adf26df1dde3111bfe31839b5b2/bbbf7/signals-based-reactivity-guide-1.png 1280w"
+            sizes="(max-width: 768px) 100vw, 768px"
+            type="image/png"
+          />
+          <img
+            class="gatsby-resp-image-image"
+            src="/static/439a6adf26df1dde3111bfe31839b5b2/fe486/signals-based-reactivity-guide-1.png"
+            alt="Signals Data Flow Diagram"
+            title=""
+            loading="lazy"
+            decoding="async"
+            style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+          />
+        </picture>
+  </a>
+    </span></p>
+<p>아래는 비동기 함수 내부에서 시그널 구독이 끊어지는 대표적인 안티패턴과 올바른 해결 예제입니다.</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> signal<span class="token punctuation">,</span> effect <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@preact/signals'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> userId <span class="token operator">=</span> <span class="token function">signal</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> userData <span class="token operator">=</span> <span class="token function">signal</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// ❌ 안티패턴: await 이후에 시그널에 접근하면 의존성 추적이 누락됨</span>
+<span class="token function">effect</span><span class="token punctuation">(</span><span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> id <span class="token operator">=</span> userId<span class="token punctuation">.</span>value<span class="token punctuation">;</span> <span class="token comment">// 여기서는 구독이 맺어짐</span>
+  <span class="token keyword">const</span> response <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">fetch</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">/api/user/</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>id<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> data <span class="token operator">=</span> <span class="token keyword">await</span> response<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  userData<span class="token punctuation">.</span>value <span class="token operator">=</span> data<span class="token punctuation">;</span> 
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// ✅ 올바른 패턴: 비동기 호출 전에 필요한 시그널 값을 미리 캡처하거나 동기적으로 분리</span>
+<span class="token function">effect</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> id <span class="token operator">=</span> userId<span class="token punctuation">.</span>value<span class="token punctuation">;</span> <span class="token comment">// 동기적으로 의존성 확보</span>
+  
+  <span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">fetchUser</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> response <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">fetch</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">/api/user/</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>id<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> data <span class="token operator">=</span> <span class="token keyword">await</span> response<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    userData<span class="token punctuation">.</span>value <span class="token operator">=</span> data<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  
+  <span class="token function">fetchUser</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<hr>
+<h2>🚫 10. Signals를 쓰면 안 되는 경우</h2>
+<p>모든 아키텍처가 그렇듯 Signals가 항상 은총알(Silver Bullet)은 아닙니다. 다음과 같은 상황에서는 도입을 신중히 검토해야 합니다.</p>
+<ul>
+<li><strong>극도로 단순한 정적 페이지 및 컴포넌트</strong>: 상태 변화가 거의 없고 마크업 중심인 랜딩 페이지에서는 상태 관리 라이브러리나 시그널 도입 자체가 번거로운 오버헤드가 될 수 있습니다.</li>
+<li><strong>기존 거대한 React 컴포넌트 에코시스템과의 충돌</strong>: 서드파티 라이브러리들이 엄격한 React Context나 훅 라이프사이클에 강하게 결합되어 있는 경우, 시그널 값과 React 렌더링 주기를 일치시키는 어댑터 레이어가 복잡해질 수 있습니다.</li>
+<li><strong>팀원의 학습 곡선</strong>: 기존 <code class="language-text">useState</code>나 <code class="language-text">Redux/Zustand</code> 패러다임에 익숙한 팀에게 <code class="language-text">.value</code> 접근자 기반의 세밀한 반응성 모델은 초기 코드 리뷰 과정에서 혼란을 줄 수 있습니다.</li>
+</ul>
+<hr>
+<h2>🧾 11. 정리 및 요약</h2>
+<ul>
+<li>Signals는 가상 DOM의 비용 큰 diffing 오버헤드를 제거하고 상태와 DOM을 실시간 직결합니다.</li>
+<li>컴포넌트 재실행 없이 값 변화가 필요한 DOM 노드나 이펙트만 직접 갱신됩니다.</li>
+<li>의존성 배열을 수동으로 관리할 필요가 없어 코드가 간결하고 유지보수하기 좋습니다.</li>
+<li><code class="language-text">computed</code>와 <code class="language-text">effect</code>를 통해 파생 상태와 외부 시스템 동기화를 안전하고 빠르게 처리할 수 있습니다.</li>
+<li>비동기 컨텍스트에서의 구독 누락이나 객체 뮤테이션 등 미묘한 동작 방식을 정확히 이해하고 사용해야 합니다.</li>
+</ul>
+<blockquote>
+<p>✨ <strong>한 줄 요약</strong>
+시그널은 가상 DOM이라는 거울을 깨고, 상태와 DOM을 실시간으로 직결하는 가장 빠르고 세밀한 반응성 도구입니다.</p>
+</blockquote>
+<hr>
+<h2>📚 참고 자료</h2>
+<ul>
+<li><a href="https://preactjs.com/guide/v10/signals/" target="_blank" rel="nofollow">Preact Signals 공식 문서</a></li>
+<li><a href="https://www.solidjs.com/tutorial/introduction_reactivity" target="_blank" rel="nofollow">Solid.js Reactivity Overview</a></li>
+<li><a href="https://angular.dev/guide/signals" target="_blank" rel="nofollow">Angular Signals Guide</a></li>
+</ul></div><style data-emotion="css hx9xpc">@media (max-width: 768px){.css-hx9xpc{padding:0 20px;}}</style><div class="css-hx9xpc e1gqsjds0"></div><style data-emotion="css 1lgr7vy">.css-1lgr7vy{position:fixed;bottom:30px;right:30px;width:50px;height:50px;border-radius:50%;background:linear-gradient(60deg, rgb(66, 105, 78) 0%, rgb(73, 110, 93) 100%);border:2px solid white;cursor:pointer;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;-webkit-justify-content:center;justify-content:center;box-shadow:0 4px 15px rgba(0, 0, 0, 0.15);-webkit-transition:all 0.3s ease;transition:all 0.3s ease;z-index:1000;opacity:0;visibility:hidden;-webkit-transform:translateY(20px);-moz-transform:translateY(20px);-ms-transform:translateY(20px);transform:translateY(20px);}.css-1lgr7vy:hover{-webkit-transform:translateY(-3px);-moz-transform:translateY(-3px);-ms-transform:translateY(-3px);transform:translateY(-3px);box-shadow:0 6px 20px rgba(0, 0, 0, 0.3);background:white;border-color:rgb(66, 105, 78);}.css-1lgr7vy:active{-webkit-transform:translateY(0);-moz-transform:translateY(0);-ms-transform:translateY(0);transform:translateY(0);}.css-1lgr7vy.visible{opacity:1;visibility:visible;-webkit-transform:translateY(0);-moz-transform:translateY(0);-ms-transform:translateY(0);transform:translateY(0);}@media (max-width: 768px){.css-1lgr7vy{bottom:20px;right:20px;width:45px;height:45px;}}</style><button class="css-1lgr7vy e14t44do1" aria-label="맨 위로 이동"><style data-emotion="css 1lzpihr">.css-1lzpihr{width:0;height:0;border-left:8px solid transparent;border-right:8px solid transparent;border-bottom:12px solid white;margin-bottom:2px;-webkit-transition:border-bottom-color 0.3s ease;transition:border-bottom-color 0.3s ease;}.e14t44do1:hover .css-1lzpihr{border-bottom-color:rgb(66, 105, 78);}</style><div class="css-1lzpihr e14t44do0"></div></button><style data-emotion="css 1yungzt">.css-1yungzt{position:relative;width:100%;padding:40px 0;background:linear-gradient(180deg, rgba(66, 105, 78, 0.05) 0%, rgba(73, 110, 93, 0.1) 100%);border-top:1px solid rgba(66, 105, 78, 0.1);}</style><footer class="css-1yungzt e1oae0v84"><style data-emotion="css 1uamirr">.css-1uamirr{max-width:960px;margin:0 auto;padding:0 20px;text-align:center;}</style><div class="css-1uamirr e1oae0v83"><style data-emotion="css 1ghcw8y">.css-1ghcw8y{font-size:16px;line-height:1.6;color:#426950;margin-bottom:10px;-webkit-transition:color 0.3s ease;transition:color 0.3s ease;}.css-1ghcw8y:hover{color:#2c4735;}@media (max-width: 768px){.css-1ghcw8y{font-size:14px;}}</style><p class="css-1ghcw8y e1oae0v82">Thank You for Visiting My Blog, Have a Good Day <style data-emotion="css lzb4fa">.css-lzb4fa{display:inline-block;-webkit-transition:-webkit-transform 0.3s ease;transition:transform 0.3s ease;}.css-lzb4fa:hover{-webkit-transform:scale(1.2) rotate(10deg);-moz-transform:scale(1.2) rotate(10deg);-ms-transform:scale(1.2) rotate(10deg);transform:scale(1.2) rotate(10deg);}</style><span class="css-lzb4fa e1oae0v80">🌿</span></p><style data-emotion="css y3pbt1">.css-y3pbt1{font-size:14px;color:#666;margin-top:5px;}@media (max-width: 768px){.css-y3pbt1{font-size:12px;}}</style><p class="css-y3pbt1 e1oae0v81">© 2024 Developer LIM.</p></div></footer></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/signals-based-reactivity-guide/";/*]]>*/</script><!-- slice-start id="_gatsby-scripts-1" -->
+          <script
+            id="gatsby-chunk-mapping"
+          >
+            window.___chunkMapping="{\"app\":[\"/app-5ab049b1a7d9afaa2ddb.js\"],\"component---cache-caches-gatsby-plugin-offline-app-shell-js\":[\"/component---cache-caches-gatsby-plugin-offline-app-shell-js-27e0e967a98f3dffdf9e.js\"],\"component---src-pages-404-tsx\":[\"/component---src-pages-404-tsx-198e8648605be5d74a6a.js\"],\"component---src-pages-index-tsx\":[\"/component---src-pages-index-tsx-49aed13bd17edca89f1a.js\"],\"component---src-pages-info-tsx\":[\"/component---src-pages-info-tsx-91ad86a40368117a0a55.js\"],\"component---src-templates-post-template-tsx\":[\"/component---src-templates-post-template-tsx-6e3542f1f00a7c16e4e6.js\"]}";
+          </script>
+        <script>window.___webpackCompilationHash="c5f50b18458ce60ff11e";</script><script src="/webpack-runtime-cc6a3bd86707474f9378.js" async></script><script src="/framework-9d608f77b5c9a88afabd.js" async></script><script src="/app-5ab049b1a7d9afaa2ddb.js" async></script><!-- slice-end id="_gatsby-scripts-1" --></body></html>
