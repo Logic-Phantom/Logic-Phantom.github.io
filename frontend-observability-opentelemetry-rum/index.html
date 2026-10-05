@@ -1,0 +1,603 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><meta name="generator" content="Gatsby 5.14.0"/><meta name="theme-color" content="#426950"/><meta data-react-helmet="true" name="description" content="블랙박스였던 브라우저의 내부를 투명하게 들여다보기"/><meta data-react-helmet="true" name="viewport" content="width=device-width, initial-scale=1.0"/><meta data-react-helmet="true" http-equiv="Content-Type" content="text/html;charset=UTF-8"/><meta data-react-helmet="true" property="og:type" content="website"/><meta data-react-helmet="true" property="og:title" content="👁️ 프론트엔드 관측성(Observability)과 OpenTelemetry + RUM 완벽 가이드"/><meta data-react-helmet="true" property="og:description" content="블랙박스였던 브라우저의 내부를 투명하게 들여다보기"/><meta data-react-helmet="true" property="og:image" content="/static/3b36ce2515ad080e15daeb4715a01de3/frontend-observability-opentelemetry-rum.png"/><meta data-react-helmet="true" property="og:url"/><meta data-react-helmet="true" property="og:site_name" content="👁️ 프론트엔드 관측성(Observability)과 OpenTelemetry + RUM 완벽 가이드"/><meta data-react-helmet="true" name="twitter:card" content="summary"/><meta data-react-helmet="true" name="twitter:title" content="👁️ 프론트엔드 관측성(Observability)과 OpenTelemetry + RUM 완벽 가이드"/><meta data-react-helmet="true" name="twitter:description" content="블랙박스였던 브라우저의 내부를 투명하게 들여다보기"/><meta data-react-helmet="true" name="twitter:image" content="/static/3b36ce2515ad080e15daeb4715a01de3/frontend-observability-opentelemetry-rum.png"/><meta data-react-helmet="true" name="twitter:site" content="@사용자이름"/><meta data-react-helmet="true" name="twitter:creator" content="@사용자이름"/><style data-href="/styles.9e907bc32054b7771552.css" data-identity="gatsby-global-css">code[class*=language-],pre[class*=language-]{word-wrap:normal;background:none;color:#ccc;font-family:Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;font-size:1em;-webkit-hyphens:none;hyphens:none;line-height:1.5;tab-size:4;text-align:left;white-space:pre;word-break:normal;word-spacing:normal}pre[class*=language-]{margin:.5em 0;overflow:auto;padding:1em}:not(pre)>code[class*=language-],pre[class*=language-]{background:#2d2d2d}:not(pre)>code[class*=language-]{border-radius:.3em;padding:.1em;white-space:normal}.token.block-comment,.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#999}.token.punctuation{color:#ccc}.token.attr-name,.token.deleted,.token.namespace,.token.tag{color:#e2777a}.token.function-name{color:#6196cc}.token.boolean,.token.function,.token.number{color:#f08d49}.token.class-name,.token.constant,.token.property,.token.symbol{color:#f8c555}.token.atrule,.token.builtin,.token.important,.token.keyword,.token.selector{color:#cc99cd}.token.attr-value,.token.char,.token.regex,.token.string,.token.variable{color:#7ec699}.token.entity,.token.operator,.token.url{color:#67cdcc}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}.token.inserted{color:green}</style><link rel="sitemap" type="application/xml" href="/sitemap-index.xml"/><link rel="canonical" href="https://logic-phantom.github.io/frontend-observability-opentelemetry-rum/" data-baseprotocol="https:" data-basehost="logic-phantom.github.io"/><link rel="icon" href="/favicon-32x32.png" type="image/png"/><link rel="manifest" href="/manifest.webmanifest" crossorigin="use-credentials"/><link rel="apple-touch-icon" sizes="192x192" href="/contents/forestLim.png"/><link rel="apple-touch-icon" sizes="512x512" href="/contents/forestLim.png"/><title data-react-helmet="true">👁️ 프론트엔드 관측성(Observability)과 OpenTelemetry + RUM 완벽 가이드</title><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){const t=e.target;if(void 0===t.dataset.mainImage)return;if(void 0===t.dataset.gatsbyImageSsr)return;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><style data-emotion="css zyllbl">.css-zyllbl{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;height:100vh;}</style><div class="css-zyllbl e1strnqo0"><style data-emotion="css-global kxm5mf">@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap');*{padding:0;margin:0;box-sizing:border-box;font-family:'Nanum Myeongjo',serif;}html,body,#___gatsby{height:100%;}a,a:hover{color:inherit;-webkit-text-decoration:none;text-decoration:none;cursor:pointer;}</style><style data-emotion="css 16cz9yp">.css-16cz9yp{position:relative;width:100%;height:400px;}@media (max-width: 768px){.css-16cz9yp{height:300px;}}</style><div class="css-16cz9yp e1opi4mu1"><style data-emotion="css 1bjn9yo">.css-1bjn9yo{z-index:-1;width:100%;height:400px;object-fit:cover;-webkit-filter:brightness(0.25);filter:brightness(0.25);}@media (max-width: 768px){.css-1bjn9yo{height:300px;}}</style><div data-gatsby-image-wrapper="" style="position:absolute" class="gatsby-image-wrapper gatsby-image-wrapper-constrained css-1bjn9yo e1opi4mu0"><div style="max-width:1536px;display:block"><img alt="" role="presentation" aria-hidden="true" src="data:image/svg+xml;charset=utf-8,%3Csvg%20height=&#x27;1024&#x27;%20width=&#x27;1536&#x27;%20xmlns=&#x27;http://www.w3.org/2000/svg&#x27;%20version=&#x27;1.1&#x27;%3E%3C/svg%3E" style="max-width:100%;display:block;position:static"/></div><img aria-hidden="true" data-placeholder-image="" style="opacity:1;transition:opacity 500ms linear" decoding="async" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAIAAAAmMtkJAAAACXBIWXMAAAsTAAALEwEAmpwYAAACh0lEQVR42mPwbzkT2HYuoONKEAhdDmy/FNhxCUgGdV4O6rwCRMFdUITEvhrQdt6/5TRDQPsFr4pddl7Jai5xavbJ2q4ZWi7pOq6ZanaJCuYRihaR6Mg8QtkqxrNyR2D7BYagzkvO+atFFQwF5fTFVSxkNG2lNW3ktO1FFE14pXT4ZfSAiE9aT0BWH46E5PS9StYCncYQ1HHRpWi9mLqDjI6LmpmvrJ6ropGnlLazsrGXoqGHpJajhIaDlJaTmLq9uIYDBElqOXiXbQzquATUfMmteCO/goVnaHp9+5T8yvaS2q7S+p70osas0ub6jqnlDb3xWZXCytZAJKhkKaJiI6FuC9YMttm1cL2wirWebaBzQJJPZFZgbJ5/dI6TX6Ktd2xATG5QXL5HSJq4mq2igZuGuY8UyC12XmUbAmE2bxBQtHAJSC6q6eqftqisvre8oa+mZVJeRTuQ3do3u3Pi3NCEwpiM8srmCe4haSIqlr4Vm6DOdi0C2axu5m3lEeMUkOgUkOAcmGhoH2TtFW3gEOQWkmLnE2vrHaNjHaCg5yKoYMEpaehdtgEWYIXrxNTs5LRtVCzsNOztVSxt1WztNOwc1WzsNO0clC1tVa3ttBztTT1CjBwiJ81eUdE0ybt8c0D7RZDNLoXrxTUdJDXtpbUdpXUcgb4CIwcpbRACBriUtpOEpr2ikce+I+f//////vOz3hVnPBpOgzQ7F6wVlDfmlzMUkDMSkAUjOAPMBspySeiqm7ifuXLr9MP3rx8dW7L9HEhzQNs579oDFhFNlhENlhGNuJBVZKNpaEPfkgMPn705f/VO5sTj3o1nGCBpO7TnelgvYeTffCax53hExwmfpjMBLWcAfUMfwGkpAAEAAAAASUVORK5CYII=" alt=""/><picture><source type="image/webp" data-srcset="/static/3b36ce2515ad080e15daeb4715a01de3/b642b/frontend-observability-opentelemetry-rum.webp 384w,/static/3b36ce2515ad080e15daeb4715a01de3/c9564/frontend-observability-opentelemetry-rum.webp 768w,/static/3b36ce2515ad080e15daeb4715a01de3/18b4b/frontend-observability-opentelemetry-rum.webp 1536w" sizes="(min-width: 1536px) 1536px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 1536px) 1536px, 100vw" decoding="async" loading="lazy" data-src="/static/3b36ce2515ad080e15daeb4715a01de3/4d776/frontend-observability-opentelemetry-rum.png" data-srcset="/static/3b36ce2515ad080e15daeb4715a01de3/4a410/frontend-observability-opentelemetry-rum.png 384w,/static/3b36ce2515ad080e15daeb4715a01de3/f5189/frontend-observability-opentelemetry-rum.png 768w,/static/3b36ce2515ad080e15daeb4715a01de3/4d776/frontend-observability-opentelemetry-rum.png 1536w" alt="thumbnail"/></picture><noscript><picture><source type="image/webp" srcSet="/static/3b36ce2515ad080e15daeb4715a01de3/b642b/frontend-observability-opentelemetry-rum.webp 384w,/static/3b36ce2515ad080e15daeb4715a01de3/c9564/frontend-observability-opentelemetry-rum.webp 768w,/static/3b36ce2515ad080e15daeb4715a01de3/18b4b/frontend-observability-opentelemetry-rum.webp 1536w" sizes="(min-width: 1536px) 1536px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 1536px) 1536px, 100vw" decoding="async" loading="lazy" src="/static/3b36ce2515ad080e15daeb4715a01de3/4d776/frontend-observability-opentelemetry-rum.png" srcSet="/static/3b36ce2515ad080e15daeb4715a01de3/4a410/frontend-observability-opentelemetry-rum.png 384w,/static/3b36ce2515ad080e15daeb4715a01de3/f5189/frontend-observability-opentelemetry-rum.png 768w,/static/3b36ce2515ad080e15daeb4715a01de3/4d776/frontend-observability-opentelemetry-rum.png 1536w" alt="thumbnail"/></picture></noscript><script type="module">const t="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;if(t){const t=document.querySelectorAll("img[data-main-image]");for(let e of t){e.dataset.src&&(e.setAttribute("src",e.dataset.src),e.removeAttribute("data-src")),e.dataset.srcset&&(e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset"));const t=e.parentNode.querySelectorAll("source[data-srcset]");for(let e of t)e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset");e.complete&&(e.style.opacity=1,e.parentNode.parentNode.querySelector("[data-placeholder-image]").style.opacity=0)}}</script></div><style data-emotion="css m1156n">.css-m1156n{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;width:768px;height:100%;margin:0 auto;padding:60px 0;color:#ffffff;}@media (max-width: 768px){.css-m1156n{width:100%;padding:40px 20px;}}</style><div class="css-m1156n e1st1jau4"><style data-emotion="css gywgo7">.css-gywgo7{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:#ffffff;color:#000000;font-size:22px;cursor:pointer;box-shadow:0 0 10px rgba(0, 0, 0, 0.3);}@media (max-width: 768px){.css-gywgo7{width:30px;height:30px;font-size:18px;}}</style><div class="css-gywgo7 e1st1jau3"><style data-emotion="css 1ij64l8">.css-1ij64l8{display:inline-block;width:12px;height:12px;border-left:2px solid #000000;border-bottom:2px solid #000000;-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg);-ms-transform:rotate(45deg);transform:rotate(45deg);}</style><span class="css-1ij64l8 e1st1jau2"></span></div><style data-emotion="css gn4qtp">.css-gn4qtp{display:-webkit-box;overflow:hidden;overflow-wrap:break-word;margin-top:auto;text-overflow:ellipsis;white-space:normal;-webkit-line-clamp:2;-webkit-box-orient:vertical;font-size:45px;font-weight:800;}@media (max-width: 768px){.css-gn4qtp{font-size:30px;}}</style><div class="css-gn4qtp e1st1jau1">👁️ 프론트엔드 관측성(Observability)과 OpenTelemetry + RUM 완벽 가이드</div><style data-emotion="css 3gcnt2">.css-3gcnt2{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;justify-content:space-between;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;margin-top:10px;font-size:18px;font-weight:700;}@media (max-width: 768px){.css-3gcnt2{-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-align-items:flex-start;-webkit-box-align:flex-start;-ms-flex-align:flex-start;align-items:flex-start;font-size:15px;font-weight:400;}}</style><div class="css-3gcnt2 e1st1jau0"><div>Web</div><div>2026.10.05.</div></div></div></div><style data-emotion="css 12g9cpd">.css-12g9cpd{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;width:768px;margin:0 auto;padding:200px 0 0 0;word-break:break-all;line-height:1.8;font-size:16px;font-weight:400;}.css-12g9cpd p{padding:3px 0;}.css-12g9cpd h1,.css-12g9cpd h2,.css-12g9cpd h3{font-weight:800;margin-bottom:30px;}.css-12g9cpd *+h1,.css-12g9cpd *+h2,.css-12g9cpd *+h3{margin-top:80px;}.css-12g9cpd hr+h1,.css-12g9cpd hr+h2,.css-12g9cpd hr+h3{margin-top:0;}.css-12g9cpd h1{font-size:30px;}.css-12g9cpd h2{font-size:25px;}.css-12g9cpd h3{font-size:20px;}.css-12g9cpd blockquote{margin:30px 0;padding:5px 15px;border-left:2px solid #000000;font-weight:800;}.css-12g9cpd ol,.css-12g9cpd ul{margin-left:20px;padding:30px 0;}.css-12g9cpd hr{border:1px solid #000000;margin:100px 0;}.css-12g9cpd a{color:#4263eb;-webkit-text-decoration:underline;text-decoration:underline;}.css-12g9cpd pre[class*='language-']{margin:30px 0;padding:15px;font-size:15px;}.css-12g9cpd pre[class*='language-']::-webkit-scrollbar-thumb{background:rgba(255, 255, 255, 0.5);border-radius:3px;}.css-12g9cpd code[class*='language-'],.css-12g9cpd pre[class*='language-']{tab-size:2;}@media (max-width: 768px){.css-12g9cpd{width:100%;padding:140px 20px 0 20px;line-height:1.6;font-size:14px;}.css-12g9cpd h1{font-size:23px;}.css-12g9cpd h2{font-size:20px;}.css-12g9cpd h3{font-size:17px;}.css-12g9cpd img{width:100%;}.css-12g9cpd hr{margin:50px 0;}}</style><div class="css-12g9cpd e1ijh0y10"><h1>👁️ 프론트엔드 관측성(Observability)과 OpenTelemetry + RUM 완벽 가이드</h1>
+<blockquote>
+<p>“내 브라우저에서는 잘 되는데요?” 개발자라면 누구나 한 번쯤 겪어봤을 답답함입니다.
+브라우저라는 사용자 측 블랙박스를 투명하게 들여다보고, 백엔드 서버의 분산 추적(Distributed Tracing) 체인과 완벽하게 연결하는 OpenTelemetry 기반 RUM(Real User Monitoring) 아키텍처를 파헤쳐 봅니다.</p>
+</blockquote>
+<hr>
+<h2>📌 목차</h2>
+<ol>
+<li>🧭 프론트엔드 관측성(Observability)의 등장 배경</li>
+<li>📊 RUM(Real User Monitoring)의 핵심 지표</li>
+<li>🌐 OpenTelemetry가 프론트엔드 표준이 된 이유</li>
+<li>🛠️ 브라우저용 OpenTelemetry 환경 구축하기</li>
+<li>🧩 Web Tracer Provider와 Instrumentation 설정</li>
+<li>🔄 W3C Trace Context와 백엔드 분산 추적 연동</li>
+<li>📉 다이어그램으로 보는 관측성 아키텍처</li>
+<li>⚖️ RUM 솔루션 비교 분석: Self-Hosted vs SaaS</li>
+<li>⚠️ 실무 함정과 안티패턴: 이것만은 피하자</li>
+<li>⛔ OpenTelemetry RUM을 도입하면 안 되는 경우</li>
+<li>🧾 정리 및 핵심 요약</li>
+<li>📚 참고 자료</li>
+</ol>
+<hr>
+<h2>🧭 1. 프론트엔드 관측성(Observability)의 등장 배경</h2>
+<p>서버 모니터링 시스템은 CPU 사용량, 메모리, API 응답 속도 등을 1초 단위로 감시합니다. 하지만 사용자가 실제로 겪는 화면 끊김 현상, 네트워크 지연, 특정 브라우저 환경의 오류는 서버 모니터링만으로 알 수 없습니다. 기존의 **모니터링(Monitoring)**은 “서버가 죽었는가?”와 같은 알려진 문제에 답하는 반면, **관측성(Observability)**은 “왜 특정 브라우저 환경에서 특정 국가의 사용자만 결제 속도가 비정상적으로 느린가?”와 같은 복잡하고 동적인 원인을 시스템 내부 메트릭을 조합해 찾아내는 개념입니다.</p>
+<p>과거의 웹 애플리케이션은 서버가 완성된 HTML을 내려주는 단순한 구조였습니다. 그러나 현대 프론트엔드는 Single Page Application(SPA)의 대중화, Server-Side Rendering(SSR) 및 ISR의 도입, 그리고 클라이언트 사이드에서의 복잡한 상태 관리와 비즈니스 로직 연산이 집중되면서 브라우저 자체가 하나의 거대한 분산 애플리케이션 레이어로 진화했습니다.</p>
+<p>이러한 환경에서 사용자 경험을 결정짓는 요인은 서버 응답 시간뿐만이 아닙니다. 다음과 같은 수많은 변수가 사용자 브라우저 안에서 동작합니다.</p>
+<ul>
+<li>모바일 기기의 CPU 스로틀링 및 메모리 한계</li>
+<li>저가형 기기에서의 무거운 자바스크립트 실행 지연(Long Tasks)</li>
+<li>국가별, 통신사별 네트워크 대역폭 및 Latency 편차</li>
+<li>브라우저 렌더링 엔진(Blink, WebKit, Gecko) 간의 미세한 동작 차이 및 CSS/JS 호환성 오류</li>
+<li>Next.js, React 등 프레임워크의 Hydration 과정에서 발생하는 불일치(Mismatch) 및 병목 현상</li>
+</ul>
+<p>클라이언트 측 에러나 지연은 백엔드 게이트웨이 서버의 APM(Application Performance Monitoring) 도구에 잡히지 않습니다. 서버의 에러율은 0%를 기록하고 있지만, 실제 고객은 브라우저 화면이 하얗게 멈추거나 버튼이 클릭되지 않는 치명적인 장애를 겪을 수 있습니다. 결국 사용자 브라우저라는 거대한 ‘블랙박스’ 내부의 상태를 실시간으로 추적하고 계측하는 기술이 서비스 신뢰성 확보의 최우선 과제가 되었습니다.</p>
+<hr>
+<h2>📊 2. RUM(Real User Monitoring)의 핵심 지표</h2>
+<p>RUM은 통제된 실험실 환경(Lighthouse 등)의 가상 측정이 아닌, 실제 서비스를 이용하는 실사용자의 메트릭을 원격으로 수집합니다. 통제된 환경은 네트워크 상태가 항상 균일하고 CPU 가용성이 높지만, 실사용자의 환경은 예측할 수 없을 정도로 열악합니다. RUM이 추적해야 하는 필수 지표는 다음과 같습니다.</p>
+<h3>Core Web Vitals (핵심 웹 바이탈)</h3>
+<p>Google이 정의한 사용자 경험의 핵심 척도로, 검색 엔진 최적화(SEO) 점수에도 강력한 영향을 미칩니다.</p>
+<ul>
+<li><strong>LCP (Largest Contentful Paint):</strong> 페이지 내에서 가장 큰 텍스트 블록이나 이미지 엘리먼트가 화면에 완전히 렌더링될 때까지의 시간입니다. 사용자에게 페이지 로딩이 사실상 완료되었다고 느끼게 만드는 시점을 의미합니다.</li>
+<li><strong>CLS (Cumulative Layout Shift):</strong> 페이지 로드 중에 예기치 않게 엘리먼트가 움직여 레이아웃이 밀리는 현상을 누적 점수로 계산한 지표입니다. 예컨대 텍스트를 읽고 있는 도중에 비동기로 로드된 배너 광고가 상단에 배치되면서 본문이 아래로 밀려 사용자가 엉뚱한 곳을 클릭하게 만드는 시각적 불안정성을 측정합니다.</li>
+<li><strong>INP (Interaction to Next Paint):</strong> 사용자가 페이지와 상호작용(마우스 클릭, 터치, 키보드 타이핑 등)을 한 뒤 브라우저가 다음 프레임을 그리기까지 걸리는 최대 지연 시간입니다. 2024년 3월을 기점으로 기존의 FID(First Input Delay)를 완전히 대체하였습니다. FID가 최초 1회성 동작의 ‘대기 시간’만을 측정했다면, INP는 사용자의 전체 세션 동안 발생하는 모든 상호작용의 ‘반응 속도’를 전체적으로 대변합니다.</li>
+</ul>
+<h4>Core Web Vitals 성적 기준표</h4>
+<table>
+<thead>
+<tr>
+<th align="left">지표</th>
+<th align="left">Good (우수)</th>
+<th align="left">Needs Improvement (개선 필요)</th>
+<th align="left">Poor (불량)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong>LCP</strong></td>
+<td align="left">2.5초 이하</td>
+<td align="left">2.5초 ~ 4.0초</td>
+<td align="left">4.0초 초과</td>
+</tr>
+<tr>
+<td align="left"><strong>CLS</strong></td>
+<td align="left">0.1 이하</td>
+<td align="left">0.1 ~ 0.25</td>
+<td align="left">0.25 초과</td>
+</tr>
+<tr>
+<td align="left"><strong>INP</strong></td>
+<td align="left">200ms 이하</td>
+<td align="left">200ms ~ 500ms</td>
+<td align="left">500ms 초과</td>
+</tr>
+</tbody>
+</table>
+<h3>Resource Timing (리소스 타이밍)</h3>
+<p>스타일시트(CSS), 자바스크립트(JS), 이미지 파일, 그리고 웹 애플리케이션이 호출하는 API 등 개별 네트워크 리소스의 로드 라이프사이클을 추적합니다. DNS lookup, TCP Connection, SSL/TLS handshake, TTFB(Time to First Byte), Content Download 단계를 세부적으로 쪼개어 어느 지점에서 병목이 발생했는지 식별합니다.</p>
+<h3>User Interaction Path (사용자 여정 및 세션 추적)</h3>
+<p>단순한 에러 로그 하나만으로는 버그를 재현하기 어렵습니다. 사용자가 에러를 마주하기 직전 어떤 페이지들을 거쳐 왔는지, 어떤 버튼을 클릭했는지, 네트워크 요청 결과는 무엇이었는지에 대한 세션 수명 주기 전체의 흐름을 인과 관계로 엮어서 파악해야 합니다.</p>
+<p>다음은 현대 브라우저가 기본 제공하는 <code class="language-text">PerformanceObserver</code> API를 활용하여 핵심 웹 바이탈(LCP, CLS)을 로우 레벨에서 직접 감지하고 모니터링하는 바닐라 자바스크립트 구현 코드 예시입니다. OpenTelemetry SDK 내부적으로도 이와 유사한 브라우저 API 호출을 추상화하여 구현되어 있습니다.</p>
+<div class="gatsby-highlight" data-language="typescript"><pre class="language-typescript"><code class="language-typescript"><span class="token comment">// PerformanceObserver를 이용한 LCP 및 CLS 직접 계측 예제</span>
+<span class="token keyword">let</span> cumulativeLayoutShiftScore <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+<span class="token keyword">try</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 1. CLS 계측용 옵저버 구성</span>
+  <span class="token keyword">const</span> clsObserver <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PerformanceObserver</span><span class="token punctuation">(</span><span class="token punctuation">(</span>entryList<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> entry <span class="token keyword">of</span> entryList<span class="token punctuation">.</span><span class="token function">getEntries</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">const</span> layoutShift <span class="token operator">=</span> entry <span class="token keyword">as</span> <span class="token builtin">any</span><span class="token punctuation">;</span>
+      <span class="token comment">// 사용자의 직접적인 입력 동작(클릭 등) 이후 500ms 이내에 발생한 레이아웃 변경은 제외</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>layoutShift<span class="token punctuation">.</span>hadRecentInput<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        cumulativeLayoutShiftScore <span class="token operator">+=</span> layoutShift<span class="token punctuation">.</span>value<span class="token punctuation">;</span>
+        <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">[CLS Update] Current Score: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>cumulativeLayoutShiftScore<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  clsObserver<span class="token punctuation">.</span><span class="token function">observe</span><span class="token punctuation">(</span><span class="token punctuation">{</span> type<span class="token operator">:</span> <span class="token string">'layout-shift'</span><span class="token punctuation">,</span> buffered<span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token comment">// 2. LCP 계측용 옵저버 구성</span>
+  <span class="token keyword">const</span> lcpObserver <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PerformanceObserver</span><span class="token punctuation">(</span><span class="token punctuation">(</span>entryList<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> entries <span class="token operator">=</span> entryList<span class="token punctuation">.</span><span class="token function">getEntries</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> lastEntry <span class="token operator">=</span> entries<span class="token punctuation">[</span>entries<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// 가장 마지막에 렌더링된 큰 엘리먼트가 최종 LCP</span>
+    <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">[LCP Metric] Render Time: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>lastEntry<span class="token punctuation">.</span>startTime<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">ms</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span> lastEntry<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  lcpObserver<span class="token punctuation">.</span><span class="token function">observe</span><span class="token punctuation">(</span><span class="token punctuation">{</span> type<span class="token operator">:</span> <span class="token string">'largest-contentful-paint'</span><span class="token punctuation">,</span> buffered<span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">warn</span><span class="token punctuation">(</span><span class="token string">'이 브라우저에서는 PerformanceObserver의 일부 메트릭 측정을 지원하지 않습니다.'</span><span class="token punctuation">,</span> e<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre></div>
+<hr>
+<h2>🌐 3. OpenTelemetry가 프론트엔드 표준이 된 이유</h2>
+<p>과거에는 Datadog, New Relic, Sentry, Dynatrace 등 특정 타사(SaaS) 벤더의 독자 SDK를 프론트엔드 코드에 심는 것이 모니터링 구축의 유일한 방법이었습니다. 그러나 이 접근법은 오랜 기간 심각한 단점들을 유발했습니다.</p>
+<ol>
+<li><strong>벤더 종속성(Vendor Lock-in):</strong> 특정 벤더의 모니터링 솔루션 가격이 급증하거나, 회사 규정상 데이터를 사내 인프라 내부로 격리해야 하는 요구사항이 생겨 타사 솔루션으로 마이그레이션하려 할 때, 프론트엔드 소스코드 전반에 걸쳐 퍼져 있는 벤더 전용 SDK 호출부(<code class="language-text">Sentry.captureException(...)</code>, <code class="language-text">datadogRum.addAction(...)</code> 등)를 전부 찾아서 수동으로 교체해야 합니다. 이는 막대한 리팩토링 비용과 검증 공수를 야기합니다.</li>
+<li><strong>분산 추적 맥락의 단절:</strong> 프론트엔드 브라우저에서 백엔드 API로 요청을 보낼 때, 브라우저 단에서 생성한 Trace ID를 HTTP 헤더를 통해 서버로 흘려보내야 전 과정을 하나의 트랜잭션으로 엮을 수 있습니다. 하지만 벤더마다 사용하는 헤더 포맷(<code class="language-text">x-datadog-trace-id</code>, <code class="language-text">x-dynatrace-test</code>, <code class="language-text">X-Amzn-Trace-Id</code> 등)이 상이하여 이종 시스템 간의 추적 체인을 동기화하기가 극도로 어렵고 복잡했습니다.</li>
+</ol>
+<p>**OpenTelemetry(OTel)**는 Cloud Native Computing Foundation(CNCF) 주도하에 전 세계의 다양한 모니터링 기업과 오픈소스 커뮤니티가 합의하여 제정한 <strong>업계 표준 텔레메트리 규격</strong>입니다. OpenTelemetry는 데이터를 “어떻게 수집하고 가공하여 전송할 것인가”에 대한 인터페이스(API 및 SDK)와 유선 프로토콜(OTLP - OpenTelemetry Protocol)만을 정의합니다.</p>
+<p>개발자는 소스코드 상에서 오직 OpenTelemetry 표준 라이브러리만을 사용하여 코드를 작성합니다. 수집된 트레이스나 메트릭 데이터를 실제로 받아서 시각화할 도구(Datadog, Grafana, Dynatrace, Honeycomb, Zipkin 등)는 애플리케이션 코드를 한 줄도 수정할 필요 없이, 외부 구성 파일(Exporter 주소 설정 등)의 엔드포인트 세팅을 변경하는 것만으로 자유롭게 스위칭할 수 있습니다.</p>
+<h3>독자 SDK vs OpenTelemetry 표준 비교</h3>
+<table>
+<thead>
+<tr>
+<th align="left">비교 관점</th>
+<th align="left">독자 벤더 전용 SDK (Sentry, Datadog 등)</th>
+<th align="left">OpenTelemetry 표준 SDK</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong>코드 이식성</strong></td>
+<td align="left">낮음 (도구 변경 시 소스코드 재작성 필수)</td>
+<td align="left">매우 높음 (코드 수정 없이 수집 대상 벤더 변경 가능)</td>
+</tr>
+<tr>
+<td align="left"><strong>라이선스</strong></td>
+<td align="left">독점 라이선스 (SaaS 서비스 종속)</td>
+<td align="left">오픈소스 (Apache License 2.0, CNCF 프로젝트)</td>
+</tr>
+<tr>
+<td align="left"><strong>헤더 호환성</strong></td>
+<td align="left">자체 규격 우선 사용 (상호 연동 작업 필요)</td>
+<td align="left">W3C Trace Context 표준 탑재로 이종 백엔드 자동 결합</td>
+</tr>
+<tr>
+<td align="left"><strong>커뮤니티 생태계</strong></td>
+<td align="left">개별 기업이 유지보수</td>
+<td align="left">수백 개의 글로벌 기업 및 커뮤니티가 공동 기여</td>
+</tr>
+<tr>
+<td align="left"><strong>오버헤드 제어</strong></td>
+<td align="left">제공자가 패키징한 기능 전체를 통째로 로드</td>
+<td align="left">필요한 플러그인(Instrumentation)만 골라서 경량 빌드 가능</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2>🛠️ 4. 브라우저용 OpenTelemetry 환경 구축하기</h2>
+<p>브라우저 환경에 OpenTelemetry 관측성을 심기 위해서는 브라우저 런타임 특성에 맞춘 Web SDK 모듈들을 설치해야 합니다. Node.js용 SDK와 브라우저용 SDK는 핵심 스펙은 공유하지만, 비동기 컨텍스트 추적 방식과 네트워크 데이터 전송 방식(Fetch/XHR vs gRPC/HTTP-proto)에서 큰 차이가 있습니다.</p>
+<p>다음 npm 패키지들을 설치하여 프론트엔드용 OpenTelemetry 기반 RUM 뼈대를 구축합니다.</p>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span> @opentelemetry/api <span class="token punctuation">\</span>
+            @opentelemetry/sdk-trace-web <span class="token punctuation">\</span>
+            @opentelemetry/exporter-trace-otlp-http <span class="token punctuation">\</span>
+            @opentelemetry/resources <span class="token punctuation">\</span>
+            @opentelemetry/semantic-conventions <span class="token punctuation">\</span>
+            @opentelemetry/instrumentation <span class="token punctuation">\</span>
+            @opentelemetry/instrumentation-fetch <span class="token punctuation">\</span>
+            @opentelemetry/instrumentation-xml-http-request <span class="token punctuation">\</span>
+            @opentelemetry/context-zone</code></pre></div>
+<h3>각 패키지의 핵심 역할 상세</h3>
+<ul>
+<li><code class="language-text">@opentelemetry/api</code>: 개발 코드 내에서 트레이스를 선언하고 스팬(Span)을 열고 닫는 등의 인터페이스를 제공하는 순수 API 패키지입니다. 실제 구현 로직은 담겨있지 않아 무척 가볍습니다.</li>
+<li><code class="language-text">@opentelemetry/sdk-trace-web</code>: 브라우저 환경에서 동작하는 트레이서 공급자(Tracer Provider)와 메모리 내 스팬 처리 프로세서 등 실질적인 동작 메커니즘을 관장하는 클라이언트 사이드 SDK 코어입니다.</li>
+<li><code class="language-text">@opentelemetry/exporter-trace-otlp-http</code>: 브라우저에서 획득한 트레이싱 원시 데이터를 HTTP/JSON 포맷(OTLP/HTTP)으로 인코딩하여 외부 수집 서버(OTel Collector 또는 모니터링 백엔드)에 전송하는 내장 익스포터입니다.</li>
+<li><code class="language-text">@opentelemetry/resources</code> &#x26; <code class="language-text">@opentelemetry/semantic-conventions</code>: 수집된 원격 데이터에 범용적인 메타데이터 속성(예: 서비스명, 애플리케이션 버전, 현재 호스트 환경, 브라우저 유형, OS 버전 등)을 업계 표준화된 약속 단어(Semantic Conventions) 형태로 태깅하는 데 사용됩니다.</li>
+<li><code class="language-text">@opentelemetry/context-zone</code>: 싱글 스레드 기반 브라우저 환경에서 비동기 콜백(Promise, setTimeout, Event Listener 등)의 경계를 넘어 트레이스 컨텍스트(Context)가 유실되지 않도록 Zone.js 개념을 활용해 맥락을 유지시켜 주는 고마운 모듈입니다.</li>
+</ul>
+<hr>
+<h2>🧩 5. Web Tracer Provider와 Instrumentation 설정</h2>
+<p>이제 웹 애플리케이션의 엔트리 포인트(예: Next.js의 <code class="language-text">_app.tsx</code> 혹은 일반 SPA의 <code class="language-text">main.ts</code>, <code class="language-text">index.js</code> 최상단)에 탑재할 핵심 초기화 스크립트를 작성해 보겠습니다. 브라우저가 네트워크 요청을 개시하거나 렌더링을 시작하기 전에 이 초기화가 완벽히 이루어져야 유실 없는 트레이싱이 보장됩니다.</p>
+<div class="gatsby-highlight" data-language="typescript"><pre class="language-typescript"><code class="language-typescript"><span class="token keyword">import</span> <span class="token punctuation">{</span> WebTracerProvider <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@opentelemetry/sdk-trace-web'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> BatchSpanProcessor <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@opentelemetry/sdk-trace-web'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> OTLPTraceExporter <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@opentelemetry/exporter-trace-otlp-http'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> Resource <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@opentelemetry/resources'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> <span class="token constant">ATTR_SERVICE_NAME</span><span class="token punctuation">,</span> <span class="token constant">ATTR_SERVICE_VERSION</span><span class="token punctuation">,</span> <span class="token constant">ATTR_DEPLOYMENT_ENVIRONMENT</span> <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@opentelemetry/semantic-conventions'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> registerInstrumentations <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@opentelemetry/instrumentation'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> FetchInstrumentation <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@opentelemetry/instrumentation-fetch'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> XMLHttpRequestInstrumentation <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@opentelemetry/instrumentation-xml-http-request'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> ZoneContextManager <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@opentelemetry/context-zone'</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 1. 애플리케이션의 고유 식별 정보 및 메타데이터 정의 (Resource 설정)</span>
+<span class="token keyword">const</span> appResource <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Resource</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token punctuation">[</span><span class="token constant">ATTR_SERVICE_NAME</span><span class="token punctuation">]</span><span class="token operator">:</span> <span class="token string">'e-commerce-frontend'</span><span class="token punctuation">,</span>
+  <span class="token punctuation">[</span><span class="token constant">ATTR_SERVICE_VERSION</span><span class="token punctuation">]</span><span class="token operator">:</span> <span class="token string">'1.4.2'</span><span class="token punctuation">,</span>
+  <span class="token punctuation">[</span><span class="token constant">ATTR_DEPLOYMENT_ENVIRONMENT</span><span class="token punctuation">]</span><span class="token operator">:</span> <span class="token string">'production'</span><span class="token punctuation">,</span>
+  <span class="token string-property property">'client.os.name'</span><span class="token operator">:</span> navigator<span class="token punctuation">.</span>platform<span class="token punctuation">,</span>
+  <span class="token string-property property">'client.user_agent'</span><span class="token operator">:</span> navigator<span class="token punctuation">.</span>userAgent<span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 2. OTLP 익스포터 구성 (Collector의 CORS 및 주소 설정 준수)</span>
+<span class="token keyword">const</span> traceExporter <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">OTLPTraceExporter</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  url<span class="token operator">:</span> <span class="token string">'https://telemetry-api.mycompany.com/v1/traces'</span><span class="token punctuation">,</span>
+  headers<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string-property property">'X-Client-App-Key'</span><span class="token operator">:</span> <span class="token string">'frontend-prod-token-93012'</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 3. 브라우저 최적화용 Batch Span Processor 결합</span>
+<span class="token comment">// 사용자 인터랙션을 방해하지 않도록 메모리에 스팬을 쌓았다가 비동기로 묶어서 보냅니다.</span>
+<span class="token keyword">const</span> spanProcessor <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BatchSpanProcessor</span><span class="token punctuation">(</span>traceExporter<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+  maxQueueSize<span class="token operator">:</span> <span class="token number">1000</span><span class="token punctuation">,</span>           <span class="token comment">// 최대 대기 스팬 버퍼 크기</span>
+  maxExportBatchSize<span class="token operator">:</span> <span class="token number">100</span><span class="token punctuation">,</span>      <span class="token comment">// 한 번에 내보낼 최대 스팬 개수</span>
+  scheduledDelayMillis<span class="token operator">:</span> <span class="token number">5000</span><span class="token punctuation">,</span>   <span class="token comment">// 데이터 전송 주기 (5초)</span>
+  exportTimeoutMillis<span class="token operator">:</span> <span class="token number">30000</span><span class="token punctuation">,</span>   <span class="token comment">// 전송 타임아웃</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> provider <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">WebTracerProvider</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  resource<span class="token operator">:</span> appResource<span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+provider<span class="token punctuation">.</span><span class="token function">addSpanProcessor</span><span class="token punctuation">(</span>spanProcessor<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 4. 비동기 Context 관리를 위해 ZoneContextManager를 장착하여 등록</span>
+provider<span class="token punctuation">.</span><span class="token function">register</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  contextManager<span class="token operator">:</span> <span class="token keyword">new</span> <span class="token class-name">ZoneContextManager</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 5. 자동 계측(Auto-Instrumentation) 대상 라이브러리 및 CORS 타깃 등록</span>
+<span class="token function">registerInstrumentations</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  instrumentations<span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token keyword">new</span> <span class="token class-name">FetchInstrumentation</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      <span class="token comment">// 지정한 API 도메인 패턴에 한해서만 Trace 헤더(traceparent)를 삽입하도록 제한 (CORS 오버헤드 및 보안 방지)</span>
+      propagateTraceHeaderCorsUrls<span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">api\.mycompany\.com</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
+        <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">internal-gateway\.local</span><span class="token regex-delimiter">/</span></span>
+      <span class="token punctuation">]</span><span class="token punctuation">,</span>
+      <span class="token comment">// 특정 정적 에셋 호출이나 헬스체크 URL은 계측에서 누락시켜 불필요한 비용 발생 차단</span>
+      ignoreUrls<span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\/assets\/</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
+        <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">favicon\.ico</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
+        <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">healthcheck</span><span class="token regex-delimiter">/</span></span>
+      <span class="token punctuation">]</span><span class="token punctuation">,</span>
+      <span class="token comment">// 커스텀 로직을 통해 필요시 스팬에 추가 데이터를 심는 훅 구성</span>
+      <span class="token function-variable function">applyCustomAttributesOnSpan</span><span class="token operator">:</span> <span class="token punctuation">(</span>span<span class="token punctuation">,</span> request<span class="token punctuation">,</span> response<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+        span<span class="token punctuation">.</span><span class="token function">setAttribute</span><span class="token punctuation">(</span><span class="token string">'http.request.method'</span><span class="token punctuation">,</span> request<span class="token punctuation">.</span>method<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>response<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          span<span class="token punctuation">.</span><span class="token function">setAttribute</span><span class="token punctuation">(</span><span class="token string">'http.response.content_length'</span><span class="token punctuation">,</span> response<span class="token punctuation">.</span>headers<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'content-length'</span><span class="token punctuation">)</span> <span class="token operator">||</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token keyword">new</span> <span class="token class-name">XMLHttpRequestInstrumentation</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      propagateTraceHeaderCorsUrls<span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">api\.mycompany\.com</span><span class="token regex-delimiter">/</span></span>
+      <span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'✅ OpenTelemetry RUM Web SDK가 완벽하게 활성화되었습니다.'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<h3>수동 계측(Manual Instrumentation) 실무 예제</h3>
+<p>자동 계측 패키지가 잡아내지 못하는 비즈니스 도메인 수준의 특정 동작(예: 장바구니 담기 버튼 처리 시간, 이미지 드래그 앤 드롭 업로드 시간 등)은 다음과 같이 직접 스팬을 시작하고 종료하여 정밀 타격하듯 정량화할 수 있습니다.</p>
+<div class="gatsby-highlight" data-language="typescript"><pre class="language-typescript"><code class="language-typescript"><span class="token keyword">import</span> <span class="token punctuation">{</span> trace<span class="token punctuation">,</span> SpanStatusCode <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@opentelemetry/api'</span><span class="token punctuation">;</span>
+
+<span class="token comment">/**
+ * 사용자의 상품 구매 요청 트랜잭션을 수동으로 계측하는 함수
+ */</span>
+<span class="token keyword">export</span> <span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">measureCheckoutTransaction</span><span class="token punctuation">(</span>productId<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">,</span> price<span class="token operator">:</span> <span class="token builtin">number</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 전역 등록된 Tracer 가져오기</span>
+  <span class="token keyword">const</span> tracer <span class="token operator">=</span> trace<span class="token punctuation">.</span><span class="token function">getTracer</span><span class="token punctuation">(</span><span class="token string">'user-action-tracer'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  
+  <span class="token comment">// 새 스팬 생성 및 실행 시작</span>
+  <span class="token keyword">const</span> checkoutSpan <span class="token operator">=</span> tracer<span class="token punctuation">.</span><span class="token function">startSpan</span><span class="token punctuation">(</span><span class="token string">'user_checkout_click'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    attributes<span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token string-property property">'ecommerce.product_id'</span><span class="token operator">:</span> productId<span class="token punctuation">,</span>
+      <span class="token string-property property">'ecommerce.price'</span><span class="token operator">:</span> price<span class="token punctuation">,</span>
+      <span class="token string-property property">'ecommerce.currency'</span><span class="token operator">:</span> <span class="token string">'KRW'</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">try</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 임의의 비즈니스 비동기 로직 시뮬레이션</span>
+    <span class="token keyword">const</span> response <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">fetch</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">https://api.mycompany.com/checkout</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+      method<span class="token operator">:</span> <span class="token string">'POST'</span><span class="token punctuation">,</span>
+      body<span class="token operator">:</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span><span class="token punctuation">{</span> productId<span class="token punctuation">,</span> price <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+      headers<span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token string-property property">'Content-Type'</span><span class="token operator">:</span> <span class="token string">'application/json'</span> <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>response<span class="token punctuation">.</span>ok<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Checkout Server Error: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>response<span class="token punctuation">.</span>statusText<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">const</span> data <span class="token operator">=</span> <span class="token keyword">await</span> response<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    
+    <span class="token comment">// 정상 종료 시 메타데이터 기록</span>
+    checkoutSpan<span class="token punctuation">.</span><span class="token function">setAttribute</span><span class="token punctuation">(</span><span class="token string">'ecommerce.order_id'</span><span class="token punctuation">,</span> data<span class="token punctuation">.</span>orderId<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    checkoutSpan<span class="token punctuation">.</span><span class="token function">setStatus</span><span class="token punctuation">(</span><span class="token punctuation">{</span> code<span class="token operator">:</span> SpanStatusCode<span class="token punctuation">.</span><span class="token constant">OK</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    
+  <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>error<span class="token operator">:</span> <span class="token builtin">any</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 예외 발생 시 에러 메트릭화</span>
+    checkoutSpan<span class="token punctuation">.</span><span class="token function">setStatus</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      code<span class="token operator">:</span> SpanStatusCode<span class="token punctuation">.</span><span class="token constant">ERROR</span><span class="token punctuation">,</span>
+      message<span class="token operator">:</span> error<span class="token punctuation">.</span>message
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    checkoutSpan<span class="token punctuation">.</span><span class="token function">recordException</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    
+    <span class="token keyword">throw</span> error<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> <span class="token keyword">finally</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 스팬의 수명 주기를 확실하게 닫아 타임스탬프 고정</span>
+    checkoutSpan<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div>
+<hr>
+<h2>🔄 6. W3C Trace Context와 백엔드 분산 추적 연동</h2>
+<p>프론트엔드 관측성의 진정한 꽃은 <strong>백엔드 분산 추적과의 연동</strong>입니다. 브라우저에서 API를 호출할 때 W3C 표준 HTTP 헤더인 <code class="language-text">traceparent</code>를 실어 보내면, 백엔드 서버(Spring Boot, Node.js, Go 등)가 이를 해석하여 프론트엔드의 사용자 액션부터 백엔드 DB 쿼리까지 하나의 단일 Trace ID로 연결합니다.</p>
+<h3>W3C <code class="language-text">traceparent</code> 헤더 스펙 구조</h3>
+<p><code class="language-text">traceparent</code> 헤더는 하이픈으로 구분된 4가지 영역의 16진수 문자열로 조합됩니다.</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">traceparent: 00-4bf92f3577b34da6a3ce929d0e0e4736-00f067aa0ba902b7-01
+            |  |                                |                |
+          버전  Trace ID                         Parent Span ID   Trace Flag</code></pre></div>
+<ul>
+<li><strong>Version (2자):</strong> 현재 표준 포맷 버전을 표기합니다. (기본값 <code class="language-text">00</code>)</li>
+<li><strong>Trace ID (32자):</strong> 전체 분산 서비스 연쇄 과정에서 공유되는 유일무이한 전체 트랜잭션 식별 ID입니다.</li>
+<li><strong>Parent Span ID (16자):</strong> 이 요청을 보낸 직접적 부모 호출부의 Span 식별 ID입니다. (프론트엔드의 fetch 스팬 ID가 백엔드의 첫 번째 엔트리 스팬의 부모 ID가 됩니다.)</li>
+<li><strong>Trace Flags (2자):</strong> 샘플링 여부 등을 제어하는 8비트 비트맵 값입니다. <code class="language-text">01</code>은 데이터를 실제로 기록(Sampled)하라는 플래그입니다.</li>
+</ul>
+<h3>백엔드 수신측 구현 예시 (Node.js Express 및 OTel API 활용)</h3>
+<p>다음은 프론트엔드에서 보낸 <code class="language-text">traceparent</code> 컨텍스트를 받아 백엔드 트레이싱 체인에 매끄럽게 승계하는 과정을 시연한 백엔드 예시 코드입니다.</p>
+<div class="gatsby-highlight" data-language="typescript"><pre class="language-typescript"><code class="language-typescript"><span class="token keyword">import</span> express <span class="token keyword">from</span> <span class="token string">'express'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> trace<span class="token punctuation">,</span> context<span class="token punctuation">,</span> propagation<span class="token punctuation">,</span> SpanStatusCode <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@opentelemetry/api'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token function">express</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>express<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+app<span class="token punctuation">.</span><span class="token function">post</span><span class="token punctuation">(</span><span class="token string">'/checkout'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>req<span class="token punctuation">,</span> res<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token comment">// 1. HTTP 헤더에서 프론트엔드가 실어 보낸 traceparent 추출 및 복원</span>
+  <span class="token keyword">const</span> parentContext <span class="token operator">=</span> propagation<span class="token punctuation">.</span><span class="token function">extract</span><span class="token punctuation">(</span>context<span class="token punctuation">.</span><span class="token function">active</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> req<span class="token punctuation">.</span>headers<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  
+  <span class="token keyword">const</span> tracer <span class="token operator">=</span> trace<span class="token punctuation">.</span><span class="token function">getTracer</span><span class="token punctuation">(</span><span class="token string">'backend-order-tracer'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token comment">// 2. 복원된 parentContext를 부모로 삼아 하위 Span 생성 및 실행</span>
+  context<span class="token punctuation">.</span><span class="token function">with</span><span class="token punctuation">(</span>parentContext<span class="token punctuation">,</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> backendSpan <span class="token operator">=</span> tracer<span class="token punctuation">.</span><span class="token function">startSpan</span><span class="token punctuation">(</span><span class="token string">'process_payment_server_side'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    
+    <span class="token keyword">try</span> <span class="token punctuation">{</span>
+      <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">[Distributed Tracing Linked] Active Trace ID: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>backendSpan<span class="token punctuation">.</span><span class="token function">spanContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>traceId<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      
+      <span class="token comment">// 가상의 DB 트랜잭션 및 PG사 연동 로직 수행</span>
+      <span class="token keyword">await</span> <span class="token function">executeDatabaseQuery</span><span class="token punctuation">(</span><span class="token string">'UPDATE inventory SET stock = stock - 1 WHERE id = ?'</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>req<span class="token punctuation">.</span>body<span class="token punctuation">.</span>productId<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      
+      backendSpan<span class="token punctuation">.</span><span class="token function">setStatus</span><span class="token punctuation">(</span><span class="token punctuation">{</span> code<span class="token operator">:</span> SpanStatusCode<span class="token punctuation">.</span><span class="token constant">OK</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      res<span class="token punctuation">.</span><span class="token function">status</span><span class="token punctuation">(</span><span class="token number">200</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">{</span> orderId<span class="token operator">:</span> <span class="token string">'ORD-98231-XYZ'</span><span class="token punctuation">,</span> success<span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>err<span class="token operator">:</span> <span class="token builtin">any</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      backendSpan<span class="token punctuation">.</span><span class="token function">setStatus</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        code<span class="token operator">:</span> SpanStatusCode<span class="token punctuation">.</span><span class="token constant">ERROR</span><span class="token punctuation">,</span>
+        message<span class="token operator">:</span> err<span class="token punctuation">.</span>message
+      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      backendSpan<span class="token punctuation">.</span><span class="token function">recordException</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      res<span class="token punctuation">.</span><span class="token function">status</span><span class="token punctuation">(</span><span class="token number">500</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">{</span> error<span class="token operator">:</span> <span class="token string">'Internal Server Error'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">finally</span> <span class="token punctuation">{</span>
+      backendSpan<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">executeDatabaseQuery</span><span class="token punctuation">(</span>query<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">,</span> params<span class="token operator">:</span> <span class="token builtin">any</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 실제 DB 질의 로직이 동작하는 척하는 지연 시뮬레이션</span>
+  <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name"><span class="token builtin">Promise</span></span><span class="token punctuation">(</span>resolve <span class="token operator">=></span> <span class="token function">setTimeout</span><span class="token punctuation">(</span>resolve<span class="token punctuation">,</span> <span class="token number">80</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>이와 같은 유기적 연계를 실현하면, 운영 관리자는 모니터링 시스템에서 특정 “결제 API 오류 Trace”를 조회했을 때, **[클라이언트 브라우저의 마우스 클릭] ➡️ [프론트엔드 fetch 호출] ➡️ [서버 게이트웨이 유입] ➡️ [내부 DB 트랜잭션 실행]**까지 전체 타임라인과 누적 병목 시간을 일목요연한 트리 시각화 구조로 감상할 수 있게 됩니다.</p>
+<hr>
+<h2>📉 7. 다이어그램으로 보는 관측성 아키텍처</h2>
+<p>기존 모니터링 방식의 투박함을 극복하고 브라우저에서 발생한 텔레메트리 데이터가 수집 장치로 가공·전파되는 단계를 비교식과 흐름식 도표로 구조화하였습니다.</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 768px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/8dbe5026c91f99ab08ad0d020268b2d4/bbbf7/frontend-observability-opentelemetry-rum-1.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 50%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAIAAAA7N+mxAAAACXBIWXMAAAsTAAALEwEAmpwYAAABz0lEQVR42l2QyY7UMBiE89BIvAIDJx4A6BsnLgjBAYEEAyOBphEwk96yO7GdOHa8J+5sTbpPQB3qVN9fv8o7XTTPZ6+53iWoqJoM1jVXiDSHGKKKoZJBTEFBlLanv+TN09RLOSg9SlmFSfhrg8I0CzOcFgTXUVHuIbwD6e8s+RGFB4zqVhIreWfGefJGY1phXD8piNV236bAZvlwHI7WjUqLvhNdt6nhlsIdRT4p7qs85VR0TjjjTdbyRgHMdjHyI7hN0D5FAShLwidjFxjVPCvIIYL+HmyDPEgwxIxKI4/tGRaNqpjKINmFuX8AQYoR4XUt5gtcNhITHiRoE+aHBKaQECaptPJoL81MllQASJbELi6SvFxGIoQvsOwdohxWLALlPi6CZQpIlnB9br7AguvGOtToFNMY1oAIZhxr1KzPzYRrKduSLNcpxA1lWqmOqUvzqJTrenq/DR9d5c9X+YtV/PgJevO2c+MoJHWm7ceXd9cPP66efn999fXVg/fPvuVB109Np715GHqlO4TFzY1cr8XtLfn0mfsbzbhThreWKLmG0btg/QVsroH/IfmZCiI6exwH7/SvxmmWbhDWMaGFsnxxaVrj3PLANP0X/gOFOCNZTnCUvwAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <picture>
+          <source
+              srcset="/static/8dbe5026c91f99ab08ad0d020268b2d4/a59e9/frontend-observability-opentelemetry-rum-1.webp 192w,
+/static/8dbe5026c91f99ab08ad0d020268b2d4/0ca9f/frontend-observability-opentelemetry-rum-1.webp 384w,
+/static/8dbe5026c91f99ab08ad0d020268b2d4/dc9b9/frontend-observability-opentelemetry-rum-1.webp 768w,
+/static/8dbe5026c91f99ab08ad0d020268b2d4/e2c2f/frontend-observability-opentelemetry-rum-1.webp 1152w,
+/static/8dbe5026c91f99ab08ad0d020268b2d4/94b1e/frontend-observability-opentelemetry-rum-1.webp 1280w"
+              sizes="(max-width: 768px) 100vw, 768px"
+              type="image/webp"
+            />
+          <source
+            srcset="/static/8dbe5026c91f99ab08ad0d020268b2d4/3b721/frontend-observability-opentelemetry-rum-1.png 192w,
+/static/8dbe5026c91f99ab08ad0d020268b2d4/66595/frontend-observability-opentelemetry-rum-1.png 384w,
+/static/8dbe5026c91f99ab08ad0d020268b2d4/fe486/frontend-observability-opentelemetry-rum-1.png 768w,
+/static/8dbe5026c91f99ab08ad0d020268b2d4/d2d74/frontend-observability-opentelemetry-rum-1.png 1152w,
+/static/8dbe5026c91f99ab08ad0d020268b2d4/bbbf7/frontend-observability-opentelemetry-rum-1.png 1280w"
+            sizes="(max-width: 768px) 100vw, 768px"
+            type="image/png"
+          />
+          <img
+            class="gatsby-resp-image-image"
+            src="/static/8dbe5026c91f99ab08ad0d020268b2d4/fe486/frontend-observability-opentelemetry-rum-1.png"
+            alt="에러 로깅과 관측성의 데이터 차이를 설명하는 도표"
+            title=""
+            loading="lazy"
+            decoding="async"
+            style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+          />
+        </picture>
+  </a>
+    </span></p>
+<p>첫 번째 다이어그램은 프론트엔드와 백엔드가 고립되어 각각 파편화된 로그만 쌓던 기존 모니터링 체계와 달리, OpenTelemetry 표준 컨텍스트 전파 메커니즘을 적용하여 양 끝단의 계측 영역을 하나의 단일 Trace ID 사슬로 관통하는 통합 가시성 아키텍처의 차이를 대비해 보여줍니다.</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 768px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/c5d9d543f2bf545ced04d393d84959b6/bbbf7/frontend-observability-opentelemetry-rum-2.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 50%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAIAAAA7N+mxAAAACXBIWXMAAAsTAAALEwEAmpwYAAABQElEQVR42pVR2W7CMBDM//8OqugHVKoEqipoC1JTaC7iI3Z8JIFA4qQTQiVAfelqPF7bMyvt2uuvwrmOSz1CKiuUJTzfURGTDEmYsLZ113rvzhylWcolDCmTTCgwADPL1HdMm6a9McPQoGAHdmPhrutGPsflCBkYgkHsLuwpW20iulgHfkhFbtaheJjH01k4mUVvW8GF2kTs3Y8/A0IzxaTZJnz1lWxjrkzpSV1kqkwzI81eSP28Siev8nEhp0v99EHilOX2QPCqqyBhZLDUO655XuS68ExR0QzjKZm02pQxt3NfLgPzslEBtVDgXuqSQKOL3AwyJgwVRtvKG7pt2hHoAx06h73tgCHvTr+vyLEGWTswpDfT/m/cm1HvUB/r4wnYn5NDjfyIy7tP/sMMBaZgyz2ArsA4Fmc+3X5y3/c/sXo8yUtRm6cAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <picture>
+          <source
+              srcset="/static/c5d9d543f2bf545ced04d393d84959b6/a59e9/frontend-observability-opentelemetry-rum-2.webp 192w,
+/static/c5d9d543f2bf545ced04d393d84959b6/0ca9f/frontend-observability-opentelemetry-rum-2.webp 384w,
+/static/c5d9d543f2bf545ced04d393d84959b6/dc9b9/frontend-observability-opentelemetry-rum-2.webp 768w,
+/static/c5d9d543f2bf545ced04d393d84959b6/e2c2f/frontend-observability-opentelemetry-rum-2.webp 1152w,
+/static/c5d9d543f2bf545ced04d393d84959b6/94b1e/frontend-observability-opentelemetry-rum-2.webp 1280w"
+              sizes="(max-width: 768px) 100vw, 768px"
+              type="image/webp"
+            />
+          <source
+            srcset="/static/c5d9d543f2bf545ced04d393d84959b6/3b721/frontend-observability-opentelemetry-rum-2.png 192w,
+/static/c5d9d543f2bf545ced04d393d84959b6/66595/frontend-observability-opentelemetry-rum-2.png 384w,
+/static/c5d9d543f2bf545ced04d393d84959b6/fe486/frontend-observability-opentelemetry-rum-2.png 768w,
+/static/c5d9d543f2bf545ced04d393d84959b6/d2d74/frontend-observability-opentelemetry-rum-2.png 1152w,
+/static/c5d9d543f2bf545ced04d393d84959b6/bbbf7/frontend-observability-opentelemetry-rum-2.png 1280w"
+            sizes="(max-width: 768px) 100vw, 768px"
+            type="image/png"
+          />
+          <img
+            class="gatsby-resp-image-image"
+            src="/static/c5d9d543f2bf545ced04d393d84959b6/fe486/frontend-observability-opentelemetry-rum-2.png"
+            alt="브라우저 이벤트를 가공하여 OTLP를 통해 수집기로 전송하는 파이프라인"
+            title=""
+            loading="lazy"
+            decoding="async"
+            style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+          />
+        </picture>
+  </a>
+    </span></p>
+<p>두 번째 다이어그램은 실사용자의 브라우저 내에서 발생하는 다양한 성능 이벤트(Core Web Vitals, API 호출 에러, 수동 이벤트)들이 OpenTelemetry Web JS SDK의 자동 계측 모듈과 수동 익스포터 파이프라인을 거쳐 메모리 내 배치 처리(Batch Processor)된 후, 최종적으로 중앙 집중형 OpenTelemetry Collector 및 SaaS/Self-Hosted 데이터 저장소로 격리 수집되는 전체 데이터 흐름도(Data Flow Pipeline)를 가시적으로 요약합니다.</p>
+<hr>
+<h2>⚖️ 8. RUM 솔루션 비교 분석: Self-Hosted vs SaaS</h2>
+<p>프론트엔드 수집 환경을 구현할 때 상용 SaaS를 사용할지, 오픈소스를 활용한 오픈스택을 직접 호스팅할지 장단점을 비교하여 결정해야 합니다.</p>
+<table>
+<thead>
+<tr>
+<th align="left">비교 항목</th>
+<th align="left">Self-Hosted (Grafana Faro + OTel Collector)</th>
+<th align="left">Commercial SaaS (Datadog / New Relic)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong>비용 청구 모델</strong></td>
+<td align="left">트래픽 증가에 따른 자체 데이터베이스(Tempo, Loki 등) 및 인프라 서버 유지 비용 발생 (트래픽당 추가 과금 없음)</td>
+<td align="left">활성 세션 유저 수(Active Sessions), 수집된 데이터 기가바이트(GB) 용량 단위로 정량 과금 (트래픽 폭증 시 청구서 폭탄 위험)</td>
+</tr>
+<tr>
+<td align="left"><strong>인프라 구축 공수</strong></td>
+<td align="left">수집 파이프라인(Collector), 버퍼링 큐(Kafka 등), 저장소 관리 및 패치 작업을 자체 엔지니어가 전담해야 함</td>
+<td align="left">라이브러리 설치와 API 키 발급만으로 즉시 동작하며 인프라 유지 관리가 전혀 필요 없음</td>
+</tr>
+<tr>
+<td align="left"><strong>데이터 규정 준수 (Compliance)</strong></td>
+<td align="left">금융, 의료 등 고객 개인정보나 결제 정보 민감도가 높은 산업에서 사내 격리망 내부로 데이터를 가둘 수 있어 완벽한 규정 통제 가능</td>
+<td align="left">외부 제3자(SaaS 벤더)의 미국/유럽 서버로 실사용자 기기 정보 및 IP, 일부 입력 값이 전송되므로 철저한 마스킹 필수</td>
+</tr>
+<tr>
+<td align="left"><strong>기능 성숙도</strong></td>
+<td align="left">대시보드와 얼럿 구성을 수동으로 바닥부터 디자인해야 하며 세션 리플레이(녹화) 연동 구성이 상대적으로 다소 복잡함</td>
+<td align="left">세션 비디오 리플레이, 기기 사양별 에러 군집화 알고리즘, 머신러닝 기반 이상 징후 감지 대시보드가 처음부터 완성형으로 제공됨</td>
+</tr>
+<tr>
+<td align="left"><strong>학습 곡선</strong></td>
+<td align="left">OpenTelemetry 명세 사양과 Collector 파이프라인 YAML 설정값에 대한 깊이 있는 기술적 이해도를 요구함</td>
+<td align="left">풍부한 자사 튜토리얼 문서와 자동 주입 스크립트를 제공하므로 입문 개발자도 반나절 만에 통합 완수 가능</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2>⚠️ 9. 실무 함정과 안티패턴: 이것만은 피하자</h2>
+<h3>1. 성능을 측정하려다 실제 성능을 깎아먹는 모순</h3>
+<p>가장 빈번하게 발생하는 안티패턴은 매번 스팬이 종결될 때마다 동기식으로 콜렉터 서버에 API 요청을 쏘는 <code class="language-text">SimpleSpanProcessor</code>를 사용하는 것입니다. 이는 사용자 브라우저의 네트워크 소켓 자원을 지속적으로 잠식하며 메인 스레드에 가외 오버헤드를 안깁니다.</p>
+<ul>
+<li><strong>해결책:</strong> 반드시 **<code class="language-text">BatchSpanProcessor</code>**를 채택하고, 브라우저가 종료되거나 백그라운드로 넘어갈 때 큐에 남은 잔여 데이터를 전송할 수 있도록 브라우저 네이티브 API인 <code class="language-text">navigator.sendBeacon</code> 메커니즘을 지원하는 HTTP Exporter 조합을 채택해야 합니다.</li>
+</ul>
+<h3>2. 무분별한 PII (개인식별정보) 노출 참사</h3>
+<p>자동 계측(Fetch, XHR)을 사용하면 API 요청 URL에 포함된 사용자의 이메일 주소, 토큰, 전화번호, UUID 등의 민감한 개인 식별 데이터가 아무런 제어 없이 사외 외부 수집 도구로 전송될 수 있습니다. 이는 GDPR, CCPA 및 국내 개인정보보호법에 심각하게 위배되는 보안 위협 요소입니다.</p>
+<ul>
+<li><strong>해결책:</strong> 수집된 스팬이 익스포터 단계로 밀려 나가기 전에 데이터를 탈탈 털어 마스킹하는 커스텀 <code class="language-text">SpanProcessor</code>를 반드시 중간에 가로채기 필터 형태로 배치해야 합니다.</li>
+</ul>
+<p>다음은 스팬 속성 중 URL이나 헤더 내의 민감 정보를 가려주는 보안 필터 프로세서 구현 예제입니다.</p>
+<div class="gatsby-highlight" data-language="typescript"><pre class="language-typescript"><code class="language-typescript"><span class="token keyword">import</span> <span class="token punctuation">{</span> SpanProcessor<span class="token punctuation">,</span> ReadableSpan<span class="token punctuation">,</span> Span <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@opentelemetry/sdk-trace-web'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">class</span> <span class="token class-name">PiiSanitizerSpanProcessor</span> <span class="token keyword">implements</span> <span class="token class-name">SpanProcessor</span> <span class="token punctuation">{</span>
+  <span class="token function">forceFlush</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">Promise</span><span class="token operator">&lt;</span><span class="token keyword">void</span><span class="token operator">></span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token builtin">Promise</span><span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">onStart</span><span class="token punctuation">(</span>span<span class="token operator">:</span> Span<span class="token punctuation">)</span><span class="token operator">:</span> <span class="token keyword">void</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 스팬 시작 시에는 아무 작업도 하지 않음</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">onEnd</span><span class="token punctuation">(</span>span<span class="token operator">:</span> ReadableSpan<span class="token punctuation">)</span><span class="token operator">:</span> <span class="token keyword">void</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> attributes <span class="token operator">=</span> span<span class="token punctuation">.</span>attributes<span class="token punctuation">;</span>
+    
+    <span class="token comment">// 1. HTTP URL 내 민감 패턴 검출 및 마스킹</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>attributes<span class="token punctuation">[</span><span class="token string">'http.url'</span><span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> <span class="token keyword">typeof</span> attributes<span class="token punctuation">[</span><span class="token string">'http.url'</span><span class="token punctuation">]</span> <span class="token operator">===</span> <span class="token string">'string'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">const</span> sanitizedUrl <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">sanitizeString</span><span class="token punctuation">(</span>attributes<span class="token punctuation">[</span><span class="token string">'http.url'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token comment">// ReadableSpan의 attributes는 읽기 전용이므로 내부 수동 주입 혹은 익스포트 전 가공 기법 사용</span>
+      <span class="token punctuation">(</span>span<span class="token punctuation">.</span>attributes <span class="token keyword">as</span> <span class="token builtin">any</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token string">'http.url'</span><span class="token punctuation">]</span> <span class="token operator">=</span> sanitizedUrl<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">// 2. HTTP 요청 바디 혹은 쿼리 문자열 가공</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>attributes<span class="token punctuation">[</span><span class="token string">'http.request.body'</span><span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> <span class="token keyword">typeof</span> attributes<span class="token punctuation">[</span><span class="token string">'http.request.body'</span><span class="token punctuation">]</span> <span class="token operator">===</span> <span class="token string">'string'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token punctuation">(</span>span<span class="token punctuation">.</span>attributes <span class="token keyword">as</span> <span class="token builtin">any</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token string">'http.request.body'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">sanitizeString</span><span class="token punctuation">(</span>attributes<span class="token punctuation">[</span><span class="token string">'http.request.body'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">shutdown</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">Promise</span><span class="token operator">&lt;</span><span class="token keyword">void</span><span class="token operator">></span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token builtin">Promise</span><span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">private</span> <span class="token function">sanitizeString</span><span class="token punctuation">(</span>input<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">string</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 이메일 주소 정규식 치환</span>
+    <span class="token keyword">let</span> result <span class="token operator">=</span> input<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}</span><span class="token regex-delimiter">/</span><span class="token regex-flags">g</span></span><span class="token punctuation">,</span> <span class="token string">'[REDACTED_EMAIL]'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// 전화번호 정규식 치환</span>
+    result <span class="token operator">=</span> result<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\d{3}-\d{3,4}-\d{4}</span><span class="token regex-delimiter">/</span><span class="token regex-flags">g</span></span><span class="token punctuation">,</span> <span class="token string">'[REDACTED_PHONE]'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// JWT 토큰 혹은 베어러 토큰 패턴 치환</span>
+    result <span class="token operator">=</span> result<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">Bearer\s[A-Za-z0-9-_=]+\.[A-Za-z0-9-_=]+\.?[A-Za-z0-9-_.+/=]*</span><span class="token regex-delimiter">/</span><span class="token regex-flags">g</span></span><span class="token punctuation">,</span> <span class="token string">'Bearer [REDACTED_TOKEN]'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    
+    <span class="token keyword">return</span> result<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div>
+<h3>3. 고카디널리티(High Cardinality) 폭탄으로 인한 스토리지 고갈</h3>
+<p>스팬의 이름이나 태그 속성에 매번 고유하게 바뀌는 동적 값(예: <code class="language-text">user_id_948271</code>, <code class="language-text">timestamp_170000000</code>)을 마구잡이로 대입하면 데이터 시각화 툴의 인덱싱 데이터베이스가 터져버리거나 검색 쿼리 속도가 지옥으로 치닫게 됩니다.</p>
+<ul>
+<li><strong>해결책:</strong> 스팬 이름은 반드시 공통화된 템플릿 형태로 고정(<code class="language-text">GET /product/:id</code>)하고, 고유 식별자는 인덱싱되지 않는 스팬 속성(Attribute)의 하위 속성값으로 격리 수납하는 설계를 준수해야 합니다.</li>
+</ul>
+<hr>
+<h2>⛔ 10. OpenTelemetry RUM을 도입하면 안 되는 경우</h2>
+<p>모든 기술에는 트레이드오프가 존재합니다. 다음과 같은 특수성을 가진 프로젝트라면 굳이 복잡하고 무거운 OpenTelemetry RUM 세팅을 고집하지 않는 것이 현명할 수 있습니다.</p>
+<ol>
+<li><strong>초경량 모바일 번들 크기 극대화가 절실한 애플리케이션:</strong>
+OpenTelemetry Web SDK 패키지들은 브라우저 비동기 추적을 위해 내부적으로 복잡한 리소스 계측 코드와 <code class="language-text">zone.js</code> 성격의 엔진을 로드합니다. 번들러 압축(Minify)을 거치더라도 추가적인 JS 번들 크기(수십 KB 이상)가 유입되는 것은 피하기 어렵습니다. 만약 모바일 2G/3G 등 네트워크 대역폭 한계가 극도로 빡빡한 오지 타깃 개발도상국용 경량 웹 서비스를 만들고 있다면 이 추가 번들은 First Contentful Paint(FCP) 로딩 점수를 심대하게 떨어트리는 주범이 됩니다.</li>
+<li><strong>상태 변화가 극히 희소한 고전적 정적 다중 페이지 웹사이트(Static MPA):</strong>
+서버에서 미리 렌더링을 끝내서 주기적으로 정적 배포되는 렌더링 기반 블로그, 회사 공식 문서 소개 사이트 등은 사용자가 페이지를 넘길 때마다 전체 문서 새로고침이 수반됩니다. 이러한 사이트들은 단순 서버 인프라 액세스 로그 분석이나 Google Analytics, Plausible 같은 1KB 내외의 단순 트래커만으로도 필요한 마케팅 데이터를 수집하고 이상 행동을 충분히 제어할 수 있으므로, 굳이 고차원적인 분산 추적(Tracing) 기반의 OTel을 구축하는 것은 오버엔지니어링입니다.</li>
+<li><strong>인적 리소스가 극도로 제한된 단기 파일럿 스타트업 부트캠프 프로젝트:</strong>
+인프라를 직접 프로비저닝하고, 수집된 트레이스를 분석하고 대시보드를 유지 보수하는 작업에는 꽤 큰 기술적 비용과 전담 인프라 엔지니어링 시간이 소비됩니다. 단기간에 비즈니스 MVP(Minimum Viable Product)를 검증하고 빠르게 피벗해야 하는 극초기 단계의 비즈니스 조직이라면 오픈소스 OTel 스택을 유지하기 위해 골머리를 앓는 것보다, 상용 SaaS(예: Sentry 무료 티어 등)를 사용해 가시성을 아주 거칠게 확보한 채 비즈니스 모델 완성을 향해 내달리는 것이 기회비용 측면에서 영리한 판단입니다.</li>
+</ol>
+<hr>
+<h2>🧾 11. 정리 및 핵심 요약</h2>
+<ul>
+<li><strong>프론트엔드 관측성</strong>은 사용자 브라우저라는 사각지대의 데이터 흐름과 에러 이벤트를 실시간으로 모니터링하는 패러다임입니다.</li>
+<li><strong>OpenTelemetry</strong>는 벤더 종속성 없이 프론트엔드와 백엔드의 모니터링 파이프라인을 단일 표준 스펙으로 통합합니다.</li>
+<li><strong>W3C Trace Context</strong>(<code class="language-text">traceparent</code>)를 API 요청 헤더에 삽입하여, 클라이언트에서 백엔드 전체로 이어지는 분산 추적 사슬을 완성합니다.</li>
+<li>실무에서는 성능 저하를 방지하기 위해 반드시 **<code class="language-text">BatchSpanProcessor</code>**와 비동기 비콘 전송을 활용해야 합니다.</li>
+<li>데이터 수집 과정에서 개인 식별 정보(PII)가 무분별하게 전송되지 않도록 <strong>전처리 필터링 가로채기</strong> 설계가 선행되어야 안전합니다.</li>
+</ul>
+<blockquote>
+<p>✨ <strong>한 줄 요약</strong>
+OpenTelemetry RUM을 통해 브라우저 에러에서 시작하여 백엔드 깊은 소스 영역의 병목까지 하나의 고리로 이어지는 거시적 가시성을 손에 넣을 수 있습니다.</p>
+</blockquote>
+<hr>
+<h2>📚 12. 참고 자료</h2>
+<ul>
+<li><a href="https://opentelemetry.io/docs/languages/js/" target="_blank" rel="nofollow">OpenTelemetry Javascript SDK 공식 문서</a></li>
+<li><a href="https://www.w3.org/TR/trace-context/" target="_blank" rel="nofollow">W3C Trace Context 규약 표준서</a></li>
+<li><a href="https://github.com/grafana/faro-web-sdk" target="_blank" rel="nofollow">Grafana Faro Web SDK Github 저장소</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Performance_API" target="_blank" rel="nofollow">MDN Performance API 공식 레퍼런스</a></li>
+</ul></div><style data-emotion="css hx9xpc">@media (max-width: 768px){.css-hx9xpc{padding:0 20px;}}</style><div class="css-hx9xpc e1gqsjds0"></div><style data-emotion="css 1lgr7vy">.css-1lgr7vy{position:fixed;bottom:30px;right:30px;width:50px;height:50px;border-radius:50%;background:linear-gradient(60deg, rgb(66, 105, 78) 0%, rgb(73, 110, 93) 100%);border:2px solid white;cursor:pointer;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;-webkit-justify-content:center;justify-content:center;box-shadow:0 4px 15px rgba(0, 0, 0, 0.15);-webkit-transition:all 0.3s ease;transition:all 0.3s ease;z-index:1000;opacity:0;visibility:hidden;-webkit-transform:translateY(20px);-moz-transform:translateY(20px);-ms-transform:translateY(20px);transform:translateY(20px);}.css-1lgr7vy:hover{-webkit-transform:translateY(-3px);-moz-transform:translateY(-3px);-ms-transform:translateY(-3px);transform:translateY(-3px);box-shadow:0 6px 20px rgba(0, 0, 0, 0.3);background:white;border-color:rgb(66, 105, 78);}.css-1lgr7vy:active{-webkit-transform:translateY(0);-moz-transform:translateY(0);-ms-transform:translateY(0);transform:translateY(0);}.css-1lgr7vy.visible{opacity:1;visibility:visible;-webkit-transform:translateY(0);-moz-transform:translateY(0);-ms-transform:translateY(0);transform:translateY(0);}@media (max-width: 768px){.css-1lgr7vy{bottom:20px;right:20px;width:45px;height:45px;}}</style><button class="css-1lgr7vy e14t44do1" aria-label="맨 위로 이동"><style data-emotion="css 1lzpihr">.css-1lzpihr{width:0;height:0;border-left:8px solid transparent;border-right:8px solid transparent;border-bottom:12px solid white;margin-bottom:2px;-webkit-transition:border-bottom-color 0.3s ease;transition:border-bottom-color 0.3s ease;}.e14t44do1:hover .css-1lzpihr{border-bottom-color:rgb(66, 105, 78);}</style><div class="css-1lzpihr e14t44do0"></div></button><style data-emotion="css 1yungzt">.css-1yungzt{position:relative;width:100%;padding:40px 0;background:linear-gradient(180deg, rgba(66, 105, 78, 0.05) 0%, rgba(73, 110, 93, 0.1) 100%);border-top:1px solid rgba(66, 105, 78, 0.1);}</style><footer class="css-1yungzt e1oae0v84"><style data-emotion="css 1uamirr">.css-1uamirr{max-width:960px;margin:0 auto;padding:0 20px;text-align:center;}</style><div class="css-1uamirr e1oae0v83"><style data-emotion="css 1ghcw8y">.css-1ghcw8y{font-size:16px;line-height:1.6;color:#426950;margin-bottom:10px;-webkit-transition:color 0.3s ease;transition:color 0.3s ease;}.css-1ghcw8y:hover{color:#2c4735;}@media (max-width: 768px){.css-1ghcw8y{font-size:14px;}}</style><p class="css-1ghcw8y e1oae0v82">Thank You for Visiting My Blog, Have a Good Day <style data-emotion="css lzb4fa">.css-lzb4fa{display:inline-block;-webkit-transition:-webkit-transform 0.3s ease;transition:transform 0.3s ease;}.css-lzb4fa:hover{-webkit-transform:scale(1.2) rotate(10deg);-moz-transform:scale(1.2) rotate(10deg);-ms-transform:scale(1.2) rotate(10deg);transform:scale(1.2) rotate(10deg);}</style><span class="css-lzb4fa e1oae0v80">🌿</span></p><style data-emotion="css y3pbt1">.css-y3pbt1{font-size:14px;color:#666;margin-top:5px;}@media (max-width: 768px){.css-y3pbt1{font-size:12px;}}</style><p class="css-y3pbt1 e1oae0v81">© 2024 Developer LIM.</p></div></footer></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/frontend-observability-opentelemetry-rum/";/*]]>*/</script><!-- slice-start id="_gatsby-scripts-1" -->
+          <script
+            id="gatsby-chunk-mapping"
+          >
+            window.___chunkMapping="{\"app\":[\"/app-5ab049b1a7d9afaa2ddb.js\"],\"component---cache-caches-gatsby-plugin-offline-app-shell-js\":[\"/component---cache-caches-gatsby-plugin-offline-app-shell-js-27e0e967a98f3dffdf9e.js\"],\"component---src-pages-404-tsx\":[\"/component---src-pages-404-tsx-198e8648605be5d74a6a.js\"],\"component---src-pages-index-tsx\":[\"/component---src-pages-index-tsx-49aed13bd17edca89f1a.js\"],\"component---src-pages-info-tsx\":[\"/component---src-pages-info-tsx-91ad86a40368117a0a55.js\"],\"component---src-templates-post-template-tsx\":[\"/component---src-templates-post-template-tsx-6e3542f1f00a7c16e4e6.js\"]}";
+          </script>
+        <script>window.___webpackCompilationHash="c5f50b18458ce60ff11e";</script><script src="/webpack-runtime-cc6a3bd86707474f9378.js" async></script><script src="/framework-9d608f77b5c9a88afabd.js" async></script><script src="/app-5ab049b1a7d9afaa2ddb.js" async></script><!-- slice-end id="_gatsby-scripts-1" --></body></html>
