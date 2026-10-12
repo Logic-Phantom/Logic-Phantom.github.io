@@ -1,0 +1,495 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><meta name="generator" content="Gatsby 5.14.0"/><meta name="theme-color" content="#426950"/><meta data-react-helmet="true" name="description" content="pushState의 한계를 부수는 차세대 웹 라우팅"/><meta data-react-helmet="true" name="viewport" content="width=device-width, initial-scale=1.0"/><meta data-react-helmet="true" http-equiv="Content-Type" content="text/html;charset=UTF-8"/><meta data-react-helmet="true" property="og:type" content="website"/><meta data-react-helmet="true" property="og:title" content="🧭 Navigation API 완벽 가이드: history.pushState의 종말과 차세대 SPA 라우팅"/><meta data-react-helmet="true" property="og:description" content="pushState의 한계를 부수는 차세대 웹 라우팅"/><meta data-react-helmet="true" property="og:image" content="/static/6e3e50f1962d4c94623c89e1fc4abbee/navigation-api-spa-routing-guide.png"/><meta data-react-helmet="true" property="og:url"/><meta data-react-helmet="true" property="og:site_name" content="🧭 Navigation API 완벽 가이드: history.pushState의 종말과 차세대 SPA 라우팅"/><meta data-react-helmet="true" name="twitter:card" content="summary"/><meta data-react-helmet="true" name="twitter:title" content="🧭 Navigation API 완벽 가이드: history.pushState의 종말과 차세대 SPA 라우팅"/><meta data-react-helmet="true" name="twitter:description" content="pushState의 한계를 부수는 차세대 웹 라우팅"/><meta data-react-helmet="true" name="twitter:image" content="/static/6e3e50f1962d4c94623c89e1fc4abbee/navigation-api-spa-routing-guide.png"/><meta data-react-helmet="true" name="twitter:site" content="@사용자이름"/><meta data-react-helmet="true" name="twitter:creator" content="@사용자이름"/><style data-href="/styles.9e907bc32054b7771552.css" data-identity="gatsby-global-css">code[class*=language-],pre[class*=language-]{word-wrap:normal;background:none;color:#ccc;font-family:Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;font-size:1em;-webkit-hyphens:none;hyphens:none;line-height:1.5;tab-size:4;text-align:left;white-space:pre;word-break:normal;word-spacing:normal}pre[class*=language-]{margin:.5em 0;overflow:auto;padding:1em}:not(pre)>code[class*=language-],pre[class*=language-]{background:#2d2d2d}:not(pre)>code[class*=language-]{border-radius:.3em;padding:.1em;white-space:normal}.token.block-comment,.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#999}.token.punctuation{color:#ccc}.token.attr-name,.token.deleted,.token.namespace,.token.tag{color:#e2777a}.token.function-name{color:#6196cc}.token.boolean,.token.function,.token.number{color:#f08d49}.token.class-name,.token.constant,.token.property,.token.symbol{color:#f8c555}.token.atrule,.token.builtin,.token.important,.token.keyword,.token.selector{color:#cc99cd}.token.attr-value,.token.char,.token.regex,.token.string,.token.variable{color:#7ec699}.token.entity,.token.operator,.token.url{color:#67cdcc}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}.token.inserted{color:green}</style><link rel="sitemap" type="application/xml" href="/sitemap-index.xml"/><link rel="canonical" href="https://logic-phantom.github.io/navigation-api-spa-routing-guide/" data-baseprotocol="https:" data-basehost="logic-phantom.github.io"/><link rel="icon" href="/favicon-32x32.png" type="image/png"/><link rel="manifest" href="/manifest.webmanifest" crossorigin="use-credentials"/><link rel="apple-touch-icon" sizes="192x192" href="/contents/forestLim.png"/><link rel="apple-touch-icon" sizes="512x512" href="/contents/forestLim.png"/><title data-react-helmet="true">🧭 Navigation API 완벽 가이드: history.pushState의 종말과 차세대 SPA 라우팅</title><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){const t=e.target;if(void 0===t.dataset.mainImage)return;if(void 0===t.dataset.gatsbyImageSsr)return;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><style data-emotion="css zyllbl">.css-zyllbl{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;height:100vh;}</style><div class="css-zyllbl e1strnqo0"><style data-emotion="css-global kxm5mf">@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap');*{padding:0;margin:0;box-sizing:border-box;font-family:'Nanum Myeongjo',serif;}html,body,#___gatsby{height:100%;}a,a:hover{color:inherit;-webkit-text-decoration:none;text-decoration:none;cursor:pointer;}</style><style data-emotion="css 16cz9yp">.css-16cz9yp{position:relative;width:100%;height:400px;}@media (max-width: 768px){.css-16cz9yp{height:300px;}}</style><div class="css-16cz9yp e1opi4mu1"><style data-emotion="css 1bjn9yo">.css-1bjn9yo{z-index:-1;width:100%;height:400px;object-fit:cover;-webkit-filter:brightness(0.25);filter:brightness(0.25);}@media (max-width: 768px){.css-1bjn9yo{height:300px;}}</style><div data-gatsby-image-wrapper="" style="position:absolute" class="gatsby-image-wrapper gatsby-image-wrapper-constrained css-1bjn9yo e1opi4mu0"><div style="max-width:1536px;display:block"><img alt="" role="presentation" aria-hidden="true" src="data:image/svg+xml;charset=utf-8,%3Csvg%20height=&#x27;1024&#x27;%20width=&#x27;1536&#x27;%20xmlns=&#x27;http://www.w3.org/2000/svg&#x27;%20version=&#x27;1.1&#x27;%3E%3C/svg%3E" style="max-width:100%;display:block;position:static"/></div><img aria-hidden="true" data-placeholder-image="" style="opacity:1;transition:opacity 500ms linear" decoding="async" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAIAAAAmMtkJAAAACXBIWXMAAAsTAAALEwEAmpwYAAACOUlEQVR42mMQ1/OFIR8kNlGIAaFT308Mm35JwyBsOn0QmmXNo+VtkqSMQyGiQpqeAhoecATkommWMAiAa/aTNgmVMgmTMgqGyOk5xVp4pZh5Jpt6JJl7Jes7x4rrggwV0wUphiGwZlEdLz4VRyASUHUW1vJStgw9f/X2y7efHr94++TFu9fvv1y6fk/ZIkRMx1vGyA+oGMiAOltEx0fVPMQpPN/EN8fYK1NE21vTNuL42WunLt09fv7muav3zl29f+zsNU27SBENdzVjRwktB0kNWzFtd2AYMfCruTlFlh6+9+fZ1//P3n/VckpSs41+9PTljbtPrtx8cPHavVv3nz59/krHKV5E18/N3cnYL8TL101Sx01Mz49BSNPDzCdryppTmw5c2rjnlIJFhKpl2I37L689eHf+9stLd15de/D+5oOXQJuBPpLVdZI2cJPWcRTXBbrcDxZVut7CWp5AJKjpqWkTtuPUgxUn3q888X75sTerTn/eeeqhhk2osLY3MMBEtb1FdXwkDQMhAeYjYRAopu8PdIaori+QBCKnkNyQlGr/+PLApMrglCqXsHwRsBRQgaRRsJRRECTwGeAxDhRStAhXsoxQMA+TMg6WMAyQNwsF2gBE0kZBqjZRylYR6naxyvbJMubREvr+iEQCdImieaiZV6qpJzB6U8y9U829UoEWAklL33Rj9yQL7zQTj2RL3wxlyzBRHW8J1OQJTAA+wCCBIaD/vQQ1PaBsbS8hsAiQBFoDT9sAuo/pHxgqQ3gAAAAASUVORK5CYII=" alt=""/><picture><source type="image/webp" data-srcset="/static/6e3e50f1962d4c94623c89e1fc4abbee/b642b/navigation-api-spa-routing-guide.webp 384w,/static/6e3e50f1962d4c94623c89e1fc4abbee/c9564/navigation-api-spa-routing-guide.webp 768w,/static/6e3e50f1962d4c94623c89e1fc4abbee/18b4b/navigation-api-spa-routing-guide.webp 1536w" sizes="(min-width: 1536px) 1536px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 1536px) 1536px, 100vw" decoding="async" loading="lazy" data-src="/static/6e3e50f1962d4c94623c89e1fc4abbee/4d776/navigation-api-spa-routing-guide.png" data-srcset="/static/6e3e50f1962d4c94623c89e1fc4abbee/4a410/navigation-api-spa-routing-guide.png 384w,/static/6e3e50f1962d4c94623c89e1fc4abbee/f5189/navigation-api-spa-routing-guide.png 768w,/static/6e3e50f1962d4c94623c89e1fc4abbee/4d776/navigation-api-spa-routing-guide.png 1536w" alt="thumbnail"/></picture><noscript><picture><source type="image/webp" srcSet="/static/6e3e50f1962d4c94623c89e1fc4abbee/b642b/navigation-api-spa-routing-guide.webp 384w,/static/6e3e50f1962d4c94623c89e1fc4abbee/c9564/navigation-api-spa-routing-guide.webp 768w,/static/6e3e50f1962d4c94623c89e1fc4abbee/18b4b/navigation-api-spa-routing-guide.webp 1536w" sizes="(min-width: 1536px) 1536px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 1536px) 1536px, 100vw" decoding="async" loading="lazy" src="/static/6e3e50f1962d4c94623c89e1fc4abbee/4d776/navigation-api-spa-routing-guide.png" srcSet="/static/6e3e50f1962d4c94623c89e1fc4abbee/4a410/navigation-api-spa-routing-guide.png 384w,/static/6e3e50f1962d4c94623c89e1fc4abbee/f5189/navigation-api-spa-routing-guide.png 768w,/static/6e3e50f1962d4c94623c89e1fc4abbee/4d776/navigation-api-spa-routing-guide.png 1536w" alt="thumbnail"/></picture></noscript><script type="module">const t="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;if(t){const t=document.querySelectorAll("img[data-main-image]");for(let e of t){e.dataset.src&&(e.setAttribute("src",e.dataset.src),e.removeAttribute("data-src")),e.dataset.srcset&&(e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset"));const t=e.parentNode.querySelectorAll("source[data-srcset]");for(let e of t)e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset");e.complete&&(e.style.opacity=1,e.parentNode.parentNode.querySelector("[data-placeholder-image]").style.opacity=0)}}</script></div><style data-emotion="css m1156n">.css-m1156n{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;width:768px;height:100%;margin:0 auto;padding:60px 0;color:#ffffff;}@media (max-width: 768px){.css-m1156n{width:100%;padding:40px 20px;}}</style><div class="css-m1156n e1st1jau4"><style data-emotion="css gywgo7">.css-gywgo7{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:#ffffff;color:#000000;font-size:22px;cursor:pointer;box-shadow:0 0 10px rgba(0, 0, 0, 0.3);}@media (max-width: 768px){.css-gywgo7{width:30px;height:30px;font-size:18px;}}</style><div class="css-gywgo7 e1st1jau3"><style data-emotion="css 1ij64l8">.css-1ij64l8{display:inline-block;width:12px;height:12px;border-left:2px solid #000000;border-bottom:2px solid #000000;-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg);-ms-transform:rotate(45deg);transform:rotate(45deg);}</style><span class="css-1ij64l8 e1st1jau2"></span></div><style data-emotion="css gn4qtp">.css-gn4qtp{display:-webkit-box;overflow:hidden;overflow-wrap:break-word;margin-top:auto;text-overflow:ellipsis;white-space:normal;-webkit-line-clamp:2;-webkit-box-orient:vertical;font-size:45px;font-weight:800;}@media (max-width: 768px){.css-gn4qtp{font-size:30px;}}</style><div class="css-gn4qtp e1st1jau1">🧭 Navigation API 완벽 가이드: history.pushState의 종말과 차세대 SPA 라우팅</div><style data-emotion="css 3gcnt2">.css-3gcnt2{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;justify-content:space-between;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;margin-top:10px;font-size:18px;font-weight:700;}@media (max-width: 768px){.css-3gcnt2{-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-align-items:flex-start;-webkit-box-align:flex-start;-ms-flex-align:flex-start;align-items:flex-start;font-size:15px;font-weight:400;}}</style><div class="css-3gcnt2 e1st1jau0"><div>Web</div><div>2026.10.13.</div></div></div></div><style data-emotion="css 12g9cpd">.css-12g9cpd{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;width:768px;margin:0 auto;padding:200px 0 0 0;word-break:break-all;line-height:1.8;font-size:16px;font-weight:400;}.css-12g9cpd p{padding:3px 0;}.css-12g9cpd h1,.css-12g9cpd h2,.css-12g9cpd h3{font-weight:800;margin-bottom:30px;}.css-12g9cpd *+h1,.css-12g9cpd *+h2,.css-12g9cpd *+h3{margin-top:80px;}.css-12g9cpd hr+h1,.css-12g9cpd hr+h2,.css-12g9cpd hr+h3{margin-top:0;}.css-12g9cpd h1{font-size:30px;}.css-12g9cpd h2{font-size:25px;}.css-12g9cpd h3{font-size:20px;}.css-12g9cpd blockquote{margin:30px 0;padding:5px 15px;border-left:2px solid #000000;font-weight:800;}.css-12g9cpd ol,.css-12g9cpd ul{margin-left:20px;padding:30px 0;}.css-12g9cpd hr{border:1px solid #000000;margin:100px 0;}.css-12g9cpd a{color:#4263eb;-webkit-text-decoration:underline;text-decoration:underline;}.css-12g9cpd pre[class*='language-']{margin:30px 0;padding:15px;font-size:15px;}.css-12g9cpd pre[class*='language-']::-webkit-scrollbar-thumb{background:rgba(255, 255, 255, 0.5);border-radius:3px;}.css-12g9cpd code[class*='language-'],.css-12g9cpd pre[class*='language-']{tab-size:2;}@media (max-width: 768px){.css-12g9cpd{width:100%;padding:140px 20px 0 20px;line-height:1.6;font-size:14px;}.css-12g9cpd h1{font-size:23px;}.css-12g9cpd h2{font-size:20px;}.css-12g9cpd h3{font-size:17px;}.css-12g9cpd img{width:100%;}.css-12g9cpd hr{margin:50px 0;}}</style><div class="css-12g9cpd e1ijh0y10"><h1>🧭 Navigation API 완벽 가이드: history.pushState의 종말과 차세대 SPA 라우팅</h1>
+<blockquote>
+<p>“웹은 10년 넘게 <code class="language-text">history.pushState()</code>라는 불완전한 봉합선 위에서 단일 페이지 애플리케이션(SPA)을 지탱해 왔습니다.”
+이제 브라우저 네이티브 <code class="language-text">Navigation API</code>가 링크 클릭, 브라우저 뒤로가기, 폼 제출, 스크롤 복원, 비동기 트랜지션까지 단 하나의 인터페이스로 통합합니다.</p>
+</blockquote>
+<hr>
+<h2>📌 목차</h2>
+<ol>
+<li><a href="#-1-history-api%EA%B0%80-%ED%92%88%EA%B3%A0-%EC%9E%88%EB%8D%98-10%EB%85%84-%EB%AC%B5%EC%9D%80-%EA%B2%B0%ED%95%A8%EB%93%A4">History API가 품고 있던 10년 묵은 결함들</a></li>
+<li><a href="#-2-navigation-api%EB%9E%80-%EB%AC%B4%EC%97%87%EC%9D%B8%EA%B0%80">Navigation API란 무엇인가?</a></li>
+<li><a href="#-3-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98-%EB%B9%84%EA%B5%90-history-api-vs-navigation-api">아키텍처 비교: History API vs Navigation API</a></li>
+<li><a href="#-4-%ED%95%B5%EC%8B%AC-%EC%9D%B4%EB%B2%A4%ED%8A%B8-navigate%EC%99%80-intercept-%EC%99%84%EB%B2%BD-%ED%95%B4%EB%B6%80">핵심 이벤트: navigate와 intercept 완벽 해부</a></li>
+<li><a href="#-5-navigationtype%EA%B3%BC-%EB%AA%A9%EC%A0%81%EC%A7%80-%EB%A9%94%ED%83%80%EB%8D%B0%EC%9D%B4%ED%84%B0edestination-%EC%A0%9C%EC%96%B4">NavigationType과 목적지 메타데이터(e.destination) 제어</a></li>
+<li><a href="#-6-abortsignal-%EA%B8%B0%EB%B0%98%EC%9D%98-%EB%8F%99%EC%8B%9C-%ED%83%90%EC%83%89-%EC%9A%94%EC%B2%AD-%EB%B0%8F-%EA%B2%BD%EC%9F%81-%EC%83%81%ED%83%9Crace-condition-%EB%B0%A9%EC%A7%80">AbortSignal 기반의 동시 탐색 요청 및 경쟁 상태(Race Condition) 방지</a></li>
+<li><a href="#-7-view-transitions-api%EC%99%80%EC%9D%98-%EB%84%A4%EC%9D%B4%ED%8B%B0%EB%B8%8C-%EA%B2%B0%ED%95%A9-%ED%8C%A8%ED%84%B4">View Transitions API와의 네이티브 결합 패턴</a></li>
+<li><a href="#-8-%EC%8A%A4%ED%81%AC%EB%A1%A4-%EB%B3%B5%EC%9B%90scroll-restoration%EA%B3%BC-%ED%8F%AC%EC%BB%A4%EC%8A%A4-%EA%B4%80%EB%A6%AC%EC%9D%98-%ED%98%81%EC%8B%A0">스크롤 복원(Scroll Restoration)과 포커스 관리의 혁신</a></li>
+<li><a href="#-9-%ED%83%90%EC%83%89-%ED%95%AD%EB%AA%A9navigationentry%EA%B3%BC-%EC%83%81%ED%83%9Cstate-%EB%B6%88%EB%B3%80%EC%84%B1-%EB%8B%A4%EB%A3%A8%EA%B8%B0">탐색 항목(NavigationEntry)과 상태(State) 불변성 다루기</a></li>
+<li><a href="#-10-%ED%94%84%EB%A1%9C%EB%8D%95%EC%85%98%EA%B8%89-%EB%AF%B8%EB%8B%88-spa-%EB%9D%BC%EC%9A%B0%ED%84%B0-%EA%B5%AC%ED%98%84-%EC%8B%A4%EC%8A%B5">프로덕션급 미니 SPA 라우터 구현 실습</a></li>
+<li><a href="#-11-%EC%8B%A4%EB%AC%B4-%EC%A0%81%EC%9A%A9-%EC%8B%9C-%ED%95%A8%EC%A0%95%EA%B3%BC-%EC%A3%BC%EC%9D%98%EC%A0%90">실무 적용 시 함정과 주의점</a></li>
+<li><a href="#-12-navigation-api%EB%A5%BC-%EC%93%B0%EB%A9%B4-%EC%95%88-%EB%90%98%EB%8A%94-%EA%B2%BD%EC%9A%B0">Navigation API를 쓰면 안 되는 경우</a></li>
+<li><a href="#-13-%EC%A0%95%EB%A6%AC-%EB%B0%8F-%EC%B0%A8%EC%84%B8%EB%8C%80-%EC%9B%B9-%EB%9D%BC%EC%9A%B0%ED%8C%85%EC%9D%98-%EB%AF%B8%EB%9E%98">정리 및 차세대 웹 라우팅의 미래</a></li>
+<li><a href="#-14-%EC%B0%B8%EA%B3%A0-%EC%9E%90%EB%A3%8C">참고 자료</a></li>
+</ol>
+<hr>
+<h2>🧭 1. History API가 품고 있던 10년 묵은 결함들</h2>
+<p>2010년대 초 HTML5와 함께 등장한 <code class="language-text">window.history.pushState()</code>와 <code class="language-text">popstate</code> 이벤트는 웹 생태계를 MPA에서 SPA로 전환시킨 일등 공신이었습니다. 하지만 이 API는 SPA 전용 라우팅을 목적으로 설계된 것이 아니라, 단순한 브라우저 세션 히스토리 조작 도구에 불과했습니다. 이로 인해 현대 웹 개발자들은 수많은 기괴한 우회책(Workaround)을 강제당해 왔습니다.</p>
+<h3>1. 전역 이동 가로채기 부재</h3>
+<p><code class="language-text">pushState()</code>와 <code class="language-text">replaceState()</code>는 호출되어도 브라우저에서 <strong>어떤 이벤트도 발생시키지 않습니다</strong>.</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token comment">// 이 코드는 URL을 바꾸지만, 브라우저는 침묵합니다.</span>
+history<span class="token punctuation">.</span><span class="token function">pushState</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">page</span><span class="token operator">:</span> <span class="token number">2</span> <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">,</span> <span class="token string">'/page-2'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// window.addEventListener('popstate', ...)는 반응하지 않습니다!</span></code></pre></div>
+<p>따라서 모든 SPA 프레임워크(React Router, Vue Router 등)는 <code class="language-text">history.pushState</code> 메서드 자체를 원숭이 패치(Monkey Patching)하거나 자체 래퍼 함수를 통해서만 URL 변경을 감지해야 했습니다.</p>
+<h3>2. 링크 클릭 가로채기(Link Interception)의 비효율</h3>
+<p>페이지 내의 <code class="language-text">&lt;a></code> 태그를 클릭할 때 브라우저가 새 HTML을 내려받지 못하게 하려면, 최상위 <code class="language-text">document</code>에 클릭 리스너를 걸고 다음과 같은 번거로운 방어 로직을 작성해야 했습니다.</p>
+<ul>
+<li>마우스 좌클릭인지 검사 (<code class="language-text">e.button === 0</code>)</li>
+<li><code class="language-text">Ctrl</code>, <code class="language-text">Meta</code>, <code class="language-text">Shift</code>, <code class="language-text">Alt</code> 키가 눌리지 않았는지 검사</li>
+<li><code class="language-text">target="_blank"</code>가 아닌지 검사</li>
+<li><code class="language-text">download</code> 속성이 없는지 검사</li>
+<li>동일 출처(Origin)인지 검사</li>
+<li>조건을 만족할 때만 <code class="language-text">e.preventDefault()</code> 호출 후 라우터 디스패치</li>
+</ul>
+<h3>3. 비동기 전환 취소 불가</h3>
+<p>페이지 이동 도중 사용자가 뒤로가기를 연속 클릭하거나 다른 링크를 눌렀을 때, 이전 페이지가 진행 중이던 네트워크 요청을 자동으로 취소하거나 트랜지션을 중단할 표준 수단이 전무했습니다.</p>
+<hr>
+<h2>🧭 2. Navigation API란 무엇인가?</h2>
+<p>W3C Web Incubator Community Group(WICG)에서 주도하여 Chromium 102부터 도입된 **Navigation API(<code class="language-text">window.navigation</code>)**는 위에서 언급한 History API의 모든 태생적 한계를 해결하기 위해 바닥부터 재설계된 표준 브라우저 라우팅 API입니다.</p>
+<p>Navigation API의 핵심 사상은 **“모든 유형의 네비게이션을 단일 파이프라인에서 감지하고, 비동기 핸들러를 통해 가로채며, 실패 시 원상 복구한다”**는 점입니다.</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token comment">// 브라우저 뒤로가기, 링크 클릭, 폼 전송, 프로그래밍 방식 이동 모두 이 한 곳으로 집결합니다.</span>
+navigation<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'navigate'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>event<span class="token punctuation">.</span>canIntercept<span class="token punctuation">)</span> <span class="token keyword">return</span><span class="token punctuation">;</span>
+  
+  event<span class="token punctuation">.</span><span class="token function">intercept</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    <span class="token keyword">async</span> <span class="token function">handler</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">const</span> response <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">fetch</span><span class="token punctuation">(</span>event<span class="token punctuation">.</span>destination<span class="token punctuation">.</span>url<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">const</span> html <span class="token operator">=</span> <span class="token keyword">await</span> response<span class="token punctuation">.</span><span class="token function">text</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'app'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>innerHTML <span class="token operator">=</span> <span class="token function">extractContent</span><span class="token punctuation">(</span>html<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<hr>
+<h2>🧭 3. 아키텍처 비교: History API vs Navigation API</h2>
+<p>두 API의 접근 방식은 근본적으로 다릅니다. History API가 “URL 문자열을 수동 조작하고 파편화된 이벤트를 조합”하는 방식이었다면, Navigation API는 “브라우저 네비게이션 라이프사이클 자체를 가로채는 방식”입니다.</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 768px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/b122cecaf249d5ef158e2368865d9253/bbbf7/navigation-api-spa-routing-guide-1.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 50%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAIAAAA7N+mxAAAACXBIWXMAAAsTAAALEwEAmpwYAAAByklEQVR42k3Ny27UMBSA4Tw0C16BYccDIAorNqy4LEDchAqlIFVMp5mZXJyLHSeOr7EdJ5kkJZ2qlLM6ks/n37u+G+t6RARTpqg5lZowBStGmKxqgUueF3UGSVHxtu3+EW+epqFpDlIpiLJtWEQJCuIKZFmYJgDmhO4QuszTizheJ8k6TQElpFW81eM8eaMxTjtd1tLf2QxaVBiQGoh762Zt5OCI1VcU7jne0SLg5Z5inxS8daqz3mSt4A1A9T7FVxHchLkfFz4oykpMR1zUYh+hbQjXu3QXIz/Io6RkjVX9ESuhM0zDpAgXH+RBUkR5SWoxG6sGh5kMjk9+mG8juOwgr+6x5E0CyYKjDC9/x1kZpbgit7hbyjc4Kxe5ByhIbzBV5q4sNaIqJQIgmmCaVgJUgjJ1W654AxFHmC8BiNmy4FIwfSyPTdO5gW+20aMVfHYCn7+IV4/LN++6fhylop1xw/hy8+3hp5Mn569X3189+PD0HEVumLjT3nw4DI12CIvTU3b2s/5xRr58FZcbw4RTmreWNOo3Ct/uf30G64/gz3twkUgine3Hg3f93+huYKZr+oNyPVeaSc2FlspY2+nGLfe9G+b5/v4vmtQgkTZF1+gAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <picture>
+          <source
+              srcset="/static/b122cecaf249d5ef158e2368865d9253/a59e9/navigation-api-spa-routing-guide-1.webp 192w,
+/static/b122cecaf249d5ef158e2368865d9253/0ca9f/navigation-api-spa-routing-guide-1.webp 384w,
+/static/b122cecaf249d5ef158e2368865d9253/dc9b9/navigation-api-spa-routing-guide-1.webp 768w,
+/static/b122cecaf249d5ef158e2368865d9253/e2c2f/navigation-api-spa-routing-guide-1.webp 1152w,
+/static/b122cecaf249d5ef158e2368865d9253/94b1e/navigation-api-spa-routing-guide-1.webp 1280w"
+              sizes="(max-width: 768px) 100vw, 768px"
+              type="image/webp"
+            />
+          <source
+            srcset="/static/b122cecaf249d5ef158e2368865d9253/3b721/navigation-api-spa-routing-guide-1.png 192w,
+/static/b122cecaf249d5ef158e2368865d9253/66595/navigation-api-spa-routing-guide-1.png 384w,
+/static/b122cecaf249d5ef158e2368865d9253/fe486/navigation-api-spa-routing-guide-1.png 768w,
+/static/b122cecaf249d5ef158e2368865d9253/d2d74/navigation-api-spa-routing-guide-1.png 1152w,
+/static/b122cecaf249d5ef158e2368865d9253/bbbf7/navigation-api-spa-routing-guide-1.png 1280w"
+            sizes="(max-width: 768px) 100vw, 768px"
+            type="image/png"
+          />
+          <img
+            class="gatsby-resp-image-image"
+            src="/static/b122cecaf249d5ef158e2368865d9253/fe486/navigation-api-spa-routing-guide-1.png"
+            alt="History API와 Navigation API의 비교 다이어그램"
+            title=""
+            loading="lazy"
+            decoding="async"
+            style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+          />
+        </picture>
+  </a>
+    </span></p>
+<table>
+<thead>
+<tr>
+<th align="left">비교 항목</th>
+<th align="left">History API</th>
+<th align="left">Navigation API</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong>전역 네비게이션 감지</strong></td>
+<td align="left">불가능 (popstate, hashchange 분리 및 pushState 미발생)</td>
+<td align="left"><strong>단일 <code class="language-text">navigate</code> 이벤트로 모든 이동 감지</strong></td>
+</tr>
+<tr>
+<td align="left"><strong>링크 클릭 가로채기</strong></td>
+<td align="left">click 리스너 + 수동 조건문 + <code class="language-text">e.preventDefault()</code></td>
+<td align="left"><strong><code class="language-text">e.canIntercept</code> 검사 후 <code class="language-text">e.intercept()</code> 한 줄</strong></td>
+</tr>
+<tr>
+<td align="left"><strong>비동기 처리 지원</strong></td>
+<td align="left">지원 안 함 (수동 Promise 체이닝)</td>
+<td align="left"><strong><code class="language-text">handler()</code>에 async 함수 직접 등록 가능</strong></td>
+</tr>
+<tr>
+<td align="left"><strong>취소 제어</strong></td>
+<td align="left">복잡한 수동 AbortController 관리</td>
+<td align="left"><strong><code class="language-text">event.signal</code> (내장 AbortSignal) 자동 연동</strong></td>
+</tr>
+<tr>
+<td align="left"><strong>페이지 이동 함수</strong></td>
+<td align="left"><code class="language-text">history.pushState()</code>, <code class="language-text">history.back()</code> (반환값 void)</td>
+<td align="left"><strong><code class="language-text">navigation.navigate()</code>, <code class="language-text">navigation.back()</code> (Promise 반환)</strong></td>
+</tr>
+<tr>
+<td align="left"><strong>상태(State) 보존</strong></td>
+<td align="left">복사본 직렬화 한계, 새로고침 시 유실 위험</td>
+<td align="left"><strong><code class="language-text">navigation.currentEntry.getState()</code>로 엄격 관리</strong></td>
+</tr>
+<tr>
+<td align="left"><strong>스크롤 및 포커스 복원</strong></td>
+<td align="left"><code class="language-text">history.scrollRestoration</code> 수동 처리</td>
+<td align="left"><strong><code class="language-text">e.scroll()</code> 및 <code class="language-text">focusReset</code> 자동화 옵션 제공</strong></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2>🧭 4. 핵심 이벤트: navigate와 intercept 완벽 해부</h2>
+<p>Navigation API의 심장은 <code class="language-text">navigate</code> 이벤트입니다. 사용자가 페이지를 이동하려고 할 때 브라우저는 대상 URL로 네트워크 요청을 보내기 직전에 <code class="language-text">navigate</code> 이벤트를 발송합니다.</p>
+<h3>e.intercept()의 작동 메커니즘</h3>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 768px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/511856e8d870b2fe8d843250525f0b34/bbbf7/navigation-api-spa-routing-guide-2.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 50%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAIAAAA7N+mxAAAACXBIWXMAAAsTAAALEwEAmpwYAAABVElEQVR42p1R2U7DMBDM/38NIPoJCKoKKoHUUlrahhy249vOnThlnbSoPPDCam3tzO5YmnVwGqNpWyYMppJLQ4XGmUgJjxBNiaBcTaSHGY9SWlbNpAou4i7B7BBh0GRcoUwAjDFNCE8xTzBH43MxYl/XYueGruuHKU4nuIC5oNNPBdwIzkzX9865QOp8H2Wvm/DjiJnQ65DNFtFsfrh5PLztKaFiG5L3fbLZp2CBML3axTC8CwkIA64slTmiWtqaMvm0Rncv7Hae3C/FwwrH4FKXEZZppsAUYYpKGyJOhfVibQtEFVc54UYqG2VmseXLT/68E0dsYAJTnWYSZoTyAuRreEtqWwZgBjxP6Ua7zvXet/OL6HvfhRi7A5wRjXAYztv+X/wSt20H31A3bVVDNj6bsagaz1QN/Oif4qKqwZWxpckLbXwaW8BStMltXipgy/pa/A1HDjlaXyYURgAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <picture>
+          <source
+              srcset="/static/511856e8d870b2fe8d843250525f0b34/a59e9/navigation-api-spa-routing-guide-2.webp 192w,
+/static/511856e8d870b2fe8d843250525f0b34/0ca9f/navigation-api-spa-routing-guide-2.webp 384w,
+/static/511856e8d870b2fe8d843250525f0b34/dc9b9/navigation-api-spa-routing-guide-2.webp 768w,
+/static/511856e8d870b2fe8d843250525f0b34/e2c2f/navigation-api-spa-routing-guide-2.webp 1152w,
+/static/511856e8d870b2fe8d843250525f0b34/94b1e/navigation-api-spa-routing-guide-2.webp 1280w"
+              sizes="(max-width: 768px) 100vw, 768px"
+              type="image/webp"
+            />
+          <source
+            srcset="/static/511856e8d870b2fe8d843250525f0b34/3b721/navigation-api-spa-routing-guide-2.png 192w,
+/static/511856e8d870b2fe8d843250525f0b34/66595/navigation-api-spa-routing-guide-2.png 384w,
+/static/511856e8d870b2fe8d843250525f0b34/fe486/navigation-api-spa-routing-guide-2.png 768w,
+/static/511856e8d870b2fe8d843250525f0b34/d2d74/navigation-api-spa-routing-guide-2.png 1152w,
+/static/511856e8d870b2fe8d843250525f0b34/bbbf7/navigation-api-spa-routing-guide-2.png 1280w"
+            sizes="(max-width: 768px) 100vw, 768px"
+            type="image/png"
+          />
+          <img
+            class="gatsby-resp-image-image"
+            src="/static/511856e8d870b2fe8d843250525f0b34/fe486/navigation-api-spa-routing-guide-2.png"
+            alt="Navigation API의 intercept 처리 흐름도"
+            title=""
+            loading="lazy"
+            decoding="async"
+            style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+          />
+        </picture>
+  </a>
+    </span></p>
+<p><code class="language-text">event.intercept()</code>는 브라우저의 기본 전체 페이지 로딩(Full Page Reload) 동작을 일시 중단시키고, 개발자가 넘겨준 비동기 핸들러가 실행되는 동안 URL 주소창을 목적지 URL로 동기화합니다.</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js">navigation<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'navigate'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token comment">// 1. 다운로드 속성이나 크로스 오리진인 경우 가로챌 수 없음</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>event<span class="token punctuation">.</span>canIntercept<span class="token punctuation">)</span> <span class="token keyword">return</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">const</span> url <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">URL</span><span class="token punctuation">(</span>event<span class="token punctuation">.</span>destination<span class="token punctuation">.</span>url<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token comment">// 2. 가로채기 선언</span>
+  event<span class="token punctuation">.</span><span class="token function">intercept</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    <span class="token keyword">async</span> <span class="token function">handler</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">try</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 로딩 스피너 표시</span>
+        <span class="token function">showGlobalSpinner</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        
+        <span class="token comment">// 라우트 데이터 페칭</span>
+        <span class="token keyword">const</span> data <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">fetchPageData</span><span class="token punctuation">(</span>url<span class="token punctuation">.</span>pathname<span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">signal</span><span class="token operator">:</span> event<span class="token punctuation">.</span>signal <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        
+        <span class="token comment">// DOM 갱신</span>
+        <span class="token function">renderPage</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span> <span class="token keyword">finally</span> <span class="token punctuation">{</span>
+        <span class="token function">hideGlobalSpinner</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token comment">// 스크롤 복원 시점 제어 ('after-transition' 또는 'manual')</span>
+    <span class="token literal-property property">scroll</span><span class="token operator">:</span> <span class="token string">'after-transition'</span><span class="token punctuation">,</span>
+    <span class="token comment">// 네비게이션 완료 후 포커스를 초기화할지 여부</span>
+    <span class="token literal-property property">focusReset</span><span class="token operator">:</span> <span class="token string">'after-transition'</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<h3>intercept 옵션 상세</h3>
+<ul>
+<li><strong><code class="language-text">handler</code></strong>: Promise를 반환하는 함수입니다. 이 Promise가 해결(resolve)될 때까지 브라우저는 네비게이션이 진행 중인 것으로 간주하며, 성공 시 <code class="language-text">navigatesuccess</code> 이벤트를, 실패(reject) 시 <code class="language-text">navigateerror</code> 이벤트를 발생시킵니다.</li>
+<li><strong><code class="language-text">scroll</code></strong>: 기본값은 <code class="language-text">'after-transition'</code>입니다. 비동기 렌더링이 끝난 직후 브라우저가 알아서 스크롤을 맨 위나 이전 위치로 복원합니다.</li>
+<li><strong><code class="language-text">focusReset</code></strong>: 네비게이션 완료 후 스크린 리더 및 키보드 사용자를 위해 포커스를 첫 번째 포커스 가능 요소(또는 body)로 안전하게 리셋합니다.</li>
+</ul>
+<hr>
+<h2>🧭 5. NavigationType과 목적지 메타데이터(e.destination) 제어</h2>
+<p><code class="language-text">event.destination</code> 객체는 이동하고자 하는 목표 지점의 상세 정보를 담고 있습니다. 또한 <code class="language-text">event.navigationType</code>을 통해 사용자가 어떤 방식으로 이동을 시도했는지 정확히 분기할 수 있습니다.</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js">navigation<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'navigate'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> dest <span class="token operator">=</span> event<span class="token punctuation">.</span>destination<span class="token punctuation">;</span>
+  
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'이동 목표 URL:'</span><span class="token punctuation">,</span> dest<span class="token punctuation">.</span>url<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'목적지 상태 객체:'</span><span class="token punctuation">,</span> dest<span class="token punctuation">.</span><span class="token function">getState</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'기존 히스토리 항목인가?:'</span><span class="token punctuation">,</span> dest<span class="token punctuation">.</span>key<span class="token punctuation">,</span> dest<span class="token punctuation">.</span>id<span class="token punctuation">,</span> dest<span class="token punctuation">.</span>index<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">switch</span> <span class="token punctuation">(</span>event<span class="token punctuation">.</span>navigationType<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">case</span> <span class="token string">'push'</span><span class="token operator">:</span>
+      <span class="token comment">// 일반 링크 클릭 또는 navigation.navigate()</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'새로운 페이지 푸시'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">break</span><span class="token punctuation">;</span>
+    <span class="token keyword">case</span> <span class="token string">'replace'</span><span class="token operator">:</span>
+      <span class="token comment">// 리다이렉트 또는 navigation.navigate(..., { history: 'replace' })</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'현재 엔트리 교체'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">break</span><span class="token punctuation">;</span>
+    <span class="token keyword">case</span> <span class="token string">'reload'</span><span class="token operator">:</span>
+      <span class="token comment">// 브라우저 새로고침 버튼 또는 navigation.reload()</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'페이지 새로고침'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">break</span><span class="token punctuation">;</span>
+    <span class="token keyword">case</span> <span class="token string">'traverse'</span><span class="token operator">:</span>
+      <span class="token comment">// 브라우저 뒤로가기 / 앞으로가기</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'히스토리 탐색 (방문 기록 간 이동)'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">break</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<p><code class="language-text">traverse</code> 타입일 때는 이미 이전에 방문했던 캐시된 렌더 트리를 즉시 재사용하거나 스크롤 위치만 신속하게 복구하는 등 차별화된 최적화가 가능합니다.</p>
+<hr>
+<h2>🧭 6. AbortSignal 기반의 동시 탐색 요청 및 경쟁 상태(Race Condition) 방지</h2>
+<p>SPA의 가장 흔한 버그 중 하나는 사용자가 링크 A를 누른 뒤 응답이 오기 전에 링크 B를 눌렀을 때, 뒤늦게 도착한 A의 비동기 데이터가 B의 화면을 덮어써 버리는 **경쟁 상태(Race Condition)**입니다.</p>
+<p>Navigation API는 <code class="language-text">navigate</code> 이벤트 객체에 브라우저가 직접 관리하는 **<code class="language-text">event.signal</code> (AbortSignal)**을 기본 탑재하여 이 문제를 근본적으로 해결했습니다.</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js">navigation<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'navigate'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>event<span class="token punctuation">.</span>canIntercept<span class="token punctuation">)</span> <span class="token keyword">return</span><span class="token punctuation">;</span>
+
+  event<span class="token punctuation">.</span><span class="token function">intercept</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    <span class="token keyword">async</span> <span class="token function">handler</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">// 사용자가 이 비동기 작업 도중 다른 곳을 클릭하면 event.signal이 즉시 abort됩니다.</span>
+      <span class="token keyword">const</span> response <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">fetch</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">/api/data</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token keyword">new</span> <span class="token class-name">URL</span><span class="token punctuation">(</span>event<span class="token punctuation">.</span>destination<span class="token punctuation">.</span>url<span class="token punctuation">)</span><span class="token punctuation">.</span>pathname<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+        <span class="token literal-property property">signal</span><span class="token operator">:</span> event<span class="token punctuation">.</span>signal
+      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      
+      <span class="token keyword">const</span> json <span class="token operator">=</span> <span class="token keyword">await</span> response<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      
+      <span class="token comment">// signal이 취소되었다면 DOM 조작을 스킵할 수 있음</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>event<span class="token punctuation">.</span>signal<span class="token punctuation">.</span>aborted<span class="token punctuation">)</span> <span class="token keyword">return</span><span class="token punctuation">;</span>
+      
+      <span class="token function">renderView</span><span class="token punctuation">(</span>json<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<p>새로운 네비게이션이 들어오는 순간 브라우저는 이전 핸들러의 <code class="language-text">event.signal</code>에 즉시 abort 시그널을 전송합니다. 개발자가 별도로 취소 토큰이나 플래그 변수를 관리할 필요가 전혀 없습니다.</p>
+<hr>
+<h2>🧭 7. View Transitions API와의 네이티브 결합 패턴</h2>
+<p>Navigation API는 2026년 모던 프론트엔드의 핵심인 <strong>View Transitions API</strong>와 완벽한 호환성을 자랑합니다. <code class="language-text">handler</code> 내부에서 <code class="language-text">document.startViewTransition</code>을 호출하기만 하면 복잡한 애니메이션 라우터 라이브러리 없이도 네이티브 앱 수준의 화면 전환을 구현할 수 있습니다.</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js">navigation<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'navigate'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>event<span class="token punctuation">.</span>canIntercept<span class="token punctuation">)</span> <span class="token keyword">return</span><span class="token punctuation">;</span>
+
+  event<span class="token punctuation">.</span><span class="token function">intercept</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    <span class="token keyword">async</span> <span class="token function">handler</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">// 1. 필요한 데이터를 먼저 페칭</span>
+      <span class="token keyword">const</span> response <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">fetch</span><span class="token punctuation">(</span>event<span class="token punctuation">.</span>destination<span class="token punctuation">.</span>url<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">const</span> newHtml <span class="token operator">=</span> <span class="token keyword">await</span> response<span class="token punctuation">.</span><span class="token function">text</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">const</span> parser <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">DOMParser</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">const</span> newDoc <span class="token operator">=</span> parser<span class="token punctuation">.</span><span class="token function">parseFromString</span><span class="token punctuation">(</span>newHtml<span class="token punctuation">,</span> <span class="token string">'text/html'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">const</span> newContent <span class="token operator">=</span> newDoc<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">'#main-content'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>innerHTML<span class="token punctuation">;</span>
+
+      <span class="token comment">// 2. View Transitions API 지원 여부 확인</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>document<span class="token punctuation">.</span>startViewTransition<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">'#main-content'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>innerHTML <span class="token operator">=</span> newContent<span class="token punctuation">;</span>
+        <span class="token keyword">return</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+
+      <span class="token comment">// 3. 브라우저 트랜지션 실행</span>
+      <span class="token keyword">const</span> transition <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">startViewTransition</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+        document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">'#main-content'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>innerHTML <span class="token operator">=</span> newContent<span class="token punctuation">;</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+      <span class="token comment">// 트랜지션 완료 대기</span>
+      <span class="token keyword">await</span> transition<span class="token punctuation">.</span>finished<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<p><code class="language-text">event.intercept()</code> 핸들러가 반환하는 Promise가 <code class="language-text">transition.finished</code>와 연결되므로, 화면 전환 애니메이션이 부드럽게 끝날 때까지 브라우저 네비게이션 상태가 정합성을 유지합니다.</p>
+<hr>
+<h2>🧭 8. 스크롤 복원(Scroll Restoration)과 포커스 관리의 혁신</h2>
+<p>History API 시절, 무한 스크롤 피드에서 상세 페이지로 갔다가 뒤로 돌아올 때 정확한 스크롤 좌표를 복원하는 것은 개발자들의 악몽이었습니다.</p>
+<p>Navigation API는 <code class="language-text">event.scroll()</code> 메서드를 통해 비동기 렌더링이 완전히 끝난 정확한 시점에 스크롤을 복원할 수 있도록 지원합니다.</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js">navigation<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'navigate'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>event<span class="token punctuation">.</span>canIntercept<span class="token punctuation">)</span> <span class="token keyword">return</span><span class="token punctuation">;</span>
+
+  event<span class="token punctuation">.</span><span class="token function">intercept</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    <span class="token comment">// 브라우저의 기본 자동 스크롤을 지연시키고 수동 제어 모드로 전환</span>
+    <span class="token literal-property property">scroll</span><span class="token operator">:</span> <span class="token string">'manual'</span><span class="token punctuation">,</span>
+    <span class="token keyword">async</span> <span class="token function">handler</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">// 1. 가상화 목록이나 무한 스크롤 데이터 복원</span>
+      <span class="token keyword">await</span> <span class="token function">restoreFeedList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      
+      <span class="token comment">// 2. DOM이 완전히 채워진 바로 그 순간 브라우저에게 스크롤 복원을 요청!</span>
+      event<span class="token punctuation">.</span><span class="token function">scroll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<p>만약 <code class="language-text">event.scroll()</code>을 호출하지 않으면 스크롤 위치가 유지되며, 적절한 타이밍에 호출하면 브라우저가 내부 세션 스토리지에 기억해 둔 정확한 픽셀 좌표로 한 치의 오차도 없이 뷰포트를 이동시킵니다.</p>
+<hr>
+<h2>🧭 9. 탐색 항목(NavigationEntry)과 상태(State) 불변성 다루기</h2>
+<p><code class="language-text">navigation.entries()</code>를 호출하면 현재 세션 히스토리 스택 전체를 나타내는 <code class="language-text">NavigationHistoryEntry</code> 배열을 읽을 수 있습니다. 이는 History API에서는 보안상의 이유로 절대 접근할 수 없었던 영역입니다.</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token comment">// 현재 열려 있는 탭의 히스토리 목록 확인</span>
+<span class="token keyword">const</span> entries <span class="token operator">=</span> navigation<span class="token punctuation">.</span><span class="token function">entries</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+entries<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">entry<span class="token punctuation">,</span> i</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">[</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>i<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">] </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>entry<span class="token punctuation">.</span>url<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> (Key: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>entry<span class="token punctuation">.</span>key<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">, ID: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>entry<span class="token punctuation">.</span>id<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">)</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 현재 활성화된 엔트리</span>
+<span class="token keyword">const</span> current <span class="token operator">=</span> navigation<span class="token punctuation">.</span>currentEntry<span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'현재 URL:'</span><span class="token punctuation">,</span> current<span class="token punctuation">.</span>url<span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'보관된 상태:'</span><span class="token punctuation">,</span> current<span class="token punctuation">.</span><span class="token function">getState</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<h3>상태(State) 갱신 시의 불변성 원칙</h3>
+<p>엔트리에 저장되는 상태는 일반 객체이지만 브라우저의 구조화 복사 알고리즘(Structured Clone Algorithm)을 거칩니다. 현재 엔트리의 상태를 바꾸고 싶다면 <code class="language-text">navigation.updateCurrentEntry()</code>를 사용합니다.</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token comment">// 현재 엔트리의 상태만 교체 (페이지 이동 없음)</span>
+navigation<span class="token punctuation">.</span><span class="token function">updateCurrentEntry</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token literal-property property">state</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token operator">...</span>navigation<span class="token punctuation">.</span>currentEntry<span class="token punctuation">.</span><span class="token function">getState</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">filter</span><span class="token operator">:</span> <span class="token string">'electronics'</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">scrollPos</span><span class="token operator">:</span> window<span class="token punctuation">.</span>scrollY
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 상태 변경 감지 이벤트</span>
+navigation<span class="token punctuation">.</span>currentEntry<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'dispose'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'이 히스토리 엔트리가 세션에서 제거되었습니다.'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<hr>
+<h2>🧭 10. 프로덕션급 미니 SPA 라우터 구현 실습</h2>
+<p>외부 라이브러리 없이 순수 Navigation API만을 사용해 링크 가로채기, 비동기 페이지 로딩, 뒤로가기/앞으로가기 버튼 연동, 오류 처리를 포함한 단 60줄짜리 라우터를 완성해 봅니다.</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token comment">// mini-router.js</span>
+<span class="token keyword">class</span> <span class="token class-name">MiniRouter</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token parameter">routes<span class="token punctuation">,</span> rootElement</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>routes <span class="token operator">=</span> routes<span class="token punctuation">;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>root <span class="token operator">=</span> rootElement<span class="token punctuation">;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token punctuation">(</span><span class="token string">'navigation'</span> <span class="token keyword">in</span> window<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      console<span class="token punctuation">.</span><span class="token function">warn</span><span class="token punctuation">(</span><span class="token string">'Navigation API를 지원하지 않는 브라우저입니다.'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">return</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    navigation<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'navigate'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+      <span class="token comment">// 이동을 가로챌 수 없거나 다운로드 요청인 경우 통과</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>event<span class="token punctuation">.</span>canIntercept <span class="token operator">||</span> event<span class="token punctuation">.</span>downloadRequest <span class="token operator">||</span> event<span class="token punctuation">.</span>formData<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+
+      <span class="token keyword">const</span> url <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">URL</span><span class="token punctuation">(</span>event<span class="token punctuation">.</span>destination<span class="token punctuation">.</span>url<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">const</span> routeHandler <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>routes<span class="token punctuation">[</span>url<span class="token punctuation">.</span>pathname<span class="token punctuation">]</span> <span class="token operator">||</span> <span class="token keyword">this</span><span class="token punctuation">.</span>routes<span class="token punctuation">[</span><span class="token string">'*'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>routeHandler<span class="token punctuation">)</span> <span class="token keyword">return</span><span class="token punctuation">;</span>
+
+      event<span class="token punctuation">.</span><span class="token function">intercept</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        <span class="token function-variable function">handler</span><span class="token operator">:</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+          <span class="token keyword">try</span> <span class="token punctuation">{</span>
+            <span class="token comment">// 비동기 렌더링 함수 실행 (signal 전달)</span>
+            <span class="token keyword">const</span> html <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">routeHandler</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">signal</span><span class="token operator">:</span> event<span class="token punctuation">.</span>signal <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>event<span class="token punctuation">.</span>signal<span class="token punctuation">.</span>aborted<span class="token punctuation">)</span> <span class="token keyword">return</span><span class="token punctuation">;</span>
+            
+            <span class="token keyword">this</span><span class="token punctuation">.</span>root<span class="token punctuation">.</span>innerHTML <span class="token operator">=</span> html<span class="token punctuation">;</span>
+          <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>err<span class="token punctuation">.</span>name <span class="token operator">!==</span> <span class="token string">'AbortError'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+              console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">'라우팅 렌더링 실패:'</span><span class="token punctuation">,</span> err<span class="token punctuation">)</span><span class="token punctuation">;</span>
+              <span class="token keyword">this</span><span class="token punctuation">.</span>root<span class="token punctuation">.</span>innerHTML <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">&lt;div class="error">오류 발생: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>err<span class="token punctuation">.</span>message<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">&lt;/div></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+          <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">navigate</span><span class="token punctuation">(</span><span class="token parameter">path<span class="token punctuation">,</span> options <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> navigation<span class="token punctuation">.</span><span class="token function">navigate</span><span class="token punctuation">(</span>path<span class="token punctuation">,</span> options<span class="token punctuation">)</span><span class="token punctuation">.</span>finished<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">back</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> navigation<span class="token punctuation">.</span><span class="token function">back</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>finished<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 사용 예시</span>
+<span class="token keyword">const</span> router <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">MiniRouter</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token string-property property">'/'</span><span class="token operator">:</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token string">'&lt;h1>홈페이지&lt;/h1>&lt;a href="/about">소개로 이동&lt;/a>'</span><span class="token punctuation">,</span>
+  <span class="token string-property property">'/about'</span><span class="token operator">:</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token string">'&lt;h1>소개 페이지&lt;/h1>&lt;a href="/">홈으로 이동&lt;/a>'</span><span class="token punctuation">,</span>
+  <span class="token string-property property">'*'</span><span class="token operator">:</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token string">'&lt;h1>404 Not Found&lt;/h1>'</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'app'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<p>HTML 문서의 모든 <code class="language-text">&lt;a></code> 태그는 이제 아무런 수동 <code class="language-text">onClick</code> 바인딩 없이도 자동으로 위 라우터를 통해 SPA 방식으로 동작합니다.</p>
+<hr>
+<h2>🧭 11. 실무 적용 시 함정과 주의점</h2>
+<h3>1. 브라우저 호환성 및 폴리필(Polyfill) 전략</h3>
+<p>2026년 기준 Navigation API는 Chromium 계열 브라우저(Chrome, Edge, Opera, Whale)에서 완벽히 기본 지원되며, Safari 및 Firefox의 지원이 본격화되고 있습니다. 그러나 크로스 브라우징을 위해서는 공식 폴리필(<code class="language-text">@virtualstate/navigation</code> 등)을 적용하거나 점진적 향상(Progressive Enhancement) 기법을 사용해야 합니다.</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token string">'navigation'</span> <span class="token keyword">in</span> window<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">setupModernNavigation</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+  <span class="token function">setupLegacyHistoryFallback</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre></div>
+<h3>2. multipart/form-data와 POST 폼 제출 처리</h3>
+<p>사용자가 <code class="language-text">&lt;form method="POST"></code>를 제출할 때도 <code class="language-text">navigate</code> 이벤트가 발생합니다. 이때 <code class="language-text">event.formData</code>가 존재하므로, 이를 SPA 내부에서 처리할지 브라우저 기본 전송으로 넘길지 명확히 구분해야 합니다.</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js">navigation<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'navigate'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>e<span class="token punctuation">.</span>formData<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 파일 업로드 등 네이티브 폼 제출은 intercept하지 않는 것이 안전함</span>
+    <span class="token keyword">return</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token comment">// ...</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<h3>3. handler 내부의 예외 처리 누락</h3>
+<p><code class="language-text">e.intercept()</code> 내부의 <code class="language-text">handler</code> 함수에서 던져진 잡히지 않은 예외(Unhandled Rejection)는 브라우저 주소창과 화면 뷰의 불일치를 초래합니다. 반드시 <code class="language-text">try...catch</code>로 감싸고 폴백 UI를 렌더링해야 합니다.</p>
+<hr>
+<h2>🧭 12. Navigation API를 쓰면 안 되는 경우</h2>
+<p>모든 상황에서 Navigation API 가로채기를 맹신해서는 안 됩니다. 다음과 같은 케이스에서는 브라우저의 기본 이동 파이프라인에 맡겨야 합니다.</p>
+<ul>
+<li><strong>서버 렌더링 세션 쿠키 갱신이 필수적인 경로</strong>: 전체 페이지가 완전히 리로드되어야만 <code class="language-text">Set-Cookie</code>나 보안 헤더가 올바르게 갱신되는 관리자 로그아웃/로그인 경로.</li>
+<li><strong>외부 결제/인증 팝업 리다이렉트</strong>: PG사 결제창, OAuth 2.0 인가 엔드포인트 이동 등 도메인이 바뀌거나 엄격한 브라우저 정책(COOP/COEP)이 걸린 페이지.</li>
+<li><strong>대용량 파일 다운로드 링크</strong>: <code class="language-text">download</code> 속성이 부여된 링크는 가로채지 말아야 하며, 브라우저가 백그라운드 다운로드 매니저로 제어하도록 두어야 합니다.</li>
+<li><strong>레거시 멀티 페이지(MPA) 정적 사이트</strong>: 굳이 SPA식 인터셉트가 필요 없는 단순 문서형 블로그나 위키 페이지.</li>
+</ul>
+<hr>
+<h2>🧾 13. 정리</h2>
+<ul>
+<li><code class="language-text">Navigation API</code>는 10년 넘게 비표준 트릭과 원숭이 패치로 연명하던 <code class="language-text">history.pushState</code>의 한계를 완전히 종식시킵니다.</li>
+<li>단 하나의 <code class="language-text">navigate</code> 이벤트만으로 링크 클릭, 뒤로가기, 프로그래밍 방식 이동 등 모든 브라우저 네비게이션을 가로챌 수 있습니다.</li>
+<li><code class="language-text">event.intercept()</code>는 비동기 핸들러를 지원하며, 페이지 전환 실패 시 안전하게 롤백합니다.</li>
+<li><code class="language-text">event.signal</code>을 기본 제공하여 이전 네비게이션의 지연된 비동기 요청을 자동으로 취소하고 경쟁 상태(Race Condition)를 원천 차단합니다.</li>
+<li><code class="language-text">View Transitions API</code>와 결합하여 순수 웹 표준만으로 네이티브 앱 급의 페이지 전환 애니메이션을 쉽게 구현할 수 있습니다.</li>
+<li><code class="language-text">event.scroll()</code>을 통해 비동기 렌더링 완료 타이밍에 정확히 일치하는 고성능 스크롤 복원이 가능합니다.</li>
+</ul>
+<blockquote>
+<p>✨ <strong>한 줄 요약</strong>
+복잡한 라우터 라이브러리 없이도, 브라우저 표준 <code class="language-text">Navigation API</code> 단 하나면 견고하고 우아한 차세대 SPA를 구축할 수 있습니다.</p>
+</blockquote>
+<hr>
+<h2>📚 참고 자료</h2>
+<ul>
+<li><a href="https://wicg.github.io/navigation-api/" target="_blank" rel="nofollow">W3C Navigation API 명세서 (WICG)</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Navigation_API" target="_blank" rel="nofollow">MDN Web Docs: Navigation API</a></li>
+<li><a href="https://developer.chrome.com/docs/web-platform/navigation-api" target="_blank" rel="nofollow">Chrome Developers: Modern client-side routing: the Navigation API</a></li>
+<li><a href="https://developer.chrome.com/docs/web-platform/view-transitions" target="_blank" rel="nofollow">Chrome Developers: Smooth and simple transitions with the View Transitions API</a></li>
+</ul></div><style data-emotion="css hx9xpc">@media (max-width: 768px){.css-hx9xpc{padding:0 20px;}}</style><div class="css-hx9xpc e1gqsjds0"></div><style data-emotion="css 1lgr7vy">.css-1lgr7vy{position:fixed;bottom:30px;right:30px;width:50px;height:50px;border-radius:50%;background:linear-gradient(60deg, rgb(66, 105, 78) 0%, rgb(73, 110, 93) 100%);border:2px solid white;cursor:pointer;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;-webkit-justify-content:center;justify-content:center;box-shadow:0 4px 15px rgba(0, 0, 0, 0.15);-webkit-transition:all 0.3s ease;transition:all 0.3s ease;z-index:1000;opacity:0;visibility:hidden;-webkit-transform:translateY(20px);-moz-transform:translateY(20px);-ms-transform:translateY(20px);transform:translateY(20px);}.css-1lgr7vy:hover{-webkit-transform:translateY(-3px);-moz-transform:translateY(-3px);-ms-transform:translateY(-3px);transform:translateY(-3px);box-shadow:0 6px 20px rgba(0, 0, 0, 0.3);background:white;border-color:rgb(66, 105, 78);}.css-1lgr7vy:active{-webkit-transform:translateY(0);-moz-transform:translateY(0);-ms-transform:translateY(0);transform:translateY(0);}.css-1lgr7vy.visible{opacity:1;visibility:visible;-webkit-transform:translateY(0);-moz-transform:translateY(0);-ms-transform:translateY(0);transform:translateY(0);}@media (max-width: 768px){.css-1lgr7vy{bottom:20px;right:20px;width:45px;height:45px;}}</style><button class="css-1lgr7vy e14t44do1" aria-label="맨 위로 이동"><style data-emotion="css 1lzpihr">.css-1lzpihr{width:0;height:0;border-left:8px solid transparent;border-right:8px solid transparent;border-bottom:12px solid white;margin-bottom:2px;-webkit-transition:border-bottom-color 0.3s ease;transition:border-bottom-color 0.3s ease;}.e14t44do1:hover .css-1lzpihr{border-bottom-color:rgb(66, 105, 78);}</style><div class="css-1lzpihr e14t44do0"></div></button><style data-emotion="css 1yungzt">.css-1yungzt{position:relative;width:100%;padding:40px 0;background:linear-gradient(180deg, rgba(66, 105, 78, 0.05) 0%, rgba(73, 110, 93, 0.1) 100%);border-top:1px solid rgba(66, 105, 78, 0.1);}</style><footer class="css-1yungzt e1oae0v84"><style data-emotion="css 1uamirr">.css-1uamirr{max-width:960px;margin:0 auto;padding:0 20px;text-align:center;}</style><div class="css-1uamirr e1oae0v83"><style data-emotion="css 1ghcw8y">.css-1ghcw8y{font-size:16px;line-height:1.6;color:#426950;margin-bottom:10px;-webkit-transition:color 0.3s ease;transition:color 0.3s ease;}.css-1ghcw8y:hover{color:#2c4735;}@media (max-width: 768px){.css-1ghcw8y{font-size:14px;}}</style><p class="css-1ghcw8y e1oae0v82">Thank You for Visiting My Blog, Have a Good Day <style data-emotion="css lzb4fa">.css-lzb4fa{display:inline-block;-webkit-transition:-webkit-transform 0.3s ease;transition:transform 0.3s ease;}.css-lzb4fa:hover{-webkit-transform:scale(1.2) rotate(10deg);-moz-transform:scale(1.2) rotate(10deg);-ms-transform:scale(1.2) rotate(10deg);transform:scale(1.2) rotate(10deg);}</style><span class="css-lzb4fa e1oae0v80">🌿</span></p><style data-emotion="css y3pbt1">.css-y3pbt1{font-size:14px;color:#666;margin-top:5px;}@media (max-width: 768px){.css-y3pbt1{font-size:12px;}}</style><p class="css-y3pbt1 e1oae0v81">© 2024 Developer LIM.</p></div></footer></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/navigation-api-spa-routing-guide/";/*]]>*/</script><!-- slice-start id="_gatsby-scripts-1" -->
+          <script
+            id="gatsby-chunk-mapping"
+          >
+            window.___chunkMapping="{\"app\":[\"/app-5ab049b1a7d9afaa2ddb.js\"],\"component---cache-caches-gatsby-plugin-offline-app-shell-js\":[\"/component---cache-caches-gatsby-plugin-offline-app-shell-js-27e0e967a98f3dffdf9e.js\"],\"component---src-pages-404-tsx\":[\"/component---src-pages-404-tsx-198e8648605be5d74a6a.js\"],\"component---src-pages-index-tsx\":[\"/component---src-pages-index-tsx-49aed13bd17edca89f1a.js\"],\"component---src-pages-info-tsx\":[\"/component---src-pages-info-tsx-91ad86a40368117a0a55.js\"],\"component---src-templates-post-template-tsx\":[\"/component---src-templates-post-template-tsx-6e3542f1f00a7c16e4e6.js\"]}";
+          </script>
+        <script>window.___webpackCompilationHash="c5f50b18458ce60ff11e";</script><script src="/webpack-runtime-cc6a3bd86707474f9378.js" async></script><script src="/framework-9d608f77b5c9a88afabd.js" async></script><script src="/app-5ab049b1a7d9afaa2ddb.js" async></script><!-- slice-end id="_gatsby-scripts-1" --></body></html>
