@@ -1,0 +1,426 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><meta name="generator" content="Gatsby 5.14.0"/><meta name="theme-color" content="#426950"/><meta data-react-helmet="true" name="description" content="탭이 10개 열려도 데이터 꼬임 없는 브라우저 락"/><meta data-react-helmet="true" name="viewport" content="width=device-width, initial-scale=1.0"/><meta data-react-helmet="true" http-equiv="Content-Type" content="text/html;charset=UTF-8"/><meta data-react-helmet="true" property="og:type" content="website"/><meta data-react-helmet="true" property="og:title" content="🔒 Web Locks API 완벽 가이드: 브라우저 다중 탭 동시성 제어와 리더 선출"/><meta data-react-helmet="true" property="og:description" content="탭이 10개 열려도 데이터 꼬임 없는 브라우저 락"/><meta data-react-helmet="true" property="og:image" content="/static/77d3533f77052c140bf796fc9c859f68/web-locks-api-concurrency-control.png"/><meta data-react-helmet="true" property="og:url"/><meta data-react-helmet="true" property="og:site_name" content="🔒 Web Locks API 완벽 가이드: 브라우저 다중 탭 동시성 제어와 리더 선출"/><meta data-react-helmet="true" name="twitter:card" content="summary"/><meta data-react-helmet="true" name="twitter:title" content="🔒 Web Locks API 완벽 가이드: 브라우저 다중 탭 동시성 제어와 리더 선출"/><meta data-react-helmet="true" name="twitter:description" content="탭이 10개 열려도 데이터 꼬임 없는 브라우저 락"/><meta data-react-helmet="true" name="twitter:image" content="/static/77d3533f77052c140bf796fc9c859f68/web-locks-api-concurrency-control.png"/><meta data-react-helmet="true" name="twitter:site" content="@사용자이름"/><meta data-react-helmet="true" name="twitter:creator" content="@사용자이름"/><style data-href="/styles.9e907bc32054b7771552.css" data-identity="gatsby-global-css">code[class*=language-],pre[class*=language-]{word-wrap:normal;background:none;color:#ccc;font-family:Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;font-size:1em;-webkit-hyphens:none;hyphens:none;line-height:1.5;tab-size:4;text-align:left;white-space:pre;word-break:normal;word-spacing:normal}pre[class*=language-]{margin:.5em 0;overflow:auto;padding:1em}:not(pre)>code[class*=language-],pre[class*=language-]{background:#2d2d2d}:not(pre)>code[class*=language-]{border-radius:.3em;padding:.1em;white-space:normal}.token.block-comment,.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#999}.token.punctuation{color:#ccc}.token.attr-name,.token.deleted,.token.namespace,.token.tag{color:#e2777a}.token.function-name{color:#6196cc}.token.boolean,.token.function,.token.number{color:#f08d49}.token.class-name,.token.constant,.token.property,.token.symbol{color:#f8c555}.token.atrule,.token.builtin,.token.important,.token.keyword,.token.selector{color:#cc99cd}.token.attr-value,.token.char,.token.regex,.token.string,.token.variable{color:#7ec699}.token.entity,.token.operator,.token.url{color:#67cdcc}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}.token.inserted{color:green}</style><link rel="sitemap" type="application/xml" href="/sitemap-index.xml"/><link rel="canonical" href="https://logic-phantom.github.io/web-locks-api-concurrency-control/" data-baseprotocol="https:" data-basehost="logic-phantom.github.io"/><link rel="icon" href="/favicon-32x32.png" type="image/png"/><link rel="manifest" href="/manifest.webmanifest" crossorigin="use-credentials"/><link rel="apple-touch-icon" sizes="192x192" href="/contents/forestLim.png"/><link rel="apple-touch-icon" sizes="512x512" href="/contents/forestLim.png"/><title data-react-helmet="true">🔒 Web Locks API 완벽 가이드: 브라우저 다중 탭 동시성 제어와 리더 선출</title><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){const t=e.target;if(void 0===t.dataset.mainImage)return;if(void 0===t.dataset.gatsbyImageSsr)return;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><style data-emotion="css zyllbl">.css-zyllbl{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;height:100vh;}</style><div class="css-zyllbl e1strnqo0"><style data-emotion="css-global kxm5mf">@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap');*{padding:0;margin:0;box-sizing:border-box;font-family:'Nanum Myeongjo',serif;}html,body,#___gatsby{height:100%;}a,a:hover{color:inherit;-webkit-text-decoration:none;text-decoration:none;cursor:pointer;}</style><style data-emotion="css 16cz9yp">.css-16cz9yp{position:relative;width:100%;height:400px;}@media (max-width: 768px){.css-16cz9yp{height:300px;}}</style><div class="css-16cz9yp e1opi4mu1"><style data-emotion="css 1bjn9yo">.css-1bjn9yo{z-index:-1;width:100%;height:400px;object-fit:cover;-webkit-filter:brightness(0.25);filter:brightness(0.25);}@media (max-width: 768px){.css-1bjn9yo{height:300px;}}</style><div data-gatsby-image-wrapper="" style="position:absolute" class="gatsby-image-wrapper gatsby-image-wrapper-constrained css-1bjn9yo e1opi4mu0"><div style="max-width:1536px;display:block"><img alt="" role="presentation" aria-hidden="true" src="data:image/svg+xml;charset=utf-8,%3Csvg%20height=&#x27;1024&#x27;%20width=&#x27;1536&#x27;%20xmlns=&#x27;http://www.w3.org/2000/svg&#x27;%20version=&#x27;1.1&#x27;%3E%3C/svg%3E" style="max-width:100%;display:block;position:static"/></div><img aria-hidden="true" data-placeholder-image="" style="opacity:1;transition:opacity 500ms linear" decoding="async" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAIAAAAmMtkJAAAACXBIWXMAAAsTAAALEwEAmpwYAAACB0lEQVR42m1S30/TUBTuX2U0Gp8ME0Zha5mG+AAoaAw+AD5oAm5ru9LCYDLGsiW6xJAxgpo4DL6ZaDRkrrf33rgVZBuTKkuE+WAiKK+ertkPlyUn7dfvnnO+c75epj+gt4YLQtZ5hVz1I9afYYUMAF6hQEK0JTP2yy1jGwyohFdpn4SW03uH1ZNK9SS6udcP7VTKzeLOxSDlqgHI6JWwL2l8yuLYWjqUSL/bxr7VPJDcrN6mxLQ141XcLeiptyW08239Y4WWf5W/Hz3d2nWKqKHsrgPG1dLJVnZKOPjcKJo/PhjHlervo+OfcupzTbmZBnvVimXMKaRpmIzBHpjw5fvi2dnf09M/AHhFtz2rV+qeOQr6TKNN48xtuU0BjIXR7bB1xCm0dTp7QMhn6oLWJt1+rUdAvSJiReSSiVMifQEIS8opoB6/Bk9OwZAJTNMw+IBmC6++Lr0+iGyZM8nSZKIQ2jTFjfJi2vSl9qcSu9E3prBehDEbMzIt2+ozyYLyYt+7VpiIaffjWXGVPHyiTSe0qbj24NmXwEbpXtzo8J/tcPiyDi+6Mr19YXjl8kjo0nD44tDjczeC54cijkeZLq8Gk3cuZiU0uEDvxozRSH5sJX8znBuP79xazo1GciNLuTtRix8MUrbmbgdl8NkzRwYU4lEx3NPr89SjkmvAqEACA1b9dz3/ASzLwXGUHuEiAAAAAElFTkSuQmCC" alt=""/><picture><source type="image/webp" data-srcset="/static/77d3533f77052c140bf796fc9c859f68/b642b/web-locks-api-concurrency-control.webp 384w,/static/77d3533f77052c140bf796fc9c859f68/c9564/web-locks-api-concurrency-control.webp 768w,/static/77d3533f77052c140bf796fc9c859f68/18b4b/web-locks-api-concurrency-control.webp 1536w" sizes="(min-width: 1536px) 1536px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 1536px) 1536px, 100vw" decoding="async" loading="lazy" data-src="/static/77d3533f77052c140bf796fc9c859f68/4d776/web-locks-api-concurrency-control.png" data-srcset="/static/77d3533f77052c140bf796fc9c859f68/4a410/web-locks-api-concurrency-control.png 384w,/static/77d3533f77052c140bf796fc9c859f68/f5189/web-locks-api-concurrency-control.png 768w,/static/77d3533f77052c140bf796fc9c859f68/4d776/web-locks-api-concurrency-control.png 1536w" alt="thumbnail"/></picture><noscript><picture><source type="image/webp" srcSet="/static/77d3533f77052c140bf796fc9c859f68/b642b/web-locks-api-concurrency-control.webp 384w,/static/77d3533f77052c140bf796fc9c859f68/c9564/web-locks-api-concurrency-control.webp 768w,/static/77d3533f77052c140bf796fc9c859f68/18b4b/web-locks-api-concurrency-control.webp 1536w" sizes="(min-width: 1536px) 1536px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 1536px) 1536px, 100vw" decoding="async" loading="lazy" src="/static/77d3533f77052c140bf796fc9c859f68/4d776/web-locks-api-concurrency-control.png" srcSet="/static/77d3533f77052c140bf796fc9c859f68/4a410/web-locks-api-concurrency-control.png 384w,/static/77d3533f77052c140bf796fc9c859f68/f5189/web-locks-api-concurrency-control.png 768w,/static/77d3533f77052c140bf796fc9c859f68/4d776/web-locks-api-concurrency-control.png 1536w" alt="thumbnail"/></picture></noscript><script type="module">const t="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;if(t){const t=document.querySelectorAll("img[data-main-image]");for(let e of t){e.dataset.src&&(e.setAttribute("src",e.dataset.src),e.removeAttribute("data-src")),e.dataset.srcset&&(e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset"));const t=e.parentNode.querySelectorAll("source[data-srcset]");for(let e of t)e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset");e.complete&&(e.style.opacity=1,e.parentNode.parentNode.querySelector("[data-placeholder-image]").style.opacity=0)}}</script></div><style data-emotion="css m1156n">.css-m1156n{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;width:768px;height:100%;margin:0 auto;padding:60px 0;color:#ffffff;}@media (max-width: 768px){.css-m1156n{width:100%;padding:40px 20px;}}</style><div class="css-m1156n e1st1jau4"><style data-emotion="css gywgo7">.css-gywgo7{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:#ffffff;color:#000000;font-size:22px;cursor:pointer;box-shadow:0 0 10px rgba(0, 0, 0, 0.3);}@media (max-width: 768px){.css-gywgo7{width:30px;height:30px;font-size:18px;}}</style><div class="css-gywgo7 e1st1jau3"><style data-emotion="css 1ij64l8">.css-1ij64l8{display:inline-block;width:12px;height:12px;border-left:2px solid #000000;border-bottom:2px solid #000000;-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg);-ms-transform:rotate(45deg);transform:rotate(45deg);}</style><span class="css-1ij64l8 e1st1jau2"></span></div><style data-emotion="css gn4qtp">.css-gn4qtp{display:-webkit-box;overflow:hidden;overflow-wrap:break-word;margin-top:auto;text-overflow:ellipsis;white-space:normal;-webkit-line-clamp:2;-webkit-box-orient:vertical;font-size:45px;font-weight:800;}@media (max-width: 768px){.css-gn4qtp{font-size:30px;}}</style><div class="css-gn4qtp e1st1jau1">🔒 Web Locks API 완벽 가이드: 브라우저 다중 탭 동시성 제어와 리더 선출</div><style data-emotion="css 3gcnt2">.css-3gcnt2{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;justify-content:space-between;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;margin-top:10px;font-size:18px;font-weight:700;}@media (max-width: 768px){.css-3gcnt2{-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-align-items:flex-start;-webkit-box-align:flex-start;-ms-flex-align:flex-start;align-items:flex-start;font-size:15px;font-weight:400;}}</style><div class="css-3gcnt2 e1st1jau0"><div>Web</div><div>2026.10.17.</div></div></div></div><style data-emotion="css 12g9cpd">.css-12g9cpd{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;width:768px;margin:0 auto;padding:200px 0 0 0;word-break:break-all;line-height:1.8;font-size:16px;font-weight:400;}.css-12g9cpd p{padding:3px 0;}.css-12g9cpd h1,.css-12g9cpd h2,.css-12g9cpd h3{font-weight:800;margin-bottom:30px;}.css-12g9cpd *+h1,.css-12g9cpd *+h2,.css-12g9cpd *+h3{margin-top:80px;}.css-12g9cpd hr+h1,.css-12g9cpd hr+h2,.css-12g9cpd hr+h3{margin-top:0;}.css-12g9cpd h1{font-size:30px;}.css-12g9cpd h2{font-size:25px;}.css-12g9cpd h3{font-size:20px;}.css-12g9cpd blockquote{margin:30px 0;padding:5px 15px;border-left:2px solid #000000;font-weight:800;}.css-12g9cpd ol,.css-12g9cpd ul{margin-left:20px;padding:30px 0;}.css-12g9cpd hr{border:1px solid #000000;margin:100px 0;}.css-12g9cpd a{color:#4263eb;-webkit-text-decoration:underline;text-decoration:underline;}.css-12g9cpd pre[class*='language-']{margin:30px 0;padding:15px;font-size:15px;}.css-12g9cpd pre[class*='language-']::-webkit-scrollbar-thumb{background:rgba(255, 255, 255, 0.5);border-radius:3px;}.css-12g9cpd code[class*='language-'],.css-12g9cpd pre[class*='language-']{tab-size:2;}@media (max-width: 768px){.css-12g9cpd{width:100%;padding:140px 20px 0 20px;line-height:1.6;font-size:14px;}.css-12g9cpd h1{font-size:23px;}.css-12g9cpd h2{font-size:20px;}.css-12g9cpd h3{font-size:17px;}.css-12g9cpd img{width:100%;}.css-12g9cpd hr{margin:50px 0;}}</style><div class="css-12g9cpd e1ijh0y10"><h1>🔒 Web Locks API 완벽 가이드: 브라우저 다중 탭 동시성 제어와 리더 선출</h1>
+<blockquote>
+<p>“사용자가 동일한 웹 앱을 10개 탭에 열어두었을 때, 데이터베이스 쓰기 충돌과 중복 네트워크 요청을 어떻게 제어할 것인가?”
+본 글에서는 웹 플랫폼 표준 API인 Web Locks API(<code class="language-text">navigator.locks</code>)의 동작 원리부터 공유/배타적 락, 다중 탭 리더 선출 패턴, 그리고 실무 함정까지 깊이 있게 파헤칩니다.</p>
+</blockquote>
+<hr>
+<h2>📌 목차</h2>
+<ol>
+<li>🧭 다중 탭 환경에서 마주하는 동시성(Concurrency) 위기</li>
+<li>💡 Web Locks API란 무엇인가?</li>
+<li>⚙️ 기존 해결책(localStorage/IndexedDB)과의 비교</li>
+<li>🚀 핵심 인터페이스: navigator.locks.request 기본 문법</li>
+<li>⚖️ 배타적 락(Exclusive) vs 공유 락(Shared)</li>
+<li>🛡️ ifAvailable 옵션과 폴백(Fallback) 전략</li>
+<li>🛑 AbortSignal을 결합한 타임아웃 및 데드락 방지</li>
+<li>👑 실전 아키텍처: 다중 탭 단일 리더 선출(Leader Election)</li>
+<li>💾 IndexedDB 및 OPFS(파일 시스템)와의 환상적인 조합</li>
+<li>🔍 navigator.locks.query()를 통한 락 상태 디버깅과 관측성</li>
+<li>⚠️ 실무 도입 시 주의점과 안티 패턴 (쓰면 안 되는 경우)</li>
+<li>🧾 정리 및 요약</li>
+<li>📚 참고 자료</li>
+</ol>
+<hr>
+<h2>🧭 1. 다중 탭 환경에서 마주하는 동시성(Concurrency) 위기</h2>
+<p>현대 웹 애플리케이션은 단순한 정적 문서 뷰어가 아닙니다. IndexedDB에 대용량 데이터를 동기화하고, 백그라운드에서 서버와 WebSocket 연결을 맺으며, 로컬 캐시를 지속적으로 갱신하는 완전한 클라이언트 소프트웨어입니다.</p>
+<p>하지만 사용자는 한 브라우저 안에서 같은 도메인의 탭을 수시로 여러 개 엽니다. 이때 다음과 같은 심각한 동시성 문제가 터져 나옵니다.</p>
+<ul>
+<li><strong>중복 작업 실행</strong>: 탭 3개가 동시에 서버 폴링을 돌려 동일한 알림 데이터를 삼중으로 가져오고 IndexedDB에 쓰기 경쟁을 벌임.</li>
+<li><strong>데이터 레이스 컨디션(Race Condition)</strong>: 탭 A가 로컬 설정을 읽어 변경하는 찰나에 탭 B가 다른 값으로 덮어써 버전 충돌 및 데이터 유실 발생.</li>
+<li><strong>소켓 연결 낭비</strong>: 열린 탭마다 각자 WebSocket 또는 WebTransport 세션을 연결하여 서버 리소스를 고갈시킴.</li>
+</ul>
+<p>이러한 문제를 해결하기 위해 과거 프론트엔드 엔지니어들은 눈물겨운 우회로를 찾아야 했습니다.</p>
+<hr>
+<h2>💡 2. Web Locks API란 무엇인가?</h2>
+<p><strong>Web Locks API</strong>는 W3C 표준으로 제정된 네이티브 브라우저 API로, 동일 오리진(Origin) 내의 모든 윈도우(Tabs/Windows), iframe, 그리고 Worker(Dedicated, Shared, Service Worker) 간에 비동기 리소스 락(Lock)을 안전하게 획득하고 해제할 수 있도록 지원합니다.</p>
+<p>핵심 특징은 다음과 같습니다.</p>
+<ol>
+<li><strong>자동 수명 주기 관리(Scoped Lifetime)</strong>: 락을 획득한 후 콜백 함수가 반환하는 Promise가 해결(Resolved/Rejected)되면 브라우저 런타임이 락을 자동으로 해제합니다. <code class="language-text">unlock()</code> 같은 메서드를 수동 호출하다 실수할 여지가 없습니다.</li>
+<li><strong>비정상 종료 안전성(Crash Safety)</strong>: 사용자가 탭을 강제로 닫거나 브라우저 탭 프로세스가 크래시되어도, 브라우저 엔진이 관리하는 리소스 테이블에서 해당 락이 즉시 해제되어 데드락(Deadlock)에 빠지지 않습니다.</li>
+<li><strong>크로스 컨텍스트(Cross-Context) 지원</strong>: 브라우저 메인 스레드와 Web Worker, Service Worker 간에도 동일한 락 이름을 공유하며 조율할 수 있습니다.</li>
+</ol>
+<hr>
+<h2>⚙️ 3. 기존 해결책(localStorage/IndexedDB)과의 비교</h2>
+<p>과거에는 다중 탭 락을 구현하기 위해 <code class="language-text">localStorage.setItem('lock', timestamp)</code>과 <code class="language-text">window.addEventListener('storage', ...)</code>를 엮거나, IndexedDB의 트랜잭션 락에 의존했습니다. 왜 Web Locks API가 필수적인지 비교해 보겠습니다.</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 768px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/e6de8e8c5cbf9488a6542aeae85f1eea/bbbf7/web-locks-api-concurrency-control-1.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 50%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAIAAAA7N+mxAAAACXBIWXMAAAsTAAALEwEAmpwYAAABx0lEQVR42mWSy2oUURCG57EFHyFBX0AEiRtXIgiiiwQ0ksRFJHEmmZnu0/c+fU6f+336NtpjJC5S1KIW/1d/UVWL30+CaxsXqMasbEheYYhYBYky7qlysZ+mXuteyJ6ynvOBcZqXYLmpQN7UOEPtrzy7zbIIQeI1tqp1ClvJvJ7202K01itnmlZGiUoLuY5UnNgk21m/N5Z3PmIokzTmGLD2vq3XpNmSplRCd34xOSe4LhBbxeUqKu5ANWdUINSKyVjVB8TUNqnXcbUB9RpU91FZVIRppzp3gJUwDRHzmNsUbkAVZ01SYsrUZJzsAxY6LXGcN5ukjrImyiHE/D8sZ+eGzjA4KKqHoiVibw9ww2Ra4aREMzy3AEUzw1TZf7CWtqIqRbzAPK1JjkVJ9ez8ABNpKDUlZEVNS0ghElJ6Zv46j1rvQs9X6+TouHj1uj55mx6/gB8/hW4cpaLz3rrx3fL8+dnJy6sPRxfvn52+uSqj0E88mMV+GHptAoTs/Du9uCSXP8jXb2J5Z7kMygjviFHXNfgcX58lN6fg5gv4mclWBteNw+Lx4rtxUqFnxptdr0OnrCdCS2W1cd53XRisCd51Qz8+PskfYkEjHxtzpCMAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <picture>
+          <source
+              srcset="/static/e6de8e8c5cbf9488a6542aeae85f1eea/a59e9/web-locks-api-concurrency-control-1.webp 192w,
+/static/e6de8e8c5cbf9488a6542aeae85f1eea/0ca9f/web-locks-api-concurrency-control-1.webp 384w,
+/static/e6de8e8c5cbf9488a6542aeae85f1eea/dc9b9/web-locks-api-concurrency-control-1.webp 768w,
+/static/e6de8e8c5cbf9488a6542aeae85f1eea/e2c2f/web-locks-api-concurrency-control-1.webp 1152w,
+/static/e6de8e8c5cbf9488a6542aeae85f1eea/94b1e/web-locks-api-concurrency-control-1.webp 1280w"
+              sizes="(max-width: 768px) 100vw, 768px"
+              type="image/webp"
+            />
+          <source
+            srcset="/static/e6de8e8c5cbf9488a6542aeae85f1eea/3b721/web-locks-api-concurrency-control-1.png 192w,
+/static/e6de8e8c5cbf9488a6542aeae85f1eea/66595/web-locks-api-concurrency-control-1.png 384w,
+/static/e6de8e8c5cbf9488a6542aeae85f1eea/fe486/web-locks-api-concurrency-control-1.png 768w,
+/static/e6de8e8c5cbf9488a6542aeae85f1eea/d2d74/web-locks-api-concurrency-control-1.png 1152w,
+/static/e6de8e8c5cbf9488a6542aeae85f1eea/bbbf7/web-locks-api-concurrency-control-1.png 1280w"
+            sizes="(max-width: 768px) 100vw, 768px"
+            type="image/png"
+          />
+          <img
+            class="gatsby-resp-image-image"
+            src="/static/e6de8e8c5cbf9488a6542aeae85f1eea/fe486/web-locks-api-concurrency-control-1.png"
+            alt="localStorage 폴링 vs Web Locks API 비교 도식"
+            title=""
+            loading="lazy"
+            decoding="async"
+            style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+          />
+        </picture>
+  </a>
+    </span></p>
+<table>
+<thead>
+<tr>
+<th align="left">비교 항목</th>
+<th align="left">localStorage 타임스탬프 방식</th>
+<th align="left">IndexedDB 트랜잭션 락</th>
+<th align="left">Web Locks API</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong>원자성 (Atomicity)</strong></td>
+<td align="left">❌ 지원 안 됨 (동시 읽기-쓰기 취약)</td>
+<td align="left">⚠️ DB 스토어 범위로만 제한</td>
+<td align="left">✅ 브라우저 엔진 레벨 완벽 보장</td>
+</tr>
+<tr>
+<td align="left"><strong>탭 크래시 복구</strong></td>
+<td align="left">❌ 타임아웃 만료 전까지 데드락</td>
+<td align="left">⚠️ 연결 종료 감지 지연 가능</td>
+<td align="left">✅ 탭 소멸 즉시 브라우저가 자동 해제</td>
+</tr>
+<tr>
+<td align="left"><strong>성능 오버헤드</strong></td>
+<td align="left">❌ setInterval 폴링으로 CPU 낭비</td>
+<td align="left">⚠️ 무거운 트랜잭션 수명 주기</td>
+<td align="left">✅ 네이티브 큐잉(Promise 기반) 대기</td>
+</tr>
+<tr>
+<td align="left"><strong>워커(Worker) 지원</strong></td>
+<td align="left">❌ Service Worker에서 접근 불가</td>
+<td align="left">✅ 지원</td>
+<td align="left">✅ Window, Worker 완벽 공유</td>
+</tr>
+<tr>
+<td align="left"><strong>공유 락(Reader-Writer)</strong></td>
+<td align="left">❌ 구현 극도로 난해</td>
+<td align="left">❌ 지원 안 됨</td>
+<td align="left">✅ 네이티브 지원 (<code class="language-text">mode: 'shared'</code>)</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2>🚀 4. 핵심 인터페이스: navigator.locks.request 기본 문법</h2>
+<p>Web Locks API의 사용법은 놀라울 정도로 직관적입니다. <code class="language-text">navigator.locks.request()</code> 메서드를 호출하고, 락의 이름과 작업할 비동기 콜백을 전달하면 끝납니다.</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token comment">// exclusive 락 요청 (기본값)</span>
+<span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">updateSyncState</span><span class="token punctuation">(</span><span class="token parameter">payload</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'락 획득 시도 중...'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">await</span> navigator<span class="token punctuation">.</span>locks<span class="token punctuation">.</span><span class="token function">request</span><span class="token punctuation">(</span><span class="token string">'sync_local_db'</span><span class="token punctuation">,</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token parameter">lock</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token comment">// 이 블록 안의 코드는 동일 오리진 전체에서 단 하나의 탭/워커만 실행됩니다.</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">락 획득 성공! 락 이름: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>lock<span class="token punctuation">.</span>name<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">, 모드: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>lock<span class="token punctuation">.</span>mode<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    
+    <span class="token comment">// 안전한 원자적 작업 수행</span>
+    <span class="token keyword">const</span> current <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">readFromIndexedDB</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> next <span class="token operator">=</span> <span class="token function">mergeState</span><span class="token punctuation">(</span>current<span class="token punctuation">,</span> payload<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">await</span> <span class="token function">writeToIndexedDB</span><span class="token punctuation">(</span>next<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 작업 시뮬레이션</span>
+    <span class="token keyword">await</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">resolve</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token function">setTimeout</span><span class="token punctuation">(</span>resolve<span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'작업 완료, 콜백 Promise가 반환되면서 락이 자동 해제됩니다.'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'락 해제 완료. 대기 중이던 다음 탭의 콜백이 실행됩니다.'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>중요한 점은 콜백 함수가 반환하는 <strong>Promise의 수명이 곧 락의 유지 시간</strong>이라는 점입니다. 콜백이 비동기 함수(<code class="language-text">async</code>)일 경우 반환된 Promise가 settled 상태가 되는 순간 락이 반납됩니다.</p>
+<hr>
+<h2>⚖️ 5. 배타적 락(Exclusive) vs 공유 락(Shared)</h2>
+<p>데이터베이스 시스템의 기본 원리인 <strong>Reader-Writer Lock</strong> 패턴을 네이티브로 제공합니다.</p>
+<ul>
+<li><code class="language-text">mode: 'exclusive'</code> (기본값): 단 1개의 컨텍스트만 실행 가능 (쓰기 작업에 적합)</li>
+<li><code class="language-text">mode: 'shared'</code>: 여러 탭이 동시에 실행 가능하지만, exclusive 락이 대기 중이거나 점유 중일 때는 진입 불가 (읽기 작업에 적합)</li>
+</ul>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token comment">// 여러 탭에서 동시에 읽기 가능 (Shared Lock)</span>
+<span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">readReport</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token keyword">await</span> navigator<span class="token punctuation">.</span>locks<span class="token punctuation">.</span><span class="token function">request</span><span class="token punctuation">(</span>
+    <span class="token string">'report_resource'</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span> <span class="token literal-property property">mode</span><span class="token operator">:</span> <span class="token string">'shared'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token parameter">lock</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Shared 락 점유: 다른 shared 탭들과 병렬 실행 중...'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">return</span> <span class="token keyword">await</span> <span class="token function">fetchLocalCachedData</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 오직 하나의 탭에서만 쓰기 가능 (Exclusive Lock)</span>
+<span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">writeReport</span><span class="token punctuation">(</span><span class="token parameter">newData</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">await</span> navigator<span class="token punctuation">.</span>locks<span class="token punctuation">.</span><span class="token function">request</span><span class="token punctuation">(</span>
+    <span class="token string">'report_resource'</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span> <span class="token literal-property property">mode</span><span class="token operator">:</span> <span class="token string">'exclusive'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token comment">// mode 생략 가능</span>
+    <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token parameter">lock</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Exclusive 락 점유: 모든 shared/exclusive 탭이 대기합니다.'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">await</span> <span class="token function">commitLocalCachedData</span><span class="token punctuation">(</span>newData<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>이 패턴을 사용하면 수많은 탭이 로컬 데이터를 읽는 작업은 막힘없이 동시에 처리하면서, 설정을 쓰거나 DB 마이그레이션을 진행할 때만 모든 읽기 작업을 안전하게 일시 정지시킬 수 있습니다.</p>
+<hr>
+<h2>🛡️ 6. ifAvailable 옵션과 폴백(Fallback) 전략</h2>
+<p>기본적으로 <code class="language-text">navigator.locks.request()</code>는 락이 점유되어 있으면 큐에 들어가 차례를 기다립니다. 하지만 탭에서 “지금 당장 락을 잡을 수 없다면 굳이 기다리지 않고 작업을 건너뛰거나 다른 탭에 위임”하고 싶을 때는 <code class="language-text">{ ifAvailable: true }</code> 옵션을 사용합니다.</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">tryPeriodicHeartbeat</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">await</span> navigator<span class="token punctuation">.</span>locks<span class="token punctuation">.</span><span class="token function">request</span><span class="token punctuation">(</span>
+    <span class="token string">'periodic_telemetry'</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span> <span class="token literal-property property">ifAvailable</span><span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token parameter">lock</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>lock<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 다른 탭이 이미 락을 쥐고 하트비트를 보내는 중임</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'다른 탭이 텔레메트리를 전송 중입니다. 본 탭은 작업을 스킵합니다.'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+
+      <span class="token comment">// 락 획득 성공</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'본 탭이 텔레메트리 전송 권한을 얻었습니다.'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">await</span> <span class="token function">sendServerTelemetry</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p><code class="language-text">ifAvailable: true</code>를 지정하면 락을 선점할 수 없을 때 에러를 던지지 않고 콜백 인자로 <code class="language-text">null</code>을 전달합니다. 이를 통해 폴백 로직을 매우 깔끔하게 작성할 수 있습니다.</p>
+<hr>
+<h2>🛑 7. AbortSignal을 결합한 타임아웃 및 데드락 방지</h2>
+<p>네트워크 지연이나 외부 원인으로 비동기 콜백이 영원히 끝나지 않거나, 락 대기열에 너무 오래 갇히는 상황을 막기 위해 표준 <code class="language-text">AbortSignal</code>을 연결할 수 있습니다.</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">performCriticalSyncWithTimeout</span><span class="token punctuation">(</span><span class="token parameter">timeoutMs <span class="token operator">=</span> <span class="token number">5000</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> controller <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">AbortController</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> timer <span class="token operator">=</span> <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> controller<span class="token punctuation">.</span><span class="token function">abort</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token string">'락 대기 타임아웃 초과'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> timeoutMs<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">try</span> <span class="token punctuation">{</span>
+    <span class="token keyword">await</span> navigator<span class="token punctuation">.</span>locks<span class="token punctuation">.</span><span class="token function">request</span><span class="token punctuation">(</span>
+      <span class="token string">'critical_sync'</span><span class="token punctuation">,</span>
+      <span class="token punctuation">{</span> <span class="token literal-property property">signal</span><span class="token operator">:</span> controller<span class="token punctuation">.</span>signal <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token parameter">lock</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+        <span class="token function">clearTimeout</span><span class="token punctuation">(</span>timer<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'제한 시간 내에 락을 획득하여 동기화를 수행합니다.'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">await</span> <span class="token function">processHeavyOperation</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>err<span class="token punctuation">.</span>name <span class="token operator">===</span> <span class="token string">'AbortError'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      console<span class="token punctuation">.</span><span class="token function">warn</span><span class="token punctuation">(</span><span class="token string">'락 획득 실패 (타임아웃 또는 취소됨)'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+      <span class="token keyword">throw</span> err<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span> <span class="token keyword">finally</span> <span class="token punctuation">{</span>
+    <span class="token function">clearTimeout</span><span class="token punctuation">(</span>timer<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p><code class="language-text">signal</code>이 abort되면 대기 큐에서 대기 중이던 요청은 즉시 <code class="language-text">AbortError</code>와 함께 거부(reject)되므로 무한 대기 현상을 원천 차단할 수 있습니다.</p>
+<hr>
+<h2>👑 8. 실전 아키텍처: 다중 탭 단일 리더 선출(Leader Election)</h2>
+<p>Web Locks API의 가장 매력적인 사용처는 **단일 리더 탭 선출(Leader Election)**입니다. 수많은 탭 중 딱 하나만 리더가 되어 WebSocket 연결을 유지하고, 서버로부터 수신한 메시지를 <code class="language-text">BroadcastChannel</code>을 통해 다른 팔로워(Follower) 탭들에 브로드캐스트하는 구조입니다.</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 768px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/adb25cf37259dfb953842d372dc6e0eb/bbbf7/web-locks-api-concurrency-control-2.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 50%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAIAAAA7N+mxAAAACXBIWXMAAAsTAAALEwEAmpwYAAABT0lEQVR42qVS7U7CQBDs+z8OGt/AiMaQqAgRSaAt9Lq9z73rd3vgHkTBxH9utpudyUx7k2t0vKq26/NCaSyVcVkuc6EzkNsd5FxTp4zXTXetj65B03akAKFBGFYornCXi4s541Xd/jJ7fxjG8eD9SOU9UZ6owyE8VATDOJ6B/67xJIq0rdYJzFcJTaFwGcvJw/Z2uplM4/lGMJDzz/R9nb5+JIzrJBNvq2QRYMyVjSgeSLsDLU3FhX5csslM3Dyzuxd9v8jTPRTK7QtDAjo/mZmwe9BxJrnECF2dgc4KzbgxWKaA0yXM1vxpxTcMiSmULaQFgdI4hSUPEEGisVVERx+GEPc8QzSKE3qklQjiqfthONG+D7ogDpmP/6iLue8Huka6arqwputrmm2AJ6Y/7ySgb/5hLquGElIStJUta/pV0IWF2pV14F2l0dErfsxfbYQ6PPhat6IAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <picture>
+          <source
+              srcset="/static/adb25cf37259dfb953842d372dc6e0eb/a59e9/web-locks-api-concurrency-control-2.webp 192w,
+/static/adb25cf37259dfb953842d372dc6e0eb/0ca9f/web-locks-api-concurrency-control-2.webp 384w,
+/static/adb25cf37259dfb953842d372dc6e0eb/dc9b9/web-locks-api-concurrency-control-2.webp 768w,
+/static/adb25cf37259dfb953842d372dc6e0eb/e2c2f/web-locks-api-concurrency-control-2.webp 1152w,
+/static/adb25cf37259dfb953842d372dc6e0eb/94b1e/web-locks-api-concurrency-control-2.webp 1280w"
+              sizes="(max-width: 768px) 100vw, 768px"
+              type="image/webp"
+            />
+          <source
+            srcset="/static/adb25cf37259dfb953842d372dc6e0eb/3b721/web-locks-api-concurrency-control-2.png 192w,
+/static/adb25cf37259dfb953842d372dc6e0eb/66595/web-locks-api-concurrency-control-2.png 384w,
+/static/adb25cf37259dfb953842d372dc6e0eb/fe486/web-locks-api-concurrency-control-2.png 768w,
+/static/adb25cf37259dfb953842d372dc6e0eb/d2d74/web-locks-api-concurrency-control-2.png 1152w,
+/static/adb25cf37259dfb953842d372dc6e0eb/bbbf7/web-locks-api-concurrency-control-2.png 1280w"
+            sizes="(max-width: 768px) 100vw, 768px"
+            type="image/png"
+          />
+          <img
+            class="gatsby-resp-image-image"
+            src="/static/adb25cf37259dfb953842d372dc6e0eb/fe486/web-locks-api-concurrency-control-2.png"
+            alt="Web Locks 다중 탭 리더 선출 파이프라인 흐름도"
+            title=""
+            loading="lazy"
+            decoding="async"
+            style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+          />
+        </picture>
+  </a>
+    </span></p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token comment">// leader-election.js</span>
+<span class="token keyword">class</span> <span class="token class-name">TabCoordinator</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>isLeader <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>channel <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BroadcastChannel</span><span class="token punctuation">(</span><span class="token string">'app_coordination_channel'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setupListeners</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">setupListeners</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>channel<span class="token punctuation">.</span><span class="token function-variable function">onmessage</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>event<span class="token punctuation">.</span>data<span class="token punctuation">.</span>type <span class="token operator">===</span> <span class="token string">'SERVER_EVENT'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">handleServerEventAsFollower</span><span class="token punctuation">(</span>event<span class="token punctuation">.</span>data<span class="token punctuation">.</span>payload<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 영구 락을 요청하여 리더십을 쥐고 대기</span>
+    navigator<span class="token punctuation">.</span>locks<span class="token punctuation">.</span><span class="token function">request</span><span class="token punctuation">(</span><span class="token string">'single_tab_leader'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">resolve</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>isLeader <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'👑 본 탭이 리더로 선출되었습니다!'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">initializeLeaderDuties</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// 창이 닫히거나 언로드될 때 resolve를 호출하여 락을 양도</span>
+        window<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'beforeunload'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+          <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">cleanupLeaderDuties</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token function">resolve</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">once</span><span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">catch</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">err</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+      console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">'리더 선출 프로세스 예외:'</span><span class="token punctuation">,</span> err<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">initializeLeaderDuties</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 단일 WebSocket 연결 생성</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>ws <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">WebSocket</span><span class="token punctuation">(</span><span class="token string">'wss://example.com/live-stream'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>ws<span class="token punctuation">.</span><span class="token function-variable function">onmessage</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">msg</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+      <span class="token keyword">const</span> payload <span class="token operator">=</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>msg<span class="token punctuation">.</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token comment">// 모든 팔로워 탭에 데이터 중계</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span>channel<span class="token punctuation">.</span><span class="token function">postMessage</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">type</span><span class="token operator">:</span> <span class="token string">'SERVER_EVENT'</span><span class="token punctuation">,</span> payload <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">cleanupLeaderDuties</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>ws<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span>ws<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span>ws <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">handleServerEventAsFollower</span><span class="token punctuation">(</span><span class="token parameter">payload</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'팔로워 탭: 리더로부터 메시지 수신'</span><span class="token punctuation">,</span> payload<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> coordinator <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">TabCoordinator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+coordinator<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<p>리더 탭의 사용자가 창을 닫으면, 브라우저가 즉시 락을 해제하고 큐에서 대기하고 있던 다음 탭의 Promise 콜백이 실행되어 <strong>0.1초 만에 새로운 리더로 즉시 승계</strong>됩니다.</p>
+<hr>
+<h2>💾 9. IndexedDB 및 OPFS(파일 시스템)와의 환상적인 조합</h2>
+<p>IndexedDB는 자체적으로 트랜잭션 락을 지원하지만, <strong>비동기 틱 간격(Microtask turn)</strong> 사이에 트랜잭션이 비활성화되거나 자동 커밋되는 제약이 있습니다. 특히 OPFS(Origin Private File System)의 고성능 <code class="language-text">FileSystemSyncAccessHandle</code>은 파일당 단 하나의 배타적 핸들만 허용하므로 다중 탭에서 충돌이 잦습니다.</p>
+<p>Web Locks API를 상위 레이어의 가드(Guard)로 배치하면 이러한 문제를 완벽히 해결할 수 있습니다.</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">writeLogToOPFS</span><span class="token punctuation">(</span><span class="token parameter">logMessage</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// OPFS 접근을 위한 전역 네임스페이스 락 획득</span>
+  <span class="token keyword">await</span> navigator<span class="token punctuation">.</span>locks<span class="token punctuation">.</span><span class="token function">request</span><span class="token punctuation">(</span><span class="token string">'opfs_app_log_lock'</span><span class="token punctuation">,</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> root <span class="token operator">=</span> <span class="token keyword">await</span> navigator<span class="token punctuation">.</span>storage<span class="token punctuation">.</span><span class="token function">getDirectory</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> fileHandle <span class="token operator">=</span> <span class="token keyword">await</span> root<span class="token punctuation">.</span><span class="token function">getFileHandle</span><span class="token punctuation">(</span><span class="token string">'app.log'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">create</span><span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    
+    <span class="token comment">// SyncAccessHandle은 전용 워커에서 동기 실행되거나 파일 락이 필수적</span>
+    <span class="token keyword">const</span> accessHandle <span class="token operator">=</span> <span class="token keyword">await</span> fileHandle<span class="token punctuation">.</span><span class="token function">createWritable</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">keepExistingData</span><span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">await</span> accessHandle<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">TextEncoder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">encode</span><span class="token punctuation">(</span>logMessage <span class="token operator">+</span> <span class="token string">'\n'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">await</span> accessHandle<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>이처럼 복합 리소스(네트워크 + DB + 파일 시스템)를 아우르는 하나의 분산 트랜잭션 단위 락을 구성할 때 Web Locks API는 필수적인 빌딩 블록이 됩니다.</p>
+<hr>
+<h2>🔍 10. navigator.locks.query()를 통한 락 상태 디버깅과 관측성</h2>
+<p>개발자 도구에서 어떤 탭이 어떤 락을 잡고 있고, 큐에 대기 중인 요청이 몇 개인지 어떻게 확인할까요? <code class="language-text">navigator.locks.query()</code>를 호출하면 현재 오리진의 전체 락 스냅샷을 검사할 수 있습니다.</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">inspectLockState</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> snapshot <span class="token operator">=</span> <span class="token keyword">await</span> navigator<span class="token punctuation">.</span>locks<span class="token punctuation">.</span><span class="token function">query</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'=== 현재 점유 중인 락(Held Locks) ==='</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  snapshot<span class="token punctuation">.</span>held<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">lock</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">이름: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>lock<span class="token punctuation">.</span>name<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">, 모드: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>lock<span class="token punctuation">.</span>mode<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">, 클라이언트ID: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>lock<span class="token punctuation">.</span>clientId<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'=== 대기열에 쌓인 락(Pending Locks) ==='</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  snapshot<span class="token punctuation">.</span>pending<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">lock</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">대기 중인 락: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>lock<span class="token punctuation">.</span>name<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">, 요청 모드: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>lock<span class="token punctuation">.</span>mode<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">, 클라이언트ID: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>lock<span class="token punctuation">.</span>clientId<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p><code class="language-text">clientId</code>는 서비스 워커의 <code class="language-text">Clients API</code>와 연동되는 고유 ID로, 어느 탭(Window Client)이 리소스를 점유하고 있는지 식별하고 문제 발생 시 진단 지표로 전송할 수 있습니다.</p>
+<hr>
+<h2>⚠️ 11. 실무 도입 시 주의점과 안티 패턴 (쓰면 안 되는 경우)</h2>
+<p>Web Locks API는 강력하지만 오용하면 브라우저 탭 전체가 멈추는 재앙을 부를 수 있습니다.</p>
+<h3>1. 락 내부에서 끝나지 않는 UI 사용자 입력 대기 (절대 금지)</h3>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token comment">// ❌ 안티 패턴: 락을 잡은 상태로 사용자 모달 확인을 기다림</span>
+<span class="token keyword">await</span> navigator<span class="token punctuation">.</span>locks<span class="token punctuation">.</span><span class="token function">request</span><span class="token punctuation">(</span><span class="token string">'order_lock'</span><span class="token punctuation">,</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> confirmed <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">showUserConfirmDialog</span><span class="token punctuation">(</span><span class="token string">'결제를 진행할까요?'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 사용자가 밥 먹으러 가면 다른 탭 전부 멈춤</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>confirmed<span class="token punctuation">)</span> <span class="token keyword">await</span> <span class="token function">processOrder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<p>사용자 인터랙션은 락 밖에서 완전히 끝마치고, 오직 원자적 실행이 필요한 비동기 구간에만 락을 최소 시간으로 걸어야 합니다.</p>
+<h3>2. 단일 탭 내의 일반 인메모리 변수 동기화에 남발</h3>
+<p>자바스크립트 메인 스레드는 기본적으로 단일 스레드(Single-Threaded Event Loop)입니다. 동일한 탭 내부의 단순 변수 상태 관리를 위해 Web Locks API를 사용하는 것은 불필요한 마이크로태스크 오버헤드와 비동기 래핑 비용을 초래합니다.</p>
+<h3>3. 브라우저 지원 범위 확인</h3>
+<p>Web Locks API는 Chrome 69+, Edge 79+, Safari 15.4+, Firefox 96+ 등 모던 브라우저 전반에서 지원되지만, 레거시 웹뷰나 구형 임베디드 브라우저 환경에서는 지원 여부를 사전에 가드해야 합니다.</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token string">'locks'</span> <span class="token keyword">in</span> navigator<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// Web Locks API 지원</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 폴백 로직 (예: BroadcastChannel 기반 협상 또는 단순 실행)</span>
+<span class="token punctuation">}</span></code></pre></div>
+<hr>
+<h2>🧾 12. 정리 및 요약</h2>
+<ul>
+<li>Web Locks API는 동일 오리진의 다중 탭, 창, 워커 간 리소스 경쟁을 해결하는 브라우저 네이티브 동기화 표준입니다.</li>
+<li>비동기 콜백 함수가 반환하는 Promise의 라이프사이클에 따라 브라우저 엔진이 자동으로 락을 획득하고 해제합니다.</li>
+<li>탭이 크래시되거나 강제 종료되어도 브라우저가 즉각 락을 수거하여 데드락 위험이 없습니다.</li>
+<li>배타적(Exclusive) 모드와 공유(Shared) 모드를 통해 읽기/쓰기 동시성을 최적화할 수 있습니다.</li>
+<li><code class="language-text">ifAvailable</code>과 <code class="language-text">AbortSignal</code> 옵션을 통해 락 획득 실패 시 즉시 반환하거나 타임아웃 처리가 가능합니다.</li>
+<li>다중 탭 단일 소켓 유지, IndexedDB/OPFS 동시 쓰기 보호, 리더 선출(Leader Election) 구축에 최적의 해법입니다.</li>
+</ul>
+<blockquote>
+<p>✨ <strong>한 줄 요약</strong>
+다중 탭 동시성 버그를 잡으려 스토리지 폴링 꼼수를 쓰지 말고, 네이티브 브라우저 표준인 Web Locks API로 안전하고 우아하게 락을 다루자.</p>
+</blockquote>
+<hr>
+<h2>📚 참고 자료</h2>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Locks_API" target="_blank" rel="nofollow">MDN Web Docs: Web Locks API</a></li>
+<li><a href="https://www.w3.org/TR/web-locks/" target="_blank" rel="nofollow">W3C Web Locks API Candidate Recommendation Snapshot</a></li>
+<li><a href="https://developer.chrome.com/docs/web-platform/web-locks" target="_blank" rel="nofollow">Chrome for Developers: Web Locks API — Cross-tab resource coordination</a></li>
+</ul></div><style data-emotion="css hx9xpc">@media (max-width: 768px){.css-hx9xpc{padding:0 20px;}}</style><div class="css-hx9xpc e1gqsjds0"></div><style data-emotion="css 1lgr7vy">.css-1lgr7vy{position:fixed;bottom:30px;right:30px;width:50px;height:50px;border-radius:50%;background:linear-gradient(60deg, rgb(66, 105, 78) 0%, rgb(73, 110, 93) 100%);border:2px solid white;cursor:pointer;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;-webkit-justify-content:center;justify-content:center;box-shadow:0 4px 15px rgba(0, 0, 0, 0.15);-webkit-transition:all 0.3s ease;transition:all 0.3s ease;z-index:1000;opacity:0;visibility:hidden;-webkit-transform:translateY(20px);-moz-transform:translateY(20px);-ms-transform:translateY(20px);transform:translateY(20px);}.css-1lgr7vy:hover{-webkit-transform:translateY(-3px);-moz-transform:translateY(-3px);-ms-transform:translateY(-3px);transform:translateY(-3px);box-shadow:0 6px 20px rgba(0, 0, 0, 0.3);background:white;border-color:rgb(66, 105, 78);}.css-1lgr7vy:active{-webkit-transform:translateY(0);-moz-transform:translateY(0);-ms-transform:translateY(0);transform:translateY(0);}.css-1lgr7vy.visible{opacity:1;visibility:visible;-webkit-transform:translateY(0);-moz-transform:translateY(0);-ms-transform:translateY(0);transform:translateY(0);}@media (max-width: 768px){.css-1lgr7vy{bottom:20px;right:20px;width:45px;height:45px;}}</style><button class="css-1lgr7vy e14t44do1" aria-label="맨 위로 이동"><style data-emotion="css 1lzpihr">.css-1lzpihr{width:0;height:0;border-left:8px solid transparent;border-right:8px solid transparent;border-bottom:12px solid white;margin-bottom:2px;-webkit-transition:border-bottom-color 0.3s ease;transition:border-bottom-color 0.3s ease;}.e14t44do1:hover .css-1lzpihr{border-bottom-color:rgb(66, 105, 78);}</style><div class="css-1lzpihr e14t44do0"></div></button><style data-emotion="css 1yungzt">.css-1yungzt{position:relative;width:100%;padding:40px 0;background:linear-gradient(180deg, rgba(66, 105, 78, 0.05) 0%, rgba(73, 110, 93, 0.1) 100%);border-top:1px solid rgba(66, 105, 78, 0.1);}</style><footer class="css-1yungzt e1oae0v84"><style data-emotion="css 1uamirr">.css-1uamirr{max-width:960px;margin:0 auto;padding:0 20px;text-align:center;}</style><div class="css-1uamirr e1oae0v83"><style data-emotion="css 1ghcw8y">.css-1ghcw8y{font-size:16px;line-height:1.6;color:#426950;margin-bottom:10px;-webkit-transition:color 0.3s ease;transition:color 0.3s ease;}.css-1ghcw8y:hover{color:#2c4735;}@media (max-width: 768px){.css-1ghcw8y{font-size:14px;}}</style><p class="css-1ghcw8y e1oae0v82">Thank You for Visiting My Blog, Have a Good Day <style data-emotion="css lzb4fa">.css-lzb4fa{display:inline-block;-webkit-transition:-webkit-transform 0.3s ease;transition:transform 0.3s ease;}.css-lzb4fa:hover{-webkit-transform:scale(1.2) rotate(10deg);-moz-transform:scale(1.2) rotate(10deg);-ms-transform:scale(1.2) rotate(10deg);transform:scale(1.2) rotate(10deg);}</style><span class="css-lzb4fa e1oae0v80">🌿</span></p><style data-emotion="css y3pbt1">.css-y3pbt1{font-size:14px;color:#666;margin-top:5px;}@media (max-width: 768px){.css-y3pbt1{font-size:12px;}}</style><p class="css-y3pbt1 e1oae0v81">© 2024 Developer LIM.</p></div></footer></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/web-locks-api-concurrency-control/";/*]]>*/</script><!-- slice-start id="_gatsby-scripts-1" -->
+          <script
+            id="gatsby-chunk-mapping"
+          >
+            window.___chunkMapping="{\"app\":[\"/app-5ab049b1a7d9afaa2ddb.js\"],\"component---cache-caches-gatsby-plugin-offline-app-shell-js\":[\"/component---cache-caches-gatsby-plugin-offline-app-shell-js-27e0e967a98f3dffdf9e.js\"],\"component---src-pages-404-tsx\":[\"/component---src-pages-404-tsx-198e8648605be5d74a6a.js\"],\"component---src-pages-index-tsx\":[\"/component---src-pages-index-tsx-49aed13bd17edca89f1a.js\"],\"component---src-pages-info-tsx\":[\"/component---src-pages-info-tsx-91ad86a40368117a0a55.js\"],\"component---src-templates-post-template-tsx\":[\"/component---src-templates-post-template-tsx-6e3542f1f00a7c16e4e6.js\"]}";
+          </script>
+        <script>window.___webpackCompilationHash="c5f50b18458ce60ff11e";</script><script src="/webpack-runtime-cc6a3bd86707474f9378.js" async></script><script src="/framework-9d608f77b5c9a88afabd.js" async></script><script src="/app-5ab049b1a7d9afaa2ddb.js" async></script><!-- slice-end id="_gatsby-scripts-1" --></body></html>
