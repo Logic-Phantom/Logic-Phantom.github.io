@@ -1,0 +1,14 @@
+{
+  "generatedAt": "2026-10-17T06:47:46Z",
+  "source": "goatcounter",
+  "metric": "visitors",
+  "rangeStart": "2026-10-01T00:00:00Z",
+  "rangeEnd": "2026-10-17T06:00:00Z",
+  "totalViews": 2,
+  "posts": [
+    {
+      "path": "/web-bluetooth-api-guide/",
+      "views": 1
+    }
+  ]
+}
