@@ -1,17 +1,25 @@
 {
-  "generatedAt": "2026-10-20T15:46:35Z",
-  "source": "goatcounter-counter",
+  "generatedAt": "2026-10-21T02:37:34Z",
+  "source": "goatcounter",
   "metric": "visitors",
-  "rangeStart": null,
-  "rangeEnd": "2026-10-20T15:00:00Z",
-  "totalViews": 29,
+  "rangeStart": "2026-10-01T00:00:00Z",
+  "rangeEnd": "2026-10-21T02:00:00Z",
+  "totalViews": 33,
   "posts": [
     {
       "path": "/navigation-api-spa-routing-guide/",
-      "views": 3
+      "views": 4
     },
     {
       "path": "/cloud-tech-overview/",
+      "views": 1
+    },
+    {
+      "path": "/compute-pressure-api-guide/",
+      "views": 1
+    },
+    {
+      "path": "/frontend-observability-opentelemetry-rum/",
       "views": 1
     },
     {
@@ -27,11 +35,19 @@
       "views": 1
     },
     {
+      "path": "/supabase_guide/",
+      "views": 1
+    },
+    {
       "path": "/view-transitions-api-guide/",
       "views": 1
     },
     {
       "path": "/web-audio-api-guide/",
+      "views": 1
+    },
+    {
+      "path": "/web-bluetooth-and-hid-api-guide/",
       "views": 1
     },
     {
