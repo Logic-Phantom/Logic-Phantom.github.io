@@ -1,21 +1,29 @@
 {
-  "generatedAt": "2026-10-21T16:09:25Z",
-  "source": "goatcounter-counter",
+  "generatedAt": "2026-10-22T02:38:00Z",
+  "source": "goatcounter",
   "metric": "visitors",
-  "rangeStart": null,
-  "rangeEnd": "2026-10-21T16:00:00Z",
-  "totalViews": 39,
+  "rangeStart": "2026-10-01T00:00:00Z",
+  "rangeEnd": "2026-10-22T02:00:00Z",
+  "totalViews": 42,
   "posts": [
     {
       "path": "/navigation-api-spa-routing-guide/",
       "views": 4
     },
     {
-      "path": "/cloud-tech-overview/",
-      "views": 1
+      "path": "/compute-pressure-api-guide/",
+      "views": 2
     },
     {
-      "path": "/compute-pressure-api-guide/",
+      "path": "/gatsby/",
+      "views": 2
+    },
+    {
+      "path": "/popover-api-and-top-layer-guide/",
+      "views": 2
+    },
+    {
+      "path": "/cloud-tech-overview/",
       "views": 1
     },
     {
@@ -23,19 +31,15 @@
       "views": 1
     },
     {
-      "path": "/gatsby/",
-      "views": 1
-    },
-    {
       "path": "/islands-architecture-astro-guide/",
       "views": 1
     },
     {
-      "path": "/popover-api-and-top-layer-guide/",
+      "path": "/supabase_guide/",
       "views": 1
     },
     {
-      "path": "/supabase_guide/",
+      "path": "/vercel/",
       "views": 1
     },
     {
@@ -52,6 +56,10 @@
     },
     {
       "path": "/web-bluetooth-api-guide/",
+      "views": 1
+    },
+    {
+      "path": "/web-identity-credential-manager-api-guide/",
       "views": 1
     },
     {
