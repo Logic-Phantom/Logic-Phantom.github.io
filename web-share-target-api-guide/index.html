@@ -1,0 +1,577 @@
+<!DOCTYPE html><html lang="ko"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><meta name="generator" content="Gatsby 5.14.0"/><meta name="theme-color" content="#426950"/><meta data-react-helmet="true" name="description" content="OS 공유 창에 내 웹 앱을 띄우다 — 다른 앱에서 사진, 링크, 텍스트를 내 웹 애플리케이션으로 바로 보낼 수 있다면 어떨까요? Web Share Target API를 통해 PWA를 모바일 OS의 일등 시민(First-class citizen…"/><meta data-react-helmet="true" name="viewport" content="width=device-width, initial-scale=1.0"/><meta data-react-helmet="true" http-equiv="Content-Type" content="text/html;charset=UTF-8"/><meta data-react-helmet="true" property="og:type" content="article"/><meta data-react-helmet="true" property="og:title" content="📲 Web Share Target API 완벽 가이드: 네이티브 공유 시트에 웹 앱 등록하기"/><meta data-react-helmet="true" property="og:description" content="OS 공유 창에 내 웹 앱을 띄우다 — 다른 앱에서 사진, 링크, 텍스트를 내 웹 애플리케이션으로 바로 보낼 수 있다면 어떨까요? Web Share Target API를 통해 PWA를 모바일 OS의 일등 시민(First-class citizen…"/><meta data-react-helmet="true" property="og:image" content="https://logic-phantom.github.io/static/ffbd670dd86a79b549125a92a9d5b804/web-share-target-api-guide.png"/><meta data-react-helmet="true" property="og:url" content="https://logic-phantom.github.io/web-share-target-api-guide/"/><meta data-react-helmet="true" property="og:site_name" content="Forest_LIM"/><meta data-react-helmet="true" property="og:locale" content="ko_KR"/><meta data-react-helmet="true" property="article:published_time" content="2026-10-23"/><meta data-react-helmet="true" name="twitter:card" content="summary_large_image"/><meta data-react-helmet="true" name="twitter:title" content="📲 Web Share Target API 완벽 가이드: 네이티브 공유 시트에 웹 앱 등록하기"/><meta data-react-helmet="true" name="twitter:description" content="OS 공유 창에 내 웹 앱을 띄우다 — 다른 앱에서 사진, 링크, 텍스트를 내 웹 애플리케이션으로 바로 보낼 수 있다면 어떨까요? Web Share Target API를 통해 PWA를 모바일 OS의 일등 시민(First-class citizen…"/><meta data-react-helmet="true" name="twitter:image" content="https://logic-phantom.github.io/static/ffbd670dd86a79b549125a92a9d5b804/web-share-target-api-guide.png"/><style data-href="/styles.9e907bc32054b7771552.css" data-identity="gatsby-global-css">code[class*=language-],pre[class*=language-]{word-wrap:normal;background:none;color:#ccc;font-family:Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;font-size:1em;-webkit-hyphens:none;hyphens:none;line-height:1.5;tab-size:4;text-align:left;white-space:pre;word-break:normal;word-spacing:normal}pre[class*=language-]{margin:.5em 0;overflow:auto;padding:1em}:not(pre)>code[class*=language-],pre[class*=language-]{background:#2d2d2d}:not(pre)>code[class*=language-]{border-radius:.3em;padding:.1em;white-space:normal}.token.block-comment,.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#999}.token.punctuation{color:#ccc}.token.attr-name,.token.deleted,.token.namespace,.token.tag{color:#e2777a}.token.function-name{color:#6196cc}.token.boolean,.token.function,.token.number{color:#f08d49}.token.class-name,.token.constant,.token.property,.token.symbol{color:#f8c555}.token.atrule,.token.builtin,.token.important,.token.keyword,.token.selector{color:#cc99cd}.token.attr-value,.token.char,.token.regex,.token.string,.token.variable{color:#7ec699}.token.entity,.token.operator,.token.url{color:#67cdcc}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}.token.inserted{color:green}</style><link rel="sitemap" type="application/xml" href="/sitemap-index.xml"/><link rel="alternate" type="application/rss+xml" title="Forest_LIM Tech Blog RSS" href="/rss.xml"/><link rel="canonical" href="https://logic-phantom.github.io/web-share-target-api-guide/" data-baseprotocol="https:" data-basehost="logic-phantom.github.io"/><link rel="icon" href="/favicon-32x32.png" type="image/png"/><link rel="manifest" href="/manifest.webmanifest" crossorigin="use-credentials"/><link rel="apple-touch-icon" sizes="192x192" href="/contents/forestLim.png"/><link rel="apple-touch-icon" sizes="512x512" href="/contents/forestLim.png"/><title data-react-helmet="true">📲 Web Share Target API 완벽 가이드: 네이티브 공유 시트에 웹 앱 등록하기</title><script data-react-helmet="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"📲 Web Share Target API 완벽 가이드: 네이티브 공유 시트에 웹 앱 등록하기","description":"OS 공유 창에 내 웹 앱을 띄우다 — 다른 앱에서 사진, 링크, 텍스트를 내 웹 애플리케이션으로 바로 보낼 수 있다면 어떨까요? Web Share Target API를 통해 PWA를 모바일 OS의 일등 시민(First-class citizen…","datePublished":"2026-10-23","mainEntityOfPage":{"@type":"WebPage","@id":"https://logic-phantom.github.io/web-share-target-api-guide/"},"url":"https://logic-phantom.github.io/web-share-target-api-guide/","image":["https://logic-phantom.github.io/static/ffbd670dd86a79b549125a92a9d5b804/web-share-target-api-guide.png"],"author":{"@type":"Person","name":"LIM","url":"https://github.com/Logic-Phantom"},"publisher":{"@type":"Organization","name":"Forest_LIM","url":"https://logic-phantom.github.io"},"inLanguage":"ko-KR","articleSection":["Web"]}</script><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){const t=e.target;if(void 0===t.dataset.mainImage)return;if(void 0===t.dataset.gatsbyImageSsr)return;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-G3TV9FFKB2"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-G3TV9FFKB2',{send_page_view:false});</script><script id="goatcounter-js" async="" src="https://gc.zgo.at/count.js" data-goatcounter="https://forestlim.goatcounter.com/count" data-goatcounter-settings="{&quot;no_onload&quot;: true}"></script></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><style data-emotion="css zyllbl">.css-zyllbl{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;height:100vh;}</style><div class="css-zyllbl e1strnqo0"><style data-emotion="css-global kxm5mf">@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap');*{padding:0;margin:0;box-sizing:border-box;font-family:'Nanum Myeongjo',serif;}html,body,#___gatsby{height:100%;}a,a:hover{color:inherit;-webkit-text-decoration:none;text-decoration:none;cursor:pointer;}</style><style data-emotion="css 16cz9yp">.css-16cz9yp{position:relative;width:100%;height:400px;}@media (max-width: 768px){.css-16cz9yp{height:300px;}}</style><div class="css-16cz9yp e1opi4mu1"><style data-emotion="css 1bjn9yo">.css-1bjn9yo{z-index:-1;width:100%;height:400px;object-fit:cover;-webkit-filter:brightness(0.25);filter:brightness(0.25);}@media (max-width: 768px){.css-1bjn9yo{height:300px;}}</style><div data-gatsby-image-wrapper="" style="position:absolute" class="gatsby-image-wrapper gatsby-image-wrapper-constrained css-1bjn9yo e1opi4mu0"><div style="max-width:1536px;display:block"><img alt="" role="presentation" aria-hidden="true" src="data:image/svg+xml;charset=utf-8,%3Csvg%20height=&#x27;1024&#x27;%20width=&#x27;1536&#x27;%20xmlns=&#x27;http://www.w3.org/2000/svg&#x27;%20version=&#x27;1.1&#x27;%3E%3C/svg%3E" style="max-width:100%;display:block;position:static"/></div><img aria-hidden="true" data-placeholder-image="" style="opacity:1;transition:opacity 500ms linear" decoding="async" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAIAAAAmMtkJAAAACXBIWXMAAAsTAAALEwEAmpwYAAAB6ElEQVR42nVSXU/bMBTtn97DHiZN08RepyGNhw000OjWMpgKgj4MCQ2kddAG6qRN+p1vO3HSJoHS5aMJc+O0pUyTjhL7+hzfc69vztSjFWgRUkOkRnIv4IEnAE/u+mRLgoYWPiHn6C89my1UMYBK1BfuAQO7LdhpQcDofWFC9FD+j1iXMjFSQihP61XkjG7bPOY5NL6f3FSRJkaLzISzIl4AKqHSC3nOcN2xNBjJop0kMVeHJLmpLTmZ2JgVuRQT/7oYAQa57l2TR3wD+n4AalDpBYa2pGE4F+ukGJhF6V0t9rbJ6pKIB32jyUKB9Yy0Z5kYRuogIOZzdEObTKsiruY9wyyDO40xUjJlmjzjEHJWM9YjC8aOlaSI6TGGsY0S24gxnJpaQKySI7ImLha2Q9tIOrxT2K0U87/3vly+f1c+OQS/zsXSPlPMV2j88ICpXEgHxer25k+etYdmkmW2UCx2745LoHzE7Reuvn29/L5XOymBTx/PNtbL62+PP2ycXl/p9Roi1539aHcFh9h5ZBtOXTtx7ZjAHz/kd86fP9tae1V487r48sXn3Z0Lb/hgoak3nHEsRIt/9M60YbrsC9yo3XQadcxemyxjcjcYMGaLG0GVvNbKkD4dEqqf408KX5Mm5PvvbP8FMdezhNuBU+0AAAAASUVORK5CYII=" alt=""/><picture><source type="image/webp" data-srcset="/static/ffbd670dd86a79b549125a92a9d5b804/b642b/web-share-target-api-guide.webp 384w,/static/ffbd670dd86a79b549125a92a9d5b804/c9564/web-share-target-api-guide.webp 768w,/static/ffbd670dd86a79b549125a92a9d5b804/18b4b/web-share-target-api-guide.webp 1536w" sizes="(min-width: 1536px) 1536px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 1536px) 1536px, 100vw" decoding="async" loading="lazy" data-src="/static/ffbd670dd86a79b549125a92a9d5b804/4d776/web-share-target-api-guide.png" data-srcset="/static/ffbd670dd86a79b549125a92a9d5b804/4a410/web-share-target-api-guide.png 384w,/static/ffbd670dd86a79b549125a92a9d5b804/f5189/web-share-target-api-guide.png 768w,/static/ffbd670dd86a79b549125a92a9d5b804/4d776/web-share-target-api-guide.png 1536w" alt="thumbnail"/></picture><noscript><picture><source type="image/webp" srcSet="/static/ffbd670dd86a79b549125a92a9d5b804/b642b/web-share-target-api-guide.webp 384w,/static/ffbd670dd86a79b549125a92a9d5b804/c9564/web-share-target-api-guide.webp 768w,/static/ffbd670dd86a79b549125a92a9d5b804/18b4b/web-share-target-api-guide.webp 1536w" sizes="(min-width: 1536px) 1536px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 1536px) 1536px, 100vw" decoding="async" loading="lazy" src="/static/ffbd670dd86a79b549125a92a9d5b804/4d776/web-share-target-api-guide.png" srcSet="/static/ffbd670dd86a79b549125a92a9d5b804/4a410/web-share-target-api-guide.png 384w,/static/ffbd670dd86a79b549125a92a9d5b804/f5189/web-share-target-api-guide.png 768w,/static/ffbd670dd86a79b549125a92a9d5b804/4d776/web-share-target-api-guide.png 1536w" alt="thumbnail"/></picture></noscript><script type="module">const t="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;if(t){const t=document.querySelectorAll("img[data-main-image]");for(let e of t){e.dataset.src&&(e.setAttribute("src",e.dataset.src),e.removeAttribute("data-src")),e.dataset.srcset&&(e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset"));const t=e.parentNode.querySelectorAll("source[data-srcset]");for(let e of t)e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset");e.complete&&(e.style.opacity=1,e.parentNode.parentNode.querySelector("[data-placeholder-image]").style.opacity=0)}}</script></div><style data-emotion="css m1156n">.css-m1156n{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;width:768px;height:100%;margin:0 auto;padding:60px 0;color:#ffffff;}@media (max-width: 768px){.css-m1156n{width:100%;padding:40px 20px;}}</style><div class="css-m1156n e1st1jau4"><style data-emotion="css gywgo7">.css-gywgo7{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:#ffffff;color:#000000;font-size:22px;cursor:pointer;box-shadow:0 0 10px rgba(0, 0, 0, 0.3);}@media (max-width: 768px){.css-gywgo7{width:30px;height:30px;font-size:18px;}}</style><div class="css-gywgo7 e1st1jau3"><style data-emotion="css 1ij64l8">.css-1ij64l8{display:inline-block;width:12px;height:12px;border-left:2px solid #000000;border-bottom:2px solid #000000;-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg);-ms-transform:rotate(45deg);transform:rotate(45deg);}</style><span class="css-1ij64l8 e1st1jau2"></span></div><style data-emotion="css gn4qtp">.css-gn4qtp{display:-webkit-box;overflow:hidden;overflow-wrap:break-word;margin-top:auto;text-overflow:ellipsis;white-space:normal;-webkit-line-clamp:2;-webkit-box-orient:vertical;font-size:45px;font-weight:800;}@media (max-width: 768px){.css-gn4qtp{font-size:30px;}}</style><div class="css-gn4qtp e1st1jau1">📲 Web Share Target API 완벽 가이드: 네이티브 공유 시트에 웹 앱 등록하기</div><style data-emotion="css 3gcnt2">.css-3gcnt2{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;justify-content:space-between;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;margin-top:10px;font-size:18px;font-weight:700;}@media (max-width: 768px){.css-3gcnt2{-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-align-items:flex-start;-webkit-box-align:flex-start;-ms-flex-align:flex-start;align-items:flex-start;font-size:15px;font-weight:400;}}</style><div class="css-3gcnt2 e1st1jau0"><div>Web</div><div>2026.10.23.</div></div></div></div><style data-emotion="css 12g9cpd">.css-12g9cpd{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;width:768px;margin:0 auto;padding:200px 0 0 0;word-break:break-all;line-height:1.8;font-size:16px;font-weight:400;}.css-12g9cpd p{padding:3px 0;}.css-12g9cpd h1,.css-12g9cpd h2,.css-12g9cpd h3{font-weight:800;margin-bottom:30px;}.css-12g9cpd *+h1,.css-12g9cpd *+h2,.css-12g9cpd *+h3{margin-top:80px;}.css-12g9cpd hr+h1,.css-12g9cpd hr+h2,.css-12g9cpd hr+h3{margin-top:0;}.css-12g9cpd h1{font-size:30px;}.css-12g9cpd h2{font-size:25px;}.css-12g9cpd h3{font-size:20px;}.css-12g9cpd blockquote{margin:30px 0;padding:5px 15px;border-left:2px solid #000000;font-weight:800;}.css-12g9cpd ol,.css-12g9cpd ul{margin-left:20px;padding:30px 0;}.css-12g9cpd hr{border:1px solid #000000;margin:100px 0;}.css-12g9cpd a{color:#4263eb;-webkit-text-decoration:underline;text-decoration:underline;}.css-12g9cpd pre[class*='language-']{margin:30px 0;padding:15px;font-size:15px;}.css-12g9cpd pre[class*='language-']::-webkit-scrollbar-thumb{background:rgba(255, 255, 255, 0.5);border-radius:3px;}.css-12g9cpd code[class*='language-'],.css-12g9cpd pre[class*='language-']{tab-size:2;}@media (max-width: 768px){.css-12g9cpd{width:100%;padding:140px 20px 0 20px;line-height:1.6;font-size:14px;}.css-12g9cpd h1{font-size:23px;}.css-12g9cpd h2{font-size:20px;}.css-12g9cpd h3{font-size:17px;}.css-12g9cpd img{width:100%;}.css-12g9cpd hr{margin:50px 0;}}</style><div class="css-12g9cpd e1ijh0y10"><h1>📲 Web Share Target API 완벽 가이드: 네이티브 공유 시트에 웹 앱 등록하기</h1>
+<blockquote>
+<p>다른 앱에서 사진, 링크, 텍스트를 내 웹 애플리케이션으로 바로 보낼 수 있다면 어떨까요?
+Web Share Target API를 통해 PWA를 모바일 OS의 일등 시민(First-class citizen)으로 만드는 방법을 깊이 있게 살펴봅니다.</p>
+</blockquote>
+<hr>
+<h2>📌 목차</h2>
+<ol>
+<li><a href="#-1-web-share-api%EC%99%80-web-share-target-api%EC%9D%98-%EA%B2%B0%EC%A0%95%EC%A0%81-%EC%B0%A8%EC%9D%B4">Web Share API와 Web Share Target API의 결정적 차이</a></li>
+<li><a href="#-2-web-share-target-%EB%8F%99%EC%9E%91-%EC%9B%90%EB%A6%AC">Web Share Target 동작 원리</a></li>
+<li><a href="#-3-%EA%B8%B0%EB%B3%B8-%EC%84%A4%EC%A0%95-web-app-manifest-%EC%9E%91%EC%84%B1%EB%B2%95">기본 설정: Web App Manifest 작성법</a></li>
+<li><a href="#-4-get-%EC%9A%94%EC%B2%AD%EC%9D%84-%ED%86%B5%ED%95%9C-%ED%85%8D%EC%8A%A4%ED%8A%B8-%EB%B0%8F-url-%EA%B3%B5%EC%9C%A0-%EC%88%98%EC%8B%A0">GET 요청을 통한 텍스트 및 URL 공유 수신</a></li>
+<li><a href="#-5-post-%EC%9A%94%EC%B2%AD%EA%B3%BC-%EB%A9%80%ED%8B%B0%ED%8C%8C%ED%8A%B8formdata-%ED%8C%8C%EC%9D%BC-%EA%B3%B5%EC%9C%A0-%EC%88%98%EC%8B%A0">POST 요청과 멀티파트(FormData) 파일 공유 수신</a></li>
+<li><a href="#-6-%EC%84%9C%EB%B9%84%EC%8A%A4-%EC%9B%8C%EC%BB%A4service-worker%EC%99%80-%EC%97%B0%EA%B3%84%ED%95%9C-%EB%8C%80%EC%9A%A9%EB%9F%89-%ED%8C%8C%EC%9D%BC-%EA%B0%80%EB%A1%9C%EC%B1%84%EA%B8%B0">서비스 워커(Service Worker)와 연계한 대용량 파일 가로채기</a></li>
+<li><a href="#-7-%EB%8B%A4%EC%A4%91-%ED%8C%8C%EC%9D%BC-%EB%B0%8F-%ED%8A%B9%EC%A0%95-mime-%ED%83%80%EC%9E%85-%ED%95%84%ED%84%B0%EB%A7%81-%EC%A0%84%EB%9E%B5">다중 파일 및 특정 MIME 타입 필터링 전략</a></li>
+<li><a href="#-8-%EB%B3%B4%EC%95%88-%EC%9A%94%EA%B5%AC%EC%82%AC%ED%95%AD%EA%B3%BC-pwa-%EC%84%A4%EC%B9%98-%EC%A1%B0%EA%B1%B4">보안 요구사항과 PWA 설치 조건</a></li>
+<li><a href="#-9-%ED%94%8C%EB%9E%AB%ED%8F%BC-%EC%A7%80%EC%9B%90-%ED%98%84%ED%99%A9%EA%B3%BC-%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80%EB%B3%84-%EC%B0%A8%EC%9D%B4%EC%A0%90">플랫폼 지원 현황과 브라우저별 차이점</a></li>
+<li><a href="#-10-%EC%8B%A4%EB%AC%B4-%ED%95%A8%EC%A0%95-%EB%B0%8F-%EC%97%90%EC%A7%80-%EC%BC%80%EC%9D%B4%EC%8A%A4-%ED%95%B8%EB%93%A4%EB%A7%81">실무 함정 및 에지 케이스 핸들링</a></li>
+<li><a href="#-11-%EC%93%B0%EB%A9%B4-%EC%95%88-%EB%90%98%EB%8A%94-%EC%83%81%ED%99%A9%EA%B3%BC-%EB%8C%80%EC%95%88-%EC%84%A4%EA%B3%84">쓰면 안 되는 상황과 대안 설계</a></li>
+<li><a href="#-12-%ED%94%84%EB%A1%9C%EB%8D%95%EC%85%98-%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98-%EA%B5%AC%ED%98%84-%EC%98%88%EC%A0%9C">프로덕션 아키텍처 구현 예제</a></li>
+<li><a href="#-13-%EC%A0%95%EB%A6%AC">정리</a></li>
+<li><a href="#-14-%EC%B0%B8%EA%B3%A0-%EC%9E%90%EB%A3%8C">참고 자료</a></li>
+</ol>
+<hr>
+<h2>🧭 1. Web Share API와 Web Share Target API의 결정적 차이</h2>
+<p>웹 생태계에서 ‘공유’라는 키워드는 크게 두 가지 방향성을 가집니다. 첫째는 <strong>내 웹 페이지가 브라우저 외부의 다른 앱으로 데이터를 내보내는 것</strong>이고, 둘째는 <strong>외부의 다른 앱에서 전송한 데이터를 내 웹 페이지가 받아들이는 것</strong>입니다.</p>
+<p>많은 개발자가 <code class="language-text">navigator.share()</code>를 사용하는 <strong>Web Share API</strong>에는 익숙합니다. 웹 페이지 내에 ‘공유하기’ 버튼을 두고 시스템 네이티브 공유 팝업을 띄우는 기능입니다. 그러나 그 역방향인 <strong>Web Share Target API</strong>는 상대적으로 덜 알려져 있습니다.</p>
+<table>
+<thead>
+<tr>
+<th>구분</th>
+<th>Web Share API (<code class="language-text">navigator.share</code>)</th>
+<th>Web Share Target API</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>방향성</strong></td>
+<td>Outbound (웹 앱 → 외부 앱)</td>
+<td>Inbound (외부 앱 → 웹 앱)</td>
+</tr>
+<tr>
+<td><strong>선언 위치</strong></td>
+<td>자바스크립트 메서드 호출</td>
+<td>Web App Manifest JSON 선언</td>
+</tr>
+<tr>
+<td><strong>트리거 시점</strong></td>
+<td>사용자가 웹 내부의 공유 UI 클릭</td>
+<td>사용자가 OS 공유 시트에서 웹 앱 아이콘 선택</td>
+</tr>
+<tr>
+<td><strong>필수 조건</strong></td>
+<td>User Activation (버튼 클릭 등)</td>
+<td>PWA 설치 완료 (Installed PWA)</td>
+</tr>
+<tr>
+<td><strong>데이터 전달 방식</strong></td>
+<td>OS API에 JSON 객체 전달</td>
+<td>HTTP GET 쿼리 스트링 또는 POST 폼 전송</td>
+</tr>
+</tbody>
+</table>
+<p>Web Share Target API를 등록하면 사용자가 갤러리 앱에서 사진을 보거나, 트위터(X)나 유튜브에서 링크를 공유할 때 나타나는 **OS 기본 공유 창(Share Sheet)**에 여러분의 웹 앱이 설치형 네이티브 앱들과 나란히 등록됩니다.</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 768px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/9d859271b1dc4a896e1b165ed341a7e6/bbbf7/web-share-target-api-guide-2.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 50%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAIAAAA7N+mxAAAACXBIWXMAAAsTAAALEwEAmpwYAAAB2klEQVR42kWSy27VMBCG89hIPAMLJBAsYAHdsUJiUyRE2RR6KoGg5SSnJ3fbieMkju9x7uBTiWKNLGtG34z/0e/9+XfWdYshARUtGwYrmiJSkI4yWeC2bnjHVEtF0/Jt2x4Qb1vXScqJcUtIeBPAuxiHKThE2TGtyhp3bJ9DH4I9BD6Ev9KUaN4Yyaxe1tVbtLbKKlyz334PkQFIHo6mwGM/bEqzsZfDCDgNmiLjzZFiv0alFMKOfNDeagzrpPvtISuDpDik5T5GESQVYZs2YrKo7vwQ3rlShPwQBBGKUtwILcb+BAumnLwoK0NHhiDKsRPcOnnKwQNu+TEt4rwKXNPMaSoTQFppxGhOMO8kxG0CsOODCMbukeO6uZ88D25/YVbGoDokyJXCHGeobk+T72HBFeEmxRRUXe4C05ww2slVGT7ZmqmKcEx4CmuIaYm7ppWd6k/wIuVgZ3rrZ8+eo7dn4NXr/MXL6vyjHeaFi9bqflze+ZePv5w9vf7w5Or9o89vdiiy09pZ5W3zPElli5LvdnR33X67ai6/sr1vOj5Kza2ppfiOovPwx0Vyc5Hcfkp/Zrx2+XGZvf8m2TY5TNyOoh95P6jecrcwaZjQUva2n4we3O289GCSv9anIbKn49GcAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <picture>
+          <source
+              srcset="/static/9d859271b1dc4a896e1b165ed341a7e6/a59e9/web-share-target-api-guide-2.webp 192w,
+/static/9d859271b1dc4a896e1b165ed341a7e6/0ca9f/web-share-target-api-guide-2.webp 384w,
+/static/9d859271b1dc4a896e1b165ed341a7e6/dc9b9/web-share-target-api-guide-2.webp 768w,
+/static/9d859271b1dc4a896e1b165ed341a7e6/e2c2f/web-share-target-api-guide-2.webp 1152w,
+/static/9d859271b1dc4a896e1b165ed341a7e6/94b1e/web-share-target-api-guide-2.webp 1280w"
+              sizes="(max-width: 768px) 100vw, 768px"
+              type="image/webp"
+            />
+          <source
+            srcset="/static/9d859271b1dc4a896e1b165ed341a7e6/3b721/web-share-target-api-guide-2.png 192w,
+/static/9d859271b1dc4a896e1b165ed341a7e6/66595/web-share-target-api-guide-2.png 384w,
+/static/9d859271b1dc4a896e1b165ed341a7e6/fe486/web-share-target-api-guide-2.png 768w,
+/static/9d859271b1dc4a896e1b165ed341a7e6/d2d74/web-share-target-api-guide-2.png 1152w,
+/static/9d859271b1dc4a896e1b165ed341a7e6/bbbf7/web-share-target-api-guide-2.png 1280w"
+            sizes="(max-width: 768px) 100vw, 768px"
+            type="image/png"
+          />
+          <img
+            class="gatsby-resp-image-image"
+            src="/static/9d859271b1dc4a896e1b165ed341a7e6/fe486/web-share-target-api-guide-2.png"
+            alt="기존 복사 붙여넣기 방식과 Web Share Target 비교"
+            title=""
+            loading="lazy"
+            decoding="async"
+            style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+          />
+        </picture>
+  </a>
+    </span></p>
+<hr>
+<h2>⚙️ 2. Web Share Target 동작 원리</h2>
+<p>Web Share Target의 핵심 아이디어는 **“웹 표준 폼(HTML Form)의 제출 메커니즘을 시스템 OS 수준으로 확장한 것”**입니다.</p>
+<p>브라우저는 PWA가 설치될 때 매니페스트에 선언된 <code class="language-text">share_target</code> 명세를 읽어 운영체제(Android, ChromeOS, Windows 등)의 인텐트(Intent) 시스템에 웹 앱을 공유 대상 수신자로 등록합니다. 외부 앱에서 공유 이벤트가 발생하면 다음과 같은 순서로 파이프라인이 실행됩니다.</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 768px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/b1692bb288649bf65b804834239626a8/bbbf7/web-share-target-api-guide-1.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 50%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAIAAAA7N+mxAAAACXBIWXMAAAsTAAALEwEAmpwYAAABW0lEQVR42pVQ207CQBTs/3+MRmPiKw8mKggKCuFSBEovu9vt3tpCgbY43WoCj56cnM5OzyRnxjlflDIZYYILLXTKEh0nmgsT0iRiIiB85VOp08t95/IhVOpHPCBJIrQXMGi4NJiEy4DyjU+Vya/EVVWXZYXCqG39fWv8bp4WgTw3s8IyiJPVOEJl0+9w4vrobRhPveT+Zf3Y826eloM5YVyNXb87ct/Hq5AJePmYrDqvX6PZBlc4OMwnYkskFWlE+fMkvO2xhwG968edoQ8m4ubtc7klYtMYkfM16Q4XS49JnTk6zQlXIZOEa22yLTPdWdx3496Cr4lBQlGsKNcBk0gxUWkYSyZM0GSXO3BwgoOyaqc1XTa+MesaBPi2m3Sq6tg+7epV2v+tXzGiK4pjcTjuiwMaeG8xmJ1lWry3OzjiSoxL4AEBqjTXJjfZDg2mmSYHQKf5rgWQt+If/GA4Wcq4UXIAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <picture>
+          <source
+              srcset="/static/b1692bb288649bf65b804834239626a8/a59e9/web-share-target-api-guide-1.webp 192w,
+/static/b1692bb288649bf65b804834239626a8/0ca9f/web-share-target-api-guide-1.webp 384w,
+/static/b1692bb288649bf65b804834239626a8/dc9b9/web-share-target-api-guide-1.webp 768w,
+/static/b1692bb288649bf65b804834239626a8/e2c2f/web-share-target-api-guide-1.webp 1152w,
+/static/b1692bb288649bf65b804834239626a8/94b1e/web-share-target-api-guide-1.webp 1280w"
+              sizes="(max-width: 768px) 100vw, 768px"
+              type="image/webp"
+            />
+          <source
+            srcset="/static/b1692bb288649bf65b804834239626a8/3b721/web-share-target-api-guide-1.png 192w,
+/static/b1692bb288649bf65b804834239626a8/66595/web-share-target-api-guide-1.png 384w,
+/static/b1692bb288649bf65b804834239626a8/fe486/web-share-target-api-guide-1.png 768w,
+/static/b1692bb288649bf65b804834239626a8/d2d74/web-share-target-api-guide-1.png 1152w,
+/static/b1692bb288649bf65b804834239626a8/bbbf7/web-share-target-api-guide-1.png 1280w"
+            sizes="(max-width: 768px) 100vw, 768px"
+            type="image/png"
+          />
+          <img
+            class="gatsby-resp-image-image"
+            src="/static/b1692bb288649bf65b804834239626a8/fe486/web-share-target-api-guide-1.png"
+            alt="Web Share Target 수신 파이프라인 다이어그램"
+            title=""
+            loading="lazy"
+            decoding="async"
+            style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+          />
+        </picture>
+  </a>
+    </span></p>
+<ol>
+<li>사용자가 타사 앱(예: 인스타그램, 브라우저, 사진첩)에서 ‘공유’를 누릅니다.</li>
+<li>OS 공유 시트에 PWA의 이름과 아이콘이 노출됩니다.</li>
+<li>사용자가 웹 앱을 선택하면, 브라우저가 깨어나 매니페스트에 지정된 <code class="language-text">action</code> URL로 라우팅을 시작합니다.</li>
+<li>이때 전송 방식(<code class="language-text">method</code>)에 따라 GET이면 URL 쿼리 파라미터로, POST면 HTTP 요청 바디(FormData) 형태로 데이터가 전달됩니다.</li>
+<li>서비스 워커(Service Worker)가 이 요청을 가로채거나, 백엔드 서버가 이를 받아 처리할 수 있습니다.</li>
+</ol>
+<hr>
+<h2>📝 3. 기본 설정: Web App Manifest 작성법</h2>
+<p>Web Share Target을 사용하려면 <code class="language-text">manifest.json</code>(또는 <code class="language-text">manifest.webmanifest</code>)에 <code class="language-text">share_target</code> 객체를 정의해야 합니다.</p>
+<div class="gatsby-highlight" data-language="json"><pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"Logic Phantom Collector"</span><span class="token punctuation">,</span>
+  <span class="token property">"short_name"</span><span class="token operator">:</span> <span class="token string">"LP Collector"</span><span class="token punctuation">,</span>
+  <span class="token property">"start_url"</span><span class="token operator">:</span> <span class="token string">"/"</span><span class="token punctuation">,</span>
+  <span class="token property">"display"</span><span class="token operator">:</span> <span class="token string">"standalone"</span><span class="token punctuation">,</span>
+  <span class="token property">"icons"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+      <span class="token property">"src"</span><span class="token operator">:</span> <span class="token string">"/icons/icon-192.png"</span><span class="token punctuation">,</span>
+      <span class="token property">"sizes"</span><span class="token operator">:</span> <span class="token string">"192x192"</span><span class="token punctuation">,</span>
+      <span class="token property">"type"</span><span class="token operator">:</span> <span class="token string">"image/png"</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      <span class="token property">"src"</span><span class="token operator">:</span> <span class="token string">"/icons/icon-512.png"</span><span class="token punctuation">,</span>
+      <span class="token property">"sizes"</span><span class="token operator">:</span> <span class="token string">"512x512"</span><span class="token punctuation">,</span>
+      <span class="token property">"type"</span><span class="token operator">:</span> <span class="token string">"image/png"</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token property">"share_target"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">"action"</span><span class="token operator">:</span> <span class="token string">"/share-target"</span><span class="token punctuation">,</span>
+    <span class="token property">"method"</span><span class="token operator">:</span> <span class="token string">"GET"</span><span class="token punctuation">,</span>
+    <span class="token property">"params"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token property">"title"</span><span class="token operator">:</span> <span class="token string">"shared_title"</span><span class="token punctuation">,</span>
+      <span class="token property">"text"</span><span class="token operator">:</span> <span class="token string">"shared_text"</span><span class="token punctuation">,</span>
+      <span class="token property">"url"</span><span class="token operator">:</span> <span class="token string">"shared_url"</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div>
+<h3>주요 프로퍼티 설명</h3>
+<ul>
+<li><code class="language-text">action</code>: 공유된 데이터를 처리할 엔드포인트 URL입니다.</li>
+<li><code class="language-text">method</code>: <code class="language-text">GET</code> 또는 <code class="language-text">POST</code>를 지정합니다. 텍스트 위주는 GET으로 충분하지만 파일 전송은 반드시 POST여야 합니다.</li>
+<li><code class="language-text">enctype</code>: 기본값은 <code class="language-text">application/x-www-form-urlencoded</code>이며, 파일을 다룰 때는 <code class="language-text">multipart/form-data</code>로 지정해야 합니다.</li>
+<li><code class="language-text">params</code>: 외부 앱이 넘겨준 메타데이터 키를 내 웹 앱에서 사용할 파라미터 이름으로 매핑합니다.</li>
+</ul>
+<hr>
+<h2>🔗 4. GET 요청을 통한 텍스트 및 URL 공유 수신</h2>
+<p>링크 스크랩 앱, 북마크 도구, 메모 앱 등 단순 텍스트나 URL을 수신하는 서비스는 GET 방식을 사용합니다.</p>
+<p>외부 앱에서 다음과 같은 데이터를 공유했다고 가정해 보겠습니다.</p>
+<ul>
+<li>Title: <code class="language-text">"놀라운 오픈소스 프로젝트"</code></li>
+<li>URL: <code class="language-text">"https://github.com/example/repo"</code></li>
+</ul>
+<p>매니페스트 설정에 따라 브라우저는 아래와 같은 URL로 웹 앱을 엽니다.</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">https://example.com/share-target?shared_title=놀라운%20오픈소스%20프로젝트&amp;shared_url=https%3A%2F%2Fgithub.com%2Fexample%2Frepo</code></pre></div>
+<h3>프론트엔드 라우트 컴포넌트 처리 코드</h3>
+<p>클라이언트 페이지에서는 <code class="language-text">URLSearchParams</code>를 통해 즉시 데이터를 추출할 수 있습니다.</p>
+<div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript"><span class="token comment">// /pages/share-target.js 혹은 진입 컴포넌트</span>
+window<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'DOMContentLoaded'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> parsedUrl <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">URL</span><span class="token punctuation">(</span>window<span class="token punctuation">.</span>location<span class="token punctuation">.</span>href<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  
+  <span class="token keyword">const</span> title <span class="token operator">=</span> parsedUrl<span class="token punctuation">.</span>searchParams<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'shared_title'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> text <span class="token operator">=</span> parsedUrl<span class="token punctuation">.</span>searchParams<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'shared_text'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> sharedUrl <span class="token operator">=</span> parsedUrl<span class="token punctuation">.</span>searchParams<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'shared_url'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>title <span class="token operator">||</span> text <span class="token operator">||</span> sharedUrl<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'공유된 데이터 수신 성공:'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> title<span class="token punctuation">,</span> text<span class="token punctuation">,</span> sharedUrl <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    
+    <span class="token comment">// 인풋 폼에 자동 입력하거나 북마크 저장 팝업 오픈</span>
+    <span class="token function">populateShareForm</span><span class="token punctuation">(</span><span class="token punctuation">{</span> title<span class="token punctuation">,</span> text<span class="token punctuation">,</span> <span class="token literal-property property">url</span><span class="token operator">:</span> sharedUrl <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    
+    <span class="token comment">// 중요: URL 정리를 통해 새로고침 시 중복 처리 방지</span>
+    window<span class="token punctuation">.</span>history<span class="token punctuation">.</span><span class="token function">replaceState</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> document<span class="token punctuation">.</span>title<span class="token punctuation">,</span> <span class="token string">'/share-target'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">populateShareForm</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> title<span class="token punctuation">,</span> text<span class="token punctuation">,</span> url <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> input <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">'#note-input'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  input<span class="token punctuation">.</span>value <span class="token operator">=</span> <span class="token punctuation">[</span>title<span class="token punctuation">,</span> text<span class="token punctuation">,</span> url<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span>Boolean<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">'\n'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre></div>
+<blockquote>
+<p>💡 <strong>주의</strong>: 브라우저나 공유를 보낸 앱에 따라 URL이 <code class="language-text">shared_url</code> 파라미터가 아니라 <code class="language-text">shared_text</code> 내부에 포함되어 전달되는 경우가 빈번합니다. 정규표현식(<code class="language-text">/(https?:\/\/[^\s]+)/g</code>)으로 <code class="language-text">text</code> 안의 링크를 추가 파싱하는 방어 코드가 필수적입니다.</p>
+</blockquote>
+<hr>
+<h2>📁 5. POST 요청과 멀티파트(FormData) 파일 공유 수신</h2>
+<p>이미지, PDF, 동영상과 같은 바이너리 파일을 수신하려면 <code class="language-text">POST</code> 방식과 <code class="language-text">multipart/form-data</code> 인코딩을 사용해야 합니다. 이를 <strong>Web Share Target Level 2</strong>라고 부릅니다.</p>
+<h3>Manifest 선언 (Level 2)</h3>
+<div class="gatsby-highlight" data-language="json"><pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"share_target"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">"action"</span><span class="token operator">:</span> <span class="token string">"/handle-share"</span><span class="token punctuation">,</span>
+    <span class="token property">"method"</span><span class="token operator">:</span> <span class="token string">"POST"</span><span class="token punctuation">,</span>
+    <span class="token property">"enctype"</span><span class="token operator">:</span> <span class="token string">"multipart/form-data"</span><span class="token punctuation">,</span>
+    <span class="token property">"params"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token property">"title"</span><span class="token operator">:</span> <span class="token string">"name"</span><span class="token punctuation">,</span>
+      <span class="token property">"text"</span><span class="token operator">:</span> <span class="token string">"description"</span><span class="token punctuation">,</span>
+      <span class="token property">"files"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token punctuation">{</span>
+          <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"media"</span><span class="token punctuation">,</span>
+          <span class="token property">"accept"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"image/*"</span><span class="token punctuation">,</span> <span class="token string">"application/pdf"</span><span class="token punctuation">]</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div>
+<ul>
+<li><code class="language-text">files</code>: 배열 형태로 수신할 파일 필드를 정의합니다.</li>
+<li><code class="language-text">name</code>: <code class="language-text">FormData</code>에서 사용될 필드명입니다.</li>
+<li><code class="language-text">accept</code>: 허용할 MIME 타입 혹은 확장자 패턴(예: <code class="language-text">image/png</code>, <code class="language-text">.csv</code>)의 배열입니다.</li>
+</ul>
+<p>POST 방식으로 전송될 경우, 서버 엔드포인트로 실제 HTTP 요청이 날아갈 수도 있지만, 오프라인 지원이나 로컬 퍼스트 앱을 지향한다면 <strong>반드시 서비스 워커에서 이 요청을 가로채야 합니다.</strong></p>
+<hr>
+<h2>⚡ 6. 서비스 워커(Service Worker)와 연계한 대용량 파일 가로채기</h2>
+<p>POST 방식으로 전달된 파일은 서비스 워커의 <code class="language-text">fetch</code> 이벤트 리스너를 통해 백엔드 서버를 거치지 않고 순수 클라이언트 로컬에서 완벽하게 처리할 수 있습니다.</p>
+<h3>서비스 워커 구현 (<code class="language-text">sw.js</code>)</h3>
+<div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript">self<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'fetch'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> url <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">URL</span><span class="token punctuation">(</span>event<span class="token punctuation">.</span>request<span class="token punctuation">.</span>url<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token comment">// 매니페스트에 지정한 action URL과 POST 메서드 검사</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>url<span class="token punctuation">.</span>pathname <span class="token operator">===</span> <span class="token string">'/handle-share'</span> <span class="token operator">&amp;&amp;</span> event<span class="token punctuation">.</span>request<span class="token punctuation">.</span>method <span class="token operator">===</span> <span class="token string">'POST'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    event<span class="token punctuation">.</span><span class="token function">respondWith</span><span class="token punctuation">(</span><span class="token function">handleSharedPayload</span><span class="token punctuation">(</span>event<span class="token punctuation">.</span>request<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">handleSharedPayload</span><span class="token punctuation">(</span><span class="token parameter">request</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> formData <span class="token operator">=</span> <span class="token keyword">await</span> request<span class="token punctuation">.</span><span class="token function">formData</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> title <span class="token operator">=</span> formData<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'name'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> description <span class="token operator">=</span> formData<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'description'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> files <span class="token operator">=</span> formData<span class="token punctuation">.</span><span class="token function">getAll</span><span class="token punctuation">(</span><span class="token string">'media'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 'files[0].name'과 일치</span>
+
+  <span class="token comment">// 대용량 파일은 브라우저 Cache Storage나 IndexedDB에 임시 보관</span>
+  <span class="token keyword">const</span> cache <span class="token operator">=</span> <span class="token keyword">await</span> caches<span class="token punctuation">.</span><span class="token function">open</span><span class="token punctuation">(</span><span class="token string">'shared-media-cache'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  
+  <span class="token comment">// 각 파일을 캐시에 저장</span>
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> files<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> file <span class="token operator">=</span> files<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> cacheKey <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">/temp-shared/</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>Date<span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">_</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>i<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">_</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token function">encodeURIComponent</span><span class="token punctuation">(</span>file<span class="token punctuation">.</span>name<span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
+    <span class="token keyword">await</span> cache<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>cacheKey<span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">Response</span><span class="token punctuation">(</span>file<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+      <span class="token literal-property property">headers</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token string-property property">'content-type'</span><span class="token operator">:</span> file<span class="token punctuation">.</span>type<span class="token punctuation">,</span>
+        <span class="token string-property property">'x-file-name'</span><span class="token operator">:</span> <span class="token function">encodeURIComponent</span><span class="token punctuation">(</span>file<span class="token punctuation">.</span>name<span class="token punctuation">)</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// 사용자가 볼 뷰 페이지로 303 Redirect 실행</span>
+  <span class="token keyword">return</span> Response<span class="token punctuation">.</span><span class="token function">redirect</span><span class="token punctuation">(</span><span class="token string">'/gallery?shared=true'</span><span class="token punctuation">,</span> <span class="token number">303</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre></div>
+<h3>렌더링 클라이언트 페이지 (<code class="language-text">gallery.js</code>)</h3>
+<div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript"><span class="token comment">// /gallery 페이지 로드 시 캐시에서 파일 복원</span>
+window<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'DOMContentLoaded'</span><span class="token punctuation">,</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> params <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">URLSearchParams</span><span class="token punctuation">(</span>window<span class="token punctuation">.</span>location<span class="token punctuation">.</span>search<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>params<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'shared'</span><span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token string">'true'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> cache <span class="token operator">=</span> <span class="token keyword">await</span> caches<span class="token punctuation">.</span><span class="token function">open</span><span class="token punctuation">(</span><span class="token string">'shared-media-cache'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> requests <span class="token operator">=</span> <span class="token keyword">await</span> cache<span class="token punctuation">.</span><span class="token function">keys</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> request <span class="token keyword">of</span> requests<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>request<span class="token punctuation">.</span>url<span class="token punctuation">.</span><span class="token function">includes</span><span class="token punctuation">(</span><span class="token string">'/temp-shared/'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">const</span> response <span class="token operator">=</span> <span class="token keyword">await</span> cache<span class="token punctuation">.</span><span class="token function">match</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">const</span> blob <span class="token operator">=</span> <span class="token keyword">await</span> response<span class="token punctuation">.</span><span class="token function">blob</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">const</span> filename <span class="token operator">=</span> <span class="token function">decodeURIComponent</span><span class="token punctuation">(</span>response<span class="token punctuation">.</span>headers<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'x-file-name'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        
+        <span class="token function">renderPreview</span><span class="token punctuation">(</span>blob<span class="token punctuation">,</span> filename<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        
+        <span class="token comment">// 처리 완료 후 임시 캐시 삭제</span>
+        <span class="token keyword">await</span> cache<span class="token punctuation">.</span><span class="token function">delete</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    
+    <span class="token comment">// 쿼리 스트링 청소</span>
+    window<span class="token punctuation">.</span>history<span class="token punctuation">.</span><span class="token function">replaceState</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> document<span class="token punctuation">.</span>title<span class="token punctuation">,</span> <span class="token string">'/gallery'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">renderPreview</span><span class="token punctuation">(</span><span class="token parameter">blob<span class="token punctuation">,</span> name</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> img <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">'img'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  img<span class="token punctuation">.</span>src <span class="token operator">=</span> <span class="token constant">URL</span><span class="token punctuation">.</span><span class="token function">createObjectURL</span><span class="token punctuation">(</span>blob<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  img<span class="token punctuation">.</span>alt <span class="token operator">=</span> name<span class="token punctuation">;</span>
+  document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">'#container'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>img<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre></div>
+<blockquote>
+<p>⚠️ <strong>HTTP 303 See Other 리다이렉트의 중요성</strong>: 브라우저 표준에 따라 POST 요청에 대한 <code class="language-text">Response.redirect</code>는 반드시 <code class="language-text">303</code> 상태 코드를 사용해야 합니다. 301, 302를 쓰면 페이지 이동 시 브라우저가 이동 대상 페이지에도 POST 요청을 시도하여 405 Method Not Allowed 에러가 발생할 수 있습니다.</p>
+</blockquote>
+<hr>
+<h2>🗂️ 7. 다중 파일 및 특정 MIME 타입 필터링 전략</h2>
+<p>운영체제는 매니페스트에 등록된 <code class="language-text">accept</code> 필드를 기반으로 어떤 앱을 공유 시트에 띄울지 엄격하게 결정합니다.</p>
+<h3>복합 미디어 수신 구성</h3>
+<div class="gatsby-highlight" data-language="json"><pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"share_target"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">"action"</span><span class="token operator">:</span> <span class="token string">"/import-assets"</span><span class="token punctuation">,</span>
+    <span class="token property">"method"</span><span class="token operator">:</span> <span class="token string">"POST"</span><span class="token punctuation">,</span>
+    <span class="token property">"enctype"</span><span class="token operator">:</span> <span class="token string">"multipart/form-data"</span><span class="token punctuation">,</span>
+    <span class="token property">"params"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token property">"files"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token punctuation">{</span>
+          <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"images"</span><span class="token punctuation">,</span>
+          <span class="token property">"accept"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"image/jpeg"</span><span class="token punctuation">,</span> <span class="token string">"image/png"</span><span class="token punctuation">,</span> <span class="token string">"image/webp"</span><span class="token punctuation">,</span> <span class="token string">"image/svg+xml"</span><span class="token punctuation">]</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span>
+          <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"documents"</span><span class="token punctuation">,</span>
+          <span class="token property">"accept"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">".pdf"</span><span class="token punctuation">,</span> <span class="token string">".md"</span><span class="token punctuation">,</span> <span class="token string">"text/plain"</span><span class="token punctuation">,</span> <span class="token string">"application/json"</span><span class="token punctuation">]</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div>
+<h3>필터링 가이드라인</h3>
+<ol>
+<li><strong>와일드카드 타입 사용 주의</strong>: <code class="language-text">image/*</code>는 직관적이지만 플랫폼에 따라 SVG나 WebP가 누락될 수 있으므로 자주 쓰이는 구체적인 MIME 타입을 함께 명시하는 것이 안전합니다.</li>
+<li><strong>확장자 점(<code class="language-text">.</code>) 표기</strong>: 파일 확장자를 쓸 때는 반드시 <code class="language-text">.pdf</code>, <code class="language-text">.csv</code>처럼 점을 접두사로 포함해야 합니다.</li>
+<li><strong>OS별 제한 수량</strong>: Android는 다중 파일 공유를 완벽하게 지원하지만, 구형 기기에서는 한 번에 수십 장 이상의 고화질 이미지를 전달할 때 브라우저 힙 메모리 부족으로 프로세스가 크래시될 수 있습니다. 대용량 작업 시 배치 처리가 권장됩니다.</li>
+</ol>
+<hr>
+<h2>🛡️ 8. 보안 요구사항과 PWA 설치 조건</h2>
+<p>Web Share Target API는 아무 웹사이트나 악용할 수 없도록 엄격한 보안 샌드박스 정책을 적용받습니다.</p>
+<ol>
+<li><strong>HTTPS 필수</strong>: 당연하게도 전체 통신과 Service Worker는 보안 컨텍스트(<code class="language-text">https://</code> 또는 로컬호스트)에서만 동작합니다.</li>
+<li><strong>설치 완료 상태(Installed PWA)</strong>: 단순 북마크나 브라우저 탭으로 열려 있는 웹사이트는 시스템 공유 창에 절대 노출되지 않습니다. 사용자가 브라우저 메뉴의 <strong>“홈 화면에 추가”</strong> 또는 **“앱 설치”**를 완료해야만 시스템 인텐트 레지스트리에 등록됩니다.</li>
+<li><strong>단일 오리진 제약</strong>: <code class="language-text">action</code> 경로는 매니페스트가 호스팅된 오리진(Origin)과 동일해야 합니다. 타사 도메인으로의 direct 포워딩은 금지됩니다.</li>
+<li><strong>신뢰할 수 없는 데이터 취급</strong>: 외부 앱에서 전달된 <code class="language-text">title</code>, <code class="language-text">text</code>, 파일 이름은 악의적인 스크립트나 XSS 코드가 포함되어 있을 가능성이 높습니다. DOM에 직접 <code class="language-text">innerHTML</code>로 바인딩하지 말고 적절한 새니타이징(Sanitization)을 거쳐야 합니다.</li>
+</ol>
+<hr>
+<h2>🌐 9. 플랫폼 지원 현황과 브라우저별 차이점</h2>
+<p>플랫폼마다 지원 수준이 크게 다릅니다. 현재 실무 기준 브라우저 매트릭스는 다음과 같습니다.</p>
+<table>
+<thead>
+<tr>
+<th>OS / 브라우저</th>
+<th>텍스트/링크 수신 (Level 1)</th>
+<th>파일 수신 (Level 2)</th>
+<th>비고</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Android (Chrome)</strong></td>
+<td>✅ 완벽 지원</td>
+<td>✅ 완벽 지원</td>
+<td>가장 표준적이고 안정적인 동작</td>
+</tr>
+<tr>
+<td><strong>Android (Samsung Internet)</strong></td>
+<td>✅ 완벽 지원</td>
+<td>✅ 완벽 지원</td>
+<td>크로미움 기반으로 동일 동작</td>
+</tr>
+<tr>
+<td><strong>ChromeOS</strong></td>
+<td>✅ 완벽 지원</td>
+<td>✅ 완벽 지원</td>
+<td>시스템 셸과 완벽 통합</td>
+</tr>
+<tr>
+<td><strong>Windows (Edge / Chrome)</strong></td>
+<td>✅ 지원</td>
+<td>✅ 지원</td>
+<td>Windows 10/11 시스템 공유 시트 연동</td>
+</tr>
+<tr>
+<td><strong>macOS (Chrome / Edge)</strong></td>
+<td>⚠️ 부분 지원</td>
+<td>⚠️ 부분 지원</td>
+<td>macOS 공유 확장의 제한적 지원</td>
+</tr>
+<tr>
+<td><strong>iOS / iPadOS (Safari)</strong></td>
+<td>❌ 미지원</td>
+<td>❌ 미지원</td>
+<td>2026년 기준 WebKit 미구현 상태</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>📌 <strong>iOS의 한계와 대안</strong>: Safari는 PWA의 Web Share Target을 지원하지 않습니다. 따라서 iOS 사용자를 위해서는 여전히 클립보드 복사 안내 모달이나, 시스템 ‘단축어(Shortcuts)’ 앱을 활용해 웹훅(Webhook) URL로 데이터를 쏘아주는 우회 방식을 안내해야 합니다.</p>
+</blockquote>
+<hr>
+<h2>⚠️ 10. 실무 함정 및 에지 케이스 핸들링</h2>
+<h3>1. 이미 앱이 열려 있는 상태에서의 인스턴스 충돌</h3>
+<p>이미 PWA가 포그라운드나 백그라운드에서 실행 중일 때 사용자가 공유 시트에서 앱을 선택하면 브라우저는 어떻게 행동할까요?</p>
+<ul>
+<li>기본적으로 브라우저는 새 윈도우나 탭을 열려고 시도합니다.</li>
+<li><code class="language-text">launch_handler</code> 명세를 설정하여 기존 윈도우로 포커스를 집중시키고 이벤트를 라우팅해야 UX가 매끄럽습니다.</li>
+</ul>
+<div class="gatsby-highlight" data-language="json"><pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"launch_handler"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">"client_mode"</span><span class="token operator">:</span> <span class="token string">"focus-existing"</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div>
+<h3>2. URL 인코딩 및 길이 한계 문제</h3>
+<p>일부 서드파티 앱은 URL이나 본문에 수 킬로바이트에 달하는 추적 쿼리를 달아 공유합니다. GET 방식을 사용할 경우 브라우저나 서버의 URL 길이 제한(보통 2,048자 또는 8,192자)에 걸려 <code class="language-text">414 URI Too Long</code> 에러가 발생할 수 있습니다. 텍스트 수신량이 클 것으로 예상되는 앱은 GET 대신 POST 방식을 사용하는 것이 안전합니다.</p>
+<h3>3. Service Worker 미기동 상태での 대기 시간</h3>
+<p>PWA가 한동안 쓰이지 않아 서비스 워커가 유휴(Idle) 상태로 종료되었을 때 공유 요청이 들어오면, 워커의 부팅 지연(Cold Start)으로 인해 폼 파싱이 일시적으로 지연될 수 있습니다. <code class="language-text">event.waitUntil</code>을 사용해 데이터 처리가 완료될 때까지 워커의 수명을 명시적으로 연장해야 합니다.</p>
+<hr>
+<h2>🚫 11. 쓰면 안 되는 상황과 대안 설계</h2>
+<p>Web Share Target API가 만능은 아닙니다. 다음과 같은 시나리오에서는 이 API를 단독 주력으로 삼아서는 안 됩니다.</p>
+<ol>
+<li>
+<p><strong>iOS 사용자 비중이 70% 이상인 서비스</strong></p>
+<ul>
+<li>앞서 언급했듯 iOS/Safari는 이 API를 지원하지 않습니다. Web Share Target에만 의존하는 UX 플로우를 기획하면 대다수 iOS 사용자는 기능을 인지조차 할 수 없습니다.</li>
+<li><strong>대안</strong>: 인앱 QR 코드 스캔, 복사된 클립보드 감지(<code class="language-text">navigator.clipboard.readText</code>), 백엔드 동기화 단축 링크 제공.</li>
+</ul>
+</li>
+<li>
+<p><strong>초대용량 기가바이트(GB) 단위 미디어 전송</strong></p>
+<ul>
+<li>수백 MB~GB 단위의 비디오 파일을 공유 시트를 통해 웹으로 전달할 경우, 브라우저 프로세스 간 IPC 메모리 복사 과정에서 OOM(Out of Memory) 충돌이 날 확률이 매우 높습니다.</li>
+<li><strong>대안</strong>: 앱 내부의 직접 청크 업로드(Chunked Upload) 또는 File System Access API 사용.</li>
+</ul>
+</li>
+<li>
+<p><strong>엄격한 실시간 양방향 핸드셰이크가 필요한 경우</strong></p>
+<ul>
+<li>공유 시트는 일방적인 ‘던지기(Fire-and-forget)’ 모델입니다. 전송한 앱에게 “데이터가 성공적으로 DB에 기록되었음”을 시스템 차원에서 응답해줄 방법이 없습니다.</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2>🛠️ 12. 프로덕션 아키텍처 구현 예제</h2>
+<p>완성도 높은 아키텍처를 위해 프론트엔드와 서비스 워커 간의 통신을 <code class="language-text">BroadcastChannel</code>과 연계한 구조를 구축합니다.</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">[ 외부 앱 (OS 공유 시트) ]
+          │
+          ▼ POST multipart/form-data
+[ Service Worker (sw.js) ]
+  ├── Cache Storage에 Blob 저장
+  ├── BroadcastChannel('share-bus')로 메시지 브로드캐스트
+  └── 303 Redirect to /app
+          │
+          ▼
+[ Client Page (/app) ]
+  ├── 브로드캐스트 수신 시 인메모리 UI 갱신
+  └── 직접 열렸을 경우 URL 파라미터 확인 후 캐시 소각</code></pre></div>
+<h3>서비스 워커 코드</h3>
+<div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript"><span class="token comment">// sw.js</span>
+<span class="token keyword">const</span> broadcast <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BroadcastChannel</span><span class="token punctuation">(</span><span class="token string">'lp_share_channel'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+self<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'fetch'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> url <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">URL</span><span class="token punctuation">(</span>event<span class="token punctuation">.</span>request<span class="token punctuation">.</span>url<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>url<span class="token punctuation">.</span>pathname <span class="token operator">===</span> <span class="token string">'/share-receive'</span> <span class="token operator">&amp;&amp;</span> event<span class="token punctuation">.</span>request<span class="token punctuation">.</span>method <span class="token operator">===</span> <span class="token string">'POST'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    event<span class="token punctuation">.</span><span class="token function">respondWith</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+      <span class="token keyword">const</span> formData <span class="token operator">=</span> <span class="token keyword">await</span> event<span class="token punctuation">.</span>request<span class="token punctuation">.</span><span class="token function">formData</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">const</span> file <span class="token operator">=</span> formData<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'file_payload'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">const</span> text <span class="token operator">=</span> formData<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'text_payload'</span><span class="token punctuation">)</span> <span class="token operator">||</span> <span class="token string">''</span><span class="token punctuation">;</span>
+      <span class="token keyword">const</span> shareId <span class="token operator">=</span> crypto<span class="token punctuation">.</span><span class="token function">randomUUID</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>file<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">const</span> cache <span class="token operator">=</span> <span class="token keyword">await</span> caches<span class="token punctuation">.</span><span class="token function">open</span><span class="token punctuation">(</span><span class="token string">'share-cache-v1'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">await</span> cache<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">/shares/</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>shareId<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">Response</span><span class="token punctuation">(</span>file<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+          <span class="token literal-property property">headers</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token string-property property">'Content-Type'</span><span class="token operator">:</span> file<span class="token punctuation">.</span>type <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+
+      <span class="token comment">// 활성화된 클라이언트가 있다면 즉시 알림</span>
+      broadcast<span class="token punctuation">.</span><span class="token function">postMessage</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        <span class="token literal-property property">type</span><span class="token operator">:</span> <span class="token string">'SHARE_RECEIVED'</span><span class="token punctuation">,</span>
+        shareId<span class="token punctuation">,</span>
+        <span class="token literal-property property">hasFile</span><span class="token operator">:</span> <span class="token function">Boolean</span><span class="token punctuation">(</span>file<span class="token punctuation">)</span><span class="token punctuation">,</span>
+        text
+      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+      <span class="token keyword">return</span> Response<span class="token punctuation">.</span><span class="token function">redirect</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">/app?shared_id=</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>shareId<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span> <span class="token number">303</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<h3>클라이언트 수신 코드</h3>
+<div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript"><span class="token comment">// app.js</span>
+<span class="token keyword">const</span> broadcast <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BroadcastChannel</span><span class="token punctuation">(</span><span class="token string">'lp_share_channel'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+broadcast<span class="token punctuation">.</span><span class="token function-variable function">onmessage</span> <span class="token operator">=</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>event<span class="token punctuation">.</span>data<span class="token operator">?.</span>type <span class="token operator">===</span> <span class="token string">'SHARE_RECEIVED'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> <span class="token punctuation">{</span> shareId<span class="token punctuation">,</span> hasFile<span class="token punctuation">,</span> text <span class="token punctuation">}</span> <span class="token operator">=</span> event<span class="token punctuation">.</span>data<span class="token punctuation">;</span>
+    <span class="token function">showToast</span><span class="token punctuation">(</span><span class="token string">'새로운 공유 데이터를 수신했습니다.'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">await</span> <span class="token function">processIncomingShare</span><span class="token punctuation">(</span>shareId<span class="token punctuation">,</span> hasFile<span class="token punctuation">,</span> text<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">processIncomingShare</span><span class="token punctuation">(</span><span class="token parameter">shareId<span class="token punctuation">,</span> hasFile<span class="token punctuation">,</span> text</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>hasFile<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> cache <span class="token operator">=</span> <span class="token keyword">await</span> caches<span class="token punctuation">.</span><span class="token function">open</span><span class="token punctuation">(</span><span class="token string">'share-cache-v1'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> res <span class="token operator">=</span> <span class="token keyword">await</span> cache<span class="token punctuation">.</span><span class="token function">match</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">/shares/</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>shareId<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>res<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">const</span> blob <span class="token operator">=</span> <span class="token keyword">await</span> res<span class="token punctuation">.</span><span class="token function">blob</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token function">displaySharedImage</span><span class="token punctuation">(</span>blob<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">await</span> cache<span class="token punctuation">.</span><span class="token function">delete</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">/shares/</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>shareId<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>text<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">displaySharedText</span><span class="token punctuation">(</span>text<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>이와 같이 구성하면 PWA가 이미 켜져 있든, 새로 시작되든 누락 없이 매끄럽게 데이터를 인입받을 수 있습니다.</p>
+<hr>
+<h2>🧾 13. 정리</h2>
+<ul>
+<li><strong>Web Share Target API</strong>는 웹 애플리케이션을 모바일 및 데스크톱 OS의 네이티브 공유 시트에 정식 수신자로 등록해 주는 표준 PWA 명세입니다.</li>
+<li>단순 링크나 텍스트 수집은 <strong>GET 방식</strong>의 매니페스트 설정과 <code class="language-text">URLSearchParams</code>를 통해 즉시 구현할 수 있습니다.</li>
+<li>이미지, PDF 등 바이너리 파일은 **POST 방식(Level 2)**과 <strong>Service Worker의 Fetch 가로채기</strong>를 결합하여 백엔드 부하 없이 클라이언트 단독으로 고속 처리가 가능합니다.</li>
+<li>POST 리다이렉션 시에는 브라우저 규약에 따라 반드시 <strong><code class="language-text">303 See Other</code></strong> 응답을 반환해야 라우팅 에러를 방지할 수 있습니다.</li>
+<li>2026년 기준 Android, Windows, ChromeOS에서는 완벽히 동작하지만, iOS WebKit의 미지원 상태를 감안한 점진적 향상(Progressive Enhancement) 전략이 필수적입니다.</li>
+</ul>
+<blockquote>
+<p>✨ <strong>한 줄 요약</strong>
+PWA를 OS 공유 창에 등록하여 웹과 네이티브의 경계를 허무는 핵심 퍼즐 조각.</p>
+</blockquote>
+<hr>
+<h2>📚 참고 자료</h2>
+<ul>
+<li><a href="https://w3c.github.io/web-share-target/" target="_blank" rel="nofollow">W3C Web Share Target API Specification</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/Manifest/share_target" target="_blank" rel="nofollow">MDN Web Docs: Web Share Target API</a></li>
+<li><a href="https://web.dev/articles/web-share-target" target="_blank" rel="nofollow">web.dev: Receiving shared data with the Web Share Target API</a></li>
+<li><a href="https://web.dev/articles/workbox-share-targets" target="_blank" rel="nofollow">web.dev: Receiving shared files with the Web Share Target Level 2</a></li>
+</ul></div><style data-emotion="css 1hx1kjp">.css-1hx1kjp{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-flex-wrap:wrap;-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;gap:10px;width:768px;margin:80px auto 0;padding-top:30px;border-top:1px solid rgba(66, 105, 78, 0.2);}@media (max-width: 768px){.css-1hx1kjp{width:100%;margin-top:50px;padding:20px 20px 0;}}</style><section aria-label="게시글 공유" class="css-1hx1kjp et95pb12"><style data-emotion="css 2rm7b7">.css-2rm7b7{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;gap:6px;padding:8px 16px;border:1px solid rgb(66, 105, 78);border-radius:20px;background:#ffffff;color:rgb(66, 105, 78);font-size:15px;font-weight:700;cursor:pointer;-webkit-transition:background 0.2s ease,color 0.2s ease;transition:background 0.2s ease,color 0.2s ease;}.css-2rm7b7:hover{background:rgb(66, 105, 78);color:#ffffff;}.css-2rm7b7:focus-visible{outline:3px solid rgba(66, 105, 78, 0.4);outline-offset:2px;}@media (max-width: 768px){.css-2rm7b7{font-size:14px;}}</style><button type="button" aria-label="이 글 링크 복사" class="css-2rm7b7 et95pb11"><span aria-hidden="true">🔗</span> 링크 복사</button><style data-emotion="css c5ntrx">.css-c5ntrx{font-size:14px;color:#426950;}</style><span role="status" aria-live="polite" class="css-c5ntrx et95pb10"></span></section><style data-emotion="css 1jqm3m7">.css-1jqm3m7{width:768px;margin:60px auto 0;}@media (max-width: 768px){.css-1jqm3m7{width:100%;margin-top:40px;padding:0 20px;}}</style><section aria-labelledby="related-posts-heading" class="css-1jqm3m7 e176vx9b2"><style data-emotion="css 1a5ew9b">.css-1a5ew9b{margin-bottom:20px;font-size:22px;font-weight:800;}@media (max-width: 768px){.css-1a5ew9b{font-size:19px;}}</style><h2 id="related-posts-heading" class="css-1a5ew9b e176vx9b1">함께 읽으면 좋은 글</h2><style data-emotion="css 1hgsmwg">.css-1hgsmwg{display:grid;grid-template-columns:1fr 1fr;gap:20px;padding-bottom:60px;}@media (max-width: 768px){.css-1hgsmwg{grid-template-columns:1fr;}}</style><div class="css-1hgsmwg e176vx9b0"><style data-emotion="css m7gxp6">.css-m7gxp6{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;border-radius:10px;box-shadow:0 0 8px rgba(0, 0, 0, 0.15);-webkit-transition:0.3s box-shadow;transition:0.3s box-shadow;cursor:pointer;}.css-m7gxp6:hover{box-shadow:0 0 10px rgba(0, 0, 0, 0.3);}</style><a class="css-m7gxp6 e1eg5kak8" href="/web-identity-credential-manager-api-guide/"><style data-emotion="css 1axbq5h">.css-1axbq5h{width:100%;height:200px;border-radius:10px 10px 0 0;}</style><div data-gatsby-image-wrapper="" class="gatsby-image-wrapper gatsby-image-wrapper-constrained css-1axbq5h e1eg5kak7"><div style="max-width:768px;display:block"><img alt="" role="presentation" aria-hidden="true" src="data:image/svg+xml;charset=utf-8,%3Csvg%20height=&#x27;400&#x27;%20width=&#x27;768&#x27;%20xmlns=&#x27;http://www.w3.org/2000/svg&#x27;%20version=&#x27;1.1&#x27;%3E%3C/svg%3E" style="max-width:100%;display:block;position:static"/></div><img aria-hidden="true" data-placeholder-image="" style="opacity:1;transition:opacity 500ms linear" decoding="async" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAIAAAA7N+mxAAAACXBIWXMAAAsTAAALEwEAmpwYAAACEklEQVR42kWR23PSQBTG8w/ro6OP+mR11A5aqkwpTNUyUGQQaWIBuZZybaBQpjQQNhduAZIUyj3ZXTdVx5nffHNmz56z53xLwTGPdBHfSX+Akw45+c+oDZXW30AFUBUsrFSbKIV1kT7+9PLpo51nj23Pn8ylazTpGErLHLXNEW8qnDlsWh1VAQ2bplBCchVNACSM2xRWgdZmpWqmV8/2Gzk066KpjO57JMAPapLRVLC5jgyYPUA7xNP9u5Qbdq9IPUXekWvnF7QvETgqRwNxv7t45k8GjvK0N/P9S4HxIl3aNKLgh33Ul++X69liJRSj48hHpNxSWBNuskzU5/Qf7DIeB3PsiHgPfvkPq/FgzOc88zrnQnUcdQyEtirzw8RXuUhPF0uQ9K3YEEVmi3qdrncvAi6bZ2/Hu//6xPE26H7vsb9ShRpeKIZUEcL21RZ28j/Z2G6Otk1VTa7nZymXtfOkdQnY5KCRFyopsZIGlym+nCT7L+WGOeSgUOrSdl1TpxMl/u0NdxFGGIMcMz//TFm+a6Jlki6RP0MawGMODRuwWzE6hU0ra3Tys7SbTwcNjOeaujWM8aArhT8YzQQFRy1zcGN0a1uR3TzcXnOZ9W1mw51vW1mCVc+l9JiDZw77VxkxdyqFbMRCqIoUFMuQz0FQhKBgqfAPsWSlZBb16sRYPOFNLjXNnyzZEB7U8ayPdek3NiL4saukyBIAAAAASUVORK5CYII=" alt=""/><picture><source type="image/webp" data-srcset="/static/8b5abf281bb69bcd306c30abcba1e494/b3234/web-identity-credential-manager-api-guide.webp 192w,/static/8b5abf281bb69bcd306c30abcba1e494/65a7c/web-identity-credential-manager-api-guide.webp 384w,/static/8b5abf281bb69bcd306c30abcba1e494/30053/web-identity-credential-manager-api-guide.webp 768w,/static/8b5abf281bb69bcd306c30abcba1e494/87027/web-identity-credential-manager-api-guide.webp 1536w" sizes="(min-width: 768px) 768px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 768px) 768px, 100vw" decoding="async" loading="lazy" data-src="/static/8b5abf281bb69bcd306c30abcba1e494/473b7/web-identity-credential-manager-api-guide.png" data-srcset="/static/8b5abf281bb69bcd306c30abcba1e494/be4d9/web-identity-credential-manager-api-guide.png 192w,/static/8b5abf281bb69bcd306c30abcba1e494/5fc50/web-identity-credential-manager-api-guide.png 384w,/static/8b5abf281bb69bcd306c30abcba1e494/473b7/web-identity-credential-manager-api-guide.png 768w,/static/8b5abf281bb69bcd306c30abcba1e494/13e83/web-identity-credential-manager-api-guide.png 1536w" alt="🪪 Credential Management API 완벽 가이드"/></picture><noscript><picture><source type="image/webp" srcSet="/static/8b5abf281bb69bcd306c30abcba1e494/b3234/web-identity-credential-manager-api-guide.webp 192w,/static/8b5abf281bb69bcd306c30abcba1e494/65a7c/web-identity-credential-manager-api-guide.webp 384w,/static/8b5abf281bb69bcd306c30abcba1e494/30053/web-identity-credential-manager-api-guide.webp 768w,/static/8b5abf281bb69bcd306c30abcba1e494/87027/web-identity-credential-manager-api-guide.webp 1536w" sizes="(min-width: 768px) 768px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 768px) 768px, 100vw" decoding="async" loading="lazy" src="/static/8b5abf281bb69bcd306c30abcba1e494/473b7/web-identity-credential-manager-api-guide.png" srcSet="/static/8b5abf281bb69bcd306c30abcba1e494/be4d9/web-identity-credential-manager-api-guide.png 192w,/static/8b5abf281bb69bcd306c30abcba1e494/5fc50/web-identity-credential-manager-api-guide.png 384w,/static/8b5abf281bb69bcd306c30abcba1e494/473b7/web-identity-credential-manager-api-guide.png 768w,/static/8b5abf281bb69bcd306c30abcba1e494/13e83/web-identity-credential-manager-api-guide.png 1536w" alt="🪪 Credential Management API 완벽 가이드"/></picture></noscript><script type="module">const t="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;if(t){const t=document.querySelectorAll("img[data-main-image]");for(let e of t){e.dataset.src&&(e.setAttribute("src",e.dataset.src),e.removeAttribute("data-src")),e.dataset.srcset&&(e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset"));const t=e.parentNode.querySelectorAll("source[data-srcset]");for(let e of t)e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset");e.complete&&(e.style.opacity=1,e.parentNode.parentNode.querySelector("[data-placeholder-image]").style.opacity=0)}}</script></div><style data-emotion="css 1do7u82">.css-1do7u82{-webkit-flex:1;-ms-flex:1;flex:1;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;padding:15px;}</style><div class="css-1do7u82 e1eg5kak6"><style data-emotion="css kw2b4d">.css-kw2b4d{display:-webkit-box;overflow:hidden;margin-bottom:3px;text-overflow:ellipsis;white-space:normal;overflow-wrap:break-word;-webkit-line-clamp:2;-webkit-box-orient:vertical;font-size:20px;font-weight:700;}</style><div class="css-kw2b4d e1eg5kak5">🪪 Credential Management API 완벽 가이드</div><style data-emotion="css xm5j9w">.css-xm5j9w{font-size:14px;font-weight:400;opacity:0.7;}</style><div class="css-xm5j9w e1eg5kak4">2026.10.22.</div><style data-emotion="css 1bobky6">.css-1bobky6{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-flex-wrap:wrap;-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap;margin-top:10px;margin:10px -5px;}</style><div class="css-1bobky6 e1eg5kak2"><style data-emotion="css 1bzcbme">.css-1bzcbme{margin:2.5px 5px;padding:3px 5px;border-radius:3px;background:black;font-size:14px;font-weight:700;color:white;}</style><div class="css-1bzcbme e1eg5kak1">Web</div></div><style data-emotion="css 1wehmme">.css-1wehmme{display:-webkit-box;overflow:hidden;margin-top:auto;text-overflow:ellipsis;white-space:normal;overflow-wrap:break-word;-webkit-line-clamp:2;-webkit-box-orient:vertical;font-size:16px;opacity:0.8;}</style><div class="css-1wehmme e1eg5kak0">비밀번호 없는 차세대 웹 로그인</div></div></a><a class="css-m7gxp6 e1eg5kak8" href="/compute-pressure-api-guide/"><div data-gatsby-image-wrapper="" class="gatsby-image-wrapper gatsby-image-wrapper-constrained css-1axbq5h e1eg5kak7"><div style="max-width:768px;display:block"><img alt="" role="presentation" aria-hidden="true" src="data:image/svg+xml;charset=utf-8,%3Csvg%20height=&#x27;400&#x27;%20width=&#x27;768&#x27;%20xmlns=&#x27;http://www.w3.org/2000/svg&#x27;%20version=&#x27;1.1&#x27;%3E%3C/svg%3E" style="max-width:100%;display:block;position:static"/></div><img aria-hidden="true" data-placeholder-image="" style="opacity:1;transition:opacity 500ms linear" decoding="async" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAIAAAA7N+mxAAAACXBIWXMAAAsTAAALEwEAmpwYAAACH0lEQVR42mN48OPNkesX0rOzvZNSfWKzgpLzA5Ly/BJy3MMTPcIT3TFRWIJXVPKeK6cf/3zL8PTP+/VHDvBK6nOI6/HJmoso2wKRgIIlp7g+u6gui7A2ELGJ6ADZEMQhpsckpDl/z9YX/z4yPPn9bvPJIxKajpKajurmvkpGHhKaDvIGbkrGnuIa9spGHiomnrK6zhIa9pKaDkAkpekoqm675OCu538/MDz5BdIsqGjpHJAUm1FRVNNZ0dhf3tiXV9GWkleXnFdbWt9j6hzGL28urm4npmYLJAWVrRbv3wnWDLZZSMnS3DUiKD4/KrU0LrMyLLnY1jsuLLHIwjXSNyrb0D5YWNkKqBOuecmBnVCbt5w8yidv7heVDbSkd+qCgur2pNyakrrurJKm+KyK2YtWA50jqQm1VkrLUUTNBqF584kjQINNnMIN7ILDk0q8wrIcfZN9I3Ijkkqc/VKiUsrdAtMEFaxFVKwFlaw4JA1ZJfQX798BdfamE4dBRmpYyRvZyptaq1nbq9s5aNjbS+lZAkkFMytlSxuboCBFQ09T19AJcxbm17WtOLr36e/3DI9/gTQDg1Fez0HByEnRxFnJxFnF3FndykXR2FnFwkXdyhXMdde2CVi/f8/+m2f3Xz19+s7V25+eMzz9/W7D0YPckkYcYkac4iASjAw5RMFcUSDDkEvchIFPW9XQY82BXStP7l16eMeRK+fvfnkBAJII40uKaM6ZAAAAAElFTkSuQmCC" alt=""/><picture><source type="image/webp" data-srcset="/static/f357145e5fb48facaeb75718067e67f5/b3234/compute-pressure-api-guide.webp 192w,/static/f357145e5fb48facaeb75718067e67f5/65a7c/compute-pressure-api-guide.webp 384w,/static/f357145e5fb48facaeb75718067e67f5/30053/compute-pressure-api-guide.webp 768w,/static/f357145e5fb48facaeb75718067e67f5/87027/compute-pressure-api-guide.webp 1536w" sizes="(min-width: 768px) 768px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 768px) 768px, 100vw" decoding="async" loading="lazy" data-src="/static/f357145e5fb48facaeb75718067e67f5/473b7/compute-pressure-api-guide.png" data-srcset="/static/f357145e5fb48facaeb75718067e67f5/be4d9/compute-pressure-api-guide.png 192w,/static/f357145e5fb48facaeb75718067e67f5/5fc50/compute-pressure-api-guide.png 384w,/static/f357145e5fb48facaeb75718067e67f5/473b7/compute-pressure-api-guide.png 768w,/static/f357145e5fb48facaeb75718067e67f5/13e83/compute-pressure-api-guide.png 1536w" alt="🌡️ Compute Pressure API 완벽 가이드: 브라우저 발열·CPU 부하 감지와 적응형 성능 제어"/></picture><noscript><picture><source type="image/webp" srcSet="/static/f357145e5fb48facaeb75718067e67f5/b3234/compute-pressure-api-guide.webp 192w,/static/f357145e5fb48facaeb75718067e67f5/65a7c/compute-pressure-api-guide.webp 384w,/static/f357145e5fb48facaeb75718067e67f5/30053/compute-pressure-api-guide.webp 768w,/static/f357145e5fb48facaeb75718067e67f5/87027/compute-pressure-api-guide.webp 1536w" sizes="(min-width: 768px) 768px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 768px) 768px, 100vw" decoding="async" loading="lazy" src="/static/f357145e5fb48facaeb75718067e67f5/473b7/compute-pressure-api-guide.png" srcSet="/static/f357145e5fb48facaeb75718067e67f5/be4d9/compute-pressure-api-guide.png 192w,/static/f357145e5fb48facaeb75718067e67f5/5fc50/compute-pressure-api-guide.png 384w,/static/f357145e5fb48facaeb75718067e67f5/473b7/compute-pressure-api-guide.png 768w,/static/f357145e5fb48facaeb75718067e67f5/13e83/compute-pressure-api-guide.png 1536w" alt="🌡️ Compute Pressure API 완벽 가이드: 브라우저 발열·CPU 부하 감지와 적응형 성능 제어"/></picture></noscript><script type="module">const t="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;if(t){const t=document.querySelectorAll("img[data-main-image]");for(let e of t){e.dataset.src&&(e.setAttribute("src",e.dataset.src),e.removeAttribute("data-src")),e.dataset.srcset&&(e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset"));const t=e.parentNode.querySelectorAll("source[data-srcset]");for(let e of t)e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset");e.complete&&(e.style.opacity=1,e.parentNode.parentNode.querySelector("[data-placeholder-image]").style.opacity=0)}}</script></div><div class="css-1do7u82 e1eg5kak6"><div class="css-kw2b4d e1eg5kak5">🌡️ Compute Pressure API 완벽 가이드: 브라우저 발열·CPU 부하 감지와 적응형 성능 제어</div><div class="css-xm5j9w e1eg5kak4">2026.10.21.</div><div class="css-1bobky6 e1eg5kak2"><div class="css-1bzcbme e1eg5kak1">Web</div></div><div class="css-1wehmme e1eg5kak0">기기 발열과 CPU 부하에 실시간으로 적응하다</div></div></a><a class="css-m7gxp6 e1eg5kak8" href="/web-bluetooth-and-hid-api-guide/"><div data-gatsby-image-wrapper="" class="gatsby-image-wrapper gatsby-image-wrapper-constrained css-1axbq5h e1eg5kak7"><div style="max-width:768px;display:block"><img alt="" role="presentation" aria-hidden="true" src="data:image/svg+xml;charset=utf-8,%3Csvg%20height=&#x27;400&#x27;%20width=&#x27;768&#x27;%20xmlns=&#x27;http://www.w3.org/2000/svg&#x27;%20version=&#x27;1.1&#x27;%3E%3C/svg%3E" style="max-width:100%;display:block;position:static"/></div><img aria-hidden="true" data-placeholder-image="" style="opacity:1;transition:opacity 500ms linear" decoding="async" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAIAAAA7N+mxAAAACXBIWXMAAAsTAAALEwEAmpwYAAAB9ElEQVR42mMQ1/MlDvlI6vsBkbi+r5RRsJRxiIRhIANETtIwAI7EgSpQdQL1iOgF8moF8Gj6C+kGShkFSRj4AxGDsIabeVh9WP2GwIoVQVWrwuo3umRMFdXxFtP1geo08BcxCLMNLZ0wd8PMZduDM1tEjcIl9P3FdX0YxHS9FSwiNZ3T1BySVOwStFzSlG3jpAz9pY0CRXWATvUFWuWf2vT+w+d//////P334+fvRc2zhPRDJQ38GAQ0PFzD8zNK26My62JyGtNLO1JLOpKL2lNLOhXNQ4A2SJpFHzl9+fO3X3tO3b784N2dR6/OXrlr4psnouvHwK/u7h1XkVLWF5ZRH53dEJXdGJBYEZZeG5JaDUSien7arhm37j68dPf1zlM3j126d/XOswdPXvqnNvJr+jKI6ngBXWvkX6JoFQ30nrRxENDBsibBsqYhssZBQJulzWP2HTn7+O2XczeerFi/69XbT89fvTXwzBbV82cQ0fbSdEw09MrUc0vTcU3Vc0/X98zUdU0z9csDkkA/C+oGBmW03Hrw/OuP3//////7919p21xBvWCQn4HhKaHnJ6HvJwEMW11Y9EBiSx8a2kJ6Ic6RFRPmbZi2eEtIZquwQZgEMEb1fBhgSv3wJw8h3QBeTT9eLX8B7QBgDEsaBorr+wEAsIXK8SQoW7cAAAAASUVORK5CYII=" alt=""/><picture><source type="image/webp" data-srcset="/static/f568a69be9409776010a44fe7d2ec3ce/b3234/web-bluetooth-and-hid-api-guide.webp 192w,/static/f568a69be9409776010a44fe7d2ec3ce/65a7c/web-bluetooth-and-hid-api-guide.webp 384w,/static/f568a69be9409776010a44fe7d2ec3ce/30053/web-bluetooth-and-hid-api-guide.webp 768w,/static/f568a69be9409776010a44fe7d2ec3ce/87027/web-bluetooth-and-hid-api-guide.webp 1536w" sizes="(min-width: 768px) 768px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 768px) 768px, 100vw" decoding="async" loading="lazy" data-src="/static/f568a69be9409776010a44fe7d2ec3ce/473b7/web-bluetooth-and-hid-api-guide.png" data-srcset="/static/f568a69be9409776010a44fe7d2ec3ce/be4d9/web-bluetooth-and-hid-api-guide.png 192w,/static/f568a69be9409776010a44fe7d2ec3ce/5fc50/web-bluetooth-and-hid-api-guide.png 384w,/static/f568a69be9409776010a44fe7d2ec3ce/473b7/web-bluetooth-and-hid-api-guide.png 768w,/static/f568a69be9409776010a44fe7d2ec3ce/13e83/web-bluetooth-and-hid-api-guide.png 1536w" alt="📡 브라우저에서 하드웨어를 직접 제어하는 Web Bluetooth와 Web HID API 완벽 가이드"/></picture><noscript><picture><source type="image/webp" srcSet="/static/f568a69be9409776010a44fe7d2ec3ce/b3234/web-bluetooth-and-hid-api-guide.webp 192w,/static/f568a69be9409776010a44fe7d2ec3ce/65a7c/web-bluetooth-and-hid-api-guide.webp 384w,/static/f568a69be9409776010a44fe7d2ec3ce/30053/web-bluetooth-and-hid-api-guide.webp 768w,/static/f568a69be9409776010a44fe7d2ec3ce/87027/web-bluetooth-and-hid-api-guide.webp 1536w" sizes="(min-width: 768px) 768px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 768px) 768px, 100vw" decoding="async" loading="lazy" src="/static/f568a69be9409776010a44fe7d2ec3ce/473b7/web-bluetooth-and-hid-api-guide.png" srcSet="/static/f568a69be9409776010a44fe7d2ec3ce/be4d9/web-bluetooth-and-hid-api-guide.png 192w,/static/f568a69be9409776010a44fe7d2ec3ce/5fc50/web-bluetooth-and-hid-api-guide.png 384w,/static/f568a69be9409776010a44fe7d2ec3ce/473b7/web-bluetooth-and-hid-api-guide.png 768w,/static/f568a69be9409776010a44fe7d2ec3ce/13e83/web-bluetooth-and-hid-api-guide.png 1536w" alt="📡 브라우저에서 하드웨어를 직접 제어하는 Web Bluetooth와 Web HID API 완벽 가이드"/></picture></noscript><script type="module">const t="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;if(t){const t=document.querySelectorAll("img[data-main-image]");for(let e of t){e.dataset.src&&(e.setAttribute("src",e.dataset.src),e.removeAttribute("data-src")),e.dataset.srcset&&(e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset"));const t=e.parentNode.querySelectorAll("source[data-srcset]");for(let e of t)e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset");e.complete&&(e.style.opacity=1,e.parentNode.parentNode.querySelector("[data-placeholder-image]").style.opacity=0)}}</script></div><div class="css-1do7u82 e1eg5kak6"><div class="css-kw2b4d e1eg5kak5">📡 브라우저에서 하드웨어를 직접 제어하는 Web Bluetooth와 Web HID API 완벽 가이드</div><div class="css-xm5j9w e1eg5kak4">2026.10.20.</div><div class="css-1bobky6 e1eg5kak2"><div class="css-1bzcbme e1eg5kak1">Web</div></div><div class="css-1wehmme e1eg5kak0">웹의 한계를 넘어 물리적 기기와 직접 통신하기</div></div></a><a class="css-m7gxp6 e1eg5kak8" href="/css-scroll-driven-animations-guide/"><div data-gatsby-image-wrapper="" class="gatsby-image-wrapper gatsby-image-wrapper-constrained css-1axbq5h e1eg5kak7"><div style="max-width:768px;display:block"><img alt="" role="presentation" aria-hidden="true" src="data:image/svg+xml;charset=utf-8,%3Csvg%20height=&#x27;400&#x27;%20width=&#x27;768&#x27;%20xmlns=&#x27;http://www.w3.org/2000/svg&#x27;%20version=&#x27;1.1&#x27;%3E%3C/svg%3E" style="max-width:100%;display:block;position:static"/></div><img aria-hidden="true" data-placeholder-image="" style="opacity:1;transition:opacity 500ms linear" decoding="async" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAIAAAA7N+mxAAAACXBIWXMAAAsTAAALEwEAmpwYAAAB2UlEQVR42l2S24vTQBTG+2eLD74qgg8+KIjIrhdcEGQR9mG1XXeztbVNatKZ3NMmadJkcm13u01z7+JpoiDCN4eZOfzO4XwzHcmvQIxVDI186hTtUQn38n8K6jbVSiAlxA4s0auQW/FezZM2UVCYUMjtC16fJ5dTh+IJXAKvNFUgSk2tTtOnFkg+MbciybX4fqStLTdM0szxYxLEZVl54bovBsBwiy22U9baYDeT/boDldAye9ubPT75dUKZaliPtFV8c0fC1YSfMUjbJunNJhnIIbJ3nKwr3vLzkB2rkRrdd7Ro38PhyzPpxdHxq6/GQNuM57cTPEOSwYlzVXeQbPLqghIjzkyuRENZZcddk9biAwydOWv3+lx7fjr9eGWIpGT0W07UxZmFFcAsQV0APFQivEy/XCvfaOv9OR6psQLwYeagZq3kUoh5J4PBsJ18OL14+PTo0bN3EB88efPp7JqZryEF1khergYldos/hvHgO3gY7UXwECxw8oHk01o4VlsFP5VguszlxmTklphUcvNgB1huXguTkrVTxtyy1o4xd6ydTRYpbSSsnTNmQut340YjM6etQvD+wq1g+KG6ogS/L0Vd1qGE4AK5Pc750Ry73GH/HZF/v8pvdcQGCSP7pioAAAAASUVORK5CYII=" alt=""/><picture><source type="image/webp" data-srcset="/static/0bfeaefa1c0e7346a51db509fa3cb79d/b3234/css-scroll-driven-animations-guide.webp 192w,/static/0bfeaefa1c0e7346a51db509fa3cb79d/65a7c/css-scroll-driven-animations-guide.webp 384w,/static/0bfeaefa1c0e7346a51db509fa3cb79d/30053/css-scroll-driven-animations-guide.webp 768w,/static/0bfeaefa1c0e7346a51db509fa3cb79d/87027/css-scroll-driven-animations-guide.webp 1536w" sizes="(min-width: 768px) 768px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 768px) 768px, 100vw" decoding="async" loading="lazy" data-src="/static/0bfeaefa1c0e7346a51db509fa3cb79d/473b7/css-scroll-driven-animations-guide.png" data-srcset="/static/0bfeaefa1c0e7346a51db509fa3cb79d/be4d9/css-scroll-driven-animations-guide.png 192w,/static/0bfeaefa1c0e7346a51db509fa3cb79d/5fc50/css-scroll-driven-animations-guide.png 384w,/static/0bfeaefa1c0e7346a51db509fa3cb79d/473b7/css-scroll-driven-animations-guide.png 768w,/static/0bfeaefa1c0e7346a51db509fa3cb79d/13e83/css-scroll-driven-animations-guide.png 1536w" alt="📜 CSS Scroll-driven Animations 완벽 가이드: JS 없는 60fps 스크롤 인터랙션"/></picture><noscript><picture><source type="image/webp" srcSet="/static/0bfeaefa1c0e7346a51db509fa3cb79d/b3234/css-scroll-driven-animations-guide.webp 192w,/static/0bfeaefa1c0e7346a51db509fa3cb79d/65a7c/css-scroll-driven-animations-guide.webp 384w,/static/0bfeaefa1c0e7346a51db509fa3cb79d/30053/css-scroll-driven-animations-guide.webp 768w,/static/0bfeaefa1c0e7346a51db509fa3cb79d/87027/css-scroll-driven-animations-guide.webp 1536w" sizes="(min-width: 768px) 768px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 768px) 768px, 100vw" decoding="async" loading="lazy" src="/static/0bfeaefa1c0e7346a51db509fa3cb79d/473b7/css-scroll-driven-animations-guide.png" srcSet="/static/0bfeaefa1c0e7346a51db509fa3cb79d/be4d9/css-scroll-driven-animations-guide.png 192w,/static/0bfeaefa1c0e7346a51db509fa3cb79d/5fc50/css-scroll-driven-animations-guide.png 384w,/static/0bfeaefa1c0e7346a51db509fa3cb79d/473b7/css-scroll-driven-animations-guide.png 768w,/static/0bfeaefa1c0e7346a51db509fa3cb79d/13e83/css-scroll-driven-animations-guide.png 1536w" alt="📜 CSS Scroll-driven Animations 완벽 가이드: JS 없는 60fps 스크롤 인터랙션"/></picture></noscript><script type="module">const t="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;if(t){const t=document.querySelectorAll("img[data-main-image]");for(let e of t){e.dataset.src&&(e.setAttribute("src",e.dataset.src),e.removeAttribute("data-src")),e.dataset.srcset&&(e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset"));const t=e.parentNode.querySelectorAll("source[data-srcset]");for(let e of t)e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset");e.complete&&(e.style.opacity=1,e.parentNode.parentNode.querySelector("[data-placeholder-image]").style.opacity=0)}}</script></div><div class="css-1do7u82 e1eg5kak6"><div class="css-kw2b4d e1eg5kak5">📜 CSS Scroll-driven Animations 완벽 가이드: JS 없는 60fps 스크롤 인터랙션</div><div class="css-xm5j9w e1eg5kak4">2026.10.19.</div><div class="css-1bobky6 e1eg5kak2"><div class="css-1bzcbme e1eg5kak1">Web</div><div class="css-1bzcbme e1eg5kak1">Css</div></div><div class="css-1wehmme e1eg5kak0">JS 스크롤 이벤트 없이 완성하는 선언적 60fps 인터랙션</div></div></a></div></section><style data-emotion="css hx9xpc">@media (max-width: 768px){.css-hx9xpc{padding:0 20px;}}</style><div class="css-hx9xpc e1gqsjds0"></div><style data-emotion="css 1lgr7vy">.css-1lgr7vy{position:fixed;bottom:30px;right:30px;width:50px;height:50px;border-radius:50%;background:linear-gradient(60deg, rgb(66, 105, 78) 0%, rgb(73, 110, 93) 100%);border:2px solid white;cursor:pointer;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;-webkit-justify-content:center;justify-content:center;box-shadow:0 4px 15px rgba(0, 0, 0, 0.15);-webkit-transition:all 0.3s ease;transition:all 0.3s ease;z-index:1000;opacity:0;visibility:hidden;-webkit-transform:translateY(20px);-moz-transform:translateY(20px);-ms-transform:translateY(20px);transform:translateY(20px);}.css-1lgr7vy:hover{-webkit-transform:translateY(-3px);-moz-transform:translateY(-3px);-ms-transform:translateY(-3px);transform:translateY(-3px);box-shadow:0 6px 20px rgba(0, 0, 0, 0.3);background:white;border-color:rgb(66, 105, 78);}.css-1lgr7vy:active{-webkit-transform:translateY(0);-moz-transform:translateY(0);-ms-transform:translateY(0);transform:translateY(0);}.css-1lgr7vy.visible{opacity:1;visibility:visible;-webkit-transform:translateY(0);-moz-transform:translateY(0);-ms-transform:translateY(0);transform:translateY(0);}@media (max-width: 768px){.css-1lgr7vy{bottom:20px;right:20px;width:45px;height:45px;}}</style><button class="css-1lgr7vy e14t44do1" aria-label="맨 위로 이동"><style data-emotion="css 1lzpihr">.css-1lzpihr{width:0;height:0;border-left:8px solid transparent;border-right:8px solid transparent;border-bottom:12px solid white;margin-bottom:2px;-webkit-transition:border-bottom-color 0.3s ease;transition:border-bottom-color 0.3s ease;}.e14t44do1:hover .css-1lzpihr{border-bottom-color:rgb(66, 105, 78);}</style><div class="css-1lzpihr e14t44do0"></div></button><style data-emotion="css 1yungzt">.css-1yungzt{position:relative;width:100%;padding:40px 0;background:linear-gradient(180deg, rgba(66, 105, 78, 0.05) 0%, rgba(73, 110, 93, 0.1) 100%);border-top:1px solid rgba(66, 105, 78, 0.1);}</style><footer class="css-1yungzt e1oae0v85"><style data-emotion="css 1uamirr">.css-1uamirr{max-width:960px;margin:0 auto;padding:0 20px;text-align:center;}</style><div class="css-1uamirr e1oae0v84"><style data-emotion="css 1ghcw8y">.css-1ghcw8y{font-size:16px;line-height:1.6;color:#426950;margin-bottom:10px;-webkit-transition:color 0.3s ease;transition:color 0.3s ease;}.css-1ghcw8y:hover{color:#2c4735;}@media (max-width: 768px){.css-1ghcw8y{font-size:14px;}}</style><p class="css-1ghcw8y e1oae0v83">Thank You for Visiting My Blog, Have a Good Day <style data-emotion="css lzb4fa">.css-lzb4fa{display:inline-block;-webkit-transition:-webkit-transform 0.3s ease;transition:transform 0.3s ease;}.css-lzb4fa:hover{-webkit-transform:scale(1.2) rotate(10deg);-moz-transform:scale(1.2) rotate(10deg);-ms-transform:scale(1.2) rotate(10deg);transform:scale(1.2) rotate(10deg);}</style><span class="css-lzb4fa e1oae0v80">🌿</span></p><style data-emotion="css g8i42m">.css-g8i42m{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;-webkit-justify-content:center;justify-content:center;gap:16px;margin-bottom:10px;font-size:14px;color:#426950;}.css-g8i42m a:hover,.css-g8i42m a:focus-visible{-webkit-text-decoration:underline;text-decoration:underline;}@media (max-width: 768px){.css-g8i42m{font-size:13px;}}</style><nav aria-label="블로그 바로가기" class="css-g8i42m e1oae0v81"><a href="/stats/">📊 블로그 통계</a><a href="/rss.xml" type="application/rss+xml">📡 RSS 구독</a></nav><style data-emotion="css y3pbt1">.css-y3pbt1{font-size:14px;color:#666;margin-top:5px;}@media (max-width: 768px){.css-y3pbt1{font-size:12px;}}</style><p class="css-y3pbt1 e1oae0v82">© 2024 Developer LIM.</p></div></footer></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/web-share-target-api-guide/";/*]]>*/</script><!-- slice-start id="_gatsby-scripts-1" -->
+          <script
+            id="gatsby-chunk-mapping"
+          >
+            window.___chunkMapping="{\"app\":[\"/app-487e393d9545ee92626d.js\"],\"component---cache-caches-gatsby-plugin-offline-app-shell-js\":[\"/component---cache-caches-gatsby-plugin-offline-app-shell-js-27e0e967a98f3dffdf9e.js\"],\"component---src-pages-404-tsx\":[\"/component---src-pages-404-tsx-198e8648605be5d74a6a.js\"],\"component---src-pages-index-tsx\":[\"/component---src-pages-index-tsx-8682e22aa766b2de1de3.js\"],\"component---src-pages-info-tsx\":[\"/component---src-pages-info-tsx-91ad86a40368117a0a55.js\"],\"component---src-pages-stats-tsx\":[\"/component---src-pages-stats-tsx-da2653c84000f80e8a2c.js\"],\"component---src-templates-post-template-tsx\":[\"/component---src-templates-post-template-tsx-30952e7fc77f6201d397.js\"]}";
+          </script>
+        <script>window.___webpackCompilationHash="0b9ae36f906be1d4ae33";</script><script src="/webpack-runtime-c33339e43cc02d19a5af.js" async></script><script src="/framework-9d608f77b5c9a88afabd.js" async></script><script src="/app-487e393d9545ee92626d.js" async></script><!-- slice-end id="_gatsby-scripts-1" --></body></html>
