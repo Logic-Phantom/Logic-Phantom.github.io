@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-10-23T01:42:17Z",
-  "source": "goatcounter-counter",
+  "generatedAt": "2026-10-23T02:18:15Z",
+  "source": "goatcounter",
   "metric": "visitors",
-  "rangeStart": null,
-  "rangeEnd": "2026-10-23T01:00:00Z",
+  "rangeStart": "2026-10-01T00:00:00Z",
+  "rangeEnd": "2026-10-23T02:00:00Z",
   "totalViews": 51,
   "posts": [
     {
@@ -20,6 +20,10 @@
     },
     {
       "path": "/popover-api-and-top-layer-guide/",
+      "views": 2
+    },
+    {
+      "path": "/web-identity-credential-manager-api-guide/",
       "views": 2
     },
     {
@@ -59,11 +63,11 @@
       "views": 1
     },
     {
-      "path": "/web-identity-credential-manager-api-guide/",
+      "path": "/web-locks-api-concurrency-control/",
       "views": 1
     },
     {
-      "path": "/web-locks-api-concurrency-control/",
+      "path": "/web-share-target-api-guide/",
       "views": 1
     },
     {
