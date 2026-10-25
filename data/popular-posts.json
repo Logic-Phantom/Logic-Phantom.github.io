@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-10-25T06:47:52Z",
-  "source": "goatcounter-counter",
+  "generatedAt": "2026-10-25T08:28:48Z",
+  "source": "goatcounter",
   "metric": "visitors",
-  "rangeStart": null,
-  "rangeEnd": "2026-10-25T06:00:00Z",
+  "rangeStart": "2026-10-01T00:00:00Z",
+  "rangeEnd": "2026-10-25T08:00:00Z",
   "totalViews": 70,
   "posts": [
     {
@@ -11,16 +11,16 @@
       "views": 4
     },
     {
+      "path": "/compute-pressure-api-guide/",
+      "views": 3
+    },
+    {
       "path": "/gatsby/",
       "views": 3
     },
     {
-      "path": "/compute-pressure-api-guide/",
-      "views": 2
-    },
-    {
       "path": "/popover-api-and-top-layer-guide/",
-      "views": 2
+      "views": 3
     },
     {
       "path": "/web-identity-credential-manager-api-guide/",
