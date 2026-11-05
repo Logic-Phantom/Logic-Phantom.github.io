@@ -1,0 +1,730 @@
+<!DOCTYPE html><html lang="ko"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><meta name="generator" content="Gatsby 5.14.0"/><meta name="theme-color" content="#426950"/><meta data-react-helmet="true" name="description" content="BEM과 CSS Modules 없이 완성하는 브라우저 네이티브 스타일 캡슐화 — 웹 스타일링의 오랜 난제였던 스타일 충돌(Class Collision)과 과도한 specificity 경쟁, 이제 브라우저 네이티브 기능으로 해결할 수 있습니다. 외부 라이브러리나 래핑 해시 기반…"/><meta data-react-helmet="true" name="viewport" content="width=device-width, initial-scale=1.0"/><meta data-react-helmet="true" http-equiv="Content-Type" content="text/html;charset=UTF-8"/><meta data-react-helmet="true" property="og:type" content="article"/><meta data-react-helmet="true" property="og:title" content="🎯 CSS @scope 규칙 완벽 가이드: BEM과 CSS Modules 없이 완성하는 스타일 캡슐화"/><meta data-react-helmet="true" property="og:description" content="BEM과 CSS Modules 없이 완성하는 브라우저 네이티브 스타일 캡슐화 — 웹 스타일링의 오랜 난제였던 스타일 충돌(Class Collision)과 과도한 specificity 경쟁, 이제 브라우저 네이티브 기능으로 해결할 수 있습니다. 외부 라이브러리나 래핑 해시 기반…"/><meta data-react-helmet="true" property="og:image" content="https://logic-phantom.github.io/static/02dd7dce2ed5d1d690249cf48984bd98/css-scope-rule-guide.png"/><meta data-react-helmet="true" property="og:url" content="https://logic-phantom.github.io/css-scope-rule-guide/"/><meta data-react-helmet="true" property="og:site_name" content="Forest_LIM"/><meta data-react-helmet="true" property="og:locale" content="ko_KR"/><meta data-react-helmet="true" property="article:published_time" content="2026-11-06"/><meta data-react-helmet="true" name="twitter:card" content="summary_large_image"/><meta data-react-helmet="true" name="twitter:title" content="🎯 CSS @scope 규칙 완벽 가이드: BEM과 CSS Modules 없이 완성하는 스타일 캡슐화"/><meta data-react-helmet="true" name="twitter:description" content="BEM과 CSS Modules 없이 완성하는 브라우저 네이티브 스타일 캡슐화 — 웹 스타일링의 오랜 난제였던 스타일 충돌(Class Collision)과 과도한 specificity 경쟁, 이제 브라우저 네이티브 기능으로 해결할 수 있습니다. 외부 라이브러리나 래핑 해시 기반…"/><meta data-react-helmet="true" name="twitter:image" content="https://logic-phantom.github.io/static/02dd7dce2ed5d1d690249cf48984bd98/css-scope-rule-guide.png"/><style data-href="/styles.9e907bc32054b7771552.css" data-identity="gatsby-global-css">code[class*=language-],pre[class*=language-]{word-wrap:normal;background:none;color:#ccc;font-family:Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;font-size:1em;-webkit-hyphens:none;hyphens:none;line-height:1.5;tab-size:4;text-align:left;white-space:pre;word-break:normal;word-spacing:normal}pre[class*=language-]{margin:.5em 0;overflow:auto;padding:1em}:not(pre)>code[class*=language-],pre[class*=language-]{background:#2d2d2d}:not(pre)>code[class*=language-]{border-radius:.3em;padding:.1em;white-space:normal}.token.block-comment,.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#999}.token.punctuation{color:#ccc}.token.attr-name,.token.deleted,.token.namespace,.token.tag{color:#e2777a}.token.function-name{color:#6196cc}.token.boolean,.token.function,.token.number{color:#f08d49}.token.class-name,.token.constant,.token.property,.token.symbol{color:#f8c555}.token.atrule,.token.builtin,.token.important,.token.keyword,.token.selector{color:#cc99cd}.token.attr-value,.token.char,.token.regex,.token.string,.token.variable{color:#7ec699}.token.entity,.token.operator,.token.url{color:#67cdcc}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}.token.inserted{color:green}</style><link rel="sitemap" type="application/xml" href="/sitemap-index.xml"/><link rel="alternate" type="application/rss+xml" title="Forest_LIM Tech Blog RSS" href="/rss.xml"/><link rel="canonical" href="https://logic-phantom.github.io/css-scope-rule-guide/" data-baseprotocol="https:" data-basehost="logic-phantom.github.io"/><link rel="icon" href="/favicon-32x32.png" type="image/png"/><link rel="manifest" href="/manifest.webmanifest" crossorigin="use-credentials"/><link rel="apple-touch-icon" sizes="192x192" href="/contents/forestLim.png"/><link rel="apple-touch-icon" sizes="512x512" href="/contents/forestLim.png"/><title data-react-helmet="true">🎯 CSS @scope 규칙 완벽 가이드: BEM과 CSS Modules 없이 완성하는 스타일 캡슐화</title><script data-react-helmet="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"🎯 CSS @scope 규칙 완벽 가이드: BEM과 CSS Modules 없이 완성하는 스타일 캡슐화","description":"BEM과 CSS Modules 없이 완성하는 브라우저 네이티브 스타일 캡슐화 — 웹 스타일링의 오랜 난제였던 스타일 충돌(Class Collision)과 과도한 specificity 경쟁, 이제 브라우저 네이티브 기능으로 해결할 수 있습니다. 외부 라이브러리나 래핑 해시 기반…","datePublished":"2026-11-06","mainEntityOfPage":{"@type":"WebPage","@id":"https://logic-phantom.github.io/css-scope-rule-guide/"},"url":"https://logic-phantom.github.io/css-scope-rule-guide/","image":["https://logic-phantom.github.io/static/02dd7dce2ed5d1d690249cf48984bd98/css-scope-rule-guide.png"],"author":{"@type":"Person","name":"LIM","url":"https://github.com/Logic-Phantom"},"publisher":{"@type":"Organization","name":"Forest_LIM","url":"https://logic-phantom.github.io"},"inLanguage":"ko-KR","articleSection":["Web","Css"]}</script><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){const t=e.target;if(void 0===t.dataset.mainImage)return;if(void 0===t.dataset.gatsbyImageSsr)return;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-G3TV9FFKB2"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-G3TV9FFKB2',{send_page_view:false});</script><script id="goatcounter-js" async="" src="https://gc.zgo.at/count.js" data-goatcounter="https://forestlim.goatcounter.com/count" data-goatcounter-settings="{&quot;no_onload&quot;: true}"></script></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><style data-emotion="css zyllbl">.css-zyllbl{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;height:100vh;}</style><div class="css-zyllbl e1strnqo0"><style data-emotion="css-global kxm5mf">@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap');*{padding:0;margin:0;box-sizing:border-box;font-family:'Nanum Myeongjo',serif;}html,body,#___gatsby{height:100%;}a,a:hover{color:inherit;-webkit-text-decoration:none;text-decoration:none;cursor:pointer;}</style><style data-emotion="css 16cz9yp">.css-16cz9yp{position:relative;width:100%;height:400px;}@media (max-width: 768px){.css-16cz9yp{height:300px;}}</style><div class="css-16cz9yp e1opi4mu1"><style data-emotion="css 1bjn9yo">.css-1bjn9yo{z-index:-1;width:100%;height:400px;object-fit:cover;-webkit-filter:brightness(0.25);filter:brightness(0.25);}@media (max-width: 768px){.css-1bjn9yo{height:300px;}}</style><div data-gatsby-image-wrapper="" style="position:absolute" class="gatsby-image-wrapper gatsby-image-wrapper-constrained css-1bjn9yo e1opi4mu0"><div style="max-width:1536px;display:block"><img alt="" role="presentation" aria-hidden="true" src="data:image/svg+xml;charset=utf-8,%3Csvg%20height=&#x27;1024&#x27;%20width=&#x27;1536&#x27;%20xmlns=&#x27;http://www.w3.org/2000/svg&#x27;%20version=&#x27;1.1&#x27;%3E%3C/svg%3E" style="max-width:100%;display:block;position:static"/></div><img aria-hidden="true" data-placeholder-image="" style="opacity:1;transition:opacity 500ms linear" decoding="async" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAIAAAAmMtkJAAAACXBIWXMAAAsTAAALEwEAmpwYAAAC0klEQVR42j2R2U8TURTG588w6psmQCS+aMCFaDVYIg9qNCqxJAaN8YUiQdQQ18CLBGNcwAcTNdACYQubhGKbTldaWqcLDLSdtnSlQ5fplEU6S6f1tBiT38M593733O9+F1nb5N0J4T+epOCK87C4zyrJ4zFuv3CBMl6k2JZ2ESJV6B3RNXd+b+8efNwtb+8ZMhE0nMdjLLC8AXClC3ic5C1BFotw7ngOBDAOcSdyJiL9yxZRO2NKWwRdJomU4EvngUCmCAhAinr2ZLqYHA0MaELjVsoehRGlwyp7dFzjGlHjWnxzQueRKRxDymX5gqN3RN83aljypnU+VoYGQzGqkM8zDIvaw4PGBF66WZg2esH5e7laNm//OKz5OmkG5ArHj59Y/xymXomPmpNEKMFzLEXRNL0l5LgZU1CB7yI+qjCsWunpV34ZM3ybtfaN6t8NqD4Naz1J3p/Or6fz9igvQ0Mcy44sYB9Gse4B/QaZtBGbY1a6aNvgSsGzbcEdlWNDv5owulPwfggJcobALCFOpo3SmR2jM9D82fB20JzN7mmd0Qksg4CISApEMgcBECmIR1ghc04yZwkypnXG6GfMAXbcSs9bguCWYblCXoiQ1IAmrPNmEZzknFHWFmGsIVBnDf6swZfVe/egMPpLrT+r8zFDi8kxfcC0SqpskX40rHb/cW1yiDXMmYNFb0tAkLOEeKgBa5gHsAjviMIP51wJweBnZu20At9xxgQflQe/yJyDnsGoKSw19Ts1jaUmrclZGzVnpxROSrlMaV0Zg2cb0Hu2TT5gd9EL7Ra6ltGsZZAyccvZW89Fklciyeuahhfipq7TNztEkpfiu511TV0nrj0pq5VWiFuAcrG0ok5aWd96vL6t8nJreZ0UOVglOXO97ULDM6DmRtslSUfV1Uei209rJR1X7r85VvvwwMk7h081Hqr+x9Hz98ovPjhyrulgdeNfBMJQ6klQoXsAAAAASUVORK5CYII=" alt=""/><picture><source type="image/webp" data-srcset="/static/02dd7dce2ed5d1d690249cf48984bd98/b642b/css-scope-rule-guide.webp 384w,/static/02dd7dce2ed5d1d690249cf48984bd98/c9564/css-scope-rule-guide.webp 768w,/static/02dd7dce2ed5d1d690249cf48984bd98/18b4b/css-scope-rule-guide.webp 1536w" sizes="(min-width: 1536px) 1536px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 1536px) 1536px, 100vw" decoding="async" loading="lazy" data-src="/static/02dd7dce2ed5d1d690249cf48984bd98/4d776/css-scope-rule-guide.png" data-srcset="/static/02dd7dce2ed5d1d690249cf48984bd98/4a410/css-scope-rule-guide.png 384w,/static/02dd7dce2ed5d1d690249cf48984bd98/f5189/css-scope-rule-guide.png 768w,/static/02dd7dce2ed5d1d690249cf48984bd98/4d776/css-scope-rule-guide.png 1536w" alt="thumbnail"/></picture><noscript><picture><source type="image/webp" srcSet="/static/02dd7dce2ed5d1d690249cf48984bd98/b642b/css-scope-rule-guide.webp 384w,/static/02dd7dce2ed5d1d690249cf48984bd98/c9564/css-scope-rule-guide.webp 768w,/static/02dd7dce2ed5d1d690249cf48984bd98/18b4b/css-scope-rule-guide.webp 1536w" sizes="(min-width: 1536px) 1536px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 1536px) 1536px, 100vw" decoding="async" loading="lazy" src="/static/02dd7dce2ed5d1d690249cf48984bd98/4d776/css-scope-rule-guide.png" srcSet="/static/02dd7dce2ed5d1d690249cf48984bd98/4a410/css-scope-rule-guide.png 384w,/static/02dd7dce2ed5d1d690249cf48984bd98/f5189/css-scope-rule-guide.png 768w,/static/02dd7dce2ed5d1d690249cf48984bd98/4d776/css-scope-rule-guide.png 1536w" alt="thumbnail"/></picture></noscript><script type="module">const t="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;if(t){const t=document.querySelectorAll("img[data-main-image]");for(let e of t){e.dataset.src&&(e.setAttribute("src",e.dataset.src),e.removeAttribute("data-src")),e.dataset.srcset&&(e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset"));const t=e.parentNode.querySelectorAll("source[data-srcset]");for(let e of t)e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset");e.complete&&(e.style.opacity=1,e.parentNode.parentNode.querySelector("[data-placeholder-image]").style.opacity=0)}}</script></div><style data-emotion="css m1156n">.css-m1156n{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;width:768px;height:100%;margin:0 auto;padding:60px 0;color:#ffffff;}@media (max-width: 768px){.css-m1156n{width:100%;padding:40px 20px;}}</style><div class="css-m1156n e1st1jau4"><style data-emotion="css gywgo7">.css-gywgo7{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:#ffffff;color:#000000;font-size:22px;cursor:pointer;box-shadow:0 0 10px rgba(0, 0, 0, 0.3);}@media (max-width: 768px){.css-gywgo7{width:30px;height:30px;font-size:18px;}}</style><div class="css-gywgo7 e1st1jau3"><style data-emotion="css 1ij64l8">.css-1ij64l8{display:inline-block;width:12px;height:12px;border-left:2px solid #000000;border-bottom:2px solid #000000;-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg);-ms-transform:rotate(45deg);transform:rotate(45deg);}</style><span class="css-1ij64l8 e1st1jau2"></span></div><style data-emotion="css gn4qtp">.css-gn4qtp{display:-webkit-box;overflow:hidden;overflow-wrap:break-word;margin-top:auto;text-overflow:ellipsis;white-space:normal;-webkit-line-clamp:2;-webkit-box-orient:vertical;font-size:45px;font-weight:800;}@media (max-width: 768px){.css-gn4qtp{font-size:30px;}}</style><div class="css-gn4qtp e1st1jau1">🎯 CSS @scope 규칙 완벽 가이드: BEM과 CSS Modules 없이 완성하는 스타일 캡슐화</div><style data-emotion="css 3gcnt2">.css-3gcnt2{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;justify-content:space-between;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;margin-top:10px;font-size:18px;font-weight:700;}@media (max-width: 768px){.css-3gcnt2{-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-align-items:flex-start;-webkit-box-align:flex-start;-ms-flex-align:flex-start;align-items:flex-start;font-size:15px;font-weight:400;}}</style><div class="css-3gcnt2 e1st1jau0"><div>Web / Css</div><div>2026.11.06.</div></div></div></div><style data-emotion="css 12g9cpd">.css-12g9cpd{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;width:768px;margin:0 auto;padding:200px 0 0 0;word-break:break-all;line-height:1.8;font-size:16px;font-weight:400;}.css-12g9cpd p{padding:3px 0;}.css-12g9cpd h1,.css-12g9cpd h2,.css-12g9cpd h3{font-weight:800;margin-bottom:30px;}.css-12g9cpd *+h1,.css-12g9cpd *+h2,.css-12g9cpd *+h3{margin-top:80px;}.css-12g9cpd hr+h1,.css-12g9cpd hr+h2,.css-12g9cpd hr+h3{margin-top:0;}.css-12g9cpd h1{font-size:30px;}.css-12g9cpd h2{font-size:25px;}.css-12g9cpd h3{font-size:20px;}.css-12g9cpd blockquote{margin:30px 0;padding:5px 15px;border-left:2px solid #000000;font-weight:800;}.css-12g9cpd ol,.css-12g9cpd ul{margin-left:20px;padding:30px 0;}.css-12g9cpd hr{border:1px solid #000000;margin:100px 0;}.css-12g9cpd a{color:#4263eb;-webkit-text-decoration:underline;text-decoration:underline;}.css-12g9cpd pre[class*='language-']{margin:30px 0;padding:15px;font-size:15px;}.css-12g9cpd pre[class*='language-']::-webkit-scrollbar-thumb{background:rgba(255, 255, 255, 0.5);border-radius:3px;}.css-12g9cpd code[class*='language-'],.css-12g9cpd pre[class*='language-']{tab-size:2;}@media (max-width: 768px){.css-12g9cpd{width:100%;padding:140px 20px 0 20px;line-height:1.6;font-size:14px;}.css-12g9cpd h1{font-size:23px;}.css-12g9cpd h2{font-size:20px;}.css-12g9cpd h3{font-size:17px;}.css-12g9cpd img{width:100%;}.css-12g9cpd hr{margin:50px 0;}}</style><div class="css-12g9cpd e1ijh0y10"><h1>🎯 CSS @scope 규칙 완벽 가이드: BEM과 CSS Modules 없이 완성하는 스타일 캡슐화</h1>
+<blockquote>
+<p><strong>웹 스타일링의 오랜 난제였던 스타일 충돌(Class Collision)과 과도한 specificity 경쟁, 이제 브라우저 네이티브 기능으로 해결할 수 있습니다.</strong><br>
+외부 라이브러리나 래핑 해시 기반 커스텀 툴셋 없이도 pure CSS만으로 완벽한 스타일 캡슐화를 구현해 주는 <code class="language-text">CSS @scope</code> 규칙의 메커니즘과 실제 활용법을 탐구합니다.</p>
+</blockquote>
+<hr>
+<h2>📌 목차</h2>
+<ol>
+<li>🧭 1. 왜 스타일 캡슐화는 늘 어려운 숙제였을까?</li>
+<li>🔬 2. CSS @scope 규칙의 개념과 캡슐화 메커니즘</li>
+<li>📐 3. 기본 문법과 Root - Scoping Limit 구성하기</li>
+<li>🍩 4. Donut Scope: 원하는 하위 요소 영역 구멍 뚫기</li>
+<li>⚖️ 5. Cascade와 Scoping Proximity: 명시도 규칙의 변화</li>
+<li>📊 6. 기존 스타일 격리 방식과의 비교 (CSS Modules vs Shadow DOM vs @scope)</li>
+<li>🛠️ 7. 컴포넌트 프레임워크(React, Vue 등)에서의 최신 적용 기법</li>
+<li>⚡ 8. @scope와 CSS Container Queries의 미친 시너지 효과</li>
+<li>⚠️ 9. 실무 적용 시 만나는 함정 및 주의할 점</li>
+<li>🌐 10. 브라우저 지원 현황과 안전한 Fallback 전략</li>
+<li>🧾 11. 정리</li>
+</ol>
+<hr>
+<h2>🧭 1. 왜 스타일 캡슐화는 늘 어려운 숙제였을까?</h2>
+<p>웹 애플리케이션의 규모가 가파르게 커지면서 CSS의 가장 근본적인 특성인 **전역 네임스페이스(Global Namespace)**와 **캐스케이딩(Cascading)**은 단순한 장점을 넘어 거대한 관리적 부채로 다가왔습니다. HTML 문서 전체에서 작성되는 모든 클래스명과 요소 선택자는 단 하나의 전역 네임스페이스를 공유합니다. 이로 인해 컴포넌트 단위 개발이 대세가 된 모던 웹 생태계에서는 스타일 우발적 오염(Accidental Side-effects)과 명시도 전쟁(Specificity Wars)이 빈번하게 발생합니다.</p>
+<p>개발자들은 오랜 기간 이 문제를 극복하기 위해 다양한 기술적 우회책과 설계 패턴을 발명하고 도입해 왔습니다.</p>
+<div class="gatsby-highlight" data-language="html"><pre class="language-html"><code class="language-html"><span class="token comment">&lt;!-- BEM 패턴: 명명 규칙을 통해 인위적으로 충돌 방지 --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>product-card product-card--featured<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h2</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>product-card__title<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>상품명<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h2</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>product-card__button product-card__button--primary<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>구매하기<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+
+<span class="token comment">&lt;!-- CSS Modules / CSS-in-JS: 빌드 타임 혹은 런타임에 고유 난수 해시 부여 --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>ProductCard_card_1a8f9 ProductCard_featured_9z2b4<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h2</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>ProductCard_title_3x7c1<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>상품명<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h2</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>ProductCard_button_5v2e3<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>구매하기<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre></div>
+<p>웹 생태계가 지나온 대표적인 스타일 격리 접근법들은 저마다 뚜렷한 한계점과 비용을 지니고 있습니다.</p>
+<ol>
+<li>
+<p><strong>BEM (Block Element Modifier) 명명 규칙</strong></p>
+<ul>
+<li><strong>원리</strong>: 클래스 이름을 <code class="language-text">block__element--modifier</code> 형태로 엄격하게 작성하여 클래스명 중복을 수동으로 방지합니다.</li>
+<li><strong>한계</strong>: HTML 클래스 구문이 매우 길어져 가독성을 해치며, 오직 개발자의 자율적 규율에 의존하므로 신규 팀원의 실수나 휴먼 에러를 시스템적으로 막을 수 없습니다.</li>
+</ul>
+</li>
+<li>
+<p><strong>CSS Modules (빌드 타임 해싱)</strong></p>
+<ul>
+<li><strong>원리</strong>: Webpack, Vite 등의 번들러가 작성된 CSS 클래스명 뒤에 <code class="language-text">.card_title_x8f3a</code>와 같은 무작위 해시 문자열을 결합하여 전역 네임스페이스를 강제로 분리합니다.</li>
+<li><strong>한계</strong>: 반드시 JavaScript 빌드 툴체인이 강제되며, 서버 사이드 리액트 컴포넌트(RSC)나 micro-frontend 환경에서 클래스명 동기화 이슈 및 CSS 파일 분할 파편화 문제가 발생합니다.</li>
+</ul>
+</li>
+<li>
+<p><strong>CSS-in-JS (Styled-Components, Emotion)</strong></p>
+<ul>
+<li><strong>원리</strong>: JavaScript 런타임 시점에 스타일을 평가하고 동적으로 <code class="language-text">&lt;style></code> 태그를 Head 요소에 주입합니다.</li>
+<li><strong>한계</strong>: JS 번들 사이즈 증가, 런타임 CPU 스타일 계산 오버헤드, React 18의 Concurrent Mode와의 호환성 문제, 그리고 SSR 환경에서의 CSS 주입 딜레이로 인한 레이아웃 시프트(CLS) 위험이 존재합니다.</li>
+</ul>
+</li>
+<li>
+<p><strong>Shadow DOM (Web Components)</strong></p>
+<ul>
+<li><strong>원리</strong>: 브라우저의 DOM 트리를 캡슐화하여 외부의 그 어떤 CSS도 내부로 침투하지 못하도록 완전 격리(Encapsulation)를 제공합니다.</li>
+<li><strong>한계</strong>: 격리가 너무 완고하여 전역 폰트, 테마 시스템 변수, 공통 리셋 스타일을 전달하기 어렵고, SSR 지원이 복잡하며, accessibility(A11y) 트리가 분리되는 부작용이 있습니다.</li>
+</ul>
+</li>
+<li>
+<p><strong>Tailwind CSS (Atomic CSS)</strong></p>
+<ul>
+<li><strong>원리</strong>: 사전 정의된 유틸리티 클래스를 HTML 태그에 직접 조합하여 커스텀 CSS 작성을 극도로 줄입니다.</li>
+<li><strong>한계</strong>: HTML 구조가 심각하게 비대해지며, 시맨틱 웹 태그 스타일링이나 컴포넌트 자체의 기하학적 캡슐화 규칙을 CSS 파일 단에서 직관적으로 파악하기 어렵습니다.</li>
+</ul>
+</li>
+</ol>
+<p>이처럼 기존 해결책들은 스타일 충돌 문제를 해결하는 대신 <strong>빌드 복잡도 증가</strong>, <strong>런타임 성능 저하</strong>, <strong>HTML 마크업 오염</strong>이라는 또 다른 기회비용을 정당화해야 했습니다. 네이티브 CSS 차원에서 브라우저가 직접 특정 DOM 영역으로 스타일의 적용 범위(Scope)를 제한할 수 있는 표준 명세의 필요성이 수십 년간 제기되어 온 배경입니다.</p>
+<hr>
+<h2>🔬 2. CSS @scope 규칙의 개념과 캡슐화 메커니즘</h2>
+<p>W3C의 <strong>CSS Cascading and Inheritance Level 6</strong> 사양에 새롭게 포함된 <code class="language-text">@scope</code> At-rule은 도구나 JS 런타임의 개입 없이 브라우저의 CSS 스타일 파싱 엔진이 선언적으로 범위 규칙을 해석하게 만드는 브라우저 네이티브 기술입니다.</p>
+<p><code class="language-text">@scope</code>는 DOM 트리의 탐색 범위(Traversal Boundary)에 따라 스타일 선택자(Selector)의 유효 범위를 제한합니다.</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">       [ Document Root ]
+               │
+       &lt;div class="card">   ◄─── [Scope Root] 스타일 경계 시작점
+               │
+         ┌─────┴─────┐
+         ▼           ▼
+      &lt;h2>        &lt;p>        ◄─── [Scoped Rules 적용 대상]
+         │
+  &lt;div class="comments">   ◄─── [Scoping Limit] 스타일 경계 종료점 (Donut Limit)
+         │
+       &lt;p>                   ◄─── [스타일 적용 대상에서 완벽 제외]</code></pre></div>
+<h3><code class="language-text">@scope</code> 캡슐화 메커니즘의 3가지 핵심 원칙</h3>
+<ol>
+<li>
+<p><strong>범위 루트 (Scope Root)</strong></p>
+<ul>
+<li><code class="language-text">@scope (&lt;selector>)</code> 구문을 통해 스코프가 시작되는 부모 요소를 정의합니다.</li>
+<li>스코프 블록 내부에서 선언된 모든 셀렉터는 이 Scope Root의 하위(Descendants) DOM 요소에만 매칭됩니다.</li>
+</ul>
+</li>
+<li>
+<p><strong>범위 한계 (Scoping Limit)</strong></p>
+<ul>
+<li><code class="language-text">to (&lt;selector>)</code> 구문을 추가하여 스코프가 하위 트리를 내려가다가 탐색 및 스타일에 적용을 <strong>중단할 지점</strong>을 지정합니다.</li>
+<li>이를 통해 자식 컴포넌트의 영역을 ‘구멍(Hole)‘으로 뚫어내는 **도넛 스코핑(Donut Scoping)**이 가능해집니다.</li>
+</ul>
+</li>
+<li>
+<p><strong>DOM 구조 및 선택자 명시도의 비침습성</strong></p>
+<ul>
+<li>Shadow DOM처럼 DOM 구조 자체를 캡슐화하거나 Shadow Root를 생성하지 않고 기존 Light DOM 위에서 동작합니다.</li>
+<li>클래스명을 해싱하여 마크업을 변경할 필요가 없습니다. 개발자 도구에서 원본 마크업과 CSS 선택자 구조가 그대로 보존됩니다.</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2>📐 3. 기본 문법과 Root - Scoping Limit 구성하기</h2>
+<p><code class="language-text">@scope</code> 규칙은 <strong>명시적 범위 선언(Explicit Scope)</strong> 방식과 HTML 인라인 스타일 태그를 이용한 <strong>암묵적 범위 선언(Implicit Scope)</strong> 방식을 모두 지원합니다.</p>
+<h3>1. 명시적 범위 선언 (Explicit Scope)</h3>
+<p>외부 CSS 파일이나 일반 <code class="language-text">&lt;style></code> 블록 내에서 괄호 안에 선택자를 전달하여 범위 루트를 지정합니다.</p>
+<div class="gatsby-highlight" data-language="css"><pre class="language-css"><code class="language-css"><span class="token comment">/* 글로벌 스타일시트에 작성된 카드 컴포넌트 스코프 */</span>
+<span class="token atrule"><span class="token rule">@scope</span> <span class="token punctuation">(</span>.media-card<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+  <span class="token comment">/* :scope 가상 클래스는 Scope Root (.media-card) 자신을 직접 가리킵니다. */</span>
+  <span class="token selector">:scope</span> <span class="token punctuation">{</span>
+    <span class="token property">display</span><span class="token punctuation">:</span> grid<span class="token punctuation">;</span>
+    <span class="token property">grid-template-columns</span><span class="token punctuation">:</span> 120px 1fr<span class="token punctuation">;</span>
+    <span class="token property">gap</span><span class="token punctuation">:</span> 1.5rem<span class="token punctuation">;</span>
+    <span class="token property">padding</span><span class="token punctuation">:</span> 1.25rem<span class="token punctuation">;</span>
+    <span class="token property">background-color</span><span class="token punctuation">:</span> #ffffff<span class="token punctuation">;</span>
+    <span class="token property">border</span><span class="token punctuation">:</span> 1px solid #e2e8f0<span class="token punctuation">;</span>
+    <span class="token property">border-radius</span><span class="token punctuation">:</span> 12px<span class="token punctuation">;</span>
+    <span class="token property">box-shadow</span><span class="token punctuation">:</span> 0 4px 6px -1px <span class="token function">rgba</span><span class="token punctuation">(</span>0<span class="token punctuation">,</span> 0<span class="token punctuation">,</span> 0<span class="token punctuation">,</span> 0.1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">/* .media-card 내부에 존재하는 img 요소에만 제한 적용 */</span>
+  <span class="token selector">img</span> <span class="token punctuation">{</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> 120px<span class="token punctuation">;</span>
+    <span class="token property">object-fit</span><span class="token punctuation">:</span> cover<span class="token punctuation">;</span>
+    <span class="token property">border-radius</span><span class="token punctuation">:</span> 8px<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">/* .media-card 내부의 .title 클래스에 적용 */</span>
+  <span class="token selector">.title</span> <span class="token punctuation">{</span>
+    <span class="token property">margin</span><span class="token punctuation">:</span> 0 0 0.5rem 0<span class="token punctuation">;</span>
+    <span class="token property">font-size</span><span class="token punctuation">:</span> 1.25rem<span class="token punctuation">;</span>
+    <span class="token property">font-weight</span><span class="token punctuation">:</span> 700<span class="token punctuation">;</span>
+    <span class="token property">color</span><span class="token punctuation">:</span> #0f172a<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">/* .media-card 내부의 .description 클래스에 적용 */</span>
+  <span class="token selector">.description</span> <span class="token punctuation">{</span>
+    <span class="token property">margin</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+    <span class="token property">font-size</span><span class="token punctuation">:</span> 0.95rem<span class="token punctuation">;</span>
+    <span class="token property">line-height</span><span class="token punctuation">:</span> 1.6<span class="token punctuation">;</span>
+    <span class="token property">color</span><span class="token punctuation">:</span> #475569<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>상기 스타일시트는 페이지 내의 다른 영역에 존재하는 <code class="language-text">&lt;img></code>, <code class="language-text">.title</code>, <code class="language-text">.description</code> 요소에 수백 개가 있더라도 오직 <code class="language-text">.media-card</code> 내부의 자식 요소에만 제한적으로 매칭됩니다.</p>
+<h3>2. 암묵적 범위 선언 (Implicit Scope)</h3>
+<p>HTML 인라인 스타일 태그 HTML 내부에 타겟팅 대상 없이 <code class="language-text">@scope</code>를 작성하면, 해당 <code class="language-text">&lt;style></code> 태그의 부모 요소가 자동으로 Scope Root로 지정됩니다.</p>
+<div class="gatsby-highlight" data-language="html"><pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>article</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>user-profile-card<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+  <span class="token comment">&lt;!-- 타겟 선택자를 생략한 @scope는 부모인 .user-profile-card를 루트로 지정합니다 --></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span><span class="token punctuation">></span></span><span class="token style"><span class="token language-css">
+    <span class="token atrule"><span class="token rule">@scope</span></span> <span class="token punctuation">{</span>
+      <span class="token selector">:scope</span> <span class="token punctuation">{</span>
+        <span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span>
+        <span class="token property">align-items</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span>
+        <span class="token property">gap</span><span class="token punctuation">:</span> 1rem<span class="token punctuation">;</span>
+        <span class="token property">padding</span><span class="token punctuation">:</span> 1rem<span class="token punctuation">;</span>
+        <span class="token property">background</span><span class="token punctuation">:</span> #f8fafc<span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+      <span class="token selector">img</span> <span class="token punctuation">{</span>
+        <span class="token property">border-radius</span><span class="token punctuation">:</span> 50%<span class="token punctuation">;</span>
+        <span class="token property">width</span><span class="token punctuation">:</span> 48px<span class="token punctuation">;</span>
+        <span class="token property">height</span><span class="token punctuation">:</span> 48px<span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+      <span class="token selector">.username</span> <span class="token punctuation">{</span>
+        <span class="token property">font-weight</span><span class="token punctuation">:</span> 600<span class="token punctuation">;</span>
+        <span class="token property">color</span><span class="token punctuation">:</span> #1e293b<span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  </span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">></span></span>
+
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/avatars/user-01.png<span class="token punctuation">"</span></span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>사용자 아바타<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>username<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>김개발<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>article</span><span class="token punctuation">></span></span></code></pre></div>
+<h3><code class="language-text">:scope</code> pseudo-class 선택자의 특징</h3>
+<p><code class="language-text">@scope</code> 블록 내부에서 <code class="language-text">:scope</code> 구문은 Scope Root 요소를 참조합니다. 이때 중요한 특징이 있습니다:</p>
+<ul>
+<li><code class="language-text">:scope</code>를 생략하고 자식 선택자만 적는 경우 (예: <code class="language-text">img</code>)는 <code class="language-text">:scope img</code> 또는 <code class="language-text">:scope descendent img</code>와 동등하게 평가됩니다.</li>
+<li><code class="language-text">:scope</code> 선택자의 specificity(명시도)는 <code class="language-text">:scope</code> pseudo-class 자체의 명시도 <code class="language-text">(0, 1, 0)</code>으로 계산되는 것이 아니라, 범위 루트로 지정된 원본 선택자(예: <code class="language-text">.media-card</code> → <code class="language-text">(0, 1, 0)</code>)의 명시도를 그대로 계승하거나 <code class="language-text">:scope</code> 고유 명시도 규칙을 적용받습니다.</li>
+</ul>
+<hr>
+<h2>🍩 4. Donut Scope: 원하는 하위 요소 영역 구멍 뚫기</h2>
+<p>기존 CSS에서는 부모 컴포넌트에 스타일을 부여할 때, 그 내부에 중첩(Nest)된 하위 자식 컴포넌트까지 부모의 스타일 선택자가 원치 않게 연쇄 적용(Cascade down)되는 심각한 문제가 있었습니다. <code class="language-text">@scope</code>의 <strong>Donut Scope</strong> 기능은 루트 뒤에 <code class="language-text">to (&lt;limit-selector>)</code> 구문을 배치하여 스타일 적용의 하한선(Limit)을 선언할 수 있습니다.</p>
+<div class="gatsby-highlight" data-language="html"><pre class="language-html"><code class="language-html"><span class="token comment">&lt;!-- complex HTML 구조 예시 --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>main</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>article-container<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>title<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>아티클 메인 제목<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>paragraph<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>이 단락은 아티클 본문의 핵심 내용을 담고 있습니다.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+
+  <span class="token comment">&lt;!-- 독립적인 자식 컴포넌트: 댓글 영역 --></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>section</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>comment-widget<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h2</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>title<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>댓글 목록 (3)<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h2</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>paragraph<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>댓글 본문 내의 텍스트 내용입니다.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>section</span><span class="token punctuation">></span></span>
+
+  <span class="token comment">&lt;!-- 독립적인 자식 컴포넌트: 추천 상품 바 --></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>aside</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>recommended-products<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h3</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>title<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>관련 추천 상품<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h3</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>paragraph<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>상품 설명 텍스트입니다.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>aside</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>main</span><span class="token punctuation">></span></span></code></pre></div>
+<p>상기 HTML 구조에서 <code class="language-text">.article-container</code> 내부를 스타일링하되, 자식 컴포넌트인 <code class="language-text">.comment-widget</code> 및 <code class="language-text">.recommended-products</code> 내부로는 외부 아티클 스타일이 절대 침투하지 못하게 차단하려면 다음과 같이 Donut Scope를 구성합니다.</p>
+<div class="gatsby-highlight" data-language="css"><pre class="language-css"><code class="language-css"><span class="token comment">/* .article-container에서 출발하여 .comment-widget 및 .recommended-products를 만나는 순간 스코프 중단 */</span>
+<span class="token atrule"><span class="token rule">@scope</span> <span class="token punctuation">(</span>.article-container<span class="token punctuation">)</span> to <span class="token punctuation">(</span>.comment-widget<span class="token punctuation">,</span> .recommended-products<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+  <span class="token comment">/* 아티클 영역 내의 직접적인 h1, h2, h3 선택 */</span>
+  <span class="token selector">h1, h2, h3</span> <span class="token punctuation">{</span>
+    <span class="token property">letter-spacing</span><span class="token punctuation">:</span> -0.02em<span class="token punctuation">;</span>
+    <span class="token property">color</span><span class="token punctuation">:</span> #0f172a<span class="token punctuation">;</span>
+    <span class="token property">border-bottom</span><span class="token punctuation">:</span> 2px solid #e2e8f0<span class="token punctuation">;</span>
+    <span class="token property">padding-bottom</span><span class="token punctuation">:</span> 0.5rem<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">/* 아티클 영역 내의 본문 p 선택 */</span>
+  <span class="token selector">.paragraph</span> <span class="token punctuation">{</span>
+    <span class="token property">font-size</span><span class="token punctuation">:</span> 1.125rem<span class="token punctuation">;</span>
+    <span class="token property">line-height</span><span class="token punctuation">:</span> 1.8<span class="token punctuation">;</span>
+    <span class="token property">color</span><span class="token punctuation">:</span> #334155<span class="token punctuation">;</span>
+    <span class="token property">margin-bottom</span><span class="token punctuation">:</span> 1.5rem<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">/* 강조 링크 */</span>
+  <span class="token selector">a</span> <span class="token punctuation">{</span>
+    <span class="token property">color</span><span class="token punctuation">:</span> #2563eb<span class="token punctuation">;</span>
+    <span class="token property">text-decoration</span><span class="token punctuation">:</span> underline<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 768px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/24a89d91cec54f4082574b3a6ce076d4/bbbf7/css-scope-rule-guide-2.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 50%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAIAAAA7N+mxAAAACXBIWXMAAAsTAAALEwEAmpwYAAABGElEQVR42pVQ2W7DIBD0/39g+9Kocuqbm+UwYOxssJPaUl+6GoYRs4O0W22nolwTJplAVnU7dSNDTbkSCvqJD4Q3A805v/ura1h1A2t6irF7R5ARIxHIPz3Bf5Ev4ZzXmNIONNZSx71tT12AJxf71LxWTMJAFZOWCkM47KACvpvp49Z83tqveqCyWGK3DDaXCFQ4pwTvQgIXjU/gYxFxZNCMopvkxAFftA1gg0HLReuT0I5wXUlt7z1tR1xGwcgaHHvg3STeKNbxjsDmuqMYrHCcZckv7HXoVHBy88l97uGy7f/WbzjG5EPwc5gDysUV4UN0bp5DQu18sWL6I2ysB+M0WKWtAiu10cYhCwkoFDihDM5p3by+wg85uj/Z8tjHqAAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <picture>
+          <source
+              srcset="/static/24a89d91cec54f4082574b3a6ce076d4/a59e9/css-scope-rule-guide-2.webp 192w,
+/static/24a89d91cec54f4082574b3a6ce076d4/0ca9f/css-scope-rule-guide-2.webp 384w,
+/static/24a89d91cec54f4082574b3a6ce076d4/dc9b9/css-scope-rule-guide-2.webp 768w,
+/static/24a89d91cec54f4082574b3a6ce076d4/e2c2f/css-scope-rule-guide-2.webp 1152w,
+/static/24a89d91cec54f4082574b3a6ce076d4/94b1e/css-scope-rule-guide-2.webp 1280w"
+              sizes="(max-width: 768px) 100vw, 768px"
+              type="image/webp"
+            />
+          <source
+            srcset="/static/24a89d91cec54f4082574b3a6ce076d4/3b721/css-scope-rule-guide-2.png 192w,
+/static/24a89d91cec54f4082574b3a6ce076d4/66595/css-scope-rule-guide-2.png 384w,
+/static/24a89d91cec54f4082574b3a6ce076d4/fe486/css-scope-rule-guide-2.png 768w,
+/static/24a89d91cec54f4082574b3a6ce076d4/d2d74/css-scope-rule-guide-2.png 1152w,
+/static/24a89d91cec54f4082574b3a6ce076d4/bbbf7/css-scope-rule-guide-2.png 1280w"
+            sizes="(max-width: 768px) 100vw, 768px"
+            type="image/png"
+          />
+          <img
+            class="gatsby-resp-image-image"
+            src="/static/24a89d91cec54f4082574b3a6ce076d4/fe486/css-scope-rule-guide-2.png"
+            alt="CSS @scope 선언과 Donut Scope 평가 프로세스"
+            title=""
+            loading="lazy"
+            decoding="async"
+            style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+          />
+        </picture>
+  </a>
+    </span></p>
+<p>이 구문이 실행되면 브라우저는 DOM 트리를 탐색하며 스타일 매칭을 수행하다가, <code class="language-text">.comment-widget</code> 및 <code class="language-text">.recommended-products</code> 클래스를 가진 요소를 만나는 순간 해당 경계 하위 트리에 대한 스타일 계산을 즉시 중단합니다.</p>
+<p>따라서 <code class="language-text">.comment-widget</code> 내부에 포함된 <code class="language-text">.paragraph</code>나 <code class="language-text">.title</code>은 부모의 <code class="language-text">.article-container</code> 스코프 스타일 규칙에 영향을 받지 않고 오롯이 자신의 고유한 스타일을 안전하게 유지합니다.</p>
+<hr>
+<h2>⚖️ 5. Cascade와 Scoping Proximity: 명시도 규칙의 변화</h2>
+<p>CSS 스타일 충돌을 해결할 때 브라우저는 **Cascading 알파벳 순서 규칙(Cascade Order)**에 따라 최종 스타일 적용 여부를 판가름합니다. W3C 명세에 따라 <code class="language-text">@scope</code>가 도입되면서 Cascading 정렬 단계에 **Scoping Proximity (스코프 근접성)**라는 새로운 우선순위 축이 추가되었습니다.</p>
+<h3>Cascade 정렬 기준 (우선순위 순서)</h3>
+<ol>
+<li><strong>Importance &#x26; Origin</strong>: <code class="language-text">!important</code> 선언 및 사용자/브라우저/작성자 스타일시트 출처</li>
+<li><strong>Context</strong>: Normal DOM tree vs Shadow DOM context</li>
+<li><strong>Scoping Proximity (스코프 근접성)</strong>: ⭐ <code class="language-text">@scope</code>로 지정된 루트와의 DOM 거리</li>
+<li><strong>Specificity (명시도)</strong>: ID <code class="language-text">(1,0,0)</code>, Class/Attribute <code class="language-text">(0,1,0)</code>, Element <code class="language-text">(0,0,1)</code> 계산값</li>
+<li><strong>Order of Appearance</strong>: 스타일시트 내 선언 순서 (후순위 승리)</li>
+</ol>
+<h3>Scoping Proximity 작동 방식</h3>
+<p>두 개의 스코프 스타일 규칙이 동일한 요소를 두고 상충할 때, 선택자의 Specificity(명시도)가 완전히 동일하거나 심지어 스타일시트 상 뒤에 선언되었더라도 <strong>스타일 대상 요소와 DOM 트일상 더 가까운(더 직계 부모인) Scope Root의 규칙이 무조건 승리</strong>합니다.</p>
+<div class="gatsby-highlight" data-language="html"><pre class="language-html"><code class="language-html"><span class="token comment">&lt;!-- 중첩된 테마 컨텍스트 HTML --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>theme-provider light-theme<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>card<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>description<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>이 텍스트의 글자 색상은 무엇일까요?<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+
+    <span class="token comment">&lt;!-- 안쪽에 중첩된 다크 테마 영역 --></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>theme-provider dark-theme<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>description<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>이 텍스트의 글자 색상은 무엇일까요?<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre></div>
+<div class="gatsby-highlight" data-language="css"><pre class="language-css"><code class="language-css"><span class="token comment">/* 1. 라이트 테마 스코프 규칙 선언 */</span>
+<span class="token atrule"><span class="token rule">@scope</span> <span class="token punctuation">(</span>.light-theme<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+  <span class="token selector">.description</span> <span class="token punctuation">{</span>
+    <span class="token property">color</span><span class="token punctuation">:</span> #1e293b<span class="token punctuation">;</span> <span class="token comment">/* 라이트 모드용 어두운 글자색 */</span>
+    <span class="token property">background-color</span><span class="token punctuation">:</span> #ffffff<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/* 2. 다크 테마 스코프 규칙 선언 */</span>
+<span class="token atrule"><span class="token rule">@scope</span> <span class="token punctuation">(</span>.dark-theme<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+  <span class="token selector">.description</span> <span class="token punctuation">{</span>
+    <span class="token property">color</span><span class="token punctuation">:</span> #f8fafc<span class="token punctuation">;</span> <span class="token comment">/* 다크 모드용 밝은 글자색 */</span>
+    <span class="token property">background-color</span><span class="token punctuation">:</span> #0f172a<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>전통적인 CSS Cascading 규칙이라면 뒤에 작성된 <code class="language-text">.dark-theme</code>의 <code class="language-text">.description</code>이 앞서 작성된 스타일을 덮어씌우는 것뿐이었지만, 만약 스타일시트 선언 순서를 다음과 같이 뒤바꾸더라도 Scoping Proximity에 의해 완벽한 결과가 보장됩니다:</p>
+<div class="gatsby-highlight" data-language="html"><pre class="language-html"><code class="language-html"><span class="token comment">&lt;!-- 라이트 테마 내부에 다크 테마가 중첩된 경우 --></span></code></pre></div>
+<p>안쪽 <code class="language-text">.dark-theme</code> 내부의 <code class="language-text">&lt;p class="description"></code> 요소 입장에서는:</p>
+<ul>
+<li><code class="language-text">.light-theme</code> 스코프 루트까지의 거리: 3단계 조상 (p -> div.card -> div.light-theme)</li>
+<li><code class="language-text">.dark-theme</code> 스코프 루트까지의 거리: 1단계 조상 (p -> div.dark-theme)</li>
+</ul>
+<p><code class="language-text">.dark-theme</code> 스코프 루트가 DOM 트리 구조상 target 요소와 더 **근접(Proximity)**하므로, Specificity를 편법적으로 올리거나 <code class="language-text">!important</code>를 남발하지 않고도 <code class="language-text">.dark-theme</code> 내부 스타일이 자연스럽게 적용됩니다.</p>
+<hr>
+<h2>📊 6. 기존 스타일 격리 방식과의 비교 (CSS Modules vs Shadow DOM vs @scope)</h2>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 768px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/1d505b47e73f1d6a06f1574d4c8ef20a/bbbf7/css-scope-rule-guide-1.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 50%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAIAAAA7N+mxAAAACXBIWXMAAAsTAAALEwEAmpwYAAAB0ElEQVR42kWRS4vUQBRG+7eLINK414XuB0RciBtB0UZbx4VDO93T3UkqSSX1zKMqVamqvMcaZcbLx+VsDh+Xu7r9O9p0iNeF0KxuGuMgLT0gViFaVkKVdUO5KCuFaZWTUmn7z1ot8zxKKXMMj2F2ipJDUKa5BxzGDBcA0QDjkNArEO8h9NklSVoUTW+meV5N1mpEW8wcZZZyxwrrQ7lBdFZaDFZ3fdN1keDnigDBPZh+FLaTnVnNxkipg4zvAngA+HeQ+X2IMeFiblvZO1SIc4ROEdqf4THKzwADSCtlfPmd3NQ6znmUkBPIb8IsSj0gzsXSGjk4f3ycsSAhB39WjIIEI1r/l0WtQMZASsIEex9Aco4RZbWXm8HhUvqqCJJ9AG+i3MspKsoHWQqdcgmoyLiMSZVQETPBivtmoQgVlMkooQnkjDe8VLW2d/KoVOeG+voYPV3D5y+yl6/i9TP67n3XT5Nsyq413fj2ePloc/Hk6+v19s3jzcVPFLlhrp1eLeM4KO0QEd+25fZ7+eOy+LIR+4OpZK9aYU2h1RWJP4S/PoLdJ7D7DK9TyYUz/TSubu9nXpbG+a8Mepg8qNY12tZSt61tW2fbzpreZ1mWB+UPW+Yg5UmWSo4AAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <picture>
+          <source
+              srcset="/static/1d505b47e73f1d6a06f1574d4c8ef20a/a59e9/css-scope-rule-guide-1.webp 192w,
+/static/1d505b47e73f1d6a06f1574d4c8ef20a/0ca9f/css-scope-rule-guide-1.webp 384w,
+/static/1d505b47e73f1d6a06f1574d4c8ef20a/dc9b9/css-scope-rule-guide-1.webp 768w,
+/static/1d505b47e73f1d6a06f1574d4c8ef20a/e2c2f/css-scope-rule-guide-1.webp 1152w,
+/static/1d505b47e73f1d6a06f1574d4c8ef20a/94b1e/css-scope-rule-guide-1.webp 1280w"
+              sizes="(max-width: 768px) 100vw, 768px"
+              type="image/webp"
+            />
+          <source
+            srcset="/static/1d505b47e73f1d6a06f1574d4c8ef20a/3b721/css-scope-rule-guide-1.png 192w,
+/static/1d505b47e73f1d6a06f1574d4c8ef20a/66595/css-scope-rule-guide-1.png 384w,
+/static/1d505b47e73f1d6a06f1574d4c8ef20a/fe486/css-scope-rule-guide-1.png 768w,
+/static/1d505b47e73f1d6a06f1574d4c8ef20a/d2d74/css-scope-rule-guide-1.png 1152w,
+/static/1d505b47e73f1d6a06f1574d4c8ef20a/bbbf7/css-scope-rule-guide-1.png 1280w"
+            sizes="(max-width: 768px) 100vw, 768px"
+            type="image/png"
+          />
+          <img
+            class="gatsby-resp-image-image"
+            src="/static/1d505b47e73f1d6a06f1574d4c8ef20a/fe486/css-scope-rule-guide-1.png"
+            alt="CSS @scope와 기존 CSS Modules 및 Shadow DOM 비교 표"
+            title=""
+            loading="lazy"
+            decoding="async"
+            style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+          />
+        </picture>
+  </a>
+    </span></p>
+<p>모던 웹 패러다임에서 쓰이는 주요 스타일 격리 메커니즘 4가지의 기술적 차이점과 트레이드오프를 정밀 비교한 명세표입니다.</p>
+<table>
+<thead>
+<tr>
+<th align="left">비교 기준 항목</th>
+<th align="left">BEM Architecture</th>
+<th align="left">CSS Modules</th>
+<th align="left">Shadow DOM (Web Components)</th>
+<th align="left">Native CSS <code class="language-text">@scope</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong>격리 메커니즘</strong></td>
+<td align="left">개발자 네이밍 컨벤션</td>
+<td align="left">번들러 기반 클래스명 해싱</td>
+<td align="left">브라우저 DOM 트리 물리적 분리</td>
+<td align="left">브라우저 CSS 파싱 엔진 범주 격리</td>
+</tr>
+<tr>
+<td align="left"><strong>빌드 툴체인 필수 여부</strong></td>
+<td align="left">불필요</td>
+<td align="left"><strong>필수 (Webpack, Vite 등)</strong></td>
+<td align="left">불필요</td>
+<td align="left"><strong>불필요 (Pure Native CSS)</strong></td>
+</tr>
+<tr>
+<td align="left"><strong>Donut Scope 지원</strong></td>
+<td align="left">불가능</td>
+<td align="left">불가능</td>
+<td align="left">Open/Closed 모드 제어</td>
+<td align="left"><strong>완벽 지원 (<code class="language-text">to ()</code> 구문)</strong></td>
+</tr>
+<tr>
+<td align="left"><strong>Scoping Proximity 지원</strong></td>
+<td align="left">불가능</td>
+<td align="left">불가능</td>
+<td align="left">지원 안 함</td>
+<td align="left"><strong>완벽 지원 (DOM 거리 기반 우선순위)</strong></td>
+</tr>
+<tr>
+<td align="left"><strong>글로벌 테마/변수 상속</strong></td>
+<td align="left">용이함</td>
+<td align="left"><code class="language-text">:global</code> 키워드 필요</td>
+<td align="left">매우 까다로움 (<code class="language-text">::part</code>, CSS Custom Prop)</td>
+<td align="left"><strong>자연스럽게 상속 및 호환</strong></td>
+</tr>
+<tr>
+<td align="left"><strong>HTML DOM 변경 여부</strong></td>
+<td align="left">클래스명 팽창</td>
+<td align="left">클래스명 난수 변경</td>
+<td align="left">Shadow Root 생성, DOM 파편화</td>
+<td align="left"><strong>HTML 마크업 변경 전혀 없음</strong></td>
+</tr>
+<tr>
+<td align="left"><strong>런타임 메모리/CPU 비용</strong></td>
+<td align="left">Zero</td>
+<td align="left">Zero</td>
+<td align="left">DOM 노드 별도 관리에 따른 오버헤드</td>
+<td align="left"><strong>브라우저 네이티브 최적화 (Zero JS)</strong></td>
+</tr>
+<tr>
+<td align="left"><strong>SSR / Hydration 안정성</strong></td>
+<td align="left">높음</td>
+<td align="left">높음 (동기화 설정 필요)</td>
+<td align="left">Declarative Shadow DOM 필요</td>
+<td align="left"><strong>최상 (웹 표준 HTML/CSS 그대로 전송)</strong></td>
+</tr>
+</tbody>
+</table>
+<p>CSS <code class="language-text">@scope</code>는 기존 빌드 툴 방식(CSS Modules)의 <strong>가벼움과 직관성</strong>을 유지하면서, Shadow DOM의 <strong>강력한 브라우저 엔진 차원 캡슐화</strong>라는 장점만을 결합한 최적의 기술적 타협점을 선사합니다.</p>
+<hr>
+<h2>🛠️ 7. 컴포넌트 프레임워크(React, Vue 등)에서의 최신 적용 기법</h2>
+<p>React, Vue, Svelte, Angular 등 최신 컴포넌트 기반 프레임워크와 <code class="language-text">@scope</code>를 결합하면 대규모 웹 애플리케이션의 DX(개발자 경험)를 비약적으로 개선할 수 있습니다.</p>
+<h3>1. React (Next.js / Server Components)에서의 활용</h3>
+<p>React 환경에서 더 이상 빌드 타임 CSS Modules의 <code class="language-text">styles.cardTitle</code>과 같은 개체 참조를 남발할 필요가 없습니다. 일반 표준 클래스명을 사용하여 깔끔한 마크업을 유지할 수 있습니다.</p>
+<div class="gatsby-highlight" data-language="tsx"><pre class="language-tsx"><code class="language-tsx"><span class="token comment">// UserProfileCard.tsx</span>
+<span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token string">'./UserProfileCard.css'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">interface</span> <span class="token class-name">UserProfileProps</span> <span class="token punctuation">{</span>
+  user<span class="token operator">:</span> <span class="token punctuation">{</span>
+    avatar<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+    name<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+    role<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+    bio<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">UserProfileCard</span><span class="token punctuation">(</span><span class="token punctuation">{</span> user <span class="token punctuation">}</span><span class="token operator">:</span> UserProfileProps<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>article</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>user-card-scope<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>header<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>user<span class="token punctuation">.</span>avatar<span class="token punctuation">}</span></span> <span class="token attr-name">alt</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>user<span class="token punctuation">.</span>name<span class="token punctuation">}</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>avatar<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span><span class="token plain-text">
+        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>meta<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+          </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h3</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>name<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token punctuation">{</span>user<span class="token punctuation">.</span>name<span class="token punctuation">}</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h3</span><span class="token punctuation">></span></span><span class="token plain-text">
+          </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>badge<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token punctuation">{</span>user<span class="token punctuation">.</span>role<span class="token punctuation">}</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span><span class="token plain-text">
+        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>bio<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token punctuation">{</span>user<span class="token punctuation">.</span>bio<span class="token punctuation">}</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><span class="token plain-text">
+    </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>article</span><span class="token punctuation">></span></span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre></div>
+<div class="gatsby-highlight" data-language="css"><pre class="language-css"><code class="language-css"><span class="token comment">/* UserProfileCard.css */</span>
+<span class="token atrule"><span class="token rule">@scope</span> <span class="token punctuation">(</span>.user-card-scope<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+  <span class="token selector">:scope</span> <span class="token punctuation">{</span>
+    <span class="token property">background</span><span class="token punctuation">:</span> #ffffff<span class="token punctuation">;</span>
+    <span class="token property">border-radius</span><span class="token punctuation">:</span> 16px<span class="token punctuation">;</span>
+    <span class="token property">padding</span><span class="token punctuation">:</span> 1.5rem<span class="token punctuation">;</span>
+    <span class="token property">border</span><span class="token punctuation">:</span> 1px solid #f1f5f9<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token selector">.header</span> <span class="token punctuation">{</span>
+    <span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span>
+    <span class="token property">align-items</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span>
+    <span class="token property">gap</span><span class="token punctuation">:</span> 1rem<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token selector">.avatar</span> <span class="token punctuation">{</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> 56px<span class="token punctuation">;</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> 56px<span class="token punctuation">;</span>
+    <span class="token property">border-radius</span><span class="token punctuation">:</span> 50%<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token selector">.name</span> <span class="token punctuation">{</span>
+    <span class="token property">font-size</span><span class="token punctuation">:</span> 1.125rem<span class="token punctuation">;</span>
+    <span class="token property">font-weight</span><span class="token punctuation">:</span> 700<span class="token punctuation">;</span>
+    <span class="token property">color</span><span class="token punctuation">:</span> #0f172a<span class="token punctuation">;</span>
+    <span class="token property">margin</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token selector">.badge</span> <span class="token punctuation">{</span>
+    <span class="token property">display</span><span class="token punctuation">:</span> inline-block<span class="token punctuation">;</span>
+    <span class="token property">padding</span><span class="token punctuation">:</span> 0.25rem 0.5rem<span class="token punctuation">;</span>
+    <span class="token property">background</span><span class="token punctuation">:</span> #eff6ff<span class="token punctuation">;</span>
+    <span class="token property">color</span><span class="token punctuation">:</span> #2563eb<span class="token punctuation">;</span>
+    <span class="token property">font-size</span><span class="token punctuation">:</span> 0.75rem<span class="token punctuation">;</span>
+    <span class="token property">border-radius</span><span class="token punctuation">:</span> 4px<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token selector">.bio</span> <span class="token punctuation">{</span>
+    <span class="token property">margin-top</span><span class="token punctuation">:</span> 1rem<span class="token punctuation">;</span>
+    <span class="token property">color</span><span class="token punctuation">:</span> #64748b<span class="token punctuation">;</span>
+    <span class="token property">font-size</span><span class="token punctuation">:</span> 0.875rem<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div>
+<h3>2. Vue 3 Single File Components (SFC)와의 결합</h3>
+<p>Vue 3는 자체적으로 <code class="language-text">&lt;style scoped></code> 기능을 제공하여 해시 속성(<code class="language-text">data-v-f32165</code>)을 요소에 추가합니다. 하지만 <code class="language-text">@scope</code>를 도입하면 속성 주입 없이 깔끔한 순수 표준 스타일링이 가능해집니다.</p>
+<div class="gatsby-highlight" data-language="vue"><pre class="language-vue"><code class="language-vue">&lt;!-- ModalDialog.vue --&gt;
+&lt;template&gt;
+  &lt;div class=&quot;modal-dialog-root&quot;&gt;
+    &lt;div class=&quot;modal-header&quot;&gt;
+      &lt;h2&gt;&lt;slot name=&quot;title&quot;&gt;기본 모달 제목&lt;/slot&gt;&lt;/h2&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;modal-body&quot;&gt;
+      &lt;slot&gt;&lt;/slot&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;style scoped&gt;
+/* Native @scope를 활용하여 모달 바디 내부에 삽입되는 외부 스롯(Slot) 컴포넌트와의 경계 정의 */
+@scope (.modal-dialog-root) to (.modal-body) {
+  :scope {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 500px;
+    background: white;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }
+
+  .modal-header {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid #eee;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+    margin: 0;
+  }
+}
+&lt;/style&gt;</code></pre></div>
+<hr>
+<h2>⚡ 8. @scope와 CSS Container Queries의 미친 시너지 효과</h2>
+<p>최신 모던 CSS의 백미는 **<code class="language-text">@scope</code> (스타일 범주 캡슐화)**와 **<code class="language-text">@container</code> (레이아웃 반응형 격리)**의 결합에 있습니다. 기존의 Media Queries가 오직 브라우저 뷰포트 크기만을 기준으로 삼았다면, 이 두 조합은 완전한 자립형 모듈(Self-contained Responsive Component)을 만들어 냅니다.</p>
+<div class="gatsby-highlight" data-language="css"><pre class="language-css"><code class="language-css"><span class="token comment">/* 독립적인 프로필 컴포넌트 스코프 및 컨테이너 선언 */</span>
+<span class="token atrule"><span class="token rule">@scope</span> <span class="token punctuation">(</span>.profile-widget<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+  <span class="token selector">:scope</span> <span class="token punctuation">{</span>
+    <span class="token comment">/* 1. 이 컴포넌트 자체를 인라인 크기 기준의 Container로 등록 */</span>
+    <span class="token property">container-type</span><span class="token punctuation">:</span> inline-size<span class="token punctuation">;</span>
+    <span class="token property">container-name</span><span class="token punctuation">:</span> profile-card<span class="token punctuation">;</span>
+
+    <span class="token property">display</span><span class="token punctuation">:</span> block<span class="token punctuation">;</span>
+    <span class="token property">padding</span><span class="token punctuation">:</span> 1rem<span class="token punctuation">;</span>
+    <span class="token property">border</span><span class="token punctuation">:</span> 1px solid #e2e8f0<span class="token punctuation">;</span>
+    <span class="token property">border-radius</span><span class="token punctuation">:</span> 12px<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">/* 2. 일반 스코프 내부 기본 레이아웃 (모바일/좁은 공간 기준) */</span>
+  <span class="token selector">.widget-wrapper</span> <span class="token punctuation">{</span>
+    <span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span>
+    <span class="token property">flex-direction</span><span class="token punctuation">:</span> column<span class="token punctuation">;</span>
+    <span class="token property">align-items</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span>
+    <span class="token property">gap</span><span class="token punctuation">:</span> 1rem<span class="token punctuation">;</span>
+    <span class="token property">text-align</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token selector">.avatar</span> <span class="token punctuation">{</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> 80px<span class="token punctuation">;</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> 80px<span class="token punctuation">;</span>
+    <span class="token property">border-radius</span><span class="token punctuation">:</span> 50%<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token selector">.details .name</span> <span class="token punctuation">{</span>
+    <span class="token property">font-size</span><span class="token punctuation">:</span> 1.1rem<span class="token punctuation">;</span>
+    <span class="token property">font-weight</span><span class="token punctuation">:</span> 600<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">/* 3. 스코프 내부에서 컨테이너 쿼리(Container Queries)를 적용하여 조건별 레이아웃 재배치 */</span>
+  <span class="token atrule"><span class="token rule">@container</span> profile-card <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 420px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+    <span class="token selector">.widget-wrapper</span> <span class="token punctuation">{</span>
+      <span class="token property">flex-direction</span><span class="token punctuation">:</span> row<span class="token punctuation">;</span>
+      <span class="token property">text-align</span><span class="token punctuation">:</span> left<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token selector">.avatar</span> <span class="token punctuation">{</span>
+      <span class="token property">width</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span>
+      <span class="token property">height</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token selector">.details .name</span> <span class="token punctuation">{</span>
+      <span class="token property">font-size</span><span class="token punctuation">:</span> 1.4rem<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token atrule"><span class="token rule">@container</span> profile-card <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 650px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+    <span class="token selector">:scope</span> <span class="token punctuation">{</span>
+      <span class="token property">background-color</span><span class="token punctuation">:</span> #f8fafc<span class="token punctuation">;</span>
+      <span class="token property">padding</span><span class="token punctuation">:</span> 2rem<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token selector">.widget-wrapper</span> <span class="token punctuation">{</span>
+      <span class="token property">gap</span><span class="token punctuation">:</span> 2rem<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>이 조합을 활용하면, 이 컴포넌트가 사이드바(300px)에 배치되든, 메인 콘텐츠 영역(800px)에 배치되든 상관없이 외부 환경과 격리된 상태에서 <strong>클래스 충돌 없이 스코프 내에서만 완벽히 동작하는 반응형 디자인</strong>을 구현할 수 있습니다.</p>
+<hr>
+<h2>⚠️ 9. 실무 적용 시 만나는 함정 및 주의할 점</h2>
+<p><code class="language-text">@scope</code> 규칙이 스타일 캡슐화의 강력한 솔루션이지만, 브라우저 스타일 시스템의 기본 특성에 대한 오해로 인해 발생할 수 있는 실무 함정 4가지를 반드시 숙지해야 합니다.</p>
+<h3>1. 하향 상속 속성(Inherited Properties)은 Donut Limit을 뚫고 전달된다</h3>
+<p><code class="language-text">@scope</code>는 **선택자 매칭(Selector Matching)**의 범위를 차단하는 것이지, CSS의 고유한 **속성 상속(Inheritance)**을 차단하는 것이 아닙니다.</p>
+<div class="gatsby-highlight" data-language="css"><pre class="language-css"><code class="language-css"><span class="token comment">/* to (.child-component)로 구멍을 뚫었음에도 불구하고 */</span>
+<span class="token atrule"><span class="token rule">@scope</span> <span class="token punctuation">(</span>.parent-component<span class="token punctuation">)</span> to <span class="token punctuation">(</span>.child-component<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+  <span class="token selector">:scope</span> <span class="token punctuation">{</span>
+    <span class="token property">color</span><span class="token punctuation">:</span> #2563eb<span class="token punctuation">;</span>          <span class="token comment">/* inherited property */</span>
+    <span class="token property">font-family</span><span class="token punctuation">:</span> <span class="token string">'Inter'</span><span class="token punctuation">,</span> sans-serif<span class="token punctuation">;</span> <span class="token comment">/* inherited property */</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p><code class="language-text">.child-component</code> 내부의 요소를 선택하는 CSS 규칙은 차단되지만, 부모 요소에 설정된 <code class="language-text">color</code>, <code class="language-text">font-family</code>, <code class="language-text">line-height</code>, <code class="language-text">visibility</code> 등 CSS 명세상 상속되는 속성(Inherited Properties)은 <code class="language-text">.child-component</code> 내부 요소에 자연스럽게 전달됩니다.<br>
+<em>해결책:</em> 완벽한 값 초기화가 필요한 경우 자식 컴포넌트 시작 부분에 <code class="language-text">all: unset;</code> 또는 <code class="language-text">all: initial;</code>을 명시해야 합니다.</p>
+<h3>2. Specificity (명시도) 계산 방식의 특수성</h3>
+<p><code class="language-text">@scope</code> 블록 내부에서 선언된 선택자의 Specificity는 범위를 제한했다고 해서 자동으로 증가하거나 감소하지 않습니다.</p>
+<div class="gatsby-highlight" data-language="css"><pre class="language-css"><code class="language-css"><span class="token comment">/* Specificity: (0, 1, 0) - .card 클래스 1개 */</span>
+<span class="token selector">.card</span> <span class="token punctuation">{</span> <span class="token property">color</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+
+<span class="token atrule"><span class="token rule">@scope</span> <span class="token punctuation">(</span>.card<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+  <span class="token comment">/* Specificity: (0, 0, 1) - p 태그 1개 */</span>
+  <span class="token selector">p</span> <span class="token punctuation">{</span> <span class="token property">color</span><span class="token punctuation">:</span> blue<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/* 외부 일반 규칙 Specificity: (0, 1, 1) - .card와 p 결합 */</span>
+<span class="token selector">.card p</span> <span class="token punctuation">{</span> <span class="token property">color</span><span class="token punctuation">:</span> green<span class="token punctuation">;</span> <span class="token punctuation">}</span> <span class="token comment">/* ⚠️ 이 규칙의 명시도가 더 높아 승리합니다! */</span></code></pre></div>
+<p><code class="language-text">@scope</code> 내부의 <code class="language-text">p</code> 선택자는 Specificity <code class="language-text">(0, 0, 1)</code>로 계산되므로, 외부에서 더 높은 Specificity인 <code class="language-text">.card p</code> <code class="language-text">(0, 1, 1)</code>로 덮어쓰면 외부 스타일이 승리합니다. 스코프가 명시도 승리를 무조건 보장하는 것은 아니며, 동일 Specificity일 때 Scoping Proximity가 개입합니다.</p>
+<h3>3. CSS Custom Properties(CSS 변수)의 전역 버블링 및 상속</h3>
+<p><code class="language-text">@scope</code> 내부에서 선언된 <code class="language-text">--main-color: red;</code>와 같은 CSS 변수는 변수가 선언된 DOM 요소 이하의 모든 자식 요소(Donut Limit 내부 포함)로 그대로 전달되어 상속됩니다.</p>
+<h3>4. DOM 선택자 디버깅 및 브라우저 DevTools 차이</h3>
+<p>Chrome 및 Safari DevTools 최신 버전에서는 <code class="language-text">@scope</code> 블록별로 스타일이 그룹화되어 보여지지만, 개발자 도구의 Element Inspector에서 선택자 오버라이드 관계를 파악할 때 Scoping Proximity에 의해 순서가 바뀐 항목을 혼동할 수 있으므로 DevTools 패널의 Computed tab을 반드시 병행 확인해야 합니다.</p>
+<hr>
+<h2>🌐 10. 브라우저 지원 현황과 안전한 Fallback 전략</h2>
+<h3>브라우저 지원 현황 (2024년 기준)</h3>
+<ul>
+<li><strong>Chromium (Chrome, Edge, Opera 등)</strong>: v118 이상 완벽 지원 (2023년 10월 탑재)</li>
+<li><strong>Safari (WebKit)</strong>: macOS / iOS Safari 17.4 이상 완벽 지원 (2024년 3월 탑재)</li>
+<li><strong>Firefox (Gecko)</strong>: Firefox 128+ 지원 시작 (플래그 옵션 및 지속적 안정화 진행 중)</li>
+</ul>
+<p>주요 브라우저엔진 3사(Chromium, WebKit, Gecko)가 모두 <code class="language-text">@scope</code>에 대한 구현 및 표준 합의를 완료함에 따라, Baseline 기능으로 자리잡아 가고 있습니다.</p>
+<h3>안전한 Fallback 및 점진적 향상(Progressive Enhancement) 전략</h3>
+<p>구형 브라우저 환경을 지원해야 하는 프로덕션 서비스를 위한 safe-guard 코드 작성법입니다.</p>
+<div class="gatsby-highlight" data-language="css"><pre class="language-css"><code class="language-css"><span class="token comment">/* 1. 기본 폴백 스타일 (전통적 BEM 또는 결합 선택자 스타일) */</span>
+<span class="token selector">.media-card</span> <span class="token punctuation">{</span>
+  <span class="token property">border</span><span class="token punctuation">:</span> 1px solid #e2e8f0<span class="token punctuation">;</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span> 1rem<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.media-card .title</span> <span class="token punctuation">{</span>
+  <span class="token property">font-size</span><span class="token punctuation">:</span> 1.25rem<span class="token punctuation">;</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> #0f172a<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/* 2. @supports At-rule을 사용한 네이티브 @scope 기능 감지 및 기능 향상 */</span>
+<span class="token atrule"><span class="token rule">@supports</span> <span class="token punctuation">(</span>@scope <span class="token punctuation">(</span>.test<span class="token punctuation">)</span></span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token selector">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">/* 레거시 전역 스타일 해제 또는 오버라이딩 */</span>
+  <span class="token selector">.media-card .title</span> <span class="token punctuation">{</span>
+    <span class="token property">color</span><span class="token punctuation">:</span> initial<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">/* 최신 @scope 캡슐화 적용 */</span>
+  <span class="token atrule"><span class="token rule">@scope</span> <span class="token punctuation">(</span>.media-card<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+    <span class="token selector">:scope</span> <span class="token punctuation">{</span>
+      <span class="token property">border</span><span class="token punctuation">:</span> 1px solid #e2e8f0<span class="token punctuation">;</span>
+      <span class="token property">padding</span><span class="token punctuation">:</span> 1rem<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token selector">.title</span> <span class="token punctuation">{</span>
+      <span class="token property">font-size</span><span class="token punctuation">:</span> 1.25rem<span class="token punctuation">;</span>
+      <span class="token property">color</span><span class="token punctuation">:</span> #0f172a<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>또한, <strong>PostCSS</strong> 툴체인을 활용하는 프로젝트의 경우 <code class="language-text">postcss-scoping</code> 또는 관련 폴백 플러그인을 빌드 단계에 추가하면, <code class="language-text">@scope</code>를 지원하지 않는 브라우저 대상 빌드 시 자동으로 Class prefix 해싱 문법으로 트랜스파일하여 제공할 수 있습니다.</p>
+<hr>
+<h2>🧾 11. 정리</h2>
+<ul>
+<li><strong>네이티브 캡슐화의 도래</strong>: CSS Modules, CSS-in-JS 등 복잡한 JS 빌드 도구셋과 런타임 라이브러리 없이도 pure CSS만으로 안전한 컴포넌트 단위 스타일 캡슐화 가능.</li>
+<li><strong>Donut Scoping (<code class="language-text">to</code>)</strong>: 하위 자식 컴포넌트의 스타일 영역을 직관적으로 제외할 수 있어 중첩 컴포넌트 구조에서 스타일 오염 완벽 차단.</li>
+<li><strong>Scoping Proximity</strong>: 명시도(Specificity) 꼼수나 <code class="language-text">!important</code> 오남용 없이, DOM 트리의 물리적 거리에 기반한 깔끔한 Cascading 우선순위 정립.</li>
+<li><strong>최신 CSS 피처와의 시너지</strong>: Container Queries, CSS Grid/Flexbox와 연동되어 진정한 의미의 독립 자립형 컴포넌트(Self-contained Component) 설계 구축.</li>
+<li><strong>실무 유의점</strong>: Selector 범주의 매칭 억제일 뿐, Inherited CSS 속성은 Donut 경계를 넘어 전달되므로 상속 속성에 대한 가이드라인 필요.</li>
+</ul>
+<blockquote>
+<p>✨ <strong>한 줄 요약</strong><br>
+<code class="language-text">CSS @scope</code>는 런타임 오버헤드와 마크업 오염 없이 브라우저 네이티브 엔진의 파싱 성능을 100% 활용하여 완벽한 스타일 격리를 선언적으로 달성할 수 있는 모던 웹 개발의 핵심 피처입니다.</p>
+</blockquote>
+<hr>
+<h2>📚 참고 자료</h2>
+<ul>
+<li><a href="https://www.w3.org/TR/css-cascade-6/#scoped-styles" target="_blank" rel="nofollow">W3C CSS Cascading and Inheritance Level 6 Specification</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@scope" target="_blank" rel="nofollow">MDN Web Docs: CSS @scope at-rule</a></li>
+<li><a href="https://developer.chrome.com/docs/css-ui/at-scope" target="_blank" rel="nofollow">Chrome Developers: Limit the reach of your selectors with the CSS @scope rule</a></li>
+</ul></div><style data-emotion="css 1hx1kjp">.css-1hx1kjp{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-flex-wrap:wrap;-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;gap:10px;width:768px;margin:80px auto 0;padding-top:30px;border-top:1px solid rgba(66, 105, 78, 0.2);}@media (max-width: 768px){.css-1hx1kjp{width:100%;margin-top:50px;padding:20px 20px 0;}}</style><section aria-label="게시글 공유" class="css-1hx1kjp et95pb12"><style data-emotion="css 2rm7b7">.css-2rm7b7{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;gap:6px;padding:8px 16px;border:1px solid rgb(66, 105, 78);border-radius:20px;background:#ffffff;color:rgb(66, 105, 78);font-size:15px;font-weight:700;cursor:pointer;-webkit-transition:background 0.2s ease,color 0.2s ease;transition:background 0.2s ease,color 0.2s ease;}.css-2rm7b7:hover{background:rgb(66, 105, 78);color:#ffffff;}.css-2rm7b7:focus-visible{outline:3px solid rgba(66, 105, 78, 0.4);outline-offset:2px;}@media (max-width: 768px){.css-2rm7b7{font-size:14px;}}</style><button type="button" aria-label="이 글 링크 복사" class="css-2rm7b7 et95pb11"><span aria-hidden="true">🔗</span> 링크 복사</button><style data-emotion="css c5ntrx">.css-c5ntrx{font-size:14px;color:#426950;}</style><span role="status" aria-live="polite" class="css-c5ntrx et95pb10"></span></section><style data-emotion="css 1jqm3m7">.css-1jqm3m7{width:768px;margin:60px auto 0;}@media (max-width: 768px){.css-1jqm3m7{width:100%;margin-top:40px;padding:0 20px;}}</style><section aria-labelledby="related-posts-heading" class="css-1jqm3m7 e176vx9b2"><style data-emotion="css 1a5ew9b">.css-1a5ew9b{margin-bottom:20px;font-size:22px;font-weight:800;}@media (max-width: 768px){.css-1a5ew9b{font-size:19px;}}</style><h2 id="related-posts-heading" class="css-1a5ew9b e176vx9b1">함께 읽으면 좋은 글</h2><style data-emotion="css 1hgsmwg">.css-1hgsmwg{display:grid;grid-template-columns:1fr 1fr;gap:20px;padding-bottom:60px;}@media (max-width: 768px){.css-1hgsmwg{grid-template-columns:1fr;}}</style><div class="css-1hgsmwg e176vx9b0"><style data-emotion="css m7gxp6">.css-m7gxp6{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;border-radius:10px;box-shadow:0 0 8px rgba(0, 0, 0, 0.15);-webkit-transition:0.3s box-shadow;transition:0.3s box-shadow;cursor:pointer;}.css-m7gxp6:hover{box-shadow:0 0 10px rgba(0, 0, 0, 0.3);}</style><a class="css-m7gxp6 e1eg5kak8" href="/css-scroll-driven-animations-guide/"><style data-emotion="css 1axbq5h">.css-1axbq5h{width:100%;height:200px;border-radius:10px 10px 0 0;}</style><div data-gatsby-image-wrapper="" class="gatsby-image-wrapper gatsby-image-wrapper-constrained css-1axbq5h e1eg5kak7"><div style="max-width:768px;display:block"><img alt="" role="presentation" aria-hidden="true" src="data:image/svg+xml;charset=utf-8,%3Csvg%20height=&#x27;400&#x27;%20width=&#x27;768&#x27;%20xmlns=&#x27;http://www.w3.org/2000/svg&#x27;%20version=&#x27;1.1&#x27;%3E%3C/svg%3E" style="max-width:100%;display:block;position:static"/></div><img aria-hidden="true" data-placeholder-image="" style="opacity:1;transition:opacity 500ms linear" decoding="async" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAIAAAA7N+mxAAAACXBIWXMAAAsTAAALEwEAmpwYAAAB2klEQVR42k1Sy27TQBTNZ6MuWBckFixAQgJKVASIRRFSFy1p2jyU4NiJ34+x42ccv+O0SRzbiZ2KG7sIpDNXc+bOmTv3zDREvwAQ1m6oZfR8V1MUHqTgHypa1KkanLuH2IAh+AXjAD8CKO/tOqzbZZ0+7/V5946e9ziXd3dSUEphCREFB9Evn8QoKDknGxsbwc3lxSOmLC0n3KaZ6y/8MC6KwguXfSGA+pSxYWdb0lxxTi75ZQNOYuyseTM9/UZ+7RooLDElXtyv3TAec1OCUdZJer9KBlLIzLYU0pBnXwzJkRzJ0WNDiQ43bPT2Unpz9undtT5QViP1gWAVStQmvIo0mxZ1FhldIaLMTUfUUZw2WwauLBCIoTJlJe+v5NcX1JeODr0R6gMpaLxiMZLBIrPGEEWsnf7somvcOr9iMbkSQ8+gJ83kljumoTHGSj7/aJ+8+Pj8VfPk5dmz0w/fL3vEdAkp3s1EL0f+nnV2T4aB74IPTh7AdgEsmOcD0R/JAYaCOv6WAtrOqg0l7YByL1UPVlUGjXdcIq2UMDYTa0sYCTnLxmaK6zDJcSMZaWtMXWHqGjNy3Mx576+4Blx+KMcdzu8J4a+JDZM27bRIuw+UnLcqtGn3/6/yBx7ABZRfjItmAAAAAElFTkSuQmCC" alt=""/><picture><source type="image/webp" data-srcset="/static/0bfeaefa1c0e7346a51db509fa3cb79d/b3234/css-scroll-driven-animations-guide.webp 192w,/static/0bfeaefa1c0e7346a51db509fa3cb79d/65a7c/css-scroll-driven-animations-guide.webp 384w,/static/0bfeaefa1c0e7346a51db509fa3cb79d/30053/css-scroll-driven-animations-guide.webp 768w,/static/0bfeaefa1c0e7346a51db509fa3cb79d/87027/css-scroll-driven-animations-guide.webp 1536w" sizes="(min-width: 768px) 768px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 768px) 768px, 100vw" decoding="async" loading="lazy" data-src="/static/0bfeaefa1c0e7346a51db509fa3cb79d/473b7/css-scroll-driven-animations-guide.png" data-srcset="/static/0bfeaefa1c0e7346a51db509fa3cb79d/be4d9/css-scroll-driven-animations-guide.png 192w,/static/0bfeaefa1c0e7346a51db509fa3cb79d/5fc50/css-scroll-driven-animations-guide.png 384w,/static/0bfeaefa1c0e7346a51db509fa3cb79d/473b7/css-scroll-driven-animations-guide.png 768w,/static/0bfeaefa1c0e7346a51db509fa3cb79d/13e83/css-scroll-driven-animations-guide.png 1536w" alt="📜 CSS Scroll-driven Animations 완벽 가이드: JS 없는 60fps 스크롤 인터랙션"/></picture><noscript><picture><source type="image/webp" srcSet="/static/0bfeaefa1c0e7346a51db509fa3cb79d/b3234/css-scroll-driven-animations-guide.webp 192w,/static/0bfeaefa1c0e7346a51db509fa3cb79d/65a7c/css-scroll-driven-animations-guide.webp 384w,/static/0bfeaefa1c0e7346a51db509fa3cb79d/30053/css-scroll-driven-animations-guide.webp 768w,/static/0bfeaefa1c0e7346a51db509fa3cb79d/87027/css-scroll-driven-animations-guide.webp 1536w" sizes="(min-width: 768px) 768px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 768px) 768px, 100vw" decoding="async" loading="lazy" src="/static/0bfeaefa1c0e7346a51db509fa3cb79d/473b7/css-scroll-driven-animations-guide.png" srcSet="/static/0bfeaefa1c0e7346a51db509fa3cb79d/be4d9/css-scroll-driven-animations-guide.png 192w,/static/0bfeaefa1c0e7346a51db509fa3cb79d/5fc50/css-scroll-driven-animations-guide.png 384w,/static/0bfeaefa1c0e7346a51db509fa3cb79d/473b7/css-scroll-driven-animations-guide.png 768w,/static/0bfeaefa1c0e7346a51db509fa3cb79d/13e83/css-scroll-driven-animations-guide.png 1536w" alt="📜 CSS Scroll-driven Animations 완벽 가이드: JS 없는 60fps 스크롤 인터랙션"/></picture></noscript><script type="module">const t="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;if(t){const t=document.querySelectorAll("img[data-main-image]");for(let e of t){e.dataset.src&&(e.setAttribute("src",e.dataset.src),e.removeAttribute("data-src")),e.dataset.srcset&&(e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset"));const t=e.parentNode.querySelectorAll("source[data-srcset]");for(let e of t)e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset");e.complete&&(e.style.opacity=1,e.parentNode.parentNode.querySelector("[data-placeholder-image]").style.opacity=0)}}</script></div><style data-emotion="css 1do7u82">.css-1do7u82{-webkit-flex:1;-ms-flex:1;flex:1;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;padding:15px;}</style><div class="css-1do7u82 e1eg5kak6"><style data-emotion="css kw2b4d">.css-kw2b4d{display:-webkit-box;overflow:hidden;margin-bottom:3px;text-overflow:ellipsis;white-space:normal;overflow-wrap:break-word;-webkit-line-clamp:2;-webkit-box-orient:vertical;font-size:20px;font-weight:700;}</style><div class="css-kw2b4d e1eg5kak5">📜 CSS Scroll-driven Animations 완벽 가이드: JS 없는 60fps 스크롤 인터랙션</div><style data-emotion="css xm5j9w">.css-xm5j9w{font-size:14px;font-weight:400;opacity:0.7;}</style><div class="css-xm5j9w e1eg5kak4">2026.10.19.</div><style data-emotion="css 1bobky6">.css-1bobky6{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-flex-wrap:wrap;-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap;margin-top:10px;margin:10px -5px;}</style><div class="css-1bobky6 e1eg5kak2"><style data-emotion="css 1bzcbme">.css-1bzcbme{margin:2.5px 5px;padding:3px 5px;border-radius:3px;background:black;font-size:14px;font-weight:700;color:white;}</style><div class="css-1bzcbme e1eg5kak1">Web</div><div class="css-1bzcbme e1eg5kak1">Css</div></div><style data-emotion="css 1wehmme">.css-1wehmme{display:-webkit-box;overflow:hidden;margin-top:auto;text-overflow:ellipsis;white-space:normal;overflow-wrap:break-word;-webkit-line-clamp:2;-webkit-box-orient:vertical;font-size:16px;opacity:0.8;}</style><div class="css-1wehmme e1eg5kak0">JS 스크롤 이벤트 없이 완성하는 선언적 60fps 인터랙션</div></div></a><a class="css-m7gxp6 e1eg5kak8" href="/css-anchor-positioning-guide/"><div data-gatsby-image-wrapper="" class="gatsby-image-wrapper gatsby-image-wrapper-constrained css-1axbq5h e1eg5kak7"><div style="max-width:768px;display:block"><img alt="" role="presentation" aria-hidden="true" src="data:image/svg+xml;charset=utf-8,%3Csvg%20height=&#x27;400&#x27;%20width=&#x27;768&#x27;%20xmlns=&#x27;http://www.w3.org/2000/svg&#x27;%20version=&#x27;1.1&#x27;%3E%3C/svg%3E" style="max-width:100%;display:block;position:static"/></div><img aria-hidden="true" data-placeholder-image="" style="opacity:1;transition:opacity 500ms linear" decoding="async" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAIAAAA7N+mxAAAACXBIWXMAAAsTAAALEwEAmpwYAAACL0lEQVR42mP4+Ob/zp0X+KT1OaX0+OTNhFWsBZWtBJWsuGWN2SV0WEW12SV02cV12cR0gIhDQheImIW116459eX9f4YPb/7v3XtFUtNBStNJ09Jf2chTwcBNVMVGVNVWVM1W0cBdQt0eKCur6yKj7SSp6Sil5SCmar9x4/nP7/4zfARrFlS0dPJLjEwtLajqiEkv94vOKW/sK67tSsypSSusL67rzq9ob+yaJqXlKKZmI6xss2H9OYRmISVLC9dI7/DMiJQS/5hc/6ic3PK24PiCkIRC54DkkISCgJi88KRiOV0XUVWQ5o0bYJr37b3KL2/uF5ld1tBbWN2RWdKUkl+bU9aSmFMNEals6s8ubals7vcMzRBTsxVXs9+IbLOwspWJU5iRfVhAdL6Lf4pXaKaFS5RrYFpgTAFQA9AjXmEZcRkVps7hTCK6LKIGG9afhWres+eyuLq9lLqVoomdgqmNmo29poO9qpWDkrmNpp2zqpk3l5SxgIIFq5i+sX34nIVry2onbN544dNbSGjvuQwMRgU9J1VTFzVLVw0rN00bN1ULV2VTF3VLDzVzH2ktR2CAAyPi2LHL37/+e/vmy9XLz54//g2yedeui5zSBmySeuwS+mziQKTHKqYHJNkk9FlBpC6XjAGTiJaykdv5c7c76o+uXnrp7p3nzx7+Ynjz4t+1y69yiyemZfdk5PaCUF4vlAFG6WAEFEzJ7Nm7++LTx+/v3n5x7dKrl0//AABCJvaBnv1qjwAAAABJRU5ErkJggg==" alt=""/><picture><source type="image/webp" data-srcset="/static/6627e847d8db77d9b0a2706e4fb58b02/b3234/css-anchor-positioning-guide.webp 192w,/static/6627e847d8db77d9b0a2706e4fb58b02/65a7c/css-anchor-positioning-guide.webp 384w,/static/6627e847d8db77d9b0a2706e4fb58b02/30053/css-anchor-positioning-guide.webp 768w,/static/6627e847d8db77d9b0a2706e4fb58b02/87027/css-anchor-positioning-guide.webp 1536w" sizes="(min-width: 768px) 768px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 768px) 768px, 100vw" decoding="async" loading="lazy" data-src="/static/6627e847d8db77d9b0a2706e4fb58b02/473b7/css-anchor-positioning-guide.png" data-srcset="/static/6627e847d8db77d9b0a2706e4fb58b02/be4d9/css-anchor-positioning-guide.png 192w,/static/6627e847d8db77d9b0a2706e4fb58b02/5fc50/css-anchor-positioning-guide.png 384w,/static/6627e847d8db77d9b0a2706e4fb58b02/473b7/css-anchor-positioning-guide.png 768w,/static/6627e847d8db77d9b0a2706e4fb58b02/13e83/css-anchor-positioning-guide.png 1536w" alt="⚓ CSS 앵커 포지셔닝(Anchor Positioning) 완벽 가이드"/></picture><noscript><picture><source type="image/webp" srcSet="/static/6627e847d8db77d9b0a2706e4fb58b02/b3234/css-anchor-positioning-guide.webp 192w,/static/6627e847d8db77d9b0a2706e4fb58b02/65a7c/css-anchor-positioning-guide.webp 384w,/static/6627e847d8db77d9b0a2706e4fb58b02/30053/css-anchor-positioning-guide.webp 768w,/static/6627e847d8db77d9b0a2706e4fb58b02/87027/css-anchor-positioning-guide.webp 1536w" sizes="(min-width: 768px) 768px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 768px) 768px, 100vw" decoding="async" loading="lazy" src="/static/6627e847d8db77d9b0a2706e4fb58b02/473b7/css-anchor-positioning-guide.png" srcSet="/static/6627e847d8db77d9b0a2706e4fb58b02/be4d9/css-anchor-positioning-guide.png 192w,/static/6627e847d8db77d9b0a2706e4fb58b02/5fc50/css-anchor-positioning-guide.png 384w,/static/6627e847d8db77d9b0a2706e4fb58b02/473b7/css-anchor-positioning-guide.png 768w,/static/6627e847d8db77d9b0a2706e4fb58b02/13e83/css-anchor-positioning-guide.png 1536w" alt="⚓ CSS 앵커 포지셔닝(Anchor Positioning) 완벽 가이드"/></picture></noscript><script type="module">const t="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;if(t){const t=document.querySelectorAll("img[data-main-image]");for(let e of t){e.dataset.src&&(e.setAttribute("src",e.dataset.src),e.removeAttribute("data-src")),e.dataset.srcset&&(e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset"));const t=e.parentNode.querySelectorAll("source[data-srcset]");for(let e of t)e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset");e.complete&&(e.style.opacity=1,e.parentNode.parentNode.querySelector("[data-placeholder-image]").style.opacity=0)}}</script></div><div class="css-1do7u82 e1eg5kak6"><div class="css-kw2b4d e1eg5kak5">⚓ CSS 앵커 포지셔닝(Anchor Positioning) 완벽 가이드</div><div class="css-xm5j9w e1eg5kak4">2026.10.10.</div><div class="css-1bobky6 e1eg5kak2"><div class="css-1bzcbme e1eg5kak1">Web</div><div class="css-1bzcbme e1eg5kak1">Css</div></div><div class="css-1wehmme e1eg5kak0">자바스크립트 없이 구현하는 초경량 팝오버</div></div></a><a class="css-m7gxp6 e1eg5kak8" href="/web-otp-api-guide/"><div data-gatsby-image-wrapper="" class="gatsby-image-wrapper gatsby-image-wrapper-constrained css-1axbq5h e1eg5kak7"><div style="max-width:768px;display:block"><img alt="" role="presentation" aria-hidden="true" src="data:image/svg+xml;charset=utf-8,%3Csvg%20height=&#x27;400&#x27;%20width=&#x27;768&#x27;%20xmlns=&#x27;http://www.w3.org/2000/svg&#x27;%20version=&#x27;1.1&#x27;%3E%3C/svg%3E" style="max-width:100%;display:block;position:static"/></div><img aria-hidden="true" data-placeholder-image="" style="opacity:1;transition:opacity 500ms linear" decoding="async" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAIAAAA7N+mxAAAACXBIWXMAAAsTAAALEwEAmpwYAAAByklEQVR42m1Sa4vTQBTNnxaUBUX0P/hhPyyiSJVVlkWEdXFV2DVNm9k+0jZJM0mTNDPJ5NE2bZKmeVBvWhZkEQ6XO48795xzh2OkBPi0OuCYlMfNRwjcCgDJ3Cic2Y5aBQcLzymJmTtmTiyIW2rljytp6VoVnmTaKCWzktqAwp0XXBztL87Fk6dvX79sPT959+rFh2dPzm5/4VW4h+Nj8Uzdin/oVA4MLURtMpUSnzQUuMCtp5OFcGchwUHCvH1rdnnbNjLgD4xAgo0LkSdxnDjzAGs0TbO+SPAYLpQcdPhxpZy+uT5vCT+v1dZ7/ua7HHr1QWQd0FoSl44dbbd5v0ulHgv8GB5CPGNOzS2D/d1v/ez0Bsh/vehD/PKp8/lj99vlECiANgktGFtu1pmhh4sodekySbNeh7l2xUWs7nXCq0sTtT1lFI4HgTKKJsMmDpAH/SV06JzlHWTIY89n/3QGbSZO5eFSk2MTJ1iJNXmlq7GursF/EGbhHWrT1WpNycLQ/SRJB/dEGzWmNKOCCdlGauEEii09NR8SGNvRbUPeIt7FamDq0b1AlcGGOc0+B5YeXK3+i4cvVFKrVKWN3F/DD2G0IubOc4q/NQ0P5Hh90tQAAAAASUVORK5CYII=" alt=""/><picture><source type="image/webp" data-srcset="/static/7455a3155116c38cbfd2cdd6074207e6/b3234/web-otp-api-guide.webp 192w,/static/7455a3155116c38cbfd2cdd6074207e6/65a7c/web-otp-api-guide.webp 384w,/static/7455a3155116c38cbfd2cdd6074207e6/30053/web-otp-api-guide.webp 768w,/static/7455a3155116c38cbfd2cdd6074207e6/87027/web-otp-api-guide.webp 1536w" sizes="(min-width: 768px) 768px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 768px) 768px, 100vw" decoding="async" loading="lazy" data-src="/static/7455a3155116c38cbfd2cdd6074207e6/473b7/web-otp-api-guide.png" data-srcset="/static/7455a3155116c38cbfd2cdd6074207e6/be4d9/web-otp-api-guide.png 192w,/static/7455a3155116c38cbfd2cdd6074207e6/5fc50/web-otp-api-guide.png 384w,/static/7455a3155116c38cbfd2cdd6074207e6/473b7/web-otp-api-guide.png 768w,/static/7455a3155116c38cbfd2cdd6074207e6/13e83/web-otp-api-guide.png 1536w" alt="📲 Web OTP API 완벽 가이드: 외부 앱 이동 없는 네이티브 SMS 인증번호 자동 수신"/></picture><noscript><picture><source type="image/webp" srcSet="/static/7455a3155116c38cbfd2cdd6074207e6/b3234/web-otp-api-guide.webp 192w,/static/7455a3155116c38cbfd2cdd6074207e6/65a7c/web-otp-api-guide.webp 384w,/static/7455a3155116c38cbfd2cdd6074207e6/30053/web-otp-api-guide.webp 768w,/static/7455a3155116c38cbfd2cdd6074207e6/87027/web-otp-api-guide.webp 1536w" sizes="(min-width: 768px) 768px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 768px) 768px, 100vw" decoding="async" loading="lazy" src="/static/7455a3155116c38cbfd2cdd6074207e6/473b7/web-otp-api-guide.png" srcSet="/static/7455a3155116c38cbfd2cdd6074207e6/be4d9/web-otp-api-guide.png 192w,/static/7455a3155116c38cbfd2cdd6074207e6/5fc50/web-otp-api-guide.png 384w,/static/7455a3155116c38cbfd2cdd6074207e6/473b7/web-otp-api-guide.png 768w,/static/7455a3155116c38cbfd2cdd6074207e6/13e83/web-otp-api-guide.png 1536w" alt="📲 Web OTP API 완벽 가이드: 외부 앱 이동 없는 네이티브 SMS 인증번호 자동 수신"/></picture></noscript><script type="module">const t="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;if(t){const t=document.querySelectorAll("img[data-main-image]");for(let e of t){e.dataset.src&&(e.setAttribute("src",e.dataset.src),e.removeAttribute("data-src")),e.dataset.srcset&&(e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset"));const t=e.parentNode.querySelectorAll("source[data-srcset]");for(let e of t)e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset");e.complete&&(e.style.opacity=1,e.parentNode.parentNode.querySelector("[data-placeholder-image]").style.opacity=0)}}</script></div><div class="css-1do7u82 e1eg5kak6"><div class="css-kw2b4d e1eg5kak5">📲 Web OTP API 완벽 가이드: 외부 앱 이동 없는 네이티브 SMS 인증번호 자동 수신</div><div class="css-xm5j9w e1eg5kak4">2026.11.04.</div><div class="css-1bobky6 e1eg5kak2"><div class="css-1bzcbme e1eg5kak1">Web</div><div class="css-1bzcbme e1eg5kak1">Mobile</div></div><div class="css-1wehmme e1eg5kak0">문자 앱을 열지 않고 클릭 한 번으로 SMS 인증번호를 자동 입력하는 네이티브 브라우저 API 사양과 실무 적용법</div></div></a><a class="css-m7gxp6 e1eg5kak8" href="/compression-streams-api-guide/"><div data-gatsby-image-wrapper="" class="gatsby-image-wrapper gatsby-image-wrapper-constrained css-1axbq5h e1eg5kak7"><div style="max-width:768px;display:block"><img alt="" role="presentation" aria-hidden="true" src="data:image/svg+xml;charset=utf-8,%3Csvg%20height=&#x27;400&#x27;%20width=&#x27;768&#x27;%20xmlns=&#x27;http://www.w3.org/2000/svg&#x27;%20version=&#x27;1.1&#x27;%3E%3C/svg%3E" style="max-width:100%;display:block;position:static"/></div><img aria-hidden="true" data-placeholder-image="" style="opacity:1;transition:opacity 500ms linear" decoding="async" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAIAAAA7N+mxAAAACXBIWXMAAAsTAAALEwEAmpwYAAAB80lEQVR42mMQ1/cT1/UWVbOT1HRUN/dVM/OR1XNVMvKQ03cTVrYRUbGR0LAXVwciOyhSs5XQdJQxDRXX82WQ0PeT1Pfhlzd3C0rJLG6Kzajon74op6w1Jr28pnUSUERExVpY2UpU1UZMzRaEVG3ENRxkTMJAmsX1/CR0vQUVLQ0dQkITi6w8oqPTyyOSi0MSChJzqoPjC6S1HaW1HCXU7VE1I9ksoGDhEpgcn11VWt9TWtdd1TKhoKq9e/K8rJKmnLKW1r6ZVu7RfPLmkhr2kpr2UtrOCGdL6PkIKVkaOYa5BaUHxhSExBd5hWYZ2IaEJ5a4B6U7+CSFJhTp2wYJKVkJKlmyiupySptIA23W92OABJiYmp20hrWKhZ2qjZ20vpWCqY26jYOCmbWqlYOajb2eo5+EugO/grmpU2j/jKUl9b0yJiGiuhCbQZrtZbUdFIwclcyclUydFU2clEyByFne0FHZzFHL2kdc3UFWx2nj7lPz9zzYdeF1Zdt0bhVXqM2iKtYiypbCSpbCimCExlCy5Jcz1bfy3n3qbnLXtkmbbsxctIFHFaJZz1fa0F/WJEjGGISADDiCcYOBSEzXt6Fv/uHLL/aevOkSls+v7g6MKl+gfgnDIEmjECQUjERCkYRRsJC2t6lbnJpVqICGp4S+HwBqcppI9h/KbgAAAABJRU5ErkJggg==" alt=""/><picture><source type="image/webp" data-srcset="/static/7615d63598c2109386a1ad1b2e4dec27/b3234/compression-streams-api-guide.webp 192w,/static/7615d63598c2109386a1ad1b2e4dec27/65a7c/compression-streams-api-guide.webp 384w,/static/7615d63598c2109386a1ad1b2e4dec27/30053/compression-streams-api-guide.webp 768w,/static/7615d63598c2109386a1ad1b2e4dec27/87027/compression-streams-api-guide.webp 1536w" sizes="(min-width: 768px) 768px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 768px) 768px, 100vw" decoding="async" loading="lazy" data-src="/static/7615d63598c2109386a1ad1b2e4dec27/473b7/compression-streams-api-guide.png" data-srcset="/static/7615d63598c2109386a1ad1b2e4dec27/be4d9/compression-streams-api-guide.png 192w,/static/7615d63598c2109386a1ad1b2e4dec27/5fc50/compression-streams-api-guide.png 384w,/static/7615d63598c2109386a1ad1b2e4dec27/473b7/compression-streams-api-guide.png 768w,/static/7615d63598c2109386a1ad1b2e4dec27/13e83/compression-streams-api-guide.png 1536w" alt="🗜️ Compression Streams API 완벽 가이드: 외부 라이브러리 없는 고성능 브라우저 스트리밍 압축"/></picture><noscript><picture><source type="image/webp" srcSet="/static/7615d63598c2109386a1ad1b2e4dec27/b3234/compression-streams-api-guide.webp 192w,/static/7615d63598c2109386a1ad1b2e4dec27/65a7c/compression-streams-api-guide.webp 384w,/static/7615d63598c2109386a1ad1b2e4dec27/30053/compression-streams-api-guide.webp 768w,/static/7615d63598c2109386a1ad1b2e4dec27/87027/compression-streams-api-guide.webp 1536w" sizes="(min-width: 768px) 768px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 768px) 768px, 100vw" decoding="async" loading="lazy" src="/static/7615d63598c2109386a1ad1b2e4dec27/473b7/compression-streams-api-guide.png" srcSet="/static/7615d63598c2109386a1ad1b2e4dec27/be4d9/compression-streams-api-guide.png 192w,/static/7615d63598c2109386a1ad1b2e4dec27/5fc50/compression-streams-api-guide.png 384w,/static/7615d63598c2109386a1ad1b2e4dec27/473b7/compression-streams-api-guide.png 768w,/static/7615d63598c2109386a1ad1b2e4dec27/13e83/compression-streams-api-guide.png 1536w" alt="🗜️ Compression Streams API 완벽 가이드: 외부 라이브러리 없는 고성능 브라우저 스트리밍 압축"/></picture></noscript><script type="module">const t="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;if(t){const t=document.querySelectorAll("img[data-main-image]");for(let e of t){e.dataset.src&&(e.setAttribute("src",e.dataset.src),e.removeAttribute("data-src")),e.dataset.srcset&&(e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset"));const t=e.parentNode.querySelectorAll("source[data-srcset]");for(let e of t)e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset");e.complete&&(e.style.opacity=1,e.parentNode.parentNode.querySelector("[data-placeholder-image]").style.opacity=0)}}</script></div><div class="css-1do7u82 e1eg5kak6"><div class="css-kw2b4d e1eg5kak5">🗜️ Compression Streams API 완벽 가이드: 외부 라이브러리 없는 고성능 브라우저 스트리밍 압축</div><div class="css-xm5j9w e1eg5kak4">2026.10.26.</div><div class="css-1bobky6 e1eg5kak2"><div class="css-1bzcbme e1eg5kak1">Web</div></div><div class="css-1wehmme e1eg5kak0">pako 없이 브라우저 내장 스트림으로 압축</div></div></a></div></section><style data-emotion="css hx9xpc">@media (max-width: 768px){.css-hx9xpc{padding:0 20px;}}</style><div class="css-hx9xpc e1gqsjds0"></div><style data-emotion="css 1lgr7vy">.css-1lgr7vy{position:fixed;bottom:30px;right:30px;width:50px;height:50px;border-radius:50%;background:linear-gradient(60deg, rgb(66, 105, 78) 0%, rgb(73, 110, 93) 100%);border:2px solid white;cursor:pointer;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;-webkit-justify-content:center;justify-content:center;box-shadow:0 4px 15px rgba(0, 0, 0, 0.15);-webkit-transition:all 0.3s ease;transition:all 0.3s ease;z-index:1000;opacity:0;visibility:hidden;-webkit-transform:translateY(20px);-moz-transform:translateY(20px);-ms-transform:translateY(20px);transform:translateY(20px);}.css-1lgr7vy:hover{-webkit-transform:translateY(-3px);-moz-transform:translateY(-3px);-ms-transform:translateY(-3px);transform:translateY(-3px);box-shadow:0 6px 20px rgba(0, 0, 0, 0.3);background:white;border-color:rgb(66, 105, 78);}.css-1lgr7vy:active{-webkit-transform:translateY(0);-moz-transform:translateY(0);-ms-transform:translateY(0);transform:translateY(0);}.css-1lgr7vy.visible{opacity:1;visibility:visible;-webkit-transform:translateY(0);-moz-transform:translateY(0);-ms-transform:translateY(0);transform:translateY(0);}@media (max-width: 768px){.css-1lgr7vy{bottom:20px;right:20px;width:45px;height:45px;}}</style><button class="css-1lgr7vy e14t44do1" aria-label="맨 위로 이동"><style data-emotion="css 1lzpihr">.css-1lzpihr{width:0;height:0;border-left:8px solid transparent;border-right:8px solid transparent;border-bottom:12px solid white;margin-bottom:2px;-webkit-transition:border-bottom-color 0.3s ease;transition:border-bottom-color 0.3s ease;}.e14t44do1:hover .css-1lzpihr{border-bottom-color:rgb(66, 105, 78);}</style><div class="css-1lzpihr e14t44do0"></div></button><style data-emotion="css 1yungzt">.css-1yungzt{position:relative;width:100%;padding:40px 0;background:linear-gradient(180deg, rgba(66, 105, 78, 0.05) 0%, rgba(73, 110, 93, 0.1) 100%);border-top:1px solid rgba(66, 105, 78, 0.1);}</style><footer class="css-1yungzt e1oae0v85"><style data-emotion="css 1uamirr">.css-1uamirr{max-width:960px;margin:0 auto;padding:0 20px;text-align:center;}</style><div class="css-1uamirr e1oae0v84"><style data-emotion="css 1ghcw8y">.css-1ghcw8y{font-size:16px;line-height:1.6;color:#426950;margin-bottom:10px;-webkit-transition:color 0.3s ease;transition:color 0.3s ease;}.css-1ghcw8y:hover{color:#2c4735;}@media (max-width: 768px){.css-1ghcw8y{font-size:14px;}}</style><p class="css-1ghcw8y e1oae0v83">Thank You for Visiting My Blog, Have a Good Day <style data-emotion="css lzb4fa">.css-lzb4fa{display:inline-block;-webkit-transition:-webkit-transform 0.3s ease;transition:transform 0.3s ease;}.css-lzb4fa:hover{-webkit-transform:scale(1.2) rotate(10deg);-moz-transform:scale(1.2) rotate(10deg);-ms-transform:scale(1.2) rotate(10deg);transform:scale(1.2) rotate(10deg);}</style><span class="css-lzb4fa e1oae0v80">🌿</span></p><style data-emotion="css g8i42m">.css-g8i42m{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;-webkit-justify-content:center;justify-content:center;gap:16px;margin-bottom:10px;font-size:14px;color:#426950;}.css-g8i42m a:hover,.css-g8i42m a:focus-visible{-webkit-text-decoration:underline;text-decoration:underline;}@media (max-width: 768px){.css-g8i42m{font-size:13px;}}</style><nav aria-label="블로그 바로가기" class="css-g8i42m e1oae0v81"><a href="/stats/">📊 블로그 통계</a><a href="/rss.xml" type="application/rss+xml">📡 RSS 구독</a></nav><style data-emotion="css y3pbt1">.css-y3pbt1{font-size:14px;color:#666;margin-top:5px;}@media (max-width: 768px){.css-y3pbt1{font-size:12px;}}</style><p class="css-y3pbt1 e1oae0v82">© 2024 Developer LIM.</p></div></footer></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/css-scope-rule-guide/";/*]]>*/</script><!-- slice-start id="_gatsby-scripts-1" -->
+          <script
+            id="gatsby-chunk-mapping"
+          >
+            window.___chunkMapping="{\"app\":[\"/app-487e393d9545ee92626d.js\"],\"component---cache-caches-gatsby-plugin-offline-app-shell-js\":[\"/component---cache-caches-gatsby-plugin-offline-app-shell-js-27e0e967a98f3dffdf9e.js\"],\"component---src-pages-404-tsx\":[\"/component---src-pages-404-tsx-198e8648605be5d74a6a.js\"],\"component---src-pages-index-tsx\":[\"/component---src-pages-index-tsx-808f47740edfdc730a12.js\"],\"component---src-pages-info-tsx\":[\"/component---src-pages-info-tsx-91ad86a40368117a0a55.js\"],\"component---src-pages-stats-tsx\":[\"/component---src-pages-stats-tsx-12daf326dda681f6bb6c.js\"],\"component---src-templates-post-template-tsx\":[\"/component---src-templates-post-template-tsx-21445cb1ff9c6c3a4da7.js\"]}";
+          </script>
+        <script>window.___webpackCompilationHash="5fbcbef152b0ac76963b";</script><script src="/webpack-runtime-97651303365358be7c4e.js" async></script><script src="/framework-9d608f77b5c9a88afabd.js" async></script><script src="/app-487e393d9545ee92626d.js" async></script><!-- slice-end id="_gatsby-scripts-1" --></body></html>
