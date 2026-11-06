@@ -1,13 +1,17 @@
 {
-  "generatedAt": "2026-11-06T04:18:51Z",
+  "generatedAt": "2026-11-06T15:20:54Z",
   "source": "goatcounter",
   "metric": "visitors",
   "rangeStart": "2026-10-01T00:00:00Z",
-  "rangeEnd": "2026-11-06T04:00:00Z",
-  "totalViews": 85,
+  "rangeEnd": "2026-11-06T15:00:00Z",
+  "totalViews": 94,
   "posts": [
     {
       "path": "/navigation-api-spa-routing-guide/",
+      "views": 5
+    },
+    {
+      "path": "/popover-api-and-top-layer-guide/",
       "views": 4
     },
     {
@@ -16,10 +20,6 @@
     },
     {
       "path": "/gatsby/",
-      "views": 3
-    },
-    {
-      "path": "/popover-api-and-top-layer-guide/",
       "views": 3
     },
     {
