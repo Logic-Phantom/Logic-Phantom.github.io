@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-11-08T17:15:21Z",
-  "source": "goatcounter-counter",
+  "generatedAt": "2026-11-09T03:46:21Z",
+  "source": "goatcounter",
   "metric": "visitors",
-  "rangeStart": null,
-  "rangeEnd": "2026-11-08T17:00:00Z",
+  "rangeStart": "2026-10-01T00:00:00Z",
+  "rangeEnd": "2026-11-09T03:00:00Z",
   "totalViews": 103,
   "posts": [
     {
@@ -28,6 +28,10 @@
     },
     {
       "path": "/cloud-tech-overview/",
+      "views": 1
+    },
+    {
+      "path": "/cookie-store-api-guide/",
       "views": 1
     },
     {
@@ -68,6 +72,10 @@
     },
     {
       "path": "/web-bluetooth-api-guide/",
+      "views": 1
+    },
+    {
+      "path": "/web-hid-api-guide/",
       "views": 1
     },
     {
