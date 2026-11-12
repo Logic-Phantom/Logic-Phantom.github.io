@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-11-12T05:01:10Z",
-  "source": "goatcounter-counter",
+  "generatedAt": "2026-11-12T16:09:22Z",
+  "source": "goatcounter",
   "metric": "visitors",
-  "rangeStart": null,
-  "rangeEnd": "2026-11-12T04:00:00Z",
+  "rangeStart": "2026-10-01T00:00:00Z",
+  "rangeEnd": "2026-11-12T16:00:00Z",
   "totalViews": 115,
   "posts": [
     {
@@ -23,15 +23,27 @@
       "views": 3
     },
     {
+      "path": "/cookie-store-api-guide/",
+      "views": 2
+    },
+    {
+      "path": "/web-hid-api-guide/",
+      "views": 2
+    },
+    {
       "path": "/web-identity-credential-manager-api-guide/",
       "views": 2
     },
     {
-      "path": "/cloud-tech-overview/",
+      "path": "/2026_web_trend (1)/",
       "views": 1
     },
     {
-      "path": "/cookie-store-api-guide/",
+      "path": "/background-sync-api-guide/",
+      "views": 1
+    },
+    {
+      "path": "/cloud-tech-overview/",
       "views": 1
     },
     {
@@ -40,6 +52,14 @@
     },
     {
       "path": "/islands-architecture-astro-guide/",
+      "views": 1
+    },
+    {
+      "path": "/js-modern-techniques-and-architecture/",
+      "views": 1
+    },
+    {
+      "path": "/media-session-api-guide/",
       "views": 1
     },
     {
@@ -63,6 +83,10 @@
       "views": 1
     },
     {
+      "path": "/virtual-keyboard-api-guide/",
+      "views": 1
+    },
+    {
       "path": "/web-audio-api-guide/",
       "views": 1
     },
@@ -75,15 +99,15 @@
       "views": 1
     },
     {
-      "path": "/web-hid-api-guide/",
-      "views": 1
-    },
-    {
       "path": "/web-locks-api-concurrency-control/",
       "views": 1
     },
     {
       "path": "/web-share-target-api-guide/",
+      "views": 1
+    },
+    {
+      "path": "/web-speech-api-guide/",
       "views": 1
     },
     {
