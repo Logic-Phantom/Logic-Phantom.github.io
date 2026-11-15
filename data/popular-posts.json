@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-11-14T17:17:37Z",
-  "source": "goatcounter-counter",
+  "generatedAt": "2026-11-15T03:54:30Z",
+  "source": "goatcounter",
   "metric": "visitors",
-  "rangeStart": null,
-  "rangeEnd": "2026-11-14T17:00:00Z",
+  "rangeStart": "2026-10-01T00:00:00Z",
+  "rangeEnd": "2026-11-15T03:00:00Z",
   "totalViews": 121,
   "posts": [
     {
@@ -23,6 +23,10 @@
       "views": 3
     },
     {
+      "path": "/background-sync-api-guide/",
+      "views": 2
+    },
+    {
       "path": "/cookie-store-api-guide/",
       "views": 2
     },
@@ -39,15 +43,15 @@
       "views": 1
     },
     {
-      "path": "/background-sync-api-guide/",
-      "views": 1
-    },
-    {
       "path": "/cloud-tech-overview/",
       "views": 1
     },
     {
       "path": "/frontend-observability-opentelemetry-rum/",
+      "views": 1
+    },
+    {
+      "path": "/idle-detection-api-guide/",
       "views": 1
     },
     {
@@ -100,6 +104,10 @@
     },
     {
       "path": "/web-locks-api-concurrency-control/",
+      "views": 1
+    },
+    {
+      "path": "/web-nfc-api-guide/",
       "views": 1
     },
     {
