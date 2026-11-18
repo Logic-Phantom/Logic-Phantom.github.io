@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-11-18T05:13:42Z",
-  "source": "goatcounter",
+  "generatedAt": "2026-11-18T17:04:35Z",
+  "source": "goatcounter-counter",
   "metric": "visitors",
-  "rangeStart": "2026-10-01T00:00:00Z",
-  "rangeEnd": "2026-11-18T05:00:00Z",
+  "rangeStart": null,
+  "rangeEnd": "2026-11-18T17:00:00Z",
   "totalViews": 127,
   "posts": [
     {
