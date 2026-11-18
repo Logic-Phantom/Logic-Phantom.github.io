@@ -1,14 +1,14 @@
 {
-  "generatedAt": "2026-11-17T17:08:12Z",
+  "generatedAt": "2026-11-18T05:13:42Z",
   "source": "goatcounter",
   "metric": "visitors",
   "rangeStart": "2026-10-01T00:00:00Z",
-  "rangeEnd": "2026-11-17T17:00:00Z",
-  "totalViews": 123,
+  "rangeEnd": "2026-11-18T05:00:00Z",
+  "totalViews": 127,
   "posts": [
     {
       "path": "/navigation-api-spa-routing-guide/",
-      "views": 5
+      "views": 6
     },
     {
       "path": "/popover-api-and-top-layer-guide/",
@@ -76,6 +76,10 @@
     },
     {
       "path": "/prioritized-task-scheduling-posttask-guide/",
+      "views": 1
+    },
+    {
+      "path": "/storage-access-api-guide/",
       "views": 1
     },
     {
