@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-11-24T19:11:17Z",
+  "generatedAt": "2026-11-25T06:10:11Z",
   "source": "goatcounter",
   "metric": "visitors",
   "rangeStart": "2026-10-01T00:00:00Z",
-  "rangeEnd": "2026-11-24T19:00:00Z",
-  "totalViews": 132,
+  "rangeEnd": "2026-11-25T06:00:00Z",
+  "totalViews": 133,
   "posts": [
     {
       "path": "/navigation-api-spa-routing-guide/",
